@@ -1,0 +1,39 @@
+Docusaurus: his book is built with Docusaurus.
+
+TOC
+===================================================================================================================================================================
+- Three Levels of AI
+- Token
+- Spec-Driven Development (SDD)
+
+- Claude Code
+- Cowork
+- MCP (Model Context Protocol)
+- Guardrails
+- RAG (Retrieval-Augmented Generation)
+- AGENTS.md / CLAUDE.md
+
+- What is Agentic AI
+- What Makes AI "Agentic
+- AI Workers
+- AI Native Company
+- AI Worker / Digital FTE
+- AI Agent Factory
+- Why It Is Called a Factory
+- Main Components of an AI Agent Factory
+- Two-Layer Model
+- Identic AI
+- Delegate
+- The 10-80-10 Rule
+- Your Personal AI Delegate
+- The 7 Golden Rules of an AI Company
+
+- AGENTS.md / CLAUDE.md
+- SPEC.md
+- SKILL.md
+
+- OpenClaw
+- TutorClaw
+- Claude Code
+- Cowork
+- Claude Desktop

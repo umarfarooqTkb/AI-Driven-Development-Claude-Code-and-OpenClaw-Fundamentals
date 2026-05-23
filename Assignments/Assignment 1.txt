@@ -1,0 +1,8 @@
+Identify work from your daily tasks, that can become an AI worker
+
+
+1. As a Manager, I have to approve Leave requests, i want an AI Agent for this routine tasks.
+2. As a Manager, I have to check Daily Attendance of each employees, i want an AI Agent to check attendance daily and take actions accordingly.
+3. As a Manager, I have to shortlist a large number of CV's, i want an AI Agent for this task.
+  🔹 Example: A resume-screening AI Worker reads 200 resumes per day, scores them against a job spec, and hands the top 10 to a human recruiter. It's a Digital FTE inside the AI-Native Company's HR workforce — hired by Paperclip, rosterable, retirable.
+
