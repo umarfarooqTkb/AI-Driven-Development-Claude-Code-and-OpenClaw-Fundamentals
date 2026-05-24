@@ -3,16 +3,6 @@ Docusaurus: his book is built with Docusaurus.
 TOC
 ===================================================================================================================================================================
 - Three Levels of AI
-- Token
-- Spec-Driven Development (SDD)
-
-- Claude Code
-- Cowork
-- MCP (Model Context Protocol)
-- Guardrails
-- RAG (Retrieval-Augmented Generation)
-- AGENTS.md / CLAUDE.md
-
 - What is Agentic AI
 - What Makes AI "Agentic
 - AI Workers
@@ -28,6 +18,28 @@ TOC
 - Your Personal AI Delegate
 - The 7 Golden Rules of an AI Company
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Token
+- Spec-Driven Development (SDD)
+
+- Claude Code
+- Cowork
+- MCP (Model Context Protocol)
+- Guardrails
+- RAG (Retrieval-Augmented Generation)
+- AGENTS.md / CLAUDE.md
 - AGENTS.md / CLAUDE.md
 - SPEC.md
 - SKILL.md

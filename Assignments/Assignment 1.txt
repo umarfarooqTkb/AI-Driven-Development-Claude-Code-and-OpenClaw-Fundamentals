@@ -1,8 +1,116 @@
+Assignment 1: 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- study A Real Example:Ecomm Mart slides from day 1 and identify a real-world task from your office
+- You have to create an Digital FTE (AI Agent) for that routine task
+- Complete 5 steps as defined in the slide.
+
+One-line Summary:
 Identify work from your daily tasks, that can become an AI worker
 
+
+
+Solution:
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Following are some daily task identified from my daily routine life.
 
 1. As a Manager, I have to approve Leave requests, i want an AI Agent for this routine tasks.
 2. As a Manager, I have to check Daily Attendance of each employees, i want an AI Agent to check attendance daily and take actions accordingly.
 3. As a Manager, I have to shortlist a large number of CV's, i want an AI Agent for this task.
   🔹 Example: A resume-screening AI Worker reads 200 resumes per day, scores them against a job spec, and hands the top 10 to a human recruiter. It's a Digital FTE inside the AI-Native Company's HR workforce — hired by Paperclip, rosterable, retirable.
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Assignment Example: Daily Attendance Monitoring AI Agent
+
+As a manager, I need to check the daily attendance of each employee. 
+This includes checking who is present, absent, late, on leave, or missing check-in/check-out records. Doing this manually every day takes time and can lead to missed issues.
+So, I want to create an AI Attendance Monitoring Agent that can check attendance daily and take actions according to company rules.
+
+The Attendance Monitoring AI Agent is a Digital FTE that checks daily attendance, identifies issues, sends notifications, escalates repeated problems, and helps the manager save time while following company policies and human approval rules.
+
+Step 1: Write Clear Instructions
+Its goal is to:
+Check daily attendance of all employees.
+Identify absent employees.
+Identify late arrivals.
+Identify missing check-in or check-out records.
+Check whether the employee is on approved leave.
+Send reminders or alerts where required.
+Escalate repeated attendance issues to the manager.
+
+Example instruction:
+Every day at 10:30 AM, check employee attendance records. If an employee has not checked in and has no approved leave, mark them as absent and notify the manager. If an employee is late more than 3 times in a week, escalate the case to HR and the manager.
+
+Step 2: Connect to Company Records
+The AI agent needs access to trusted company systems.
+It should connect with:
+HRMS system
+Attendance system
+Employee database
+Leave management system
+Company attendance policy
+Manager and department records
+Email, Slack, or Teams for notifications
+
+This is similar to the Ecomm Mart example where the support worker connects to Shopify orders, customer database, and ticket system.
+For the attendance agent, the company records are the source of truth.
+
+Step 3: Give It Skills
+The AI agent needs specific skills to do the job properly.
+It should know how to:
+Read attendance records.
+Compare check-in time with official office time.
+Check approved leave before marking someone absent.
+Classify attendance status as Present, Late, Absent, Half Day, Leave, or Missing Punch.
+Detect repeated patterns, such as frequent lateness.
+Write professional notification messages.
+Prepare a daily attendance summary for the manager.
+
+Example:
+If office time is 9:00 AM and grace time is 15 minutes, the agent should mark employees as late after 9:15 AM unless there is an approved exception.
+
+Step 4: Set the Guardrails
+The AI agent should not have unlimited authority.
+
+Important guardrails:
+The AI cannot terminate, penalize, or deduct salary automatically.
+The AI cannot approve exceptions without manager or HR approval.
+The AI must check approved leave before marking someone absent.
+The AI must keep an audit trail of every action.
+The AI must not share employee attendance details with unauthorized people.
+The AI should escalate unclear cases to the manager.
+The AI must follow company attendance policy only.
+
+Example:
+If an employee is absent but has an approved leave request, the AI should not send a warning. It should mark the employee as “On Approved Leave.”
+
+Step 5: Test, Then Deploy
+Before using it in real operations, the company should test it.
+
+Testing approach:
+Run the AI agent on 30 days of old attendance data.
+Compare AI results with HR’s manual records.
+Check whether it correctly identifies absent, late, leave, and missing punch cases.
+Fix incorrect classifications.
+Test notification messages.
+Then deploy it for daily use.
+
+After deployment, the manager should still review important cases.
+
+Final Result
+The result is a Digital FTE for Attendance Monitoring.
+It works like a digital HR/manager assistant.
+
+It can:
+Check attendance daily.
+Detect late and absent employees.
+Send reminders.
+Escalate repeated issues.
+Prepare daily reports.
+Reduce manual work for the manager.
+
+But it stays within company rules and keeps humans in control.
+
+
 
