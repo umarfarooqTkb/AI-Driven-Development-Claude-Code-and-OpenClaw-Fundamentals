@@ -1,3 +1,40 @@
+======================================================================================================================================================
+======================================================================================================================================================
+								
+					AI-Driven Development, Claude Code, and OpenClaw Fundamentals
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+Course Details
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Course Name: AI-Driven Development, Claude Code, and OpenClaw Fundamentals
+Course Code: AI-101
+
+URL: https://panaversity.org/
+URL: https://panaversity.org/courses/AI-101
+Agentic AI Book: URL:https://agentfactory.panaversity.org/
+
+
+
+
+
+
+Day 1: 22-May-2026
+======================================================================================================================================================
+======================================================================================================================================================
+- From AI as a tool TO AI as a Worker.
+- AI Worker: one worker for one task, like one AI worker for sales, marketing etc etc
+- The Agent Factory: Produce AI Workers
+- AI Native Company: Where AI Workers are working
+- AI delegate (Assistant)
+- Identic AI: AI that understands you deeply and acts according to your identity, thinking style, values, and goals.
+
+
+
+
+
+
 Three Levels of AI
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Level 1: Predictive AI (The Smart Filter - Predicts)
@@ -309,6 +346,52 @@ The 7 Golden Rules of an AI Company
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Day 2: 5-June-2026
+======================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Langchain
+======================================================================================================================================================
+- LangChain is a framework for building applications that use large language models (LLMs) like OpenAI’s GPT, Claude, or others. 
+- It’s designed to make it easier to combine LLMs with external data, tools, and workflows.
+
+LangChain helps developers:
+- Connect LLMs to databases, APIs, or documents.
+- Build intelligent agents that can reason, plan, and act.
+- Manage conversation state, memory, and context over multiple interactions.
+- Automate tasks like summarization, question-answering, and multi-step reasoning.
 
 
 
