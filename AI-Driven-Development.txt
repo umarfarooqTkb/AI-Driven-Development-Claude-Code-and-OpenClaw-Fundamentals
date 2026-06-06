@@ -10,7 +10,7 @@ What is Agentic AI
 
 
 
-AI Agent Factory
+What is AI Agent Factory
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - An AI Agent Factory means a structured system or process for building, testing, deploying, monitoring, and improving AI agents at scale.
 - An AI agent is not just a chatbot. It can understand a goal, plan steps, use tools/APIs, access data, and perform actions on behalf of a user. 

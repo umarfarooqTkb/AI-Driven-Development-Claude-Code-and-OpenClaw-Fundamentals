@@ -5,16 +5,15 @@ TOC
 - Three Levels of AI
 - What is Agentic AI
 - What Makes AI "Agentic
+- What is AI Agent Factory
+  - Main Components of an AI Agent Factory
+- 10-80-10 Rule
+- Two-Layer Model
 - AI Workers
 - AI Native Company
 - AI Worker / Digital FTE
-- AI Agent Factory
-- Why It Is Called a Factory
-- Main Components of an AI Agent Factory
-- Two-Layer Model
 - Identic AI
 - Delegate
-- The 10-80-10 Rule
 - Your Personal AI Delegate
 - The 7 Golden Rules of an AI Company
 
