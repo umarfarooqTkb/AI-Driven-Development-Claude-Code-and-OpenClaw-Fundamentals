@@ -1,20 +1,92 @@
 Assignment 2: 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Task 1:
-Task 1 — Lab Document Practice & Prompting Report
-Task 2 — AI Generated Snake Game    	
-Task 3 — Lecture Slide Generation Using LLMs
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Assignment has three tasks, which are
+Task 1 — Complete 13 Exercises given in Lab Practice document & Generate a Prompting Report at the end.
+Task 2 — Create an AI Generated Snake Game 
+Task 3 — Lecture Slide Generation Using LLMs 
 
+Assignment Timelines:
+- Start Date = Jun 6, 2026
+- Due Date = Fri 2026-06-12
 
-
+other details:
+- 3 tasks — prompting report, Snake game, slides
 - Prompting lab report, AI-built Snake game, and LLM-generated lecture slides.
 - Complete all tasks given in AIPromptingLab.pdf
 - Create a snake game with the help of any tool like ChatGPT/Gemini/Claude etc.
+
+Assignment Main Document:
+- Go to: https://panaversity.org/
+- Login with your Account
+- Click on your course: Course Code: AI-101
+- Click on "My Projects"
+- Click on "View Details"  link showing against "Class2  Lecture 2 — Prompting & LLMs"
+- This page will provide you Assignment description and Deadline
+- Click on "View Project repository"
+- Assignment Document will be displayed.
+- Now you have to do the assignment as per this document
 
 
 
 Solution:
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Task 1: 13 Exercises
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Task 1: PDF Link: https://github.com/panaversity/agentfactory-labs/blob/main/AI-101/ai-promptingin-2026/ai-prompting-lab.pdf 
+
+- THE ONE RULE BEHIND ALL 13: Get the right context in, keep the wrong context out.
+
+
+
+
+
+Task 1, Exercise 1:  Novice vs. Power User
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Step A — The novice prompt (try one)
+Step B — The power-user prompt (same topic + context)
+
+
+
+
+
+Task 1: Exercise 1: 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+Task 1: Exercise 1: 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+Task 1: Exercise 1: 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Task 1: Exercise 1: 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Task 1: Exercise 1: 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Task 1: Exercise 1: 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Task 1: Exercise 1: 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Task 1: Exercise 1: 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
 
 
 
@@ -23,3 +95,54 @@ Solution:
 Others
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 i used chatgpt for code,  then put it in GitHub, and deployed it by vercel.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Message sent on WhatsApp group: Pana-101-P011 Discussion Group - 9-June-2026: 10:15 AM
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Subject: Clarity on Assignment #2
+
+Salam/Hello everyone!
+
+As a student of this class, I was confused about understanding of Assignment #2 after Friday's lecture (June 6). Now that I have more clarity, I wanted to share these details in case anyone else is still struggling to get started.
+
+Assignment Overview:
+Task 1: Complete 13 exercises from the Lab Practice document and generate a Prompting Report.
+
+Task 2: Create an AI-generated Snake Game.
+
+Task 3: Generate lecture slides using LLMs.
+
+
+Timeline:
+Started: June 6, 2026
+Due Date: Friday, June 12, 2026
+
+
+Where to find the full requirements:
+1. Log in to https://panaversity.org/.
+2. Go to your course (AI-101).
+3. Click on "My Projects".
+4. Find "Class 2 — Lecture 2: Prompting & LLMs" and click "View Details."
+5. Click "View Project repository" to access the full assignment document.
+
+Hope this helps!
+
+If my understanding is not correct, do correct me please.
+
+Regards | Umar Khan
