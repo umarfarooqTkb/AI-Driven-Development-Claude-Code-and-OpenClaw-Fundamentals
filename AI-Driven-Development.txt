@@ -661,4 +661,214 @@ AGENTS.md / CLAUDE.md: Configuration files that tell your AI agent the rules of 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+								Flowise 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Flowise is an open-source visual AI workflow builder that lets you create chatbots, AI agents, RAG systems, and LangChain workflows without writing much code.
+
+Method 1: Install Flowise Using NPM (Recommended)
+Method 2: Run Without Installation
+Method 3: Docker Installation
+Method 4: Docker Compose (Production)
+
+
+Method 1: Install Flowise Using NPM (Recommended)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Check versions & Verify
+node -v
+npm -v
+
+which node
+which npm
+which npx
+
+
+Step 1: Install Flowise
+- npm install -g flowise
+
+Step 2: Start Flowise
+- npx flowise start
+or
+- flowise start
+
+
+Step 3: Access Flowise
+Open:
+http://localhost:3000
+
+Default login:
+Username: admin
+Password: admin
+
+
+
+Method 2: Run Without Installation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+npx flowise start
+
+This downloads and runs Flowise temporarily.
+
+
+Method 3: Docker Installation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Pull Image
+- docker pull flowiseai/flowise
+
+Run Container:
+docker run -d \
+--name flowise \
+-p 3000:3000 \
+flowiseai/flowise
+
+
+Access:
+http://localhost:3000
+
+
+
+
+Method 4: Docker Compose (Production)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Create docker-compose.yml
+
+version: "3"
+services:
+  flowise:
+    image: flowiseai/flowise
+    container_name: flowise
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./flowise:/root/.flowise
+      
+Start:
+docker compose up -d
+
+
+
+Flowise Step by Step:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Step 1: Add your API credential
+Step 2: Create your first Agentflow
+Step 3: Add Start node
+Step 4: Add Agent node
+Step 5: Configure the Agent
+Step 6: Add End node
+Step 7: Save and test
+
+
+Step 0: Create API Key of your platform (OpenAI, Gemini, Anthropic etc):
+- i will create it using openAI(ChatGPT)
+- open platform.openai.com
+- Click on API Keys
+- Click on Create New secret Key >> provide name >> click on Create
+  Name = secretkey_9june2026
+  secretkey = REMOVED_OPENAI_SECRET
+- i also created API key from aistudio.google.com
+- API Key = REMOVED_GEMINI_SECRET
+- Name    = Gemini API Key 2
+
+
+Step 1: Add your API credential:
+- Click Credentials from the left menu.
+- Click Add Credential.
+- Search your provider:
+  * OpenAI
+  * Azure OpenAI
+  * Google Gemini
+  * Anthropic
+- Paste your API key.
+- Save it.
+
+
+Step 2: Create your first Agentflow
+Click Agentflows.
+Click Add New.
+Select V2.
+You will see a blank canvas.
+
+
+
+Step 3: Add Start node
+Click the + button or right-click on canvas.
+Search Start.
+Add Start Node.
+
+This is where the user message enters the flow.
+
+
+
+Step 4: Add Agent node
+Click + again.
+Search Agent.
+Add Agent Node.
+Connect Start → Agent.
+
+The Agent is the main “AI worker.”
+
+
+Step 5: Configure the Agent
+Click the Agent node and set:
+Name:Customer Support Agent
+System Prompt:
+You are a helpful customer support agent. 
+Answer clearly and politely.
+If you do not know the answer, say that you are not sure.
+Keep answers short and practical.
+
+Model:
+Choose OpenAI/Gemini/Azure OpenAI depending on your credential.
+
+Credential:
+Select the API key you saved earlier.
+
+Step 6: Add End node
+Add End Node.
+Connect Agent → End.
+Your basic flow should look like: Start → Agent → End
+
+
+Step 7: Save and test
+Click Save.
+Click Chat/Test button.
+Ask: Hello, what can you do?
+Then test:
+Write a short reply to a customer asking about order delay.
+
+
+
+Beginner Mental Model:
+Think of it like this:
+Start = user input
+Agent = AI brain
+Tools = actions agent can use
+End = final response
+Next Agent to Build
+
+After your first basic agent works, create a second one:
+Sales Email Agent
+Prompt:
+You are a sales assistant.
+Write short, friendly, professional outreach emails.
+Ask for a meeting politely.
+Avoid long paragraphs.
+
+Then test:
+Write an email to a clinic owner offering virtual front desk support.
+Start with this simple flow first. Once it works, we can add Tools, Document Store, and multi-agent workflows.
