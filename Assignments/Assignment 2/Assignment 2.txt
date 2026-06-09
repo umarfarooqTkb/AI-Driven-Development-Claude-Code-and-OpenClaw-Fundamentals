@@ -1,6 +1,15 @@
 Assignment 2: 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- Lab.pdf
+Task 1:
+Task 1 — Lab Document Practice & Prompting Report
+Task 2 — AI Generated Snake Game    	
+Task 3 — Lecture Slide Generation Using LLMs
+
+
+
+- Prompting lab report, AI-built Snake game, and LLM-generated lecture slides.
+- Complete all tasks given in AIPromptingLab.pdf
+- Create a snake game with the help of any tool like ChatGPT/Gemini/Claude etc.
 
 
 
