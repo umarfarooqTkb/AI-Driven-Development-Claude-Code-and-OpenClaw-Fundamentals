@@ -360,12 +360,16 @@ The 7 Golden Rules of an AI Company
 
 
 
-Day 2: 5-June-2026
+Lecture 2: Prompting & LLMs [5-June-2026]
 ======================================================================================================================================================
+Assignment:
+- Prompting lab report, AI-built Snake game, and LLM-generated lecture slides.
+- 3 tasks — prompting report, Snake game, slides. 
+- Due Fri 2026-06-12.
 
 
 
-Day 3: 7-June-2026
+Lecture 3:  7-June-2026
 ======================================================================================================================================================
 - AI Prompting i 2026
 - Explore different Models in Gemini
@@ -389,7 +393,10 @@ Temperature:
 - Thinking Hard feature is not similar to Temperature.
 
 
-
+Assignment:
+- Build any app or game using AI.
+- Submit within 1 week — due June 15.
+- Assignment Details: https://drive.google.com/file/d/1pvaChwJAQgtDY4uoaLY9p1YhTLoPRfgR/view
 
 
 
