@@ -1,0 +1,1120 @@
+======================================================================================================================================================
+======================================================================================================================================================
+								
+					AI-Driven Development, Claude Code, and OpenClaw Fundamentals
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+Course Details
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Course Name: AI-Driven Development, Claude Code, and OpenClaw Fundamentals
+Course Code: AI-101
+
+URL: https://panaversity.org/
+URL: https://panaversity.org/courses/AI-101
+Agentic AI Book: URL:https://agentfactory.panaversity.org/
+
+
+
+
+
+
+Day 1: 22-May-2026
+======================================================================================================================================================
+======================================================================================================================================================
+- From AI as a tool TO AI as a Worker.
+- AI Worker: one worker for one task, like one AI worker for sales, marketing etc etc
+- The Agent Factory: Produce AI Workers
+- AI Native Company: Where AI Workers are working
+- AI delegate (Assistant)
+- Identic AI: AI that understands you deeply and acts according to your identity, thinking style, values, and goals.
+
+
+
+
+
+
+Three Levels of AI
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Level 1: Predictive AI (The Smart Filter - Predicts)
+Level 2: Generative AI (The Chat Partner - Creates and Chats)
+Level 3: Agentic AI    (The Worker       - Plans and Delivers)
+
+
+What is Agentic AI
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+What is AI Agent Factory
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- An AI Agent Factory means a structured system or process for building, testing, deploying, monitoring, and improving AI agents at scale.
+- An AI agent is not just a chatbot. It can understand a goal, plan steps, use tools/APIs, access data, and perform actions on behalf of a user. 
+- Google describes AI agents as software systems that use AI to pursue goals, complete tasks, reason, plan, remember context, and act with some autonomy
+Example: Suppose a healthcare company wants AI agents for:
+ - Eligibility checking
+ - Claim denial analysis
+ - ERA/EOB posting assistance
+ - Patient follow-up
+ - Ticket triage
+ - Report generation
+ - Provider credentialing support
+
+- Without an AI Agent Factory, each team may build these agents separately with different prompts, tools, security rules, logs, and testing methods.
+- With an AI Agent Factory, the company creates a standard process:
+- Identify use case → define agent role → connect tools/data → add guardrails → test → deploy → monitor → improve
+- The Agent Factory builds the AI-Native Company, and the AI-Native Company employs Digital FTEs.
+
+Why It Is Called a Factory:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Because it creates agents using a repeatable production model.
+- Like a software factory has:
+| Software Factory  | AI Agent Factory           |
+| ----------------- | -------------------------- |
+| Requirements      | Agent goals/specs          |
+| Code templates    | Agent templates            |
+| APIs              | Tool connections           |
+| QA testing        | Agent evaluation           |
+| DevOps pipeline   | Agent deployment pipeline  |
+| Monitoring        | Agent behavior monitoring  |
+| Security controls | Guardrails and permissions |
+
+-NVIDIA describes the enterprise AI factory as a control plane for operationalizing agentic AI, including orchestration, governance, and evolving fleets of intelligent agents.
+
+
+
+Main Components of an AI Agent Factory
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1. Agent Use Case Discovery
+2. Agent Specification
+3. Agent Templates
+4. Tool/API Integration
+5. Guardrails and Governance
+6. Evaluation and Testing
+7. Deployment and Monitoring
+
+
+
+1. Agent Use Case Discovery
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- First, the organization identifies where agents can help.
+Example:
+- Can an AI agent reduce manual work in medical billing denial review?
+- Good use cases are usually repetitive, rule-based, data-heavy, and require decision support.
+
+
+2. Agent Specification
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Before building, the team defines the agent clearly:
+
+| Item           | Example                                       |
+| -------------- | --------------------------------------------- |
+| Agent name     | Denial Review Agent                           |
+| Goal           | Analyze denied claims and suggest next action |
+| Inputs         | ERA/EOB, claim data, payer rules              |
+| Tools          | EHR API, billing system, knowledge base       |
+| Output         | Denial reason, recommendation, next step      |
+| Human approval | Required before resubmission                  |
+
+- This is where spec-driven development comes in. 
+- Panaversity’s AI Agent Factory describes it as a spec-driven, human-supervised process for building AI-native companies and “Digital FTEs.”
+
+
+
+3. Agent Templates
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- A factory should not start from zero every time.
+- You create reusable templates, such as:
+
+| Template         | Purpose                          |
+| ---------------- | -------------------------------- |
+| Research Agent   | Finds and summarizes information |
+| Workflow Agent   | Completes business process steps |
+| Support Agent    | Answers customer/user questions  |
+| Data Agent       | Analyzes reports and dashboards  |
+| Compliance Agent | Checks rules and policies        |
+
+
+
+4. Tool/API Integration
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Agents become powerful when they can use tools.
+Example tools:
+
+| Tool          | Agent Usage              |
+| ------------- | ------------------------ |
+| CRM           | Read customer records    |
+| EHR/PMS       | Check patient/claim data |
+| Gmail/Outlook | Draft replies            |
+| Jira          | Create or update tickets |
+| SQL Database  | Query reports            |
+| Slack/Teams   | Send updates             |
+| Cloud APIs    | Trigger workflows        |
+
+- This is the difference between a chatbot and an agent.
+- A chatbot only replies.
+- An agent can do work.
+
+
+
+5. Guardrails and Governance
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- This is very important.
+- Agents should not have unlimited freedom.
+
+| Control           | Example                                        |
+| ----------------- | ---------------------------------------------- |
+| Permission limits | Agent can read claims but cannot delete claims |
+| Human approval    | Payment posting needs human review             |
+| Data privacy      | No PHI exposure outside approved system        |
+| Audit log         | Every action is recorded                       |
+| Escalation        | If confidence is low, ask a human              |
+| Compliance        | HIPAA, SOC 2, ISO, internal policies           |
+
+- MIT Sloan also highlights the importance of permission-based systems as agents gain access to enterprise data and systems.
+
+
+
+6. Evaluation and Testing
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Before production, agents need testing.
+You test:
+
+| Test Type     | Example                                  |
+| ------------- | ---------------------------------------- |
+| Accuracy      | Did the agent classify denial correctly? |
+| Tool usage    | Did it call the right API?               |
+| Safety        | Did it avoid unauthorized action?        |
+| Hallucination | Did it invent payer rules?               |
+| Edge cases    | What if claim data is missing?           |
+| Human review  | Was recommendation acceptable?           |
+
+
+
+
+
+7. Deployment and Monitoring
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- After deployment, the factory monitors:
+
+| Metric              | Meaning                                |
+| ------------------- | -------------------------------------- |
+| Success rate        | How often the agent completes the task |
+| Human override rate | How often humans correct it            |
+| Cost per task       | Token/API/cloud cost                   |
+| Time saved          | Manual hours reduced                   |
+| Error rate          | Wrong or unsafe outputs                |
+| Escalation rate     | How often it asks for human help       |
+
+- LangChain’s 2026 State of Agent Engineering notes that organizations are now focused on deploying agents reliably, efficiently, and at scale.
+
+
+
+
+Simple Business Example
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Without AI Agent Factory
+- A manager says:
+- Create an AI agent for claim denials.”
+- Developer builds a prompt.
+   Agent works sometimes.
+   No testing.
+   No logs.
+   No permission control.
+   No reusable template.
+- Result: risky and hard to scale.
+
+With AI Agent Factory
+- The organization defines:
+- We need a Denial Review Agent that reads ERA/EOB, identifies denial reason, checks payer rule, suggests action, and sends the result to a human biller for approval.”
+- Then the team uses:
+  Standard agent template
+  Approved data sources
+  Secure API access
+  Human approval workflow
+  Testing dataset
+  Audit logs
+  Monitoring dashboard
+- Result: reliable, repeatable, and enterprise-ready.
+
+
+My understanding in practical terms
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- For your type of work in software, cloud, healthcare systems, and BA/product requirements, this book is basically saying:
+- Future companies will not only hire human teams. They will also build AI workers for different business functions.
+- For example, in a healthcare/RPM/medical billing product, you could create:
+
+| Business Area | Possible AI Worker              |
+| ------------- | ------------------------------- |
+| Eligibility   | Eligibility Check Agent         |
+| ERA/EOB       | ERA Posting Review Agent        |
+| Claims        | Denial Analysis Agent           |
+| RPM           | Patient Vitals Monitoring Agent |
+| Support       | Ticket Triage Agent             |
+| BA/Product    | Requirement Drafting Agent      |
+| QA            | Test Case Generation Agent      |
+| DevOps        | Deployment Monitoring Agent     |
+
+
+
+
+
+
+
+
+AI Native Company
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+The output of the Agent Factory. The running enterprise: a firm staffed by AI Workers (Digital FTEs), coordinated by a management plane, and directed by humans at the edge. The AI-Native Company is what you end up running. The book also calls this the Agentic Enterprise — same concept, business-facing name.
+
+💡 Analogy: The Agent Factory is the process, like a method of building skyscrapers. The AI-Native Company is the skyscraper that method produces — the thing you actually run.
+
+📌 The triad: Agent Factory (process) → AI-Native Company (output) → AI Workers (workforce inside the output). Three terms, three different roles. Not interchangeable.
+
+
+
+10-80-10 Rule
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+10-80-10 Rule: 
+- The operating rhythm of the AI workforce: 
+- human sets direction (10%) → AI executes (80%) → human verifies (10%).
+
+Example:
+🔹 You write a project brief (10%), Claude Code builds the entire application (80%), you review, test, and approve (10%).
+
+
+
+Two-Layer Model
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Edge Layer (you and your delegate)
+- AI Workforce Layer
+
+The architectural pattern that makes the Agent Factory thesis complete:
+- humans set intent from the Edge Layer
+- AI Workers execute in the AI Workforce Layer
+- specs are the contract language between them.
+
+Example:
+- A CEO tells their OpenClaw delegate (Edge Layer) to "run the weekly customer-churn report."
+- The delegate hands the task to a Digital FTE in the AI Workforce Layer. 
+- The Digital FTE pulls the data, generates the report, and hands it back through the delegate to the CEO for verification.
+
+
+
+
+
+AI Delegate (identic AI)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+Digital Worker / AI Employee / AI Worker / Digital FTE (Digital Full-Time Equivalent)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Synonyms for Digital FTE.
+- An AI agent performing sustained, role-based work within an organization.
+- not a one-off chatbot.
+- but a permanent team member.
+
+- An 'AI employee' that does the continuous work of a full-time human worker.
+- 24/7, at a fraction of the cost. 
+- A Digital FTE works 168 hours a week with zero fatigue. 
+- Same role as the thesis's AI Worker (the workforce of the AI-Native Company): hired, assigned, rostered, retired. 
+- Distinct from the delegate (OpenClaw) and manager (Paperclip), which are permanent staff, not workforce. 
+
+Example: 
+- A Digital FTE for customer support handles 500 conversations per day, every day — doing the work of 5-10 human agents.
+
+- Digital FTEs — also called Digital Workers — are reliable AI agents designed to perform structured knowledge work continuously inside real organizational environments.
+
+
+The 7 Golden Rules of an AI Company
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Human is always in charge
+- Every human gets a delegate (identic AI)
+- Workforce needs a management layer
+- Each worker uses the right engine
+- Every worker uses a system of record
+- Workforce can grow under rules
+- Company runs on a nervous system
+
+
+
+
+
+
+
+
+Lecture 2: Prompting & LLMs [5-June-2026]
+======================================================================================================================================================
+======================================================================================================================================================
+Topic Covered:
+ - AI Prompting
+ - LLMs
+
+
+Assignment:
+Task 1 — Lab Document Practice & Prompting Report 
+Task 2 — AI Generated Snake Game 
+Task 3 — Lecture Slide Generation Using LLMs 
+
+- Prompting lab report, AI-built Snake game, and LLM-generated lecture slides.
+- 3 tasks — prompting report, Snake game, slides. 
+- Start Date = Jun 6, 2026
+- Due Date = Fri 2026-06-12
+
+
+Assignment Main Document:
+- Go to: https://panaversity.org/
+- Login with your Account
+- Click on your course: Course Code: AI-101
+- Click on "My Projects"
+- Click on "View Details"  link showing against "Class2  Lecture 2 — Prompting & LLMs"
+- This page will provide you Assignment description and Deadline
+- Click on "View Project repository"
+- Assignment Document will be displayed.
+- Now you have to do the assignment as per this document
+
+
+
+Task 1:
+PDF Link: https://github.com/panaversity/agentfactory-labs/blob/main/AI-101/ai-promptingin-2026/ai-prompting-lab.pdf 
+
+
+Lecture 3:  7-June-2026
+======================================================================================================================================================
+======================================================================================================================================================
+- AI Prompting i 2026
+- Explore different Models in Gemini
+- Using Google AI Studio >> Create an app >> start with a basic thing >> then we can improve it
+- Google AI Studio
+- Playground
+- System Instructions
+  * System instructions (you can configure LLM as per your preferences)
+  * e.g: you will always respond in a funny way.
+  * you can define restrictions in system instructions
+  * Same settings can also be done in ChatGPT
+
+Temperature:
+- Creativity level in responses
+- it controls the creativity of LLM (by increasing temperature)
+- for English writing, you can increase temperature, becoz you need creativity.(e.g. story writing, brainstorming etc)
+- for Math, we can set temperature at 0. (we want to follow step by step), merey prompt sy agay peachy na ho
+- if we want our response to adhere to our prompt, then we can reduce the temperature, khud sy koi cheze na lay.
+- if we want, that model can bring his ideas, then we can increase temperature.
+- it sets the internal behavior of LLM
+- Thinking Hard feature is not similar to Temperature.
+
+
+Assignment:
+- Build any app or game using AI.
+- Submit within 1 week — due June 15.
+- Assignment Details: https://drive.google.com/file/d/1pvaChwJAQgtDY4uoaLY9p1YhTLoPRfgR/view
+- Start Date = Jun 8, 2026
+- Due Date   = Jun 15, 2026
+
+
+
+
+
+
+
+
+
+
+
+Prompting
+======================================================================================================================================================
+======================================================================================================================================================
+- Prompting is the way you communicate with an AI system to get useful results.
+- A prompt can be 
+   * A question
+   * An instruction
+   * A task
+   * A role
+   * A format request
+   * An example.
+
+- AI prompting is the skill of giving clear, structured instructions to an AI model so it can understand the task, follow rules, and produce the desired result.
+- AI prompting means giving clear instructions to an AI model so it can understand what you want and produce the right output.
+
+Weak Prompt vs Good Prompt:
+- Weak prompt:   Write about AI agents.
+- Better prompt: Explain AI agents in simple words for a beginner. Use examples from HR and customer support. Keep the answer short and practical.
+
+Why is it better?
+- Defines audience
+- Provides context
+- Sets expectations
+- Controls output length
+
+
+What Makes a Good Prompt?
+- A good prompt usually includes these parts:
+
+| Prompt Part | Purpose                           | Example                                     |
+| ----------- | --------------------------------- | ------------------------------------------- |
+| Role        | Tell AI who it should act as      | Act as an Agile Product Owner               |
+| Task        | Tell AI what to do                | Create user stories                         |
+| Context     | Provide background information    | This is for an attendance monitoring system |
+| Rules       | Define boundaries and constraints | Avoid technical details                     |
+| Format      | Specify output structure          | Use a table                                 |
+| Example     | Show expected style or pattern    | Use Given/When/Then format                  |
+| Tone        | Define communication style        | Professional, Friendly, Formal              |
+
+
+
+Prompt Formula: You can use this simple formula:
+======================================================================================================================================================
+Act as [role].
+
+I need [task].
+
+Context:
+[background information]
+
+Requirements:
+[rules and constraints]
+
+Output Format:
+[table/list/document]
+
+Tone:
+[Professional/Friendly/Concise/Urgent]
+
+
+
+
+Example Prompt:
+======================================================================================================================================================
+Act as an AI Agent Factory consultant.
+
+I want to build an Attendance Monitoring AI Agent.
+
+Context:
+Employees send WhatsApp messages when they are late, on leave, half-day, or quarter leave.
+
+Requirements:
+- Classify each message correctly.
+- Prepare a message for HR.
+- Do not approve leave automatically.
+- Ask clarification if the message is unclear.
+- Keep language professional.
+
+Output format:
+Provide agent goal, inputs, outputs, workflow, guardrails, and testing plan.
+
+
+Example of a Good Prompt:
+======================================================================================================================================================
+Prompt:
+Write a plan for my business.
+Act as a Small Business Consultant. I need a 3-month growth plan.
+Context: I run a local bakery with 2 employees.
+Requirements: Focus on low-cost social media marketing only. 
+Output format: A table with weekly goals.
+
+
+
+
+Types of Prompting
+======================================================================================================================================================
+1. Simple Prompting
+2. Role-Based Prompting
+3. Step-by-Step Prompting (Chain of Thought)
+4. Few-Shot Prompting
+5. Structured Prompting
+
+   Advanced Prompting Techniques
+6. Zero-Shot Prompting
+7. One-Shot Prompting
+8. Contextual Prompting
+9. Constraint-Based Prompting
+10. Persona Prompting
+
+
+1. Simple Prompting
+   * You ask a direct question.
+   * Example: What is an AI agent?
+   * Good for quick answers.
+
+
+2. Role-Based Prompting
+   - You ask AI to act as a specific expert.
+   - Example: Act as an HR manager and review this leave policy.
+   - Good when you want domain-specific thinking.
+
+
+3. Step-by-Step Prompting (Chain of Thought)
+   - You ask AI to break down the answer.
+   - Example: Explain this step by step with examples.
+   - Good for learning and complex topics.
+
+
+4. Few-Shot Prompting
+   - You give examples first, then ask AI to follow the same pattern.
+   - Example: Message: I will be late today.
+   - Output: Status = Late
+   - Message: I am taking half-day after lunch.
+   - Output: Status = Half-day Leave
+   - Now classify this:
+   - Message: I will come after 12 today.
+   - Good for classification tasks.
+
+
+5. Structured Prompting
+- You ask AI to return output in a specific format.
+- Tell AI exactly how the response should be organized.
+
+Example:
+Return the answer in this format:
+Employee Name:
+Status:
+Date:
+HR Message:
+Confidence:
+
+Best For:
+- Good for automation and AI agents.
+- Automation
+- AI Agents
+- Reports
+- Documentation
+
+
+6. Zero-Shot Prompting
+- Ask AI without giving examples.
+
+Example:
+- Explain Scrum to a beginner.
+
+Best For:
+- General knowledge
+- Fast responses
+
+
+
+7. One-Shot Prompting
+- Provide one example before asking the task.
+
+Example:
+Issue: Laptop not turning on
+Category: Hardware
+Now classify:
+Keyboard not working
+
+Best For:
+Simple classification tasks
+
+
+
+
+
+
+
+
+Prompt Engineering Best Practices
+======================================================================================================================================================
+✅ Be specific
+✅ Provide context
+✅ Define output format
+✅ Define constraints
+✅ Assign a role when needed
+✅ Give examples for consistency
+✅ Break complex tasks into smaller tasks
+✅ Tell AI what success looks like
+❌ Avoid vague instructions
+❌ Avoid missing context
+❌ Avoid assuming AI knows your business process
+
+
+
+Golden Rule of Prompting
+======================================================================================================================================================
+- The quality of the AI output is directly related to the quality of the prompt.
+- Better Prompt = Better Output
+- Or simply:
+- Garbage In → Garbage Out (GIGO)
+- Clear Instructions In → High-Quality Results Out
+
+
+
+
+
+
+
+
+
+
+Langchain
+======================================================================================================================================================
+- LangChain is a framework for building applications that use large language models (LLMs) like OpenAI’s GPT, Claude, or others. 
+- It’s designed to make it easier to combine LLMs with external data, tools, and workflows.
+
+LangChain helps developers:
+- Connect LLMs to databases, APIs, or documents.
+- Build intelligent agents that can reason, plan, and act.
+- Manage conversation state, memory, and context over multiple interactions.
+- Automate tasks like summarization, question-answering, and multi-step reasoning.
+
+
+
+
+AGENTS.md / CLAUDE.md
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Configuration files that provide persistent context to an AI coding agent. They contain your project's rules, coding standards, architectural decisions, and preferences, loaded into every interaction.
+
+💡 Analogy: When a new employee joins your team, you give them an onboarding document: "Here's how we work. Here's our coding style. Here's what we never do." AGENTS.md is that onboarding document for your AI agent.
+
+
+
+
+
+
+
+
+Token
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- The basic unit of text an LLM reads.
+- In AI, tokens are the small pieces of text that an AI model reads, processes, and generates.
+- Roughly ¾ of a word. "I love biryani" ≈ 4 tokens.
+- You pay per token when using AI APIs. 
+- A full page of text ≈ 500-700 tokens.
+
+A token can be:
+- a full word
+- part of a word
+- punctuation
+- a space or special symbol
+
+Simple Example:
+Sentence: I love Pakistan.
+This may be split into tokens like:
+I | love | Pakistan | .
+So this sentence has around 4 tokens.
+
+But a longer or complex word may be split into smaller parts.
+Example: unbelievable
+The model may split it like:
+un | believable
+or another internal pattern depending on the AI model.
+
+
+Why Tokens Matter
+- AI models do not directly understand text like humans. They first break text into tokens, then process those tokens.
+- Tokens are important because they affect:
+| Area               | Meaning                                                                |
+| ------------------ | ---------------------------------------------------------------------- |
+| **Input limit**    | How much text you can send to the AI                                   |
+| **Output limit**   | How much response the AI can generate                                  |
+| **Cost**           | Many AI tools charge based on token usage                              |
+| **Memory/context** | The model can only remember/process a limited number of tokens at once |
+
+
+Example in ChatGPT
+When you ask: Explain AI agents in simple words.
+The model breaks your sentence into tokens, processes them, and then generates an answer token by token.
+Rough Token Rule
+A common rough estimate is:
+1 token ≈ 4 characters of English text
+100 tokens ≈ 75 words
+
+This is not exact, but it helps for understanding.
+
+
+
+
+
+Spec-Driven Development (SDD)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Spec-Driven Development (SDD): Write the blueprint first, then let AI generate the code, tests, and documentation from that blueprint.
+
+🔹 You write: "Build an API for a bookstore with endpoints for listing, adding, searching, and deleting books." Claude Code generates the entire application.
+
+
+
+Claude Code
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Claude Code is Anthropic’s agentic coding tool.
+- Anthropic’s official, polished AI coding agent powered by Claude models.
+- You talk to it in the terminal and it reads your entire codebase, understands your project, and writes code.
+- You type "Add user authentication to my app": Claude Code reads your existing code, generates the auth module, writes tests, and integrates everything.
+
+- It works in your codebase and can help with coding tasks from the terminal, IDE, web, Slack, or desktop. 
+- Anthropic says it can understand codebases, edit files, run tests, work with Git/GitHub/GitLab flows, and help produce pull requests
+- In simple words: Claude Code is like a senior AI developer sitting inside your project.
+- You can ask: 
+- Find the bug in this API and fix it.
+- or:
+- Refactor this authentication module and add tests.
+- It can inspect your files, make changes, run commands, and explain what it did.
+
+- Claude Code is more like a terminal coding agent. 
+- Anthropic describes Claude Code as an agentic coding tool that lives in your terminal, understands your codebase, executes routine tasks, explains complex code, 
+  and handles Git workflows through natural language.
+
+OpenCode
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- AI coding agent.
+- open-source coding agent where you can use different models and customize more.
+- OpenCode is an open-source AI coding agent. 
+- Its official docs describe it as available through a terminal interface, desktop app, or IDE extension
+- OpenCode is like an open-source alternative to Claude Code where you get more control and model flexibility.
+
+
+Cursor
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- AI coding agent.
+- AI-powered code editor, like VS Code with an AI agent inside.
+- Cursor is more like an AI IDE/editor. 
+- You open your project inside Cursor and work visually like VS Code.
+- Cursor says its agents can plan, write, and review code while understanding your codebase, across desktop, CLI, web, and mobile.
+
+
+
+Claude Code vs. Opencode vs. cursor
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Cursor      = AI coding editor
+Claude Code = AI coding agent in terminal
+OpenCode    = open-source AI coding agent/framework
+
+
+OpenClaw
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- OpenClaw is an open-source personal AI assistant / AI employee platform.
+- OpenClaw lets you run your own AI employee on your computer and talk to it through WhatsApp, Telegram, Discord, or other chat apps.
+
+Simple Explanation
+- Normal ChatGPT works like this:
+- You ask question → AI replies
+- OpenClaw is more like: You send message on WhatsApp → OpenClaw agent understands → uses tools/apps → performs action → replies back
+- So OpenClaw is not only for chatting. It is designed to perform tasks.
+
+Example:
+- You message your OpenClaw agent on WhatsApp:
+- Please check my calendar tomorrow and remind me about important meetings.
+OpenClaw may:
+Read your calendar.
+Find tomorrow’s meetings.
+Prepare a summary.
+Send it back to you.
+Optionally schedule reminders.
+
+That is why the Agent Factory book calls it a way to create a Personal AI Employee. In the book’s OpenClaw section, it says OpenClaw handles messaging, security, scheduling, and orchestration, so the builder can focus on the useful intelligence of the application.
+
+
+
+TutorClaw
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- TutorClaw is an AI teaching agent that helps learners understand the AI Agent Factory book using the book itself as the trusted knowledge source.
+
+
+Cowork
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Cowork: Anthropic's desktop agent for non-coding knowledge tasks: documents, research, file management.
+
+🔹 "Organize my Downloads folder by project and summarize all PDFs from this month." Cowork does it while you focus on other things.
+
+
+
+Claude Mythos
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Claude Mythos is a powerful model focused on security research.
+- Claude Mythos or Claude Mythos Preview is a powerful AI model from Anthropic, designed mainly for advanced cybersecurity work.
+- Claude Mythos is an AI cybersecurity expert model that can help find software vulnerabilities, bugs, and security weaknesses.
+- It is not a normal chatbot like regular Claude. It is a specialized frontier model used in a controlled program called Project Glasswing.
+
+
+What can Claude Mythos do?
+At a high level, it can help with:
+finding security vulnerabilities
+reviewing code for weaknesses
+analyzing binaries
+testing systems for security gaps
+helping security teams prioritize fixes
+supporting defensive cybersecurity work
+
+Important: it should be used with human security experts, not blindly. IEEE Spectrum reported that experts see value in AI vulnerability discovery, but also warned about false positives, triage burden, and the need fo
+
+
+
+
+Claude Mythos vs Regular Claude
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| Item                  | Meaning                                                       |
+| --------------------- | ------------------------------------------------------------- |
+| **Claude**            | General AI assistant for writing, reasoning, coding, analysis |
+| **Claude Code**       | Coding agent/tool that works in your codebase                 |
+| **Claude Mythos**     | Specialized cybersecurity-focused model                       |
+| **Project Glasswing** | Controlled program where trusted partners use Claude Mythos   |
+
+
+
+
+
+
+
+
+MCP (Model Context Protocol)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+The universal standard that lets any AI agent connect to any external tool: databases, email, calendars, file systems. MCP is the protocol for agents calling tools. For the separate protocol family that handles agents paying for those tools, see Section 11: ACP, AP2, x402, and MPP.
+
+💡 Before USB, every phone had a different charger. MCP is the "USB standard" for AI: one protocol that lets any agent plug into any tool.
+
+
+
+
+Guardrails
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Guardrails: Safety constraints that prevent an agent from doing things it shouldn't.
+
+🔹 A financial agent has a guardrail: no transactions above Rs. 5,000,000 without human approval. Like the barriers on a motorway that keep cars from going off the road.
+
+
+
+RAG (Retrieval-Augmented Generation):
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+RAG (Retrieval-Augmented Generation): Giving AI access to external documents so it answers from facts, not from (potentially wrong) memory.
+
+💡 Taking an open-book exam instead of a closed-book exam. The AI looks up facts in your documents before answering: much more accurate.
+
+
+
+
+
+
+
+
+
+AGENTS.md / CLAUDE.md
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+AGENTS.md / CLAUDE.md: Configuration files that tell your AI agent the rules of your project: coding standards, preferences, architectural decisions.
+
+💡 The onboarding document you give a new employee: "Here's how we work. Here's our style. Here's what we never do." Loaded into every interaction.
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+								Flowise 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Flowise is an open-source visual AI workflow builder that lets you create chatbots, AI agents, RAG systems, and LangChain workflows without writing much code.
+
+Method 1: Install Flowise Using NPM (Recommended)
+Method 2: Run Without Installation
+Method 3: Docker Installation
+Method 4: Docker Compose (Production)
+
+
+Method 1: Install Flowise Using NPM (Recommended)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Check versions & Verify
+node -v
+npm -v
+
+which node
+which npm
+which npx
+
+
+Step 1: Install Flowise
+- npm install -g flowise
+
+Step 2: Start Flowise
+- npx flowise start
+or
+- flowise start
+
+
+Step 3: Access Flowise
+Open:
+http://localhost:3000
+
+Default login:
+Username: admin
+Password: admin
+
+
+
+Method 2: Run Without Installation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+npx flowise start
+
+This downloads and runs Flowise temporarily.
+
+
+Method 3: Docker Installation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Pull Image
+- docker pull flowiseai/flowise
+
+Run Container:
+docker run -d \
+--name flowise \
+-p 3000:3000 \
+flowiseai/flowise
+
+
+Access:
+http://localhost:3000
+
+
+
+
+Method 4: Docker Compose (Production)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Create docker-compose.yml
+
+version: "3"
+services:
+  flowise:
+    image: flowiseai/flowise
+    container_name: flowise
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./flowise:/root/.flowise
+      
+Start:
+docker compose up -d
+
+
+
+Flowise Step by Step:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Step 1: Add your API credential
+Step 2: Create your first Agentflow
+Step 3: Add Start node
+Step 4: Add Agent node
+Step 5: Configure the Agent
+Step 6: Add End node
+Step 7: Save and test
+
+
+Step 0: Create API Key of your platform (OpenAI, Gemini, Anthropic etc):
+- i will create it using openAI(ChatGPT)
+- open platform.openai.com
+- Click on API Keys
+- Click on Create New secret Key >> provide name >> click on Create
+  Name = secretkey_9june2026
+  secretkey = testREMOVED_OPENAI_SECRET
+- i also created API key from aistudio.google.com
+- API Key = REMOVED_GEMINI_SECRET
+- Name    = test name
+
+
+Step 1: Add your API credential:
+- Click Credentials from the left menu.
+- Click Add Credential.
+- Search your provider:
+  * OpenAI
+  * Azure OpenAI
+  * Google Gemini
+  * Anthropic
+- Paste your API key.
+- Save it.
+
+
+Step 2: Create your first Agentflow
+Click Agentflows.
+Click Add New.
+Select V2.
+You will see a blank canvas.
+
+
+
+Step 3: Add Start node
+Click the + button or right-click on canvas.
+Search Start.
+Add Start Node.
+
+This is where the user message enters the flow.
+
+
+
+Step 4: Add Agent node
+Click + again.
+Search Agent.
+Add Agent Node.
+Connect Start → Agent.
+
+The Agent is the main “AI worker.”
+
+
+Step 5: Configure the Agent
+Click the Agent node and set:
+Name:Customer Support Agent
+System Prompt:
+You are a helpful customer support agent. 
+Answer clearly and politely.
+If you do not know the answer, say that you are not sure.
+Keep answers short and practical.
+
+Model:
+Choose OpenAI/Gemini/Azure OpenAI depending on your credential.
+
+Credential:
+Select the API key you saved earlier.
+
+Step 6: Add End node
+Add End Node.
+Connect Agent → End.
+Your basic flow should look like: Start → Agent → End
+
+
+Step 7: Save and test
+Click Save.
+Click Chat/Test button.
+Ask: Hello, what can you do?
+Then test:
+Write a short reply to a customer asking about order delay.
+
+
+
+Beginner Mental Model:
+Think of it like this:
+Start = user input
+Agent = AI brain
+Tools = actions agent can use
+End = final response
+Next Agent to Build
+
+After your first basic agent works, create a second one:
+Sales Email Agent
+Prompt:
+You are a sales assistant.
+Write short, friendly, professional outreach emails.
+Ask for a meeting politely.
+Avoid long paragraphs.
+
+Then test:
+Write an email to a clinic owner offering virtual front desk support.
+Start with this simple flow first. Once it works, we can add Tools, Document Store, and multi-agent workflows.
