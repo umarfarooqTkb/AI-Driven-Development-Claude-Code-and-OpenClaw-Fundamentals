@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Generated Snake Game</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111827;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .game-container {
+    text-align: center;
+    background: #1f2937;
+    padding: 24px;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  }
+
+  h1 {
+    margin-top: 0;
+    color: #38bdf8;
+  }
+
+  .score-board {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+
+  canvas {
+    background: #020617;
+    border: 3px solid #38bdf8;
+    border-radius: 10px;
+  }
+
+  button {
+    margin-top: 16px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #38bdf8;
+    color: #111827;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #0ea5e9;
+  }
+
+  .instructions {
+    margin-top: 14px;
+    font-size: 14px;
+    color: #cbd5e1;
+  }
+</style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>AI Generated Snake Game</h1>
+
+    <div class="score-board">
+      <div>Score: <span id="score">0</span></div>
+      <div>Best: <span id="bestScore">0</span></div>
+    </div>
+
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+    <br />
+    <button onclick="restartGame()">Restart Game</button>
+
+    <div class="instructions">
+      Use Arrow Keys or W/A/S/D to move the snake.<br>
+      Eat the red food, avoid walls and yourself.
+    </div>
+  </div>
+
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+const box = 20;
+const canvasSize = 400;
+let snake;
+let food;
+let direction;
+let nextDirection;
+let score;
+let bestScore = localStorage.getItem("snakeBestScore") || 0;
+let gameInterval;
+let gameOver;
+
+document.getElementById("bestScore").textContent = bestScore;
+
+function initGame() {
+  snake = [{ x: 9 * box, y: 10 * box }];
+  direction = "RIGHT";
+  nextDirection = "RIGHT";
+  score = 0;
+  gameOver = false;
+  document.getElementById("score").textContent = score;
+  createFood();
+
+  clearInterval(gameInterval);
+  gameInterval = setInterval(drawGame, 120);
+}
+
+function createFood() {
+  food = {
+    x: Math.floor(Math.random() * (canvasSize / box)) * box,
+    y: Math.floor(Math.random() * (canvasSize / box)) * box
+  };
+
+  for (let part of snake) {
+    if (part.x === food.x && part.y === food.y) {
+      createFood();
+      return;
+    }
+  }
+}
+
+function drawGame() {
+  direction = nextDirection;
+
+  ctx.fillStyle = "#020617";
+  ctx.fillRect(0, 0, canvasSize, canvasSize);
+
+  for (let i = 0; i < snake.length; i++) {
+    ctx.fillStyle = i === 0 ? "#22c55e" : "#86efac";
+    ctx.fillRect(snake[i].x, snake[i].y, box, box);
+    ctx.strokeStyle = "#064e3b";
+    ctx.strokeRect(snake[i].x, snake[i].y, box, box);
+  }
+
+  ctx.fillStyle = "#ef4444";
+  ctx.beginPath();
+  ctx.arc(food.x + box / 2, food.y + box / 2, box / 2.4, 0, Math.PI * 2);
+  ctx.fill();
+
+  let headX = snake[0].x;
+  let headY = snake[0].y;
+
+  if (direction === "LEFT") headX -= box;
+  if (direction === "RIGHT") headX += box;
+  if (direction === "UP") headY -= box;
+  if (direction === "DOWN") headY += box;
+
+  if (
+    headX < 0 ||
+    headY < 0 ||
+    headX >= canvasSize ||
+    headY >= canvasSize ||
+    collision(headX, headY)
+  ) {
+    endGame();
+    return;
+  }
+
+  let newHead = { x: headX, y: headY };
+
+  if (headX === food.x && headY === food.y) {
+    score++;
+    document.getElementById("score").textContent = score;
+    createFood();
+  } else {
+    snake.pop();
+  }
+
+  snake.unshift(newHead);
+}
+
+function collision(x, y) {
+  for (let part of snake) {
+    if (part.x === x && part.y === y) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function endGame() {
+  clearInterval(gameInterval);
+  gameOver = true;
+
+  if (score > bestScore) {
+    bestScore = score;
+    localStorage.setItem("snakeBestScore", bestScore);
+    document.getElementById("bestScore").textContent = bestScore;
+  }
+
+  ctx.fillStyle = "rgba(0,0,0,0.65)";
+  ctx.fillRect(0, 0, canvasSize, canvasSize);
+
+  ctx.fillStyle = "white";
+  ctx.font = "32px Arial";
+  ctx.textAlign = "center";
+  ctx.fillText("Game Over", canvasSize / 2, canvasSize / 2 - 20);
+
+  ctx.font = "18px Arial";
+  ctx.fillText("Click Restart to play again", canvasSize / 2, canvasSize / 2 + 20);
+}
+
+function restartGame() {
+  initGame();
+}
+
+document.addEventListener("keydown", function(event) {
+  const key = event.key.toLowerCase();
+
+  if ((key === "arrowleft" || key === "a") && direction !== "RIGHT") {
+    nextDirection = "LEFT";
+  } else if ((key === "arrowup" || key === "w") && direction !== "DOWN") {
+    nextDirection = "UP";
+  } else if ((key === "arrowright" || key === "d") && direction !== "LEFT") {
+    nextDirection = "RIGHT";
+  } else if ((key === "arrowdown" || key === "s") && direction !== "UP") {
+    nextDirection = "DOWN";
+  }
+});
+
+initGame();
+</script>
+</body>
+</html>
