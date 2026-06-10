@@ -1025,9 +1025,9 @@ Step 0: Create API Key of your platform (OpenAI, Gemini, Anthropic etc):
 - Click on API Keys
 - Click on Create New secret Key >> provide name >> click on Create
   Name = secretkey_9june2026
-  secretkey = testREMOVED_OPENAI_SECRET
+  secretkey = 
 - i also created API key from aistudio.google.com
-- API Key = REMOVED_GEMINI_SECRET
+- API Key = 
 - Name    = test name
 
 
