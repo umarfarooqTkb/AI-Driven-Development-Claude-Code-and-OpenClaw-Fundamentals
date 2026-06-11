@@ -6,6 +6,8 @@
 ======================================================================================================================================================
 ======================================================================================================================================================
 
+- https://github.com/panaversity/agentfactory-labs
+
 
 Table Of Contents
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -987,15 +989,12 @@ Step 7: Save and test
 
 
 Step 0: Create API Key of your platform (OpenAI, Gemini, Anthropic etc):
-- i will create it using openAI(ChatGPT)
-- open platform.openai.com
-- Click on API Keys
-- Click on Create New secret Key >> provide name >> click on Create
-  Name = secretkey_9june2026
-  secretkey = 
-- i also created API key from aistudio.google.com
+- For Gemini  =  aistudio.google.com
+- For ChatGPT =  platform.openai.com
+- Click on API Keys / Create API Key
 - API Key = 
-- Name    = Gemini API Key 2
+- Name    = Gemini API Key
+- //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
 
 
 Step 1: Add your API credential:
@@ -1085,3 +1084,22 @@ Avoid long paragraphs.
 Then test:
 Write an email to a clinic owner offering virtual front desk support.
 Start with this simple flow first. Once it works, we can add Tools, Document Store, and multi-agent workflows.
+
+
+
+Flowise Uninstallation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+From Ubuntu 24.04 (if installed via NPM
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+npm list -g --depth=0 | grep flowise
+If you see Flowise, uninstall it:
+npm uninstall -g flowise
+Verify: which flowise
+It should return nothing.
+
+Flowise stores data in: ~/.flowise
+Remove it: rm -rf ~/.flowise
+
+Check if Flowise is Completely Removed: flowise

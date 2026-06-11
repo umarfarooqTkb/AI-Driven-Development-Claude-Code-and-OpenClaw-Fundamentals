@@ -212,6 +212,73 @@ Yes. The second model pointed out that the email needed a migration deadline and
 
 
 
+
+
+
+Task 2
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+snake game
+
+https://umarfarooqtkb.github.io/snake-game/
+
+
+
+
+
+
+Task 3:
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Step 1 – Use Gemini
+Paste the YouTube URL into Gemini and ask:
+
+Watch this lecture and create:
+1. A detailed summary
+2. Key topics discussed
+3. Important concepts
+4. Timeline of topics covered
+5. Suggested presentation structure (15-20 slides)
+Video:
+https://www.youtube.com/watch?v=a1NIVLrComg
+
+Gemini is currently the strongest mainstream model for understanding YouTube videos directly.
+
+
+Step 2 – Bring the output to ChatGPT
+Then ask:
+Create a professional 20-slide presentation from this lecture summary.
+Requirements:
+- Student audience
+- Include slide titles
+- 4-6 bullet points per slide
+- Include speaker notes
+- Include learning objectives
+- Include conclusion and key takeaways
+
+ChatGPT usually produces better educational slide content and structure.
+
+
+Step 3 – Generate slides
+Use either:
+Gamma.app (fastest)
+Canva
+PowerPoint Copilot
+Or ask me to generate a .pptx
+
+
+
+
+
+====
+What I would do: For this assignment:
+Gemini → Understand lecture
+ChatGPT → Create slide structure
+Gamma → Generate presentation
+PowerPoint → Minor edits
+Submit
+
+
+
+
 Others
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 i used chatgpt for code,  then put it in GitHub, and deployed it by vercel.
