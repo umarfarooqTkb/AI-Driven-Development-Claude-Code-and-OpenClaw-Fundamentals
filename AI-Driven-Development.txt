@@ -6,16 +6,9 @@
 ======================================================================================================================================================
 ======================================================================================================================================================
 
-<<<<<<< HEAD
-Course Details
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Course Name: AI-Driven Development, Claude Code, and OpenClaw Fundamentals
-Course Code: AI-101
 
-URL: https://panaversity.org/
-URL: https://panaversity.org/courses/AI-101
-Agentic AI Book: URL:https://agentfactory.panaversity.org/
-=======
+- https://github.com/panaversity/agentfactory-labs
+
 
 Table Of Contents
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -50,30 +43,10 @@ Table Of Contents
 
 - Langchain
 - Flowise 
->>>>>>> 3a788d6fe2a3b189a70f4edd94f5d9edd0f70bde
 
 
 
 
-
-
-<<<<<<< HEAD
-Day 1: 22-May-2026
-======================================================================================================================================================
-======================================================================================================================================================
-- From AI as a tool TO AI as a Worker.
-- AI Worker: one worker for one task, like one AI worker for sales, marketing etc etc
-- The Agent Factory: Produce AI Workers
-- AI Native Company: Where AI Workers are working
-- AI delegate (Assistant)
-- Identic AI: AI that understands you deeply and acts according to your identity, thinking style, values, and goals.
-
-
-
-
-
-=======
->>>>>>> 3a788d6fe2a3b189a70f4edd94f5d9edd0f70bde
 
 Three Levels of AI
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -619,7 +592,6 @@ Golden Rule of Prompting
 
 
 
-<<<<<<< HEAD
 
 
 
@@ -628,66 +600,6 @@ Golden Rule of Prompting
 
 
 
-
-
-Day 2: 5-June-2026
-======================================================================================================================================================
-
-
-
-Day 3: 7-June-2026
-======================================================================================================================================================
-- AI Prompting i 2026
-- Explore different Models in Gemini
-- Using Google AI Studio >> Create an app >> start with a basic thing >> then we can improve it
-- Google AI Studio
-- Playground
-- System Instructions
-  * System instructions (you can configure LLM as per your preferences)
-  * e.g: you will always respond in a funny way.
-  * you can define restrictions in system instructions
-  * Same settings can also be done in ChatGPT
-
-Temperature:
-- Creativity level in responses
-- it controls the creativity of LLM (by increasing temperature)
-- for English writing, you can increase temperature, becoz you need creativity.(e.g. story writing, brainstorming etc)
-- for Math, we can set temperature at 0. (we want to follow step by step), merey prompt sy agay peachy na ho
-- if we want our response to adhere to our prompt, then we can reduce the temperature, khud sy koi cheze na lay.
-- if we want, that model can bring his ideas, then we can increase temperature.
-- it sets the internal behavior of LLM
-- Thinking Hard feature is not similar to Temperature.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Langchain
-======================================================================================================================================================
-- LangChain is a framework for building applications that use large language models (LLMs) like OpenAI’s GPT, Claude, or others. 
-- It’s designed to make it easier to combine LLMs with external data, tools, and workflows.
-
-LangChain helps developers:
-- Connect LLMs to databases, APIs, or documents.
-- Build intelligent agents that can reason, plan, and act.
-- Manage conversation state, memory, and context over multiple interactions.
-- Automate tasks like summarization, question-answering, and multi-step reasoning.
-
-
-
-
-AGENTS.md / CLAUDE.md
-=======
->>>>>>> 3a788d6fe2a3b189a70f4edd94f5d9edd0f70bde
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 								
@@ -1084,15 +996,12 @@ Step 7: Save and test
 
 
 Step 0: Create API Key of your platform (OpenAI, Gemini, Anthropic etc):
-- i will create it using openAI(ChatGPT)
-- open platform.openai.com
-- Click on API Keys
-- Click on Create New secret Key >> provide name >> click on Create
-  Name = secretkey_9june2026
-  secretkey = 
-- i also created API key from aistudio.google.com
+- For Gemini  =  aistudio.google.com
+- For ChatGPT =  platform.openai.com
+- Click on API Keys / Create API Key
 - API Key = 
-- Name    = Gemini API Key 2
+- Name    = Gemini API Key
+- //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
 
 
 Step 1: Add your API credential:
@@ -1182,3 +1091,22 @@ Avoid long paragraphs.
 Then test:
 Write an email to a clinic owner offering virtual front desk support.
 Start with this simple flow first. Once it works, we can add Tools, Document Store, and multi-agent workflows.
+
+
+
+Flowise Uninstallation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+From Ubuntu 24.04 (if installed via NPM
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+npm list -g --depth=0 | grep flowise
+If you see Flowise, uninstall it:
+npm uninstall -g flowise
+Verify: which flowise
+It should return nothing.
+
+Flowise stores data in: ~/.flowise
+Remove it: rm -rf ~/.flowise
+
+Check if Flowise is Completely Removed: flowise
