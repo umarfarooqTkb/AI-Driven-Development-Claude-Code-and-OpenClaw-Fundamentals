@@ -114,6 +114,76 @@ Assignment:
 
 
 
+Lecture 4:  12-June-2026
+======================================================================================================================================================
+======================================================================================================================================================
+- How to install and run claude code agent on local machine.
+- draw a diagram on tldraw.com
+- Topic: The Agent AI is the new Operating Layer
+- RTX SPARK launched by NVIDIA (computer chip/CPU). NVIDIA launched CPU
+- what is Petaflop? computing power will be improved, multiple agents could be started on a single machine.
+- SaaS is dying out slowly. our agent will be using that service now, like calendly
+- Your PC also dies: your agent will be using it, you stop operating the machine.
+- Agent will be up, and we will tell agent, that i want this file to be open on my machine.
+- Agent will work on our behalf.
+- The Saaspocalypse
+- Old Model: humans use apps directly
+- AI Operating Layer
+- General Agents
+   * you gave him a task, it performed and finish, like ChatGPT
+   * Claude Code   = For Developers
+   * Claude Cowork = For Workers like Finance workers etc
+- Personal Agents
+   * Personal agent will work 24/7 for you.
+   * OpenClaw, Hermes
+   * you can connect your personal agent with your whatsapp
+   * 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
