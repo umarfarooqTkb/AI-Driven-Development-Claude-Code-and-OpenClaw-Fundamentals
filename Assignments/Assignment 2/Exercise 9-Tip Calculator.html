@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tip Calculator</title>
+<style>
+body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; padding: 20px; }
+label { display:block; margin-top:12px; }
+input { width:100%; padding:8px; box-sizing:border-box; }
+button { margin-top:16px; padding:10px 16px; }
+.result { margin-top:20px; padding:12px; border:1px solid #ccc; border-radius:8px; }
+</style>
+</head>
+<body>
+<h2>Tip Calculator by Umar Khan</h2>
+
+<label>Total Bill</label>
+<input id="total" type="number" step="0.01" placeholder="100">
+
+<label>Tip %</label>
+<input id="tip" type="number" step="0.01" placeholder="15">
+
+<label>Number of People</label>
+<input id="people" type="number" min="1" placeholder="4">
+
+<button onclick="calc()">Calculate</button>
+
+<div class="result" id="out"></div>
+
+<script>
+function calc() {
+  const total = parseFloat(document.getElementById('total').value) || 0;
+  const tipPct = parseFloat(document.getElementById('tip').value) || 0;
+  const people = parseInt(document.getElementById('people').value) || 1;
+
+  const tipAmount = total * tipPct / 100;
+  const grandTotal = total + tipAmount;
+  const perPerson = grandTotal / people;
+
+  document.getElementById('out').innerHTML =
+    `<b>Tip Amount:</b> ${tipAmount.toFixed(2)}<br>
+     <b>Grand Total:</b> ${grandTotal.toFixed(2)}<br>
+     <b>Each Person Pays:</b> ${perPerson.toFixed(2)}`;
+}
+</script>
+</body>
+</html>

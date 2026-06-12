@@ -1,12 +1,225 @@
 Assignment 2: 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<<<<<<< HEAD
 - Lab.pdf
+=======
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Assignment has three tasks, which are
+Task 1 — Complete 13 Exercises given in Lab Practice document & Generate a Prompting Report at the end.
+Task 2 — Create an AI Generated Snake Game 
+Task 3 — Lecture Slide Generation Using LLMs 
+
+Assignment Timelines:
+- Start Date = Jun 6, 2026
+- Due Date = Fri 2026-06-12
+
+other details:
+- 3 tasks — prompting report, Snake game, slides
+- Prompting lab report, AI-built Snake game, and LLM-generated lecture slides.
+- Complete all tasks given in AIPromptingLab.pdf
+- Create a snake game with the help of any tool like ChatGPT/Gemini/Claude etc.
+
+Assignment Main Document:
+- Go to: https://panaversity.org/
+- Login with your Account
+- Click on your course: Course Code: AI-101
+- Click on "My Projects"
+- Click on "View Details"  link showing against "Class2  Lecture 2 — Prompting & LLMs"
+- This page will provide you Assignment description and Deadline
+- Click on "View Project repository"
+- Assignment Document will be displayed.
+- Now you have to do the assignment as per this document
+>>>>>>> 3a788d6fe2a3b189a70f4edd94f5d9edd0f70bde
 
 
 
 Solution:
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<<<<<<< HEAD
+=======
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>>>>>>> 3a788d6fe2a3b189a70f4edd94f5d9edd0f70bde
 
+
+
+
+
+<<<<<<< HEAD
+Others
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+i used chatgpt for code,  then put it in GitHub, and deployed it by vercel.
+=======
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+							Task 1: 13 Exercises
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Task 1: PDF Link: https://github.com/panaversity/agentfactory-labs/blob/main/AI-101/ai-promptingin-2026/ai-prompting-lab.pdf 
+
+- THE ONE RULE BEHIND ALL 13: Get the right context in, keep the wrong context out.
+
+
+
+
+
+Exercise 1:  Novice vs. Power User
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Step A — The novice prompt (try one)
+Step B — The power-user prompt (same topic + context)
+
+Answer:
+The second answer was much more specific and useful because it included important context such as budget, preferences, purpose, and desired output format. 
+Instead of giving generic advice that could apply to anyone, the AI provided personalized recommendations and a ready-to-use solution tailored to the exact situation.
+
+Bottom Line:
+* More relevant context = more relevant AI output.
+
+
+
+
+Exercise 2:  Knows vs. Guesses
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Answer:
+- The AI was accurate on general knowledge questions but could not confidently answer current or location-specific questions. 
+- This showed that AI knows stable facts better than recent or changing information.
+
+
+Bottom Line
+* A confident answer is not necessarily a correct answer. Always ask: "How would the AI know this?"
+* Always ask 'How would the AI even know this?' For recent, local, or private facts, make it search or admit uncertainty."
+
+
+
+Exercise 3: The 3 Retrieval Modes
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Q: Which prompts made the AI actually search? How could you tell?
+
+Ans.
+
+| Retrieval Mode | Did AI Search? | How Could I Tell?                                   |
+| -------------- | -------------- | --------------------------------------------------- |
+| Pretrained     | No             | No citations; answered from existing knowledge.     |
+| Web Search     | Yes            | Used current information and cited sources.         |
+| Deep Research  | Yes            | Provided detailed analysis with multiple citations. |
+
+
+| Observation        | Explanation                                                               |
+| ------------------ | ------------------------------------------------------------------------- |
+| Pretrained mode    | Used for stable facts that do not change frequently.                      |
+| Web Search mode    | Used for current or time-sensitive information.                           |
+| Deep Research mode | Used for comprehensive analysis requiring multiple sources and citations. |
+
+
+- I could tell because the AI provided citations and current sources, while the Romeo and Juliet summary came from existing knowledge.
+- Your wording determines whether AI answers from memory, searches the web, or performs deep research.
+
+
+
+
+Exercise 4: Context Is Everything
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Q: "Which single piece of context changed the answer the most?"
+
+Ans.
+- The 30-minute time limit changed the answer the most because it constrained the suggestions to meals that could be prepared quickly. 
+- Without this context, the AI might have suggested more complex recipes.
+
+
+
+Exercise 5: Think Hard
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Q. Did "think hard" produce a deeper answer? What changed?
+
+Ans.
+- Yes, the "think hard" prompt produced a deeper answer. 
+- Instead of giving a simple recommendation, the AI analyzed the trade-offs, explained its reasoning, and identified situations where the answer might change.
+
+
+
+Exercise 6: Stop the Flattery
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Q. Did Step B give you a reason you hadn't thought of? Write one.
+
+Ans.
+Yes. It pointed out that office work can provide better collaboration and mentoring opportunities that I had not considered.
+
+
+
+
+Exercise 7: The Brainstorm–Iterate Loop
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Q. Was the idea you ended with better than anything in Round 1? Why?
+
+Ans. 
+Yes. The final result was better because it was improved through feedback and became more aligned with what I wanted.
+
+
+
+Exercise 8: Multimodal — Image & Audio
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Q. What did the AI read correctly? What did it get wrong or flag?
+
+Ans.
+The AI was able to read most of the text, but it was uncertain about a few blurry words and marked them as unclear instead of guessing.
+
+
+
+
+
+Exercise 9: Build a Small App
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Q. Did it work first try? What did you change in the iterate step?
+
+Ans.
+Yes, it worked on the first try. I then improved it by making the buttons larger and changing the color theme.
+
+
+
+
+Exercise 10: Data Analysis
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Q. Did Round 1 run code or guess? How could you tell the difference?
+Ans.
+Round 1 did not show any code, so it likely answered from reasoning. Round 2 showed the code and results, making the analysis verifiable.
+
+
+
+
+Exercise 11: Desktop Apps & Permissions
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Q. What's one thing you'd NEVER grant an AI app on day one?
+Ans.
+To permanently delete files on day one.
+
+
+
+
+Exercise 12: Which Model When
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Q. Which tool did better on THIS task — and what was different?
+
+Ans.
+| Tool        | Observation                                                                                        |
+| ----------- | -------------------------------------------------------------------------------------------------- |
+| Gemini      | Produced a more detailed and creative Saturday plan with richer descriptions and a stronger theme. |
+| ChatGPT     | Produced a simpler, more structured, and concise hour-by-hour plan.                                |
+
+
+
+Exercise 13: Models Checking Models
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Q. What did Tool B catch that Tool A missed (or vice versa)?
+Ans.
+Yes. The second model pointed out that the email needed a migration deadline and more technical context.
 
 
 
@@ -14,3 +227,55 @@ Solution:
 Others
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 i used chatgpt for code,  then put it in GitHub, and deployed it by vercel.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Message sent on WhatsApp group: Pana-101-P011 Discussion Group - 9-June-2026: 10:15 AM
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Subject: Clarity on Assignment #2
+
+Salam/Hello everyone!
+
+As a student of this class, I was confused about understanding of Assignment #2 after Friday's lecture (June 6). Now that I have more clarity, I wanted to share these details in case anyone else is still struggling to get started.
+
+Assignment Overview:
+Task 1: Complete 13 exercises from the Lab Practice document and generate a Prompting Report.
+
+Task 2: Create an AI-generated Snake Game.
+
+Task 3: Generate lecture slides using LLMs.
+
+
+Timeline:
+Started: June 6, 2026
+Due Date: Friday, June 12, 2026
+
+
+Where to find the full requirements:
+1. Log in to https://panaversity.org/.
+2. Go to your course (AI-101).
+3. Click on "My Projects".
+4. Find "Class 2 — Lecture 2: Prompting & LLMs" and click "View Details."
+5. Click "View Project repository" to access the full assignment document.
+
+Hope this helps!
+
+If my understanding is not correct, do correct me please.
+
+Regards | Umar Khan
+>>>>>>> 3a788d6fe2a3b189a70f4edd94f5d9edd0f70bde

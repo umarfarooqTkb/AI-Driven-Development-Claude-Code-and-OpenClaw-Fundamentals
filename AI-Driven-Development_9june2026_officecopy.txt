@@ -6,7 +6,6 @@
 ======================================================================================================================================================
 ======================================================================================================================================================
 
-<<<<<<< HEAD
 Course Details
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Course Name: AI-Driven Development, Claude Code, and OpenClaw Fundamentals
@@ -15,49 +14,12 @@ Course Code: AI-101
 URL: https://panaversity.org/
 URL: https://panaversity.org/courses/AI-101
 Agentic AI Book: URL:https://agentfactory.panaversity.org/
-=======
-
-Table Of Contents
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- Three Levels of AI
-- What is Agentic AI
-- What is AI Agent Factory
-  * Main Components of an AI Agent Factory
-- AI Native Company
-- 10-80-10 Rule
-- Two-Layer Model
-- AI Delegate (identic AI)
-- Digital Worker / AI Employee / AI Worker / Digital FTE (Digital Full-Time Equivalent)
-- The 7 Golden Rules of an AI Company
-
-- Prompting
-- Temperature
-- Token
-
-- MCP (Model Context Protocol)
-- AGENTS.md / CLAUDE.md
-- Spec-Driven Development (SDD)
-- Guardrails
-
-- Claude Code
-- OpenCode
-- Cursor
-- Claude Code vs. Opencode vs. cursor
-- TutorClaw
-- Cowork
-- Claude Mythos
-- Claude Mythos vs Regular Claude
-
-- Langchain
-- Flowise 
->>>>>>> 3a788d6fe2a3b189a70f4edd94f5d9edd0f70bde
 
 
 
 
 
 
-<<<<<<< HEAD
 Day 1: 22-May-2026
 ======================================================================================================================================================
 ======================================================================================================================================================
@@ -72,8 +34,6 @@ Day 1: 22-May-2026
 
 
 
-=======
->>>>>>> 3a788d6fe2a3b189a70f4edd94f5d9edd0f70bde
 
 Three Levels of AI
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -105,7 +65,6 @@ Example: Suppose a healthcare company wants AI agents for:
 - With an AI Agent Factory, the company creates a standard process:
 - Identify use case → define agent role → connect tools/data → add guardrails → test → deploy → monitor → improve
 - The Agent Factory builds the AI-Native Company, and the AI-Native Company employs Digital FTEs.
-
 
 Why It Is Called a Factory:
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -345,6 +304,7 @@ Example:
 
 
 
+
 AI Delegate (identic AI)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -385,11 +345,86 @@ The 7 Golden Rules of an AI Company
 
 
 
+
+Lecture 2: Prompting & LLMs [5-June-2026]
 ======================================================================================================================================================
 ======================================================================================================================================================
+Topic Covered:
+ - AI Prompting
+ - LLMs
 
-								Prompting
 
+Assignment:
+Task 1 — Lab Document Practice & Prompting Report 
+Task 2 — AI Generated Snake Game 
+Task 3 — Lecture Slide Generation Using LLMs 
+
+- Prompting lab report, AI-built Snake game, and LLM-generated lecture slides.
+- 3 tasks — prompting report, Snake game, slides. 
+- Start Date = Jun 6, 2026
+- Due Date = Fri 2026-06-12
+
+
+Assignment Main Document:
+- Go to: https://panaversity.org/
+- Login with your Account
+- Click on your course: Course Code: AI-101
+- Click on "My Projects"
+- Click on "View Details"  link showing against "Class2  Lecture 2 — Prompting & LLMs"
+- This page will provide you Assignment description and Deadline
+- Click on "View Project repository"
+- Assignment Document will be displayed.
+- Now you have to do the assignment as per this document
+
+
+
+Task 1:
+PDF Link: https://github.com/panaversity/agentfactory-labs/blob/main/AI-101/ai-promptingin-2026/ai-prompting-lab.pdf 
+
+
+Lecture 3:  7-June-2026
+======================================================================================================================================================
+======================================================================================================================================================
+- AI Prompting i 2026
+- Explore different Models in Gemini
+- Using Google AI Studio >> Create an app >> start with a basic thing >> then we can improve it
+- Google AI Studio
+- Playground
+- System Instructions
+  * System instructions (you can configure LLM as per your preferences)
+  * e.g: you will always respond in a funny way.
+  * you can define restrictions in system instructions
+  * Same settings can also be done in ChatGPT
+
+Temperature:
+- Creativity level in responses
+- it controls the creativity of LLM (by increasing temperature)
+- for English writing, you can increase temperature, becoz you need creativity.(e.g. story writing, brainstorming etc)
+- for Math, we can set temperature at 0. (we want to follow step by step), merey prompt sy agay peachy na ho
+- if we want our response to adhere to our prompt, then we can reduce the temperature, khud sy koi cheze na lay.
+- if we want, that model can bring his ideas, then we can increase temperature.
+- it sets the internal behavior of LLM
+- Thinking Hard feature is not similar to Temperature.
+
+
+Assignment:
+- Build any app or game using AI.
+- Submit within 1 week — due June 15.
+- Assignment Details: https://drive.google.com/file/d/1pvaChwJAQgtDY4uoaLY9p1YhTLoPRfgR/view
+- Start Date = Jun 8, 2026
+- Due Date   = Jun 15, 2026
+
+
+
+
+
+
+
+
+
+
+
+Prompting
 ======================================================================================================================================================
 ======================================================================================================================================================
 - Prompting is the way you communicate with an AI system to get useful results.
@@ -450,6 +485,7 @@ Tone:
 
 
 
+
 Example Prompt:
 ======================================================================================================================================================
 Act as an AI Agent Factory consultant.
@@ -478,6 +514,7 @@ Act as a Small Business Consultant. I need a 3-month growth plan.
 Context: I run a local bakery with 2 employees.
 Requirements: Focus on low-cost social media marketing only. 
 Output format: A table with weekly goals.
+
 
 
 
@@ -557,6 +594,7 @@ Best For:
 - Fast responses
 
 
+
 7. One-Shot Prompting
 - Provide one example before asking the task.
 
@@ -568,6 +606,11 @@ Keyboard not working
 
 Best For:
 Simple classification tasks
+
+
+
+
+
 
 
 
@@ -595,73 +638,6 @@ Golden Rule of Prompting
 - Garbage In → Garbage Out (GIGO)
 - Clear Instructions In → High-Quality Results Out
 
-==============================================================     End of - Prompting  ================================================================
-=======================================================================================================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-Day 2: 5-June-2026
-======================================================================================================================================================
-
-
-
-Day 3: 7-June-2026
-======================================================================================================================================================
-- AI Prompting i 2026
-- Explore different Models in Gemini
-- Using Google AI Studio >> Create an app >> start with a basic thing >> then we can improve it
-- Google AI Studio
-- Playground
-- System Instructions
-  * System instructions (you can configure LLM as per your preferences)
-  * e.g: you will always respond in a funny way.
-  * you can define restrictions in system instructions
-  * Same settings can also be done in ChatGPT
-
-Temperature:
-- Creativity level in responses
-- it controls the creativity of LLM (by increasing temperature)
-- for English writing, you can increase temperature, becoz you need creativity.(e.g. story writing, brainstorming etc)
-- for Math, we can set temperature at 0. (we want to follow step by step), merey prompt sy agay peachy na ho
-- if we want our response to adhere to our prompt, then we can reduce the temperature, khud sy koi cheze na lay.
-- if we want, that model can bring his ideas, then we can increase temperature.
-- it sets the internal behavior of LLM
-- Thinking Hard feature is not similar to Temperature.
-
-
-
-
-
 
 
 
@@ -686,14 +662,19 @@ LangChain helps developers:
 
 
 AGENTS.md / CLAUDE.md
-=======
->>>>>>> 3a788d6fe2a3b189a70f4edd94f5d9edd0f70bde
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-								
-								Token
-								
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Configuration files that provide persistent context to an AI coding agent. They contain your project's rules, coding standards, architectural decisions, and preferences, loaded into every interaction.
+
+💡 Analogy: When a new employee joins your team, you give them an onboarding document: "Here's how we work. Here's our coding style. Here's what we never do." AGENTS.md is that onboarding document for your AI agent.
+
+
+
+
+
+
+
+
+Token
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - The basic unit of text an LLM reads.
 - In AI, tokens are the small pieces of text that an AI model reads, processes, and generates.
@@ -740,54 +721,6 @@ A common rough estimate is:
 100 tokens ≈ 75 words
 
 This is not exact, but it helps for understanding.
-
-
-
-
-
-
-
-
-Temperature:
-=======================================================================================================================================================
-=======================================================================================================================================================
-- Creativity level in responses
-- it controls the creativity of LLM (by increasing temperature)
-- for English writing, you can increase temperature, becoz you need creativity.(e.g. story writing, brainstorming etc)
-- for Math, we can set temperature at 0. (we want to follow step by step), merey prompt sy agay peachy na ho
-- if we want our response to adhere to our prompt, then we can reduce the temperature, khud sy koi cheze na lay.
-- if we want, that model can bring his ideas, then we can increase temperature.
-- it sets the internal behavior of LLM
-- Thinking Hard feature is not similar to Temperature.
-
-
-
-
-
-
-
-Langchain
-======================================================================================================================================================
-- LangChain is a framework for building applications that use large language models (LLMs) like OpenAI’s GPT, Claude, or others. 
-- It’s designed to make it easier to combine LLMs with external data, tools, and workflows.
-
-LangChain helps developers:
-- Connect LLMs to databases, APIs, or documents.
-- Build intelligent agents that can reason, plan, and act.
-- Manage conversation state, memory, and context over multiple interactions.
-- Automate tasks like summarization, question-answering, and multi-step reasoning.
-
-
-
-
-AGENTS.md / CLAUDE.md
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Configuration files that provide persistent context to an AI coding agent. They contain your project's rules, coding standards, architectural decisions, and preferences, loaded into every interaction.
-
-💡 Analogy: When a new employee joins your team, you give them an onboarding document: "Here's how we work. Here's our coding style. Here's what we never do." AGENTS.md is that onboarding document for your AI agent.
-
-
-
 
 
 
@@ -915,6 +848,9 @@ Claude Mythos vs Regular Claude
 | **Claude Code**       | Coding agent/tool that works in your codebase                 |
 | **Claude Mythos**     | Specialized cybersecurity-focused model                       |
 | **Project Glasswing** | Controlled program where trusted partners use Claude Mythos   |
+
+
+
 
 
 
@@ -1092,7 +1028,7 @@ Step 0: Create API Key of your platform (OpenAI, Gemini, Anthropic etc):
   secretkey = 
 - i also created API key from aistudio.google.com
 - API Key = 
-- Name    = Gemini API Key 2
+- Name    = test name
 
 
 Step 1: Add your API credential:
