@@ -1575,11 +1575,30 @@ So the full order is:
 10. Test agent
 
 
+Recommended next steps:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Next Step 1: Test Your RAG Agent Properly
+- Ask these questions and check whether it answers from your uploaded document:
+According to the uploaded Scrum Guide, what is Scrum?
+What are the three Scrum accountabilities?
+What is the Sprint Goal?
+What is the Definition of Done?
+What is the difference between Product Backlog and Sprint Backlog?
+
+# Also check if source documents are returned. This confirms the agent is using your document, not only general AI knowledge.
 
 
 
+Test your agent with 5–10 Scrum questions.
+Check whether source documents are returned.
+Add one more document, such as Product Owner notes.
+Upsert again.
+Ask comparison questions like:
+ According to the uploaded documents, what is the difference between Sprint Goal and Product Goal?
 
 
+++++++++++++++++++++++++++++++++  End of -- Flowise Step by Step: Creating Agent for Document Store (RAG) - 15June2026  +++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 
