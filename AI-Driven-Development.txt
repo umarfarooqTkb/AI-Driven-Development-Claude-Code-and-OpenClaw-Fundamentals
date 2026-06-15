@@ -1374,81 +1374,214 @@ Start with this simple flow first. Once it works, we can add Tools, Document Sto
 
 
 
-Flowise Step by Step: Creating Agent for Document Store (RAG)
+Flowise Step by Step: Creating Agent for Document Store (RAG) - 15June2026
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Flowise Cloud + Gemini + Pinecone
 - Do not use Chroma or local Flowise now.
 - Flowise recommends Document Stores for RAG because they manage uploading, chunking, upserting, and syncing documents in one place.
+- You can use any LLM instead of Gemini.
+- You can use any Vector database instead of Pinecone
 
-Step 1: Prepare accounts
-You need:
-1. Flowise Cloud account
-2. Gemini API key
-3. Pinecone account + API key
-   pineconeapikey = ////
+
+
+Pre-Requisites: Create following accounts
+1. Create Flowise cloud account				# https://cloud.flowiseai.com/
+2. Create Gemini API key				# Google AI Studio >> https://aistudio.google.com/
+3. Create Pinecone account + API key			# https://app.pinecone.io/
+
+
+
+Step 0: Create API Key of your platform (OpenAI, Gemini, Anthropic etc):
+- For Gemini  =  Google AI Studio  >> aistudio.google.com
+- For ChatGPT =  Open AI Platform  >> platform.openai.com
+- Click on API Keys / Create API Key
+
 
 
 Step 2: Create Pinecone index
-In Pinecone, create an index:
-Index name: scrum-kb
-Vector type: Dense
-Dimension: 3072
-Metric: cosine
-Cloud: AWS
-Region: us-east-1
+- In Pinecone cloud portal, create an index: Click on "Create index"
+- Index name: scrum-kb-gemini
+- Select custom settings
+- Vector type: Dense
+- Dimension: 3072
+- Metric: cosine
+- Capacity mode: Serverless (On-Demand)
+- Cloud: AWS
+- Region: us-east-1
+- click on "Create index"
+Important:
+- Do NOT select llama-text-embed-v2
+- Because that model created a 2048 dimension index.
+- You need a custom/dense index with: Dimension: 3072
 
 
-Step 3: Add credentials in Flowise Cloud
-Go to: Credentials → Add Credential
-Add: Google Gemini API Key
-Pinecone API Key
+Step 3: Add credentials in Flowise Cloud (Google API Key and Pinecone API Key)
+- Go to: Credentials → Add Credential → Select Google Generative AI
+- Credential Name	= Type any Name
+- Google AI API Key	= Paste API Key generated in above step 0/Pre-Requisites
+- Repeat above steps for Pinecone API Key
 
 
 
-Step 4: Create Document Store
-Go to: Document Stores → Add New
-Name: Scrum Knowledge Base
-Upload only one small PDF first, for example:
-2020 Scrum Guide.pdf
-Do not upload many files at the start.
+Step 4: Create Document Store in flowise
+- In Flowise, Go to: Document Stores → Add New
+- Name 		= Scrum Knowledge Base
+- Description	= Optional
+- Click on Add →  Add Document Loader 
+- Select Document Loader = PDF File
+- Click on "Upload File". Upload only one small PDF first, for example: 2020 Scrum Guide.pdf
+- Do not upload many files at the start.
+- Click on Process Button
+- Click Refresh button after few seconds/mins
+- A green icon should appear at the start of record.
+- Overall status should be = SYNC
 
 
 
-Step 5: Configure Upsert
-Open the uploaded PDF row:
-Options → Upsert Chunks
-Select: Embeddings: Google Gemini Embedding
-Model: gemini-embedding-001
-Task Type: RETRIEVAL_DOCUMENT
-
-Vector Store:
-Pinecone
-Index Name: scrum-kb
-Top K: 4
-Then click:
-Save Config → Upsert
-Upsert means Flowise converts your document chunks into vectors and stores them in Pinecone for RAG.
+Step 5: Configure Upsert (Upsert Document)
+- Open the uploaded PDF row: Options →  Upsert Chunks
+- Select: Embeddings  = Google Gemini Embedding
+- Connect Credential  = Select Gemini API Key from dropdown
+- Model Name	      = gemini-embedding-001
+- Task Type	      = RETRIEVAL_DOCUMENT
+- Click on Select Vector Store:
+- Vector Store 	      = Pinecone
+- Connect Credentials = select pineconeAPI Key from dropdown
+- Index Name  	      = scrum-kb-gemini
+- Pinecone Namespace  = leave as blank
+- Top K		      = 4
+- Click on "Save Config" then click on Upsert
+- Upsert Record dialog box will appear
+- Click on "Test Retrieval" button.
+- UPSERTED status in GREEN color should be displayed at the top of DOcument Store.
+- Upsert means Flowise converts your document chunks into vectors and stores them in Pinecone for RAG.
 
 Wait until the status changes from: UPSERTING to something like: SYNC
 or the loading stops.
 Do not click Upsert again while it is still processing.
 
+Note:
+- Vector database and embedding model must match.
+  Gemini embedding → 3072 dimensions
+  Pinecone index → must also be 3072
 
 
 
 Step 6: Test Retrieval
-After upsert:
-Document Store → More Actions → Retrieval Query
-Ask: What is a Sprint Goal?
+- Before creating the agent, test the knowledge base.
+- After upsert: Go to Document Store → Scrum Knowledge Base  →  More Actions → Retrieval Query
+- Ask: What is a Sprint Goal?
+- Click on Search icon
+- If it returns chunks from the Scrum Guide, your knowledge base is working.
 
 
 
-Step 7: Connect to Agent
-Create Agentflow: Start → Agent
-In Agent node: Knowledge / Document Store → Add Knowledge
-Select: Scrum Knowledge Base
-Test: According to uploaded Scrum Guide, what is a Sprint Goal?
+Step 7: Create the RAG Agent
+- Now create the actual agent.
+- In Flowise, Go to: Agentflows → Add New
+- Choose: Agentflow V2  → Click Save
+- Name =  Scrum Knowledge Agent
+
+
+
+
+Step 8: Add Agent Node
+- On the canvas: Click + → Add Agent
+- Then connect:  Start → Agent (Scrum Knowledge Agent)
+
+
+
+Step 9: Configure Agent Model
+- Double-click on Agent Node.
+- Click on Pencil icon to set the name of agent, if not already not done. Scrum Knowledge Agent
+- For Model, choose your chat model, for example: Google Gemini (i selected) or OpenAI or AWS Bedrock or Azure OpenAI or Anthropic Claude etc etc.
+- Click on Google Gemini Parameters dropdown
+- Connect Credential = Select your API Key  		# created in Step 1
+- Model Name = Select Models of Gemini  		# as per your requirement
+- Temperature = .4					# by default .9, change as per your requirement
+- Input Message
+  You are a Scrum Knowledge Agent.
+  Answer user questions using the uploaded Scrum Knowledge Base.
+  Use the Scrum Guide as the main source.
+  Explain answers in beginner-friendly language.
+  If the answer is not found in the uploaded documents, say:
+  "I could not find this in the uploaded Scrum documents."
+  Keep answers clear, structured, and practical.
+  
+Important Note:
+ * Embedding model = for documents
+ * Chat model = for answering users
+
+
+
+Step 10: Attach Knowledge Base
+- Inside the same Agent node properties, click:  "+ Add Knowledge (Document Stores)"
+- Select: Already created Document Store. in this case (Scrum Knowledge Base)
+- Describe Knowledge: 		
+  # Enter a short description that tells the agent when and how to use this knowledge base.
+  Example:
+  This knowledge base contains the Scrum Guide and Scrum learning material. Use it to answer questions about Scrum, Scrum roles/accountabilities, events, artifacts, Sprint Goal, Product Goal, Product Backlog, Sprint Backlog, Definition of Done, Scrum Master, Product Owner, Developers, and Scrum Team practices.
+
+Use this knowledge base whenever the user asks about Scrum concepts, Scrum Guide explanations, Agile/Scrum learning, Product Owner responsibilities, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, or Scrum interview questions.
+
+If the answer is not found in this knowledge base, say that the information was not found in the uploaded Scrum documents.
+  
+  
+- Turn on: Return Source Documents		# if available. This helps you see which document chunks were used.
+  Keep Return Source Documents enabled, as you already did. That will help you verify whether the agent is really using your uploaded Scrum PDF.
+
+- Then click Save and test with:
+  According to the uploaded Scrum Guide, what is a Sprint Goal?
+
+
+
+Step 11: Test Agent
+- Click the chat/test icon and ask: According to the uploaded Scrum Guide, what is a Sprint Goal?
+- Then ask: What are the three Scrum accountabilities?
+- Then: What is the difference between Product Goal and Sprint Goal?
+- Enjoy
+
+
+
+
+
+
+Full Mental Model:
+User asks question
+        ↓
+Agent receives question
+        ↓
+Agent searches Scrum Knowledge Base
+        ↓
+Pinecone returns relevant chunks
+        ↓
+Gemini/OpenAI writes final answer
+        ↓
+User gets response
+
+
+
+So the full order is:
+1. Create Pinecone index
+2. Add credentials in Flowise
+3. Create Document Store
+4. Upload PDF
+5. Upsert chunks
+6. Test retrieval
+7. Create Agentflow
+8. Add Agent node
+9. Attach Document Store
+10. Test agent
+
+
+
+
+
+
+
+
+
 
 
 
