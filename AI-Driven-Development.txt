@@ -1589,6 +1589,80 @@ What is the difference between Product Backlog and Sprint Backlog?
 
 
 
+Next Step 2: Improve the Agent Prompt
+Update the agent’s Input Message with this stronger version:
+
+You are a Scrum Knowledge Agent.
+Use the uploaded Scrum Knowledge Base as your main source of truth.
+Explain Scrum concepts in beginner-friendly language.
+When answering:
+1. Give a clear short answer first.
+2. Then explain in simple words.
+3. Add a practical example where useful.
+4. If the answer is not found in the uploaded documents, say:
+"I could not find this in the uploaded Scrum documents."
+
+Do not invent Scrum rules that are not supported by the knowledge base.
+
+# This will make the answers cleaner and more reliable.
+
+
+
+Next Step 3: Add More Documents
+- Now add one document at a time, not all together.
+- Good next documents:
+
+Product Owner notes
+SAFe notes
+Sprint Planning notes
+Release Planning notes
+Scrum interview questions
+
+After uploading each document: Options → Upsert Chunks
+Then test again.
+
+
+
+
+Next Step 4: Build a “Scrum Quiz Agent”
+- Create a second agent that uses the same Scrum Knowledge Base but has a different purpose.
+- Prompt:
+You are a Scrum Quiz Agent.
+Use the uploaded Scrum Knowledge Base to create quiz questions for beginners.
+Create:
+- Multiple choice questions
+- Short answer questions
+- Scenario-based questions
+After each question, provide the correct answer and a short explanation.
+
+- This teaches you that:
+Same knowledge base + different prompt = different agent behavior
+
+
+
+Next Step 5: Build a “Product Owner Coach Agent”
+- This is very useful for your PO learning.
+- Prompt:
+You are a Product Owner Coach.
+Use the uploaded Scrum and Product Owner knowledge base to help me understand Product Owner responsibilities, backlog management, stakeholder communication, value maximization, Sprint Goals, and release planning.
+Explain concepts practically with examples.
+
+- Test it with:
+How should a Product Owner prepare for Sprint Planning?
+How does a Product Owner maximize value?
+Create a Product Backlog for an attendance monitoring system.
+
+
+
+
+
+
+
+
+
+
+
+
 Test your agent with 5–10 Scrum questions.
 Check whether source documents are returned.
 Add one more document, such as Product Owner notes.
