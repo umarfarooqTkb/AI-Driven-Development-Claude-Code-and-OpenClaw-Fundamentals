@@ -7,6 +7,20 @@
 ======================================================================================================================================================
 
 
+
+To Do
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Cursor SDK
+- DAPR Agents
+- Claude Managed Agents
+- OpenAI Agents
+
+
+
+
+
+
+
 - https://github.com/panaversity/agentfactory-labs
 
 
@@ -27,7 +41,14 @@ Table Of Contents
 - Temperature
 - Token
 
+AI Protocols:
 - MCP (Model Context Protocol)
+- ACP 
+- AP2
+- X402
+- MPP
+
+
 - AGENTS.md / CLAUDE.md
 - Spec-Driven Development (SDD)
 - Guardrails
@@ -1545,8 +1566,6 @@ Step 11: Test Agent
 
 
 
-
-
 Full Mental Model:
 User asks question
         ↓
@@ -1620,7 +1639,8 @@ Scrum interview questions
 
 After uploading each document: Options → Upsert Chunks
 Then test again.
-
+Ask: What is Definition of Ready?
+Ask: Explain the difference between DoD and DoR.
 
 
 
