@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Focus Countdown Timer</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f6f7fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  .card {
+    background: white;
+    width: 360px;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    text-align: center;
+  }
+  h1 { margin-top: 0; }
+  #mode {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  #timer {
+    font-size: 64px;
+    font-weight: bold;
+    margin: 25px 0;
+  }
+  button {
+    padding: 12px 18px;
+    margin: 6px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .start { background: #222; color: white; }
+  .pause { background: #ddd; }
+  .reset { background: #eee; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Focus Timer</h1>
+  <div id="mode">Work Session</div>
+  <div id="timer">25:00</div>
+  <button class="start" onclick="startTimer()">Start</button>
+  <button class="pause" onclick="pauseTimer()">Pause</button>
+  <button class="reset" onclick="resetTimer()">Reset</button>
+</div>
+
+<script>
+let workTime = 25 * 60;
+let breakTime = 5 * 60;
+let timeLeft = workTime;
+let isWork = true;
+let interval = null;
+
+function updateDisplay() {
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  document.getElementById("timer").textContent =
+    String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+  document.getElementById("mode").textContent = isWork ? "Work Session" : "Break Time";
+}
+
+function playSound() {
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  oscillator.connect(gain);
+  gain.connect(audioCtx.destination);
+  oscillator.frequency.value = 880;
+  gain.gain.value = 0.2;
+  oscillator.start();
+  setTimeout(() => {
+    oscillator.stop();
+    audioCtx.close();
+  }, 800);
+}
+
+function startTimer() {
+  if (interval) return;
+  interval = setInterval(() => {
+    timeLeft--;
+    updateDisplay();
+
+    if (timeLeft <= 0) {
+      playSound();
+      isWork = !isWork;
+      timeLeft = isWork ? workTime : breakTime;
+      updateDisplay();
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  clearInterval(interval);
+  interval = null;
+}
+
+function resetTimer() {
+  pauseTimer();
+  isWork = true;
+  timeLeft = workTime;
+  updateDisplay();
+}
+
+updateDisplay();
+</script>
+</body>
+</html>

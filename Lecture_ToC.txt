@@ -1,0 +1,209 @@
+======================================================================================================================================================
+======================================================================================================================================================
+								
+					AI-Driven Development, Claude Code, and OpenClaw Fundamentals
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+Course Details
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Course Name: AI-Driven Development, Claude Code, and OpenClaw Fundamentals
+Course Code: AI-101
+
+URL: https://panaversity.org/
+URL: https://panaversity.org/courses/AI-101
+Agentic AI Book: URL:https://agentfactory.panaversity.org/
+
+
+
+
+
+
+Lecture 1:  Orientation Session [22-May-2026]
+======================================================================================================================================================
+======================================================================================================================================================
+- From AI as a tool TO AI as a Worker.
+- AI Worker: one worker for one task, like one AI worker for sales, marketing etc etc
+
+- Three Levels of AI
+- What is Agentic AI
+  - What is AI Agent Factory
+  - Why It Is Called a Factory:
+  - Main Components of an AI Agent Factory
+- The Agent Factory: Produce AI Workers
+- AI Native Company: Where AI Workers are working
+  - The 7 Golden Rules of an AI Company
+- 10-80-10 Rule
+- Two-Layer Model
+- Digital Worker / AI Employee / AI Worker / Digital FTE (Digital Full-Time Equivalent)
+- AI delegate (Assistant)
+  - AI Delegate (identic AI)
+- Identic AI: AI that understands you deeply and acts according to your identity, thinking style, values, and goals.
+
+
+Lecture 2: Prompting & LLMs [5-June-2026]
+======================================================================================================================================================
+======================================================================================================================================================
+Topic Covered:
+- AI Prompting
+- LLMs
+
+Assignment:
+Task 1 — Lab Document Practice & Prompting Report 
+Task 2 — AI Generated Snake Game 
+Task 3 — Lecture Slide Generation Using LLMs 
+
+- Prompting lab report, AI-built Snake game, and LLM-generated lecture slides.
+- 3 tasks — prompting report, Snake game, slides. 
+- Start Date = Jun 6, 2026
+- Due Date = Fri 2026-06-12
+
+
+Assignment Main Document:
+- Go to: https://panaversity.org/
+- Login with your Account
+- Click on your course: Course Code: AI-101
+- Click on "My Projects"
+- Click on "View Details"  link showing against "Class2  Lecture 2 — Prompting & LLMs"
+- This page will provide you Assignment description and Deadline
+- Click on "View Project repository"
+- Assignment Document will be displayed.
+- Now you have to do the assignment as per this document
+
+
+
+Task 1:
+PDF Link: https://github.com/panaversity/agentfactory-labs/blob/main/AI-101/ai-promptingin-2026/ai-prompting-lab.pdf 
+
+
+
+
+Lecture 3:  7-June-2026
+======================================================================================================================================================
+======================================================================================================================================================
+- AI Prompting in 2026
+- Explore different Models in Gemini
+- Using Google AI Studio >> Create an app >> start with a basic thing >> then we can improve it
+- Google AI Studio
+- Playground
+- System Instructions
+  * System instructions (you can configure LLM as per your preferences)
+  * e.g: you will always respond in a funny way.
+  * you can define restrictions in system instructions
+  * Same settings can also be done in ChatGPT
+
+Temperature:
+- Creativity level in responses
+- it controls the creativity of LLM (by increasing temperature)
+- for English writing, you can increase temperature, becoz you need creativity.(e.g. story writing, brainstorming etc)
+- for Math, we can set temperature at 0. (we want to follow step by step), merey prompt sy agay peachy na ho
+- if we want our response to adhere to our prompt, then we can reduce the temperature, khud sy koi cheze na lay.
+- if we want, that model can bring his ideas, then we can increase temperature.
+- it sets the internal behavior of LLM
+- Thinking Hard feature is not similar to Temperature.
+
+
+Assignment:
+- Build any app or game using AI.
+- Submit within 1 week — due June 15.
+- Assignment Details: https://drive.google.com/file/d/1pvaChwJAQgtDY4uoaLY9p1YhTLoPRfgR/view
+- Start Date = Jun 8, 2026
+- Due Date   = Jun 15, 2026
+
+
+
+
+Lecture 4:  12-June-2026
+======================================================================================================================================================
+======================================================================================================================================================
+- How to install and run claude code agent on local machine.
+- draw a diagram on tldraw.com
+- Topic: The Agent AI is the new Operating Layer
+- RTX SPARK launched by NVIDIA (computer chip/CPU). NVIDIA launched CPU
+- what is Petaflop? computing power will be improved, multiple agents could be started on a single machine.
+- SaaS is dying out slowly. our agent will be using that service now, like calendly
+- Your PC also dies: your agent will be using it, you stop operating the machine.
+- Agent will be up, and we will tell agent, that i want this file to be open on my machine.
+- Agent will work on our behalf.
+- The Saaspocalypse
+- Old Model: humans use apps directly
+- AI Operating Layer
+- General Agents
+   * you gave him a task, it performed and finish, like ChatGPT
+   * Claude Code   = For Developers
+   * Claude Cowork = For Workers like Finance workers etc
+- Personal Agents
+   * Personal agent will work 24/7 for you.
+   * OpenClaw, Hermes
+   * you can connect your personal agent with your whatsapp
+- RTX SPark: The Personal Agent PC
+- Study Agent Factory Thesis
+
+
+Lecture 5:  19-June-2026
+======================================================================================================================================================
+======================================================================================================================================================
+- Markdown In HTML Out
+- Prompt should be written in Markdown
+- We will send prompt in Markdown and AI will give response in HTML, becoz HTML is required for humans.
+- Prompt is for AI = Markdown
+- Response from AI is for humans = HTML
+
+
+Lecture 6:  21-June-2026
+======================================================================================================================================================
+======================================================================================================================================================
+- Slides: Code you never write
+- Agent Factory >> Crash course link
+
+- VPRF
+- ANswer Problem
+- Code Problem
+- Commissioning Code 	
+- Three Line Incantation
+- GO to the Link: COde you never Write in Agent Factory Book, at the end of this link, there are four projects, you have to complete these four tasks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
