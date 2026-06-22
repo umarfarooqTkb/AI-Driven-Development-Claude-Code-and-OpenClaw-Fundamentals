@@ -141,26 +141,43 @@ Lecture 4:  12-June-2026
 - Study Agent Factory Thesis
 
 
-
 Lecture 5:  19-June-2026
 ======================================================================================================================================================
 ======================================================================================================================================================
-1. HTML and Markdown,  Practice on https://markdownlivepreview.com/
-2. Your prompt should be like this for creating an application
+1. HTML and Markdown, Markdown In HTML Out,  Practice on https://markdownlivepreview.com/
+2. Prompt should be written in Markdown
+   - We will send prompt in Markdown and AI will give response in HTML, becoz HTML is required for humans.
+   - Prompt is for AI = Markdown
+   - Response from AI is for humans = HTML
+3. Your prompt should be like this for creating an application
    * Goal
    * Context
    * Requirements
    * Hard Constraints
    * Out of Scope
    * Expected Output
-3.  Give all of your data to AI, ask AI to organize it
-4. Requesting HTML
-5. GitHub Pages
-6. GitHub Gist
-7. Netlify  	# For Hosting
-8. Vercel	# For Hosting
+4.  Give all of your data to AI, ask AI to organize it
+5. Requesting HTML
+6. GitHub Pages
+7. GitHub Gist
+8. Netlify  	# For Hosting
+9. Vercel	# For Hosting
 
 
+
+
+Lecture 6:  21-June-2026
+======================================================================================================================================================
+======================================================================================================================================================
+- Slides: Code you never write
+- Agent Factory >> Crash course link
+
+- VPRF
+- ANswer Problem
+- Code Problem
+- Commissioning Code 	
+- Three Line Incantation
+- GO to the Link: COde you never Write in Agent Factory Book, at the end of this link, there are four projects, you have to complete these four tasks
 
 
 
