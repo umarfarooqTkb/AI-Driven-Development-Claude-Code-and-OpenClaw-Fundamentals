@@ -20,7 +20,7 @@ To Do
 
 
 
-<<<<<<< HEAD
+
 Lecture 1:  Orientation Session [22-May-2026]
 ======================================================================================================================================================
 ======================================================================================================================================================
@@ -30,8 +30,7 @@ Lecture 1:  Orientation Session [22-May-2026]
 - AI Native Company: Where AI Workers are working
 - AI delegate (Assistant)
 - Identic AI: AI that understands you deeply and acts according to your identity, thinking style, values, and goals.
-=======
->>>>>>> cef46d1a4ccb2514fa4981c3b78aa9a6952fb6df
+
 
 - https://github.com/panaversity/agentfactory-labs
 
@@ -395,12 +394,12 @@ The 7 Golden Rules of an AI Company
 
 
 
-<<<<<<< HEAD
+
 
 Lecture 2: Prompting & LLMs [5-June-2026]
-=======
 ======================================================================================================================================================
->>>>>>> cef46d1a4ccb2514fa4981c3b78aa9a6952fb6df
+======================================================================================================================================================
+
 ======================================================================================================================================================
 ======================================================================================================================================================
 Topic Covered:
@@ -429,10 +428,6 @@ Assignment Main Document:
 - Click on "View Project repository"
 - Assignment Document will be displayed.
 - Now you have to do the assignment as per this document
-
-								Prompting
-
-<<<<<<< HEAD
 
 Task 1:
 PDF Link: https://github.com/panaversity/agentfactory-labs/blob/main/AI-101/ai-promptingin-2026/ai-prompting-lab.pdf 
@@ -703,9 +698,7 @@ Assignment:
 
 
 Langchain
-=======
 ======================================================================================================================================================
->>>>>>> cef46d1a4ccb2514fa4981c3b78aa9a6952fb6df
 ======================================================================================================================================================
 - Prompting is the way you communicate with an AI system to get useful results.
 - A prompt can be 
