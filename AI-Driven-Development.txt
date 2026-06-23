@@ -399,13 +399,9 @@ The 7 Golden Rules of an AI Company
 Lecture 2: Prompting & LLMs [5-June-2026]
 ======================================================================================================================================================
 ======================================================================================================================================================
-
-======================================================================================================================================================
-======================================================================================================================================================
 Topic Covered:
  - AI Prompting
  - LLMs
-
 
 Assignment:
 Task 1 — Lab Document Practice & Prompting Report 
@@ -431,226 +427,6 @@ Assignment Main Document:
 
 Task 1:
 PDF Link: https://github.com/panaversity/agentfactory-labs/blob/main/AI-101/ai-promptingin-2026/ai-prompting-lab.pdf 
-
-
-
-Prompting
-======================================================================================================================================================
-======================================================================================================================================================
-- Prompting is the way you communicate with an AI system to get useful results.
-- A prompt can be 
-   * A question
-   * An instruction
-   * A task
-   * A role
-   * A format request
-   * An example.
-
-- AI prompting is the skill of giving clear, structured instructions to an AI model so it can understand the task, follow rules, and produce the desired result.
-- AI prompting means giving clear instructions to an AI model so it can understand what you want and produce the right output.
-
-Weak Prompt vs Good Prompt:
-- Weak prompt:   Write about AI agents.
-- Better prompt: Explain AI agents in simple words for a beginner. Use examples from HR and customer support. Keep the answer short and practical.
-
-Why is it better?
-- Defines audience
-- Provides context
-- Sets expectations
-- Controls output length
-
-
-What Makes a Good Prompt?
-- A good prompt usually includes these parts:
-
-| Prompt Part | Purpose                           | Example                                     |
-| ----------- | --------------------------------- | ------------------------------------------- |
-| Role        | Tell AI who it should act as      | Act as an Agile Product Owner               |
-| Task        | Tell AI what to do                | Create user stories                         |
-| Context     | Provide background information    | This is for an attendance monitoring system |
-| Rules       | Define boundaries and constraints | Avoid technical details                     |
-| Format      | Specify output structure          | Use a table                                 |
-| Example     | Show expected style or pattern    | Use Given/When/Then format                  |
-| Tone        | Define communication style        | Professional, Friendly, Formal              |
-
-
-
-Prompt Formula: You can use this simple formula:
-======================================================================================================================================================
-Act as [role].
-
-I need [task].
-
-Context:
-[background information]
-
-Requirements:
-[rules and constraints]
-
-Output Format:
-[table/list/document]
-
-Tone:
-[Professional/Friendly/Concise/Urgent]
-
-
-
-
-Example Prompt:
-======================================================================================================================================================
-Act as an AI Agent Factory consultant.
-
-I want to build an Attendance Monitoring AI Agent.
-
-Context:
-Employees send WhatsApp messages when they are late, on leave, half-day, or quarter leave.
-
-Requirements:
-- Classify each message correctly.
-- Prepare a message for HR.
-- Do not approve leave automatically.
-- Ask clarification if the message is unclear.
-- Keep language professional.
-
-Output format:
-Provide agent goal, inputs, outputs, workflow, guardrails, and testing plan.
-
-
-Example of a Good Prompt:
-======================================================================================================================================================
-Prompt:
-Write a plan for my business.
-Act as a Small Business Consultant. I need a 3-month growth plan.
-Context: I run a local bakery with 2 employees.
-Requirements: Focus on low-cost social media marketing only. 
-Output format: A table with weekly goals.
-
-
-
-
-Types of Prompting
-======================================================================================================================================================
-1. Simple Prompting
-2. Role-Based Prompting
-3. Step-by-Step Prompting (Chain of Thought)
-4. Few-Shot Prompting
-5. Structured Prompting
-
-   Advanced Prompting Techniques
-6. Zero-Shot Prompting
-7. One-Shot Prompting
-8. Contextual Prompting
-9. Constraint-Based Prompting
-10. Persona Prompting
-
-
-1. Simple Prompting
-   * You ask a direct question.
-   * Example: What is an AI agent?
-   * Good for quick answers.
-
-
-2. Role-Based Prompting
-   - You ask AI to act as a specific expert.
-   - Example: Act as an HR manager and review this leave policy.
-   - Good when you want domain-specific thinking.
-
-
-3. Step-by-Step Prompting (Chain of Thought)
-   - You ask AI to break down the answer.
-   - Example: Explain this step by step with examples.
-   - Good for learning and complex topics.
-
-
-4. Few-Shot Prompting
-   - You give examples first, then ask AI to follow the same pattern.
-   - Example: Message: I will be late today.
-   - Output: Status = Late
-   - Message: I am taking half-day after lunch.
-   - Output: Status = Half-day Leave
-   - Now classify this:
-   - Message: I will come after 12 today.
-   - Good for classification tasks.
-
-
-5. Structured Prompting
-- You ask AI to return output in a specific format.
-- Tell AI exactly how the response should be organized.
-
-Example:
-Return the answer in this format:
-Employee Name:
-Status:
-Date:
-HR Message:
-Confidence:
-
-Best For:
-- Good for automation and AI agents.
-- Automation
-- AI Agents
-- Reports
-- Documentation
-
-
-6. Zero-Shot Prompting
-- Ask AI without giving examples.
-
-Example:
-- Explain Scrum to a beginner.
-
-Best For:
-- General knowledge
-- Fast responses
-
-
-
-7. One-Shot Prompting
-- Provide one example before asking the task.
-
-Example:
-Issue: Laptop not turning on
-Category: Hardware
-Now classify:
-Keyboard not working
-
-Best For:
-Simple classification tasks
-
-
-
-
-
-
-
-
-Prompt Engineering Best Practices
-======================================================================================================================================================
-✅ Be specific
-✅ Provide context
-✅ Define output format
-✅ Define constraints
-✅ Assign a role when needed
-✅ Give examples for consistency
-✅ Break complex tasks into smaller tasks
-✅ Tell AI what success looks like
-❌ Avoid vague instructions
-❌ Avoid missing context
-❌ Avoid assuming AI knows your business process
-
-
-
-Golden Rule of Prompting
-======================================================================================================================================================
-- The quality of the AI output is directly related to the quality of the prompt.
-- Better Prompt = Better Output
-- Or simply:
-- Garbage In → Garbage Out (GIGO)
-- Clear Instructions In → High-Quality Results Out
-
-
-
-
 
 
 
@@ -697,7 +473,7 @@ Assignment:
 
 
 
-Langchain
+Prompting
 ======================================================================================================================================================
 ======================================================================================================================================================
 - Prompting is the way you communicate with an AI system to get useful results.
@@ -995,23 +771,6 @@ This is not exact, but it helps for understanding.
 
 
 
-Temperature:
-=======================================================================================================================================================
-=======================================================================================================================================================
-- Creativity level in responses
-- it controls the creativity of LLM (by increasing temperature)
-- for English writing, you can increase temperature, becoz you need creativity.(e.g. story writing, brainstorming etc)
-- for Math, we can set temperature at 0. (we want to follow step by step), merey prompt sy agay peachy na ho
-- if we want our response to adhere to our prompt, then we can reduce the temperature, khud sy koi cheze na lay.
-- if we want, that model can bring his ideas, then we can increase temperature.
-- it sets the internal behavior of LLM
-- Thinking Hard feature is not similar to Temperature.
-
-
-
-
-
-
 
 Langchain
 ======================================================================================================================================================
@@ -1139,7 +898,6 @@ Claude Mythos
 - Claude Mythos is an AI cybersecurity expert model that can help find software vulnerabilities, bugs, and security weaknesses.
 - It is not a normal chatbot like regular Claude. It is a specialized frontier model used in a controlled program called Project Glasswing.
 
-
 What can Claude Mythos do?
 At a high level, it can help with:
 finding security vulnerabilities
@@ -1150,8 +908,6 @@ helping security teams prioritize fixes
 supporting defensive cybersecurity work
 
 Important: it should be used with human security experts, not blindly. IEEE Spectrum reported that experts see value in AI vulnerability discovery, but also warned about false positives, triage burden, and the need fo
-
-
 
 
 Claude Mythos vs Regular Claude
