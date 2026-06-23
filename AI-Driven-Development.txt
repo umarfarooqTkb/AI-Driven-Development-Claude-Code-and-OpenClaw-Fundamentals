@@ -1544,7 +1544,7 @@ Step 5: Configure Upsert (Upsert Document)
 - UPSERTED status in GREEN color should be displayed at the top of DOcument Store.
 - Upsert means Flowise converts your document chunks into vectors and stores them in Pinecone for RAG.
 
-Wait until the status changes from: UPSERTING to something like: SYNC
+Wait until the status changes from: UPSERTING to something like: SYNC or UPSERTED
 or the loading stops.
 Do not click Upsert again while it is still processing.
 
@@ -1563,7 +1563,6 @@ Step 6: Test Retrieval
 - If it returns chunks from the Scrum Guide, your knowledge base is working.
 
 
-
 Step 7: Create the RAG Agent
 - Now create the actual agent.
 - In Flowise, Go to: Agentflows → Add New
@@ -1571,12 +1570,9 @@ Step 7: Create the RAG Agent
 - Name =  Scrum Knowledge Agent
 
 
-
-
 Step 8: Add Agent Node
 - On the canvas: Click + → Add Agent
 - Then connect:  Start → Agent (Scrum Knowledge Agent)
-
 
 
 Step 9: Configure Agent Model
@@ -1627,7 +1623,7 @@ Step 11: Test Agent
 - Click the chat/test icon and ask: According to the uploaded Scrum Guide, what is a Sprint Goal?
 - Then ask: What are the three Scrum accountabilities?
 - Then: What is the difference between Product Goal and Sprint Goal?
-- Enjoy
+- Enjoy & Kill the weaves (mojjaa maroo)
 
 
 
@@ -1724,6 +1720,7 @@ After each question, provide the correct answer and a short explanation.
 - This teaches you that:
 Same knowledge base + different prompt = different agent behavior
 
+# See Project: Scrum Quiz Agent  section for step by step
 
 
 Next Step 5: Build a “Product Owner Coach Agent”
@@ -1738,23 +1735,275 @@ How should a Product Owner prepare for Sprint Planning?
 How does a Product Owner maximize value?
 Create a Product Backlog for an attendance monitoring system.
 
-
-
-
-
-
-
-
-
-
-
-
 Test your agent with 5–10 Scrum questions.
 Check whether source documents are returned.
 Add one more document, such as Product Owner notes.
 Upsert again.
 Ask comparison questions like:
  According to the uploaded documents, what is the difference between Sprint Goal and Product Goal?
+
+
+
+My recommended next 5 projects
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Do them in this order:
+1. Scrum Quiz Agent
+2. Product Owner Coach Agent
+3. Scrum Study Planner Agent with tools
+4. Scrum Implementation Advisor Agent
+5. Multi-Agent Scrum Review Team
+
+
+
+
+
+Project: Scrum Quiz Agent
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Yes — first project after RAG should be: Project 1: Scrum Quiz Agent
+
+This agent will use your existing Scrum Knowledge Base and generate quizzes from your uploaded Scrum documents. 
+Your Agile-Scrum.txt already contains many quiz-worthy topics like Scrum basics, Scrum roles, events, DoD, DoR, Sprint Planning, Daily Scrum, Retrospective, RACI, 
+and Scrum implementation checklists.
+
+
+## Step 1: Go to Agentflows
+- In Flowise Cloud: Agentflows → Add New, Select: Agentflow V2, Name it: Scrum Quiz Agent
+
+
+## Step 2: Create Simple Flow
+- On the canvas, create this: Start → Agent
+- If Agent is not already there: Click + → Add Agent 
+- Connect: Start node → Scrum Quiz Agent node
+
+
+## Step 3: Configure the Agent Model
+- Open the Agent node.
+- In **Model**, select your chat model, for example: Google Gemini
+- Use the same Gemini credential you already created.
+- Recommended basic settings: Temperature: 0.4 or 0.5
+- For a quiz agent, a little creativity is okay, but keep it controlled.
+
+
+## Step 4: Add Agent Instruction
+- In the Agent node, go to: Messages → Add Messages
+- Add a message like this:
+ You are a Scrum Quiz Agent.
+Use the uploaded Scrum Knowledge Base to create quizzes for learners.
+
+You can create:
+- Multiple choice questions
+- Short answer questions
+- Scenario-based questions
+- True/false questions
+
+Rules:
+1. Create questions only from the uploaded Scrum documents.
+2. Give the correct answer after each question.
+3. Explain the answer in simple beginner-friendly language.
+4. If the user asks for difficulty level, create beginner, intermediate, or advanced questions.
+5. If the answer is not found in the uploaded documents, say:
+"I could not find this in the uploaded Scrum documents."
+
+Keep the quiz clear, structured, and easy to study.
+
+
+## Step 5: Attach Your Existing Document Store
+- Inside the same Agent node, scroll to: Knowledge (Document Stores) >> Click: Add Knowledge (Document Stores) >> Select: Scrum Knowledge Base
+- In **Describe Knowledge**, paste:
+This knowledge base contains Scrum Guide notes, Agile/Scrum learning notes, Product Owner notes, Scrum Master notes, Scrum events, Scrum artifacts, Definition of Done, Definition of Ready, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, RACI, Scrum implementation checklists, and Scrum audit material.
+Use this knowledge base to create accurate Scrum quiz questions and explanations.
+
+or
+- In **Describe Knowledge**, paste:
+This knowledge base contains Scrum Guide material, Agile/Scrum learning notes, Scrum roles and accountabilities, Product Owner notes, Scrum Master notes, Scrum events, Scrum artifacts, Definition of Done, Definition of Ready, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, Backlog Refinement, Scrum implementation checklists, Scrum RACI, Scrum anti-patterns, Scrum audits, and Agile/Scrum best practices.
+
+Use this knowledge base whenever the user asks for Scrum quiz questions, exam preparation questions, multiple-choice questions, true/false questions, short-answer questions, scenario-based questions, role-based questions, or Scrum certification practice questions.
+
+When creating quiz questions, base the questions and answers on this knowledge base. Provide the correct answer and a short beginner-friendly explanation. If the answer is not found in the uploaded Scrum documents, say that the information was not found in the uploaded Scrum knowledge base.
+
+- Turn on: Return Source Documents
+
+
+## Step 6: Save the Agent
+Click:Save 
+
+
+## Step 7: Test the Quiz Agent
+- Ask: Create 10 beginner-level Scrum quiz questions.
+- Then test: Create 5 multiple choice questions about Scrum accountabilities.
+- Then: Create 5 scenario-based questions about Sprint Planning.
+- Then:Create a quiz on Definition of Done and Definition of Ready.
+
+
+## Step 8: Check Quality
+- Your quiz agent is working well if it:
+- Creates questions from your documents
+- Shows correct answers
+- Explains answers simply
+- Returns source documents
+- Does not invent fake Scrum rules
+
+## Important
+For this project, you do **not** need to create a new Pinecone index.
+Use the same: Scrum Knowledge Base
+
+The idea is: Same Document Store + Different Agent Prompt = Different Agent Behavior
+Your first test should be: Create 10 beginner-level Scrum quiz questions with answers and explanations.
+++++++++++++++++++++++++++++++++++++++++++++++++++++   End of -- Project: Scrum Quiz Agent   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+Project: Scrum Study Planner Agent
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+This agent will help you create a study plan, daily schedule, weekly goals, and revision plan using your Scrum Knowledge Base. 
+Your uploaded Scrum notes already contain Scrum basics, roles, events, DoD, DoR, Sprint Planning, Daily Scrum, Sprint Review, Retrospective, 
+RACI, audit checklists, and implementation material, 
+so this is a good project
+
+This agent will help you create a **study plan**, **daily schedule**, **weekly goals**, and **revision plan** using your Scrum Knowledge Base. Your uploaded Scrum notes already contain Scrum basics, roles, events, DoD, DoR, Sprint Planning, Daily Scrum, Sprint Review, Retrospective, RACI, audit checklists, and implementation material, so this is a good project. 
+
+
+## Goal of this Agent
+This agent should answer things like:
+- Create a 30-day Scrum learning plan for me.
+- I can study 1 hour daily. Make a weekly Scrum study schedule.
+- Prepare me for Product Owner learning in 4 weeks.
+- Create a study plan for DoD, DoR, Sprint Planning, and Scrum events.
+
+# Step 1: Create New Agentflow
+- Go to Flowise Cloud: Agentflows → Add New, Select: Agentflow V2
+- Name it: Scrum Study Planner Agent
+
+# Step 2: Create Simple Flow
+- Create this flow: Start → Agent
+- If the Agent node is not already there: Click + → Add Agent
+- Connect: Start → Agent
+
+# Step 3: Configure Chat Model
+- Open the **Agent** node.
+- Choose your chat model: Google Gemini or whichever model you are already using successfully.
+- Recommended setting: Temperature: 0.4
+  Why?
+  0.2 = very strict
+  0.4 = balanced planning
+  0.8 = too creative
+  For study plans, `0.4` is good.
+
+# Step 4: Add Agent Input Message
+- In the Agent node, find: Input Message and Paste this:
+You are a Scrum Study Planner Agent.
+
+Your job is to help the user learn Scrum, Agile, Product Owner skills, Scrum Master skills, Scrum events, Scrum artifacts, DoD, DoR, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, Scrum implementation, and Scrum audit topics.
+
+Use the uploaded Scrum Knowledge Base as your main source.
+
+When creating a study plan:
+1. Ask about available study time if the user has not provided it.
+2. Break the plan into days or weeks.
+3. Start with fundamentals before advanced topics.
+4. Include reading tasks, revision tasks, practice questions, and reflection tasks.
+5. Keep the plan realistic for a beginner.
+6. Include checkpoints to review progress.
+7. If the user asks for certification preparation, organize the plan around exam readiness.
+8. If information is not found in the uploaded documents, clearly say:
+"I could not find this in the uploaded Scrum documents."
+
+Answer in a clear, structured, beginner-friendly way.
+
+
+# Step 5: Attach Your Scrum Knowledge Base
+- Inside the Agent node, scroll to: Knowledge (Document Stores)
+- Click: Add Knowledge (Document Stores) >> Select your existing: Scrum Knowledge Base
+- In **Describe Knowledge**, paste this:
+This knowledge base contains Scrum Guide material, Agile/Scrum notes, Product Owner learning material, Scrum Master notes, Scrum roles/accountabilities, Scrum events, Scrum artifacts, Definition of Done, Definition of Ready, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, Backlog Refinement, Scrum implementation checklists, Scrum RACI, Scrum audits, and Scrum anti-patterns.
+
+Use this knowledge base to create learning plans, study schedules, revision plans, topic sequencing, quiz preparation, and Scrum certification preparation roadmaps.
+
+Enable: Return Source Documents
+This helps you confirm that the planner is using your uploaded documents.
+
+
+# Step 6: Enable Memory
+- If your Agent node has a **Memory** option, enable it. Why?
+- Because this type of agent should remember things like:
+User studies 1 hour daily
+User is focusing on Product Owner
+User wants beginner-level explanations
+User is preparing for Scrum certification
+
+If memory options appear, use the default memory setting first. Do not overconfigure.
+
+
+# Step 7: Tools — Keep It Simple First
+- For the first version, do **not** add tools.
+- Your first version should be: Start → Agent + Knowledge Base
+- Once this works, later you can add tools like:
+Calculator
+Date/Time
+Web Search
+
+But for now, keep it simple.
+
+
+# Step 8: Save the Agent
+- Click: Save
+
+
+# Step 9: Test the Agent
+- Ask these questions one by one: Create a 30-day Scrum study plan for a beginner.
+I can study 1 hour daily. Create a 4-week Scrum study schedule.
+Create a 2-week study plan for Product Owner responsibilities.
+Create a weekly plan to learn DoD, DoR, Sprint Planning, Daily Scrum, Review, and Retrospective.
+Create a study plan for becoming strong in Scrum implementation.
+
+
+# Step 10: Check Whether It Works Properly
+- Your agent is working well if it:
+Uses your uploaded Scrum documents
+Creates realistic study plans
+Starts from basic topics
+Adds revision and practice
+Does not invent unrelated Scrum content
+Returns source documents
+
+
+# Version 2 Later: Add Tools
+- After this basic version works, upgrade it.
+- Add: Calculator Tool
+- Purpose:
+Calculate total study hours
+Divide topics by available days
+Estimate weekly workload
+
+Example prompt after adding calculator:
+I have 45 days and can study 1.5 hours daily. Create a Scrum study plan and calculate total study hours.
+But first build the simple version. Your current target is:
+Scrum Study Planner Agent = RAG + Planning Prompt + Scrum Knowledge Base
+```
++++++++++++++++++++++++++++++++++++++++++++++++ End of -- Project: Scrum Study Planner Agent  ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ++++++++++++++++++++++++++++++++  End of -- Flowise Step by Step: Creating Agent for Document Store (RAG) - 15June2026  +++++++++++++++++++++++++++++++
