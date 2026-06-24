@@ -1252,8 +1252,44 @@ AGENTS.md / CLAUDE.md: Configuration files that tell your AI agent the rules of 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+ToC
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- WHat is flowsie
+- Flowise Installation
+- Flowise Uninstallation
+- FLowise Learning Level 1: Flowise Step by Step: Creating First Agent
+- Flowise Learning Level 2: Creating Agent for Document Store (RAG) - 15June2026 
+- Flowise Learning Level 3: Tool-Using Agent
+- Flowise Learning Level 4: 
+- Flowise Troubleshooting
+
+
+
+
+
+
+
+What is flowise
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Flowise is an open-source visual AI workflow builder that lets you create chatbots, AI agents, RAG systems, and LangChain workflows without writing much code.
 
+
+
+
+
+
+
+
+
+
+
+Flowise Installation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Method 1: Install Flowise Using NPM (Recommended)
 Method 2: Run Without Installation
 Method 3: Docker Installation
@@ -1335,7 +1371,44 @@ docker compose up -d
 
 
 
-Flowise Step by Step: Creating First Agent
+
+
+
+Flowise Uninstallation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+From Ubuntu 24.04 (if installed via NPM
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+npm list -g --depth=0 | grep flowise
+If you see Flowise, uninstall it:
+npm uninstall -g flowise
+Verify: which flowise
+It should return nothing.
+
+Flowise stores data in: ~/.flowise
+Remove it: rm -rf ~/.flowise
+
+Check if Flowise is Completely Removed: flowise
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Flowise Step by Step: Creating First Agent - Learning Level 1
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Step 1: Add your API credential
@@ -1461,7 +1534,13 @@ Start with this simple flow first. Once it works, we can add Tools, Document Sto
 
 
 
-Flowise Step by Step: Creating Agent for Document Store (RAG) - 15June2026
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Flowise Step by Step: Creating Agent for Document Store (RAG) - 15June2026 - Learning Level 2
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Flowise Cloud + Gemini + Pinecone
@@ -1985,28 +2064,11 @@ Example prompt after adding calculator:
 I have 45 days and can study 1.5 hours daily. Create a Scrum study plan and calculate total study hours.
 But first build the simple version. Your current target is:
 Scrum Study Planner Agent = RAG + Planning Prompt + Scrum Knowledge Base
-```
+
 +++++++++++++++++++++++++++++++++++++++++++++++ End of -- Project: Scrum Study Planner Agent  ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-++++++++++++++++++++++++++++++++  End of -- Flowise Step by Step: Creating Agent for Document Store (RAG) - 15June2026  +++++++++++++++++++++++++++++++
++++++++++++++++++++++++  End of -- Flowise Step by Step: Creating Agent for Document Store (RAG) - 15June2026 - Learning Level 2 +++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -2024,19 +2086,362 @@ Scrum Study Planner Agent = RAG + Planning Prompt + Scrum Knowledge Base
 
 
 
-Flowise Uninstallation
+
+
+
+
+
+
+
+
+
+
+
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-From Ubuntu 24.04 (if installed via NPM
+						  Flowise Learning Level 3: Tool-Using Agent (RAG + Tools)
+						    
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-npm list -g --depth=0 | grep flowise
-If you see Flowise, uninstall it:
-npm uninstall -g flowise
-Verify: which flowise
-It should return nothing.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+You already built a Knowledge Agent / RAG Agent, which can answer from uploaded documents.
 
-Flowise stores data in: ~/.flowise
-Remove it: rm -rf ~/.flowise
+Now we will build an agent that can use tools. 
+In Flowise Agentflow V2, the Agent node can use both Tools and Document Stores to complete tasks, while Tool nodes can directly execute a specific capability in the workflow.
 
-Check if Flowise is Completely Removed: flowise
+
+
+Project: Scrum Study Planner Agent with Calculator Tool
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+You already built a **Knowledge Agent / RAG Agent**, which can answer from uploaded documents.
+
+Now we will build an agent that can **use tools**. 
+In Flowise Agentflow V2, the Agent node can use both **Tools** and **Document Stores** to complete tasks, while Tool nodes can directly execute a specific capability in the workflow. 
+
+### Goal: This agent should:
+Read Scrum knowledge from your Document Store
+Ask about study time if missing
+Calculate total available study hours
+Create a realistic Scrum study plan
+Break plan into days/weeks
+Add revision and practice tasks
+
+Example user question:
+I have 30 days and can study 1 hour daily. Create a Scrum study plan.
+
+Agent should calculate: 30 days × 1 hour = 30 total study hours
+Then create a plan.
+
+# Step 1: Create New Agentflow
+- Go to:  Agentflows → Add New → Agentflow V2
+- Name it: Scrum Study Planner Agent
+
+# Step 2: Create Simple Flow
+- Use this flow: Start → Agent
+- That is enough for the first version.
+
+# Step 3: Configure Agent Model
+- Open the Agent node.
+- Select a normal chat model, for example:
+  Gemini 2.0 Flash
+  Gemini 1.5 Flash
+  GPT-4o mini
+
+Do **not** use an image-preview model for this agent.
+Recommended settings:
+Temperature: 0.3 or 0.4
+
+# Step 4: Add Tool
+- Inside the Agent node, find: Tools → Add Tools
+- Add: Calculator
+- This will allow the agent to calculate study hours, days, weeks, and workload.
+
+# Step 5: Attach Scrum Knowledge Base
+- Inside the same Agent node: Knowledge (Document Stores) → Add Knowledge
+- Select: Scrum Knowledge Base
+- Use only the Document Store that shows: SYNC
+Do not use a Document Store that is still stuck on `UPSERTING`.
+
+In **Describe Knowledge**, paste:
+This knowledge base contains Scrum Guide material, Agile/Scrum learning notes, Scrum roles and accountabilities, Scrum events, Scrum artifacts, Definition of Done, Definition of Ready, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, Product Owner notes, Scrum Master notes, and Scrum implementation material.
+
+Use this knowledge base to create Scrum study plans, learning roadmaps, daily study schedules, weekly goals, revision plans, practice tasks, and certification preparation plans.
+
+Turn on: Return Source Documents
+
+
+# Step 6: Add Agent Instructions
+In **Messages / Input Message**, paste this:
+You are a Scrum Study Planner Agent.
+Your job is to help the user create realistic Scrum learning plans using the uploaded Scrum Knowledge Base.
+
+When the user asks for a study plan:
+1. Use the Calculator tool when calculation is needed.
+2. Calculate total available study hours if days and daily hours are provided.
+3. If study time is missing, ask the user how many days and how many hours per day they can study.
+4. Start with Scrum fundamentals before advanced topics.
+5. Include reading, revision, practice questions, and reflection tasks.
+6. Break the plan into days or weeks.
+7. Keep the plan beginner-friendly and practical.
+8. Use the uploaded Scrum Knowledge Base as the main source.
+9. If the answer is not found in the uploaded documents, say:
+"I could not find this in the uploaded Scrum documents."
+
+Return clear, structured answers.
+
+
+# Step 7: Save and Test
+- Click: Save, Then test with:
+- I have 30 days and can study 1 hour daily. Create a Scrum study plan.
+Then test:
+I have 4 weeks and can study 5 hours per week. Create a Scrum study plan for Product Owner learning.
+
+Then:Create a 2-week study plan for Scrum events, DoD, DoR, and Sprint Planning.
+
+
+
+++++++++++++++++++++++++++++++++++++++++     End of -  Flowise Learning Level 3: Tool-Using Agent (RAG + Tools)  +++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+						  Flowise Learning Level 4: Workflow Agent
+						    
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- A Workflow Agent is different from a normal agent.
+- A normal agent decides everything by itself.
+- A workflow agent follows a fixed process that you design.
+- Flowise Agentflow V2 supports this kind of structured workflow, including nodes such as Agent, LLM, Tool, Condition, and other workflow-control nodes. 
+- A Tool node can also execute a specific selected tool directly instead of letting the agent decide dynamically.
+
+
+Project: Scrum Study Plan Workflow
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+We will build this flow:
+Start
+  ↓
+LLM Node: Understand user request
+  ↓
+Agent Node: Search Scrum Knowledge Base
+  ↓
+LLM Node: Create structured study plan
+  ↓
+End
+
+# This teaches you controlled AI workflow.
+
+What this agent will do: 
+User asks: I have 30 days and can study 1 hour daily. Create a Scrum study plan.
+The workflow will:
+1. Understand the request
+2. Use Scrum Knowledge Base
+3. Create a proper study plan
+4. Format the final answer
+
+
+
+Step 1: Create New Agentflow
+- Go to: Agentflows → Add New
+- Choose: Agentflow V2
+- Name it: Scrum Study Workflow Agent
+
+
+
+Step 2: Create the Workflow Structure
+- Create this structure: Start → LLM Node → Agent Node → LLM Node → End
+- Use these names:
+Start
+↓
+Analyze Study Request
+↓
+Scrum Knowledge Agent
+↓
+Final Study Plan Generator
+↓
+End
+
+
+
+Step 3: Configure First LLM Node
+- Node name: Analyze Study Request
+- Purpose: Understand what the user wants.
+- Prompt / Input Message:
+Analyze the user's Scrum study request.
+Extract:
+1. Study duration
+2. Daily or weekly available time
+3. Target topic
+4. Learning level
+5. Output format requested
+
+If any important information is missing, mention what is missing.
+
+User request:
+{{ question }}
+
+
+#This node does not need Document Store.
+
+
+
+Step 4: Configure Agent Node
+- Node name: Scrum Knowledge Agent
+- Attach your: Scrum Knowledge Base
+- Describe Knowledge:
+This knowledge base contains Scrum Guide material, Agile/Scrum learning notes, Scrum roles and accountabilities, Scrum events, Scrum artifacts, Definition of Done, Definition of Ready, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, Product Owner notes, Scrum Master notes, and Scrum implementation material.
+
+Use this knowledge base to find the correct Scrum topics and learning sequence for study plans.
+
+
+- Agent instruction:
+You are a Scrum Knowledge Agent.
+Use the uploaded Scrum Knowledge Base to identify the most relevant Scrum topics for the user's study request.
+Return:
+1. Relevant Scrum topics
+2. Recommended learning order
+3. Important concepts to include
+4. Any warnings or gaps
+Do not create the final study plan. Only provide knowledge-based guidance.
+
+
+
+Step 5: Configure Final LLM Node
+- Node name: Final Study Plan Generator
+- Purpose: Create the final polished plan.
+- Prompt:
+Create a beginner-friendly Scrum study plan using the user's original request and the Scrum Knowledge Agent's output.
+The plan must include:
+1. Total study duration
+2. Total available study hours
+3. Weekly or daily breakdown
+4. Topics to study
+5. Reading tasks
+6. Practice tasks
+7. Revision checkpoints
+8. Final review activity
+Keep the plan practical and easy to follow.
+Use this context from the previous node:
+{{ previousNodeOutput }}
+
+- The variable name may look different in Flowise depending on the node output selector. 
+- If Flowise shows a variable picker, choose the output from the Scrum Knowledge Agent node.
+
+
+
+Step 6: Save and Test
+- Test with: I have 30 days and can study 1 hour daily. Create a Scrum study plan.
+- Then test: Create a 2-week study plan for Scrum events, DoD, DoR, and Sprint Planning.
+Then:
+I have 4 weeks and want to focus on Product Owner skills. Make a study plan.
+
+
+
+
+## What you are learning in Level 4
+You are learning:Controlled AI workflow
+Before:One Agent does everything
+Now:
+Step 1: Analyze
+Step 2: Retrieve knowledge
+Step 3: Generate final output
+
+This is more reliable than one big agent because each node has a clear job.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++     End of - Flowise Learning Level 4: Workflow Agent  +++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Flowise Troubleshooting
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- A large txt file was upload in document store, and stuck in "Upsert Chunks" process.
+- Flowise tried to process one huge text file as one giant chunk, so it got stuck.
+
+- Go back to Flowise >> Document Store >> select the file, creating problem >> click: options -> Delete
+- Do not delete the whole Document Store. Only delete the TXT file loader.
+- Then upload the TXT file again, but this time add a splitter.
+- Use: 
+  Recursive Character Text Splitter in Splitter settings
+  Chunk Size: 1500
+  Chunk Overlap: 200
+- After processing, it should not show: Chunks: 1
+- It should show something like: Chunks: 100+ or more
+- Then click:
+   Options → Upsert Chunks
+   Save Config → Upsert
+- After successful upsert, Pinecone record count should increase from: 30 to something higher, like 130, 200, 250, 500
+  depending on how many chunks Flowise creates.
+
+
+
+
+
+
+
+
+Level 3 - Tool Agent
+Level 4 - Multi-Agent
+
+
+
+
+
+
+
+
+
+
+
+
