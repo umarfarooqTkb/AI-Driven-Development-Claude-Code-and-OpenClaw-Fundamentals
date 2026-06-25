@@ -7,7 +7,6 @@
 ======================================================================================================================================================
 
 
-
 To Do
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Cursor SDK
@@ -19,20 +18,13 @@ To Do
 
 
 
-
-
-Lecture 1:  Orientation Session [22-May-2026]
-======================================================================================================================================================
-======================================================================================================================================================
-- From AI as a tool TO AI as a Worker.
-- AI Worker: one worker for one task, like one AI worker for sales, marketing etc etc
-- The Agent Factory: Produce AI Workers
-- AI Native Company: Where AI Workers are working
-- AI delegate (Assistant)
-- Identic AI: AI that understands you deeply and acts according to your identity, thinking style, values, and goals.
-
-
+References
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - https://github.com/panaversity/agentfactory-labs
+
+
+
+
 
 
 Table Of Contents
@@ -470,10 +462,11 @@ Assignment:
 
 
 
+======================================================================================================================================================
+======================================================================================================================================================
 
+								Prompting
 
-
-Prompting
 ======================================================================================================================================================
 ======================================================================================================================================================
 - Prompting is the way you communicate with an AI system to get useful results.
@@ -772,6 +765,26 @@ This is not exact, but it helps for understanding.
 
 
 
+
+Temperature:
+=======================================================================================================================================================
+=======================================================================================================================================================
+- Creativity level in responses
+- it controls the creativity of LLM (by increasing temperature)
+- for English writing, you can increase temperature, becoz you need creativity.(e.g. story writing, brainstorming etc)
+- for Math, we can set temperature at 0. (we want to follow step by step), merey prompt sy agay peachy na ho
+- if we want our response to adhere to our prompt, then we can reduce the temperature, khud sy koi cheze na lay.
+- if we want, that model can bring his ideas, then we can increase temperature.
+- it sets the internal behavior of LLM
+- Thinking Hard feature is not similar to Temperature.
+
+
+
+
+
+
+
+
 Langchain
 ======================================================================================================================================================
 - LangChain is a framework for building applications that use large language models (LLMs) like OpenAI’s GPT, Claude, or others. 
@@ -794,7 +807,28 @@ Configuration files that provide persistent context to an AI coding agent. They 
 
 
 
+MCP (Model Context Protocol)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+The universal standard that lets any AI agent connect to any external tool: databases, email, calendars, file systems. MCP is the protocol for agents calling tools. For the separate protocol family that handles agents paying for those tools, see Section 11: ACP, AP2, x402, and MPP.
 
+💡 Before USB, every phone had a different charger. MCP is the "USB standard" for AI: one protocol that lets any agent plug into any tool.
+
+
+
+
+Guardrails
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Guardrails: Safety constraints that prevent an agent from doing things it shouldn't.
+
+🔹 A financial agent has a guardrail: no transactions above Rs. 5,000,000 without human approval. Like the barriers on a motorway that keep cars from going off the road.
+
+
+
+RAG (Retrieval-Augmented Generation):
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+RAG (Retrieval-Augmented Generation): Giving AI access to external documents so it answers from facts, not from (potentially wrong) memory.
+
+💡 Taking an open-book exam instead of a closed-book exam. The AI looks up facts in your documents before answering: much more accurate.
 
 
 
@@ -918,6 +952,19 @@ Claude Mythos vs Regular Claude
 | **Claude Code**       | Coding agent/tool that works in your codebase                 |
 | **Claude Mythos**     | Specialized cybersecurity-focused model                       |
 | **Project Glasswing** | Controlled program where trusted partners use Claude Mythos   |
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1080,11 +1127,31 @@ What’s the difference between a vector index and a vector database?
 
 
 
+
+
+
+
+
+
+
+
+
 Pinecone | Vector Database
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Pinecone is a vector database
 - They store the “meaning” of your documents so your AI agent can search them intelligently.
 - They are commonly used in RAG agents.
+- Pinecone is a managed cloud vector database.
+That means:
+- You create an account
+- You create an index
+- You get an API key
+- Flowise connects to it
+
+- You do not need to install it on your computer.
+
+
 
 First understand the problem:
 ++++++++++++++++++++++++++++++++++
@@ -1139,26 +1206,10 @@ One-line mental model:
 
 
 
-Pinecone 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- Pinecone is a managed cloud vector database.
-
-That means:
-- You create an account
-- You create an index
-- You get an API key
-- Flowise connects to it
-
-You do not need to install it on your computer.
-
-
-
-
-
-
 
 
 Chroma
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Chroma is also a vector database.
 - It is popular for local development and open-source RAG projects.
@@ -1180,49 +1231,6 @@ But for Flowise Cloud, Chroma can become confusing because it may require:
 
 
 
-
-
-
-
-MCP (Model Context Protocol)
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-The universal standard that lets any AI agent connect to any external tool: databases, email, calendars, file systems. MCP is the protocol for agents calling tools. For the separate protocol family that handles agents paying for those tools, see Section 11: ACP, AP2, x402, and MPP.
-
-💡 Before USB, every phone had a different charger. MCP is the "USB standard" for AI: one protocol that lets any agent plug into any tool.
-
-
-
-
-Guardrails
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- Guardrails: Safety constraints that prevent an agent from doing things it shouldn't.
-
-🔹 A financial agent has a guardrail: no transactions above Rs. 5,000,000 without human approval. Like the barriers on a motorway that keep cars from going off the road.
-
-
-
-RAG (Retrieval-Augmented Generation):
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-RAG (Retrieval-Augmented Generation): Giving AI access to external documents so it answers from facts, not from (potentially wrong) memory.
-
-💡 Taking an open-book exam instead of a closed-book exam. The AI looks up facts in your documents before answering: much more accurate.
-
-
-
-
-
-
-
-
-
-AGENTS.md / CLAUDE.md
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-AGENTS.md / CLAUDE.md: Configuration files that tell your AI agent the rules of your project: coding standards, preferences, architectural decisions.
-
-💡 The onboarding document you give a new employee: "Here's how we work. Here's our style. Here's what we never do." Loaded into every interaction.
-
-
-
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1235,6 +1243,41 @@ AGENTS.md / CLAUDE.md: Configuration files that tell your AI agent the rules of 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -25,7 +25,6 @@ Lecture 1:  Orientation Session [22-May-2026]
 ======================================================================================================================================================
 - From AI as a tool TO AI as a Worker.
 - AI Worker: one worker for one task, like one AI worker for sales, marketing etc etc
-
 - Three Levels of AI
 - What is Agentic AI
   - What is AI Agent Factory
@@ -37,9 +36,13 @@ Lecture 1:  Orientation Session [22-May-2026]
 - 10-80-10 Rule
 - Two-Layer Model
 - Digital Worker / AI Employee / AI Worker / Digital FTE (Digital Full-Time Equivalent)
-- AI delegate (Assistant)
+- AI Delegate (Assistant)
   - AI Delegate (identic AI)
 - Identic AI: AI that understands you deeply and acts according to your identity, thinking style, values, and goals.
+
+URL for Assignment: - https://github.com/panaversity/agentfactory-labs
+
+
 
 
 Lecture 2: Prompting & LLMs [5-June-2026]
@@ -72,17 +75,15 @@ Assignment Main Document:
 - Now you have to do the assignment as per this document
 
 
-
 Task 1:
 PDF Link: https://github.com/panaversity/agentfactory-labs/blob/main/AI-101/ai-promptingin-2026/ai-prompting-lab.pdf 
-
 
 
 
 Lecture 3:  7-June-2026
 ======================================================================================================================================================
 ======================================================================================================================================================
-- AI Prompting in 2026
+- AI Prompting i 2026
 - Explore different Models in Gemini
 - Using Google AI Studio >> Create an app >> start with a basic thing >> then we can improve it
 - Google AI Studio
@@ -110,7 +111,6 @@ Assignment:
 - Assignment Details: https://drive.google.com/file/d/1pvaChwJAQgtDY4uoaLY9p1YhTLoPRfgR/view
 - Start Date = Jun 8, 2026
 - Due Date   = Jun 15, 2026
-
 
 
 
