@@ -178,22 +178,75 @@ Lecture 6:  21-June-2026
 - Commissioning Code 	
 - Three Line Incantation
 - GO to the Link: COde you never Write in Agent Factory Book, at the end of this link, there are four projects, you have to complete these four tasks
+- Task: Create your Personal Portfolio and present
 
 
 
+Lecture 7:  28-June-2026
+======================================================================================================================================================
+======================================================================================================================================================
+- Skills and Connectors
+- You have given your skills, working style to AI and AI will do it for you.
+- Now AI has to connect with other tools to perform actions, like to connect with Google Drive. Connectors are used for this purpose.
+- Skill will be given to AI once and AI will repeat it again and again.
+- Skill = A folder with a txt file (SKILL.md)
+- SKILL.md
+   * Name
+   * Description
+   * Some Rules/Instructions (written in plain English)
+- Instructions are important, AI will work as given in instructions
+- Calude introduced SKILL and INstructions
+- Open Claude >> customized = skills and connectors >> skill creator
+
+Now Questions is , how to create skills + Instructions
+Skill Creator of claude will do it
+Create a skill for png to webp generator. What i want to do is that  when i upload a png image to Claude it should convert it to webp.
+it will create a folder with SKILL.md file. everything is mentioned in this file.
+I can download this skill.
+i can save this skill.
+
+now lets test this skill:
+open calude >> type >> convert this image to webp, attach a png file
+now it will convert it. it is a very basic level.
+we can enhance it to advance level of skills
+you can instruct calude to use skill, by using / in the chat
 
 
+Connector:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- How AI connects with your data/Apps
+- Also called MCP
+- MCP = Model Context Protocol
 
+- Open Claude >> customize >> Connectors, click on GMAIL >> select your account >> continue >> connected to GMAIL
+- now my Claude account has been connected with my GMAIL Account.
+- Explore Tool permissions
+- Lets test it
+- Open a new chat in Claude and give some chat like, please tell me about the last email i received >> press enter
+- it will tell you about the latest email.
+- Think, if you have to do it via code, it will take weeks.
+- sochoo, if you have to do it 3 years ago, how much code you have to write
+- now you can send another prompt, that " send an email to mufarooq123@gmail.com thanking them for attending class. >> press enter.
+- i can give prompt for sending 1000 emails and it will be done, except SPAM checks.
 
+- In Claude, explore Add New SKill
+- Explore Skill Creator tool
+- Upload Skill
+- Browse skills
+- www.skills.sh >> explore it
+- Also explore connectors, browse connectors
 
+- Skill Vs Connectors Vs Project
+- in Claude, click on Projects Link >> Name >> what are you trying to achieve
+- What is a Project = A prompt window and something for typing instructions
+- you can create snake game instructions, like we will always use REACT or HTML or whatever.
+- app ny jo bhi instructions AI to deni hain, wo yaha per likh dain, AI hamesha yahan sy utha ly ga.
+- Last main Files, which can you use to use files in your project
+- Custom Instructions:
+- you can use custom instructions feature in the settings of chatgpt. now chatgpt will always follow these instructions. like always use VERDANA Font.
+- so all custom instructions given in project will be applied to the project level.
 
-
-
-
-
-
-
-
+- The Real magic : Skills + Connector  (in the agent factory book)
 
 
 
