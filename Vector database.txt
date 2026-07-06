@@ -1,0 +1,252 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+							 Vector Database?
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+- A vector database is a specialized database designed to store, manage, and query "vector embeddings"—mathematical representations of unstructured data like text, images, or audio.
+- A vector database, vector store or vector search engine is a database that stores and retrieves embeddings of data in vector space.
+- A vector database is a specialized database designed to store and manage data as high-dimensional vectors.
+- A vector database indexes and stores vector embeddings for fast retrieval and similarity search, with capabilities like CRUD operations, metadata filtering, 
+  horizontal scaling, and serverless.
+- Use-cases for vector databases include similarity search, semantic search, multi-modal search, recommendations engines, object detection, and retrieval-augmented generation (RAG)
+
+- Vector databases typically implement approximate nearest neighbor algorithms so users can search for records semantically similar to a given input, unlike 
+  traditional databases which primarily look up records by exact match.
+
+- To understand how vector databases operate, it helps to establish two core concepts: vectors, which describe data in numerical form and vector embeddings, 
+  which translate unstructured content into high-dimensional representations that capture meaning and context.
+
+- In traditional databases, we are usually querying for rows in the database where the value usually exactly matches our query.
+- In vector databases, we apply a similarity metric to find a vector that is the most similar to our query.
+
+
+
+Let’s break this down:
+- First, we use the embedding model to create vector embeddings for the content we want to index.
+- The vector embedding is inserted into the vector database, with some reference to the original content the embedding was created from.
+- When the application issues a query, we use the same embedding model to create embeddings for the query and use those embeddings to query the database for 
+  similar vector  embeddings. As mentioned before, those similar embeddings are associated with the original content that was used to create them.
+
+
+Vectors
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Vectors are a subset of tensors. In machine learning (ML), tensor is a generic term for a group of numbers—or a grouping of groups of numbers—in n-dimensional space. Tensors function as a mathematical bookkeeping device for data. Working up from the smallest element:
+
+A scalar is a zero-dimensional tensor, containing a single number. For example, a system modeling weather data might represent a single day’s high temperature (in Fahrenheit) in scalar form as 85.
+
+A vector is a one-dimensional (or first-degree or first-order) tensor, containing multiple scalars of the same type of data. Building on our example, a weather model might use the low, mean and high temperatures for a single day in vector form: 62, 77, 85. Each scalar component is a feature—that is, a dimension—of the vector, representing a feature of that day’s weather.
+
+In other words, vectors are a way of organizing numbers into a structured form. But for AI systems to process that unstructured information, the data must be translated into numerical arrays. This translation is achieved through vector embeddings.
+
+
+
+Vectors embeddings
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Vector embeddings are numerical representations of data points that convert various types of data—including text and images—into arrays of numbers that ML models can process.
+- Vector embeddings are mathematical representations of data in a high-dimensional space.
+- Vector embeddings are numerical representations of data, typically defined as arrays of floating-point numbers. 
+- They translate complex, unstructured data—like text, images, or audio—into a format that machine learning models can process.
+
+By mapping this data into a vector space, embeddings capture semantic meaning; similar items are positioned closer together, while dissimilar items are farther apart. This spatial relationship helps systems to identify connections between data points based on context and meaning rather than just keyword matches.
+
+To achieve this, embedding models learn how to map input data into a high-dimensional vector space. A task‑specific loss function shapes the vector space by quantifying prediction errors. Vector embeddings can then be used by downstream AI models, like neural networks used in deep learning, to perform tasks like classification, retrieval or clustering.
+
+Consider a small corpus of words, where the word embeddings are represented as 3-dimensional vectors:
+
+cat [0.2, -0.4, 0.7]
+dog [0.6, 0.1, 0.5]
+In this example, each word (“cat”) is associated with a unique vector ([0.2, -0.4, 0.7]). The values in the vector represent the word’s position in a 3-dimensional vector space. Words with similar meanings or contexts are expected to have similar vector representations. The vectors for “cat” and “dog” would be close together, reflecting their semantic relationship.
+
+Similarly, the words “car” and “vehicle” share the same meaning but are spelled differently. For an AI application to perform semantic search, the vector representations of “car” and “vehicle” must capture their shared meaning. Vector embeddings encode this meaning numerically, making them the backbone of recommendation engines, chatbots and generative applications like OpenAI’s ChatGPT.
+
+
+
+
+
+How do vector databases work?
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+To facilitate fast and scalable semantic retrieval, vector databases rely on three core functions:
+- Vector storage
+- Vector indexing
+- Vector search
+
+
+Vector storage
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+At a foundational level, vector databases store embeddings. Each has a fixed number of dimensions and is typically stored alongside metadata such as title, source, timestamp or category, which can be queried through metadata filters.
+
+Because embeddings are generated in advance and stored, vector databases can retrieve similar vector embeddings without recomputing representations at query time. This separation of generation and retrieval supports low-latency similarity search at scale.
+
+Many systems also support hybrid search that combines vector similarity with metadata constraints—for instance, retrieving semantically similar documents created within a specific date range or category.
+
+
+
+
+Vector indexing
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+To accelerate similarity search in high-dimensional space, vector databases create indexes on stored vector embeddings. Indexing maps the vectors to new data structures, enabling faster similarity or distance searches between vectors.
+
+These indexes support approximate nearest-neighbor (ANN) search, which retrieves similar vectors without scanning the entire dataset. Common ANN indexing algorithms include hierarchical navigable small world (HNSW) and locality-sensitive hashing (LSH):
+
+HNSW creates a hierarchical, multi-layer graph that uses long-range links in the upper layers and dense local links in the bottom layer.1
+
+LSH groups vectors into buckets through a hash function so that similar vectors fall into the same bucket.
+
+
+In addition to ANN indexes, vector databases often use product quantization (PQ) to reduce memory usage. PQ converts each dataset into a short code that preserves relative distance (rather than storing every vector), allowing systems to store larger collections while maintaining efficient search performance.
+
+
+
+
+
+Vector search
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Vector search is the retrieval layer of a vector database used to discover and compare similar data points. Rather than matching exact keywords or values, it captures the semantic relationships between elements. This context-aware retrieval capability underpins RAG systems, which in turn supply relevant context to AI systems and retrieval-based machine learning models.
+
+When a user prompts an AI model, the model generates an embedding of that query, known as a query vector. The database then compares the query vector against indexed vectors and calculates similarity scores to identify the nearest neighbors.
+
+Vector search applies multiple algorithms to conduct an ANN search. These algorithms are gathered in a pipeline to quickly and accurately retrieve data neighboring the vector that is queried (for example, products that are visually similar in an e-commerce catalog). Because embeddings are precomputed and stored in indexed form, results are returned within milliseconds.
+
+Once the relevant vectors are identified, they’re compared either by calculating their similarity or with a distance metric. Common methods include:
+
+Cosine similarity: Measures the angular distance between vectors to determine how aligned they are in each direction.
+
+Jaccard similarity: Compares the overlap between two sets relative to their total elements.
+
+Dot product: Evaluates similarity based on the magnitude and direction of vectors.
+
+Euclidean distance: Calculates the straight-line distance between vectors in high-dimensional space.
+
+Hamming distance: Counts differing positions between binary vectors.
+
+The database returns the highest-ranking vectors according to these similarity calculations, supporting machine learning tasks such as semantic search and other natural language processing workflows.
+
+
+
+
+
+What’s the difference between a vector index and a vector database?
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Sandalone vector indices like FAISS (Facebook AI Similarity Search) can significantly improve the search and retrieval of vector embeddings, but they lack capabilities 
+  that exist in any database. 
+- Vector databases, on the other hand, are purpose-built to manage vector embeddings, providing several advantages over using standalone vector indices:
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++    End of - What is a Vector Database?    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pinecone | Vector Database
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Pinecone is a vector database
+- They store the “meaning” of your documents so your AI agent can search them intelligently.
+- They are commonly used in RAG agents.
+- Pinecone is a managed cloud vector database.
+That means:
+- You create an account
+- You create an index
+- You get an API key
+- Flowise connects to it
+
+- You do not need to install it on your computer.
+
+
+
+First understand the problem:
+++++++++++++++++++++++++++++++++++
+A normal database stores data like this:
+Name: Umar
+City: Lahore
+Age: 30
+
+But in RAG, we want the AI to search meaning.
+Example document text: The Product Owner is accountable for maximizing product value.
+User asks: Who is responsible for product value in Scrum?
+
+The words are different, but the meaning is related.
+A normal database may not understand this well.
+A vector database can.
+
+What happens in RAG?
++++++++++++++++++++++++++++++++++++
+Your PDF is processed like this:
+
+PDF / TXT / DOC
+      ↓
+Split into chunks
+      ↓
+Convert each chunk into embeddings
+      ↓
+Store embeddings in Pinecone or Chroma
+      ↓
+User asks question
+      ↓
+Vector database finds relevant chunks
+      ↓
+LLM gives final answer
+
+
+
+
+What is an embedding?
+An embedding is a numerical representation of meaning.
+Example: Sprint Goal becomes something like:
+[0.21, -0.45, 0.88, 0.13, ...]
+
+This long list of numbers represents the meaning of the text.
+The vector database stores these numbers.
+
+
+One-line mental model:
+- Gemini Embedding = converts document text into numbers
+- Pinecone/Chroma = stores those numbers
+- Flowise Agent = uses those stored meanings to answer questions
+
+
+
+
+
+
+Chroma
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Chroma is also a vector database.
+- It is popular for local development and open-source RAG projects.
+- You can run it using Docker:
+  * docker run -p 8000:8000 chromadb/chroma
+
+
+Chroma is good because:
+- Open-source
+- Good for local testing
+- Can run on your own machine
+- No cloud account required for local use
+
+But for Flowise Cloud, Chroma can become confusing because it may require:
+- Chroma API Key
+- Tenant
+- Database
+- Chroma URL
+
+
