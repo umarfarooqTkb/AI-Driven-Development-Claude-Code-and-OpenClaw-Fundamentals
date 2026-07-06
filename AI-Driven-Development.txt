@@ -44,6 +44,9 @@ Table Of Contents
 - Temperature
 - Token
 
+
+- Skills and Connectors
+
 AI Protocols:
 - MCP (Model Context Protocol)
 - ACP 
@@ -704,12 +707,211 @@ LangChain helps developers:
 
 
 
+======================================================================================================================================================
+======================================================================================================================================================
+
+								Skills and Connectors
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+
+Skills
+======================================================================================================================================================
+======================================================================================================================================================
+- Skills are the specific capabilities or tasks that an AI system can perform.
+- A skill tells the AI what it knows how to do.
+- A Skill is a specialized ability of an AI assistant to perform a specific task, process, or workflow.
+- Skill is the AI’s ability to perform the task.
+- Connector = brings the data & Skill = performs the work
+
+- Skills are the AI’s abilities to perform tasks.
+- Connectors are integrations that allow AI to access external systems and data.
+
+Together, they make AI useful in real development work:
+- Skills help AI think and execute. Connectors help AI access the right information and tools.
+
+- A chat message tells AI what to do this once.
+- A Skill teaches AI how to do something every time. 
+- A Connector gives AI hands to reach your real apps and data.
+
+- Skill: a saved set of instructions that teaches AI how to do one task your way.
+- Connector: a safe link that lets AI reach one of your apps (files, email, messages).
+
+
+Examples of Skills:
+======================================================================================================================================================
+
+| Skill                      | What It Means                                                       |
+| -------------------------- | ------------------------------------------------------------------- |
+| Code Review Skill          | AI can review code and suggest improvements                         |
+| Test Case Writing Skill    | AI can create positive, negative, and edge test cases               |
+| Requirement Analysis Skill | AI can convert rough requirements into user stories                 |
+| SQL Query Skill            | AI can write or optimize SQL queries                                |
+| API Documentation Skill    | AI can create API documentation                                     |
+| Debugging Skill            | AI can analyze errors and suggest fixes                             |
+| Agile/Scrum Skill          | AI can help with sprint planning, backlog refinement, metrics, etc. |
+| Healthcare RCM Skill       | AI can explain claims, denials, ERA/EOB, billing workflows          |
+
+
+
+Example in AI-Driven Development
+======================================================================================================================================================
+- A developer gives this prompt:  Review this React component and suggest improvements.
+- The AI uses its code review skill to check:
+
+| Area         | AI Action                          |
+| ------------ | ---------------------------------- |
+| Code quality | Finds unnecessary logic            |
+| Type safety  | Suggests better TypeScript types   |
+| Performance  | Finds avoidable re-renders         |
+| Readability  | Suggests cleaner structure         |
+| Bugs         | Identifies possible runtime issues |
+
+#  So, the skill is the AI’s ability to perform the task.
+
+
+Connectors
+======================================================================================================================================================
+======================================================================================================================================================
+- Connectors allow the AI system to connect with external tools, systems, data sources, or applications.
+- A connector tells the AI where it can get information from or send actions to.
+- A Connector is an integration that allows an AI assistant to access or interact with external systems, tools, files, databases, APIs, or platforms.
+- Connector: a safe link that lets AI reach one of your apps (files, email, messages).
+
+Examples of Connectors:
+======================================================================================================================================================
+| Connector               | What It Connects AI With                     |
+| ----------------------- | -------------------------------------------- |
+| GitHub Connector        | Repositories, pull requests, commits, issues |
+| Jira Connector          | Tickets, bugs, sprint boards, backlog        |
+| Confluence Connector    | Documentation and knowledge base             |
+| Slack / Teams Connector | Team conversations and updates               |
+| Google Drive Connector  | Docs, sheets, files, PDFs                    |
+| Database Connector      | SQL Server, PostgreSQL, MySQL, MongoDB       |
+| API Connector           | External application APIs                    |
+| Cloud Connector         | Azure, AWS, Google Cloud services            |
+| CRM Connector           | Salesforce, HubSpot, Zoho                    |
+| Email Connector         | Gmail, Outlook messages                      |
+
+
+
+Example in AI-Driven Development
+======================================================================================================================================================
+A developer asks:  Check the Jira ticket, review the related GitHub PR, and summarize what changed.
+
+The AI may use:
+| Connector            | Purpose                               |
+| -------------------- | ------------------------------------- |
+| Jira Connector       | Read the requirement or bug ticket    |
+| GitHub Connector     | Review the code changes               |
+| Confluence Connector | Check related technical documentation |
+| Slack Connector      | Find recent team discussion           |
+
+
+
+
+Main Difference Between Skills and Connectors
+======================================================================================================================================================
+======================================================================================================================================================
+| Area              | Skills                 | Connectors                               |
+| ----------------- | ---------------------- | ---------------------------------------- |
+| Meaning           | What AI can do         | What AI can connect to                   |
+| Purpose           | Perform tasks          | Access tools/data/systems                |
+| Example           | Write test cases       | Connect to Jira                          |
+| Example           | Review code            | Connect to GitHub                        |
+| Example           | Summarize requirements | Connect to Confluence                    |
+| Focus             | Capability             | Integration                              |
+| Question Answered | “What can the AI do?”  | “Where can the AI get/send information?” |
+
+
+
+Easy Example
+======================================================================================================================================================
+Suppose you say: Create test cases for the login feature from Jira ticket PMS-102.
+
+The AI needs both:
+
+| Component               | Role                                           |
+| ----------------------- | ---------------------------------------------- |
+| Jira Connector          | To open and read ticket PMS-102                |
+| Test Case Writing Skill | To create professional test cases              |
+| QA Knowledge Skill      | To classify positive, negative, and edge cases |
+
+So:
+Connector = brings the data
+Skill = performs the work
+
+
+
+
+In AI-Driven Development Workflow
+======================================================================================================================================================
+| Development Activity | Skill Used              | Connector Used             |
+| -------------------- | ----------------------- | -------------------------- |
+| Requirement analysis | BA / Product skill      | Jira, Confluence           |
+| Code generation      | Coding skill            | GitHub, IDE                |
+| Code review          | Code review skill       | GitHub PR                  |
+| Test case writing    | QA skill                | Jira, TestRail             |
+| Debugging            | Debugging skill         | Logs, monitoring tool      |
+| Deployment support   | DevOps skill            | Azure, AWS, GitHub Actions |
+| Documentation        | Technical writing skill | Confluence, Google Docs    |
+
+
+
+Simple Final Definition
+======================================================================================================================================================
+# Skills are the AI’s abilities to perform tasks.
+# Connectors are integrations that allow AI to access external systems and data.
+
+Together, they make AI useful in real development work:
+# Skills help AI think and execute. Connectors help AI access the right information and tools.
+
+
+
+
+Skills and COnnectors in Deep dive
+======================================================================================================================================================
+======================================================================================================================================================
+
+# A skill is a folder with a text file in it.
+- The required text file is named SKILL.md (exactly that, capital letters and all).
+- It holds two things at the top, a name and a description, and below that, the instructions you want AI to follow.
+- That's the minimum.
+- A skill can be nothing but a name, a description, and a paragraph of plain-English instructions, and it will work.
+
+- Optionally, the folder can hold more: example files, a template document, reference notes, even small scripts.
+- But none of that is required to start.
+- The accountant's first skill could be five sentences of formatting rules.
+- The marketer's could be their brand voice guide, pasted in. 
+- And those optional scripts? They are real code, but you never write a line of it; AI writes any code a skill needs when you build it
+
+- Anthropic's own description: skills are "folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks." 
+- The key word is dynamically: 
+- AI doesn't carry every skill in its head at all times. 
+- It keeps a short list of what each skill is for (that's the description), and only opens the full instructions when your request actually matches one. 
+- Engineers call this progressive disclosure, and it is why you can have dozens of skills installed without slowing anything down or confusing the AI. 
+- We'll come back to it when you build one.
+
+## The mental model
+- A Skill is a recipe card you write once and pin to the kitchen wall.
+- Every time that dish is ordered, the cook follows the card: same result, no reminding. 
+- You are not in the kitchen, but your standards are.
+
+
+
+Skills and Connectors in Claude
+======================================================================================================================================================
+======================================================================================================================================================
 
 
 
 
 
-
+How to create a Skill
+======================================================================================================================================================
+======================================================================================================================================================
 
 
 
