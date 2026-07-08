@@ -714,7 +714,8 @@ LangChain helps developers:
 
 ======================================================================================================================================================
 ======================================================================================================================================================
-
+Ref:
+skills.sh
 
 
 Skills
@@ -779,6 +780,11 @@ Connectors
 - A connector tells the AI where it can get information from or send actions to.
 - A Connector is an integration that allows an AI assistant to access or interact with external systems, tools, files, databases, APIs, or platforms.
 - Connector: a safe link that lets AI reach one of your apps (files, email, messages).
+
+- A Connector is how AI safely reaches your apps and data.
+- Connect Claude to Google Drive and it can search your files; connect it to Gmail and it can read your mail and draft replies for you to send;
+   connect it to Slack, Linear, Asana, Notion, and it can pull from and act in those tools.
+
 
 Examples of Connectors:
 ======================================================================================================================================================
@@ -898,6 +904,26 @@ Skills and COnnectors in Deep dive
 - A Skill is a recipe card you write once and pin to the kitchen wall.
 - Every time that dish is ordered, the cook follows the card: same result, no reminding. 
 - You are not in the kitchen, but your standards are.
+
+
+- Under the hood, connectors run on an open standard called MCP (Model Context Protocol).
+-  A connector is a small piece of software (an "MCP server") that a company, or increasingly an AI, built with code. 
+- You never build it or read it; you click Connect.
+- That's the same bargain the rest of this book calls code you never write: the code is real and working for you, but writing it was never your job.
+-  You don't need to understand MCP to use a connector, any more than you need to understand how email is delivered to send one. What matters are three facts:
+  1. AI inherits your permissions.
+            A connector can never reach something you yourself can't reach. 
+            If you don't have access to a file, channel, or record in the original app, the connector can't get to it either. 
+            Connecting Google Drive does not hand AI your whole company's drive, only what your own account can already open.
+  2. You choose read-only or read-and-write. 
+            "Search and summarize my email" is read-only and low-risk. 
+            "Send this email" or "create this issue" is a write action. Good practice is to start read-only and grant write access only once you trust how the tool behaves (more in the safety section).
+  3. You turn them on per conversation. 
+             Connecting an app once makes it available; you still decide which connectors a given chat may use.
+
+  There is a directory of ready-made connectors (Google Drive, Gmail, Slack, Notion, Figma, Linear, Atlassian, and many more), and you can also add a custom connector to any service that speaks MCP. 
+  Some connectors are interactive: they render a live dashboard, task board, or design surface right inside the conversation rather than just returning text.
+
 
 
 
