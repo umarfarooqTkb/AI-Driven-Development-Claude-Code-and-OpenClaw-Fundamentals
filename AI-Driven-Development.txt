@@ -14,6 +14,10 @@ To Do
 - Claude Managed Agents
 - OpenAI Agents
 
+- Malicious skills.
+- Prompt Injections
+- data exfiltration
+
 
 
 
@@ -707,6 +711,24 @@ LangChain helps developers:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ======================================================================================================================================================
 ======================================================================================================================================================
 
@@ -725,20 +747,45 @@ Skills
 - A skill tells the AI what it knows how to do.
 - A Skill is a specialized ability of an AI assistant to perform a specific task, process, or workflow.
 - Skill is the AI’s ability to perform the task.
+- You have given your skills and working style to AI and AI will do it for you.
+- Now AI has to connect with other tools to perform actions, like to connect with Google Drive. Connectors are used for this purpose.
+- Skill will be given to AI once and AI will repeat it again and again.
+- A chat tells AI what to do once; a Skill teaches it how every time; a Connector gives it hands to reach your apps. (The kitchen: connectors are the kitchen, skills are the recipes.)
+
+- A Skill is a folder with a SKILL.md text file: a name, a description, and plain-English instructions. No code required to start.
+- Skill = A folder with a txt file (SKILL.md)
+- SKILL.md
+   * Name
+   * Description
+   * Some Rules/Instructions (written in plain English)
+- Instructions are important, AI will work as given in instructions
+- Calude introduced SKILL and Instructions
+- Open Claude >> customized = skills and connectors >> skill creator
+
+
+
 - Connector = brings the data & Skill = performs the work
+- A Connector is safe, permission-scoped access to an app (Drive, Gmail, Slack, a tracker), running on the MCP standard. AI inherits your permissions.
 
 - Skills are the AI’s abilities to perform tasks.
+- Skill: a saved set of instructions that teaches AI how to do one task your way.
 - Connectors are integrations that allow AI to access external systems and data.
+- Connector: a safe link that lets AI reach one of your apps (files, email, messages).
 
 Together, they make AI useful in real development work:
 - Skills help AI think and execute. Connectors help AI access the right information and tools.
+- Skill = expertise. Connector = access.
 
 - A chat message tells AI what to do this once.
 - A Skill teaches AI how to do something every time. 
 - A Connector gives AI hands to reach your real apps and data.
 
-- Skill: a saved set of instructions that teaches AI how to do one task your way.
-- Connector: a safe link that lets AI reach one of your apps (files, email, messages).
+- A Skill without a Connector can explain or format work but may not access your live systems.
+- A Connector without a Skill gives Claude access, but Claude may perform the task without your organization’s specific standards.
+- Skill + Connector creates a repeatable, operational workflow.
+
+- In Claude.ai, skills fire automatically when your prompt matches their description. 
+- Slash commands and naming the skill are override tools, used more in Cowork and the developer apps. So the description is the most important thing you write.
 
 
 Examples of Skills:
@@ -780,10 +827,26 @@ Connectors
 - A connector tells the AI where it can get information from or send actions to.
 - A Connector is an integration that allows an AI assistant to access or interact with external systems, tools, files, databases, APIs, or platforms.
 - Connector: a safe link that lets AI reach one of your apps (files, email, messages).
+- Connector: a safe link that lets AI reach one of your apps (files, email, messages).
+
 
 - A Connector is how AI safely reaches your apps and data.
 - Connect Claude to Google Drive and it can search your files; connect it to Gmail and it can read your mail and draft replies for you to send;
    connect it to Slack, Linear, Asana, Notion, and it can pull from and act in those tools.
+
+- Claude Connectors commonly use MCP — Model Context Protocol. 
+- MCP is an open standard through which AI applications can connect to external data sources, tools and workflows. 
+- The MCP documentation compares it to a USB-C port: one standardized interface that can connect many different systems. 
+
+   Claude / AI Client
+          │
+       MCP Client
+          │
+   ┌────┼───────────┐
+   │     │              │
+GitHub  Jira         Database
+Server  Server        Server
+
 
 
 Examples of Connectors:
@@ -927,9 +990,442 @@ Skills and Connectors in Deep dive
 
 
 
-Skills and Connectors in Claude
+
+
+Example Skill (Markdown)
+======================================================================================================================================================
+---
+name: cloud-change-review
+description: Review Terraform, Kubernetes and cloud infrastructure changes for security, reliability, cost and deployment risk.
+---
+
+When reviewing a cloud infrastructure change:
+1. Summarize the proposed change.
+2. Identify affected resources and environments.
+3. Determine the potential blast radius.
+4. Check security and IAM implications.
+5. Check availability and disaster-recovery implications.
+6. Identify destructive or irreversible operations.
+7. Check naming, tagging and organizational standards.
+8. Classify findings as Critical, High, Medium or Low.
+9. Never deploy or approve the change automatically.
+10. Produce a final recommendation:
+    - Approve
+    - Approve with conditions
+    - Reject
+
+
+A Skill is not model training
+======================================================================================================================================================
+Creating a Skill does not normally retrain Claude or change the underlying language model.
+
+It provides Claude with:
+- procedures;
+- rules;
+- examples;
+- templates;
+- domain-specific instructions;
+- validation checklists;
+- output formats.
+Think of it as dynamic procedural knowledge, not permanent neural-network learning.
+
+
+
+### What a Skill does not provide:
+A Skill does not automatically provide access to:
+- GitHub;
+- Azure DevOps;
+- Jira;
+- Google Drive;
+- databases;
+- Azure or Google Cloud;
+- monitoring systems.
+That is the Connector’s job.
+
+
+
+
+Skills vs Connectors vs Projects vs Custom Instructions
+======================================================================================================================================================
+- Four features sound similar and beginners mix them up constantly. 
+- Skills and Connectors are the two stars of this course; the other two are their close cousins.
+
+
+** Skill vs Project. 
+- A Project always loads its context the moment you open a chat in it, which is useful but always on. 
+- A Skill stays dormant until a request matches it, then activates anywhere, even outside any project.
+- Standing background knowledge → Project. 
+- A procedure that fires on demand → Skill.
+
+** Skill vs Connector. 
+- This is the most important pair and the one you will use most. 
+- A Connector is access (what AI can reach); a Skill is expertise (how AI should behave). 
+- They are not alternatives; they are partners, which is the whole point of section 8.
+
+** Skill vs Custom instructions. 
+- Custom instructions touch everything you do. 
+- A Skill touches one kind of task. 
+- "Always reply in the same language I write to you in" is a custom instruction. 
+- "When I ask for a board paper, use this eight-section structure" is a skill.
+
+
+
+
+Anatomy of a SKILL.md
 ======================================================================================================================================================
 ======================================================================================================================================================
+Every skill is the same simple structure. Here's a minimal version of our accountant skill;
+
+- The file must be named exactly SKILL.md.
+- A SKILL.md is the main instruction file inside a Skill folder. It tells Claude:
+  * What the Skill is
+  * When the Skill should be activated
+  * How the task should be performed
+  * What tools and supporting files may be used
+  * What the final result should look like
+
+- A basic Skill has this structure:
+azure-infrastructure-review/
+├── SKILL.md
+├── references/
+│   ├── security-standards.md
+│   └── azure-patterns.md
+├── examples/
+│   └── sample-review.md
+└── scripts/
+    └── validate-terraform.py
+
+# Only SKILL.md is essential. Reference files, examples, templates, assets and scripts are optional.
+# Two main parts
+
+SKILL.md
+│
+├── 1. YAML Frontmatter
+│      Metadata describing the Skill
+│
+└── 2. Markdown Body
+       Instructions Claude follows
+
+
+YAML frontmatter = When and how the Skill activates
+Markdown body = What Claude must do after activation
+Supporting files = Detailed knowledge, examples and executable helpers
+
+
+Basic example: (Markdown)
+======================================================================================================================================================
+---
+name: azure-infrastructure-review
+description: Review Azure and Terraform changes for security, reliability, cost and deployment risk.
+---
+
+# Azure Infrastructure Review
+
+Review the supplied Azure or Terraform changes.
+
+## Procedure
+
+1. Summarize the proposed changes.
+2. Identify affected Azure resources.
+3. Review security and RBAC implications.
+4. Identify destructive operations.
+5. Review reliability and availability.
+6. Estimate cost implications.
+7. Classify findings by severity.
+8. Provide an approval recommendation.
+
+
+
+Part 1: YAML frontmatter
+======================================================================================================================================================
+- The section between the two --- lines is called YAML frontmatter.
+- This is the only thing AI keeps loaded at all times. 
+- It's how AI decides whether this skill is relevant: progressive disclosure, level one.
+
+---
+name: azure-infrastructure-review
+description: Review Azure and Terraform changes for security, reliability, cost and deployment risk.
+---
+
+- Frontmatter is metadata, not the main task procedure.
+- Claude uses it to understand:
+  * the Skill’s identity;
+  * what it does;
+  * when it should be activated;
+  * how it can be invoked;
+  * which tools it can use;
+  * whether it should run in the main conversation or a separate agent context.
+
+Important frontmatter fields:
+
+| Field                      | Purpose                                          | Example                                   |
+| -------------------------- | ------------------------------------------------ | ----------------------------------------- |
+| `name`                     | Human-readable Skill name                        | `azure-infrastructure-review`             |
+| `description`              | Explains what it does and when to use it         | `Review Azure and Terraform changes...`   |
+| `when_to_use`              | Gives additional activation examples             | `Use for PR reviews and deployment plans` |
+| `argument-hint`            | Shows the expected command input                 | `[pull-request-number]`                   |
+| `arguments`                | Defines named input parameters                   | `[issue, environment]`                    |
+| `allowed-tools`            | Tools Claude may use when the Skill is active    | `Read Grep Bash`                          |
+| `disallowed-tools`         | Tools that must not be used                      | `Write Edit`                              |
+| `disable-model-invocation` | Prevents automatic activation                    | `true`                                    |
+| `user-invocable`           | Determines whether it appears as a slash command | `false`                                   |
+| `context`                  | Runs the Skill in a separate context             | `fork`                                    |
+| 'agent'                    | Selects a subagent when using forked context     | `Explore`                                 |
+| `model`                    | Selects a model for the current Skill execution  | Model identifier                          |
+| `effort`                   | Selects the reasoning-effort level               | `high`                                    |
+| `paths`                    | Restricts automatic activation to matching files | `**/*.tf`                                 |
+
+
+name
+======================================================================================================================================================
+name: azure-infrastructure-review
+
+- This gives the Skill a readable identity.
+- For Claude Code Skills stored here:  .claude/skills/azure-infrastructure-review/SKILL.md
+- the directory name normally determines the slash command: /azure-infrastructure-review
+- The frontmatter name is mainly the display name.
+
+
+description
+======================================================================================================================================================
+description: Review Azure and Terraform changes for security, reliability, cost and deployment risk.
+
+- This is the most important metadata field.
+- Claude initially sees the Skill description and uses it to decide whether to load the complete instructions.
+- The description field is the whole game
+- If you remember one thing about building skills, remember this: the description decides whether your skill ever fires. 
+- AI doesn't read your instructions to decide relevance; it reads only the description. 
+- A vague description means a skill that never triggers; a sharp one means it activates exactly when it should.
+
+- A handy debugging trick once a skill is installed: ask AI, "When would you use my client-summary skill?" 
+- It will paraphrase the description back to you. 
+- If its answer is narrower or wider than you intended, you've found exactly what to fix in the description.
+
+- You can also add negative triggers when a skill fires too eagerly: "Do NOT use for one-off calculations or quick questions — only for full month-end reports."
+
+A weak description:
+description: Helps with cloud.
+
+A better description:
+description: Review Azure, Terraform and Bicep changes for security, RBAC, networking, reliability, cost and deployment risk. 
+Use for pull requests, architecture changes and infrastructure deployment reviews.
+
+The second version explains both:
+what the Skill does;
+when it should be used.
+
+This supports progressive disclosure: Claude can scan short Skill descriptions first and load the complete body only when relevant.
+
+
+Automatic versus manual invocation
+=====================================================================================================================================================
+- By default, Claude Code may activate a Skill automatically, or the user may invoke it manually:  /azure-infrastructure-review
+- For sensitive operations such as deployment, deletion, committing code or sending messages, use: disable-model-invocation: true
+
+Example:
+---
+name: production-deployment
+description: Deploy an approved release to the production environment.
+disable-model-invocation: true
+---
+
+- Claude cannot decide by itself to activate this Skill; the user must invoke it. Anthropic specifically recommends this control for workflows with side effects.
+
+
+
+Tool permissions
+=====================================================================================================================================================
+You can specify which tools the Skill may use.
+allowed-tools:
+  - Read
+  - Grep
+  - Bash
+
+You can also prohibit tools:
+disallowed-tools:
+  - Write
+  - Edit
+
+For example, a read-only code-review Skill could inspect files but not modify them:
+
+---
+name: security-review
+description: Review source code for security vulnerabilities without changing files.
+allowed-tools:
+  - Read
+  - Grep
+disallowed-tools:
+  - Write
+  - Edit
+---
+
+
+
+
+Part 2: Markdown body
+======================================================================================================================================================
+======================================================================================================================================================
+- Everything below the closing --- is the Markdown body.
+- The Markdown body contains the actual knowledge and working procedure Claude follows.
+- The body contains the actual instructions, loaded only when the description matches your request: level two.
+- A well-designed body commonly includes these sections.
+1. Purpose
+2. When to use
+3. Required inputs
+4. Workflow or procedure
+5. Rules and guardrails
+6. Output format
+7. Decision criteria
+8. Examples
+9. Supporting resources
+
+
+Complete example
+======================================================================================================================================================
+---
+name: azure-infrastructure-review
+description: Review Azure, Terraform and Bicep changes for security, RBAC, networking, reliability, cost and deployment risk. Use for
+  infrastructure pull requests, architecture changes and deployment plans.
+argument-hint: "[file-path-or-pr-number]"
+allowed-tools:
+  - Read
+  - Grep
+  - Bash
+disallowed-tools:
+  - Write
+  - Edit
+---
+
+# Azure Infrastructure Review
+
+## Purpose
+Review proposed Azure infrastructure changes before deployment.
+
+## Inputs
+Use the supplied:
+- Terraform or Bicep files
+- Pull-request diff
+- Target environment
+- Change request
+- Architecture documentation
+
+Do not invent missing configuration.
+
+## Procedure
+1. Summarize the proposed change.
+2. Identify affected subscriptions, resource groups and resources.
+3. Review RBAC and managed identities.
+4. Review network access and public exposure.
+5. Review encryption and secret handling.
+6. Identify destructive changes.
+7. Review availability and disaster recovery.
+8. Review logging, monitoring and alerting.
+9. Identify cost implications.
+10. Classify each finding by severity.
+
+## Severity
+- Critical: Immediate security or production failure risk
+- High: Significant risk requiring correction before deployment
+- Medium: Important improvement with manageable risk
+- Low: Minor improvement or best-practice recommendation
+
+## Guardrails
+- Do not modify files.
+- Do not deploy infrastructure.
+- Do not display credentials or secrets.
+- Clearly label assumptions.
+- Require human approval for production changes.
+
+## Output Format
+### Executive Summary
+
+Provide a concise summary of the change and overall risk.
+
+### Findings
+| Finding | Severity | Resource | Risk | Recommendation |
+|---|---|---|---|---|
+
+### Final Decision
+Select one:
+- Approve
+- Approve with conditions
+- Reject
+
+Explain the reason for the decision.
+
+## Additional Resources
+- Read [references/security-standards.md](references/security-standards.md)
+  for company security requirements.
+- Read [examples/sample-review.md](examples/sample-review.md)
+  when an example output is needed.
+
+
+
+
+
+Example
+======================================================================================================================================================
+---
+name: client-monthly-summary
+description: Prepares a monthly client financial summary for an
+  accounting firm. Use when the user asks for a "client summary",
+  "monthly close", or "month-end report". Formats amounts in the
+  firm's reporting currency, groups by expense head, and flags
+  tax-withholding items.
+---
+
+# Client Monthly Summary
+
+## Settings (edit these to make it yours)
+
+- Reporting currency: your currency (e.g., USD, EUR, NGN)
+- Withholding threshold: the amount above which to flag a payment (e.g., 50,000)
+
+## Instructions
+When asked to prepare a client summary or monthly close:
+1. Format every amount in the reporting currency above, with thousands
+   separators (e.g., "1,250,000").
+2. Group all line items by expense head. Sort heads by total,
+   largest first.
+3. Flag any single payment above the withholding threshold above
+   with a "⚑ WITHHOLDING" note.
+4. Produce the report in exactly four sections, in this order:
+   Overview, Income, Expenses by Head, Flags & Notes.
+
+## Example
+User: "Prepare the March summary for DEMO Trading."
+Result: A four-section report, currency-formatted, withholding lines flagged.
+
+
+
+
+
+
+
+
+Skills: Safe-Use Checklist
+======================================================================================================================================================
+======================================================================================================================================================
+- Install skills from trusted sources. The built-in Anthropic skills and the official directory are the safe default. A random zip from a forum is not.
+- Read a skill before enabling it. 
+  Open the SKILL.md and any bundled files. 
+  You can even ask AI to do it for you: "Read this skill and tell me exactly what it instructs you to do. 
+  Flag anything that contacts external servers, handles credentials, or could leak my data." 
+  Pay special attention to scripts and to any instruction that reaches out to the internet.
+- Start connectors read-only.
+   Grant "search and summarize" before "send" or "create" or "delete." Move up to write access only after you have watched the tool behave well.
+- Scope to the smallest folder or app the task needs. 
+  Don't connect everything; don't grant whole-drive access for a one-folder job.
+- Before allowing AI to edit, move, or delete files, confirm how that specific connector handles recovery, version history, and undo. 
+  Some write actions may overwrite or bypass the recovery path you expect, so keep your own backups of anything you can't afford to lose.
+- On a team, route shared skills through your organization's directory, where an owner has reviewed them, rather than passing zips around.
+
+
+
+
+
+
+
 
 
 
