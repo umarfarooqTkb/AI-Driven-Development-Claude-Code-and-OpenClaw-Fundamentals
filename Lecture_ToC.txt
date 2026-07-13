@@ -253,7 +253,108 @@ Connector:
 Lecture 8:  3-July-2026
 ======================================================================================================================================================
 ======================================================================================================================================================
-- 
+- General Agents
+- Kisi bi kisam ka kaam kar ky dy sakty hain
+- like they can do work of coding, finance, medical
+- you can use these agents on your machine
+
+- Two Types of Agents
+- Claude Code
+- Open Code
+
+- Claude Code by anthropic, very strong models of anthropic.
+- but anthropic dictates, that use models of anthropic only. (Sonnet, Fable etc)
+- and you have to buy the membership of anthropic
+- so alternative of claude code is Open Code
+- for open code, you have to use models, and it is open, that you can use any model of your choice (LLM)
+- for open code, you can use any provider like Gemini, OpenAI, Chineese, US Models , etc etc
+- you can download coding agents freely, claude code and open code clients
+- but to use claude code, you need models of anthropic
+- In Open Code, we can use free models.
+
+Installation of Claude Code and Open Code on Local machine:
+Pre-requisites:
+1. Git
+2. Node
+3. VS Code
+
+# Type following command as per your OS
+
+# macOS / Linux / WSL — recommended (auto-updates)
+curl -fsSL https://claude.ai/install.sh | bash
+
+# Windows PowerShell
+# Run Windows Power Shell as an Administrator
+irm https://claude.ai/install.ps1 | iex
+
+# macOS Homebrew (no auto-update — run `brew upgrade claude-code` periodically)
+brew install --cask claude-code
+
+# npm fallback
+npm install -g @anthropic-ai/claude-code
+
+
+if claude code is not installed via power shell then, open cmd with administrator and run the commanf
+npm install -g @anthropic-ai/claude-code
+
+# End of Installation
+
+
+Run Claude Code
+- claude --version
+- now type claude in powershell
+- if not run, use the following command: 
+  & "C:\Users\Administrator\.local\bin\claude.exe"
+
+- Add Claude Code to PATH permanently
+- Run this in PowerShell:
+$claudePath = "$env:USERPROFILE\.local\bin"
+$currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
+
+if ($currentPath -notlike "*$claudePath*") {
+    [Environment]::SetEnvironmentVariable(
+        "Path",
+        "$currentPath;$claudePath",
+        "User"
+    )
+}
+
+Then close all PowerShell and Windows Terminal windows, open a new PowerShell window, and test:
+claude --version
+It should return:
+2.1.207
+
+
+
+Installation of Open Code on windows:
+===================================================================================
+# All platforms — recommended
+curl -fsSL https://opencode.ai/install | bash
+
+# macOS Homebrew
+brew install opencode
+
+# npm / bun / pnpm / yarn
+npm install -g opencode-ai
+
+Incase of error, type
+npm.cmd install -g opencode-ai
+
+PS C:\WINDOWS\System32> opencode.cmd --version
+1.17.19
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
