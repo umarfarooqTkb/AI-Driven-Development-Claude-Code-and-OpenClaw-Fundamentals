@@ -1,0 +1,1984 @@
+======================================================================================================================================================
+======================================================================================================================================================
+								
+								Skills and Connectors
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+To Do
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Malicious skills.
+- Prompt Injections
+- data exfiltration
+
+
+References
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- https://github.com/panaversity/agentfactory-labs
+- skills.sh
+
+
+
+
+
+Table Of Contents
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- What is Skills     | Examples of Skills
+- What is Connectors | Examples of Connectors
+- Difference Between Skills and Connectors
+
+- Skills and Connectors in Deep dive
+- A Skill is not model training
+- Skills vs Connectors vs Projects vs Custom Instructions
+- Skills: Safe-Use Checklist
+
+- Anatomy of a SKILL.md
+- Part 1: YAML frontmatter
+- Part 2: Markdown body
+-
+
+- Skills and Connectors Exercises
+- Exercise 1: Trigger a built-in skill (automatic Skill invocation or automatic Skill triggering)
+-
+-
+-
+-
+
+
+
+
+
+
+What is a Skill
+======================================================================================================================================================
+======================================================================================================================================================
+- Skills are the specific capabilities or tasks that an AI system can perform.
+- A skill tells the AI what it knows how to do.
+- A Skill is a specialized ability of an AI assistant to perform a specific task, process, or workflow.
+- Skill is the AI’s ability to perform the task.
+- You have given your skills and working style to AI and AI will do it for you.
+- Now AI has to connect with other tools to perform actions, like to connect with Google Drive. Connectors are used for this purpose.
+- Skill will be given to AI once and AI will repeat it again and again.
+- A chat tells AI what to do once; a Skill teaches it how every time; a Connector gives it hands to reach your apps. (The kitchen: connectors are the kitchen, skills are the recipes.)
+
+- A Skill is a folder with a SKILL.md text file: a name, a description, and plain-English instructions. No code required to start.
+- Skill = A folder with a txt file (SKILL.md)
+- SKILL.md
+   * Name
+   * Description
+   * Some Rules/Instructions (written in plain English)
+- Instructions are important, AI will work as given in instructions
+- Calude introduced SKILL and Instructions
+- Open Claude >> customized = skills and connectors >> skill creator
+
+- Connector = brings the data & Skill = performs the work
+- A Connector is safe, permission-scoped access to an app (Drive, Gmail, Slack, a tracker), running on the MCP standard. AI inherits your permissions.
+
+- Skills are the AI’s abilities to perform tasks.
+- Skill: a saved set of instructions that teaches AI how to do one task your way.
+- Connectors are integrations that allow AI to access external systems and data.
+- Connector: a safe link that lets AI reach one of your apps (files, email, messages).
+
+Together, they make AI useful in real development work:
+- Skills help AI think and execute. Connectors help AI access the right information and tools.
+- Skill = expertise. Connector = access.
+
+- A chat message tells AI what to do this once.
+- A Skill teaches AI how to do something every time. 
+- A Connector gives AI hands to reach your real apps and data.
+
+- A Skill without a Connector can explain or format work but may not access your live systems.
+- A Connector without a Skill gives Claude access, but Claude may perform the task without your organization’s specific standards.
+- Skill + Connector creates a repeatable, operational workflow.
+
+- In Claude.ai, skills fire automatically when your prompt matches their description. 
+- Slash commands and naming the skill are override tools, used more in Cowork and the developer apps. So the description is the most important thing you write.
+
+
+Examples of Skills:
+======================================================================================================================================================
+
+| Skill                      | What It Means                                                       |
+| -------------------------- | ------------------------------------------------------------------- |
+| Code Review Skill          | AI can review code and suggest improvements                         |
+| Test Case Writing Skill    | AI can create positive, negative, and edge test cases               |
+| Requirement Analysis Skill | AI can convert rough requirements into user stories                 |
+| SQL Query Skill            | AI can write or optimize SQL queries                                |
+| API Documentation Skill    | AI can create API documentation                                     |
+| Debugging Skill            | AI can analyze errors and suggest fixes                             |
+| Agile/Scrum Skill          | AI can help with sprint planning, backlog refinement, metrics, etc. |
+| Healthcare RCM Skill       | AI can explain claims, denials, ERA/EOB, billing workflows          |
+
+
+
+Example in AI-Driven Development
+======================================================================================================================================================
+- A developer gives this prompt:  Review this React component and suggest improvements.
+- The AI uses its code review skill to check:
+
+| Area         | AI Action                          |
+| ------------ | ---------------------------------- |
+| Code quality | Finds unnecessary logic            |
+| Type safety  | Suggests better TypeScript types   |
+| Performance  | Finds avoidable re-renders         |
+| Readability  | Suggests cleaner structure         |
+| Bugs         | Identifies possible runtime issues |
+
+#  So, the skill is the AI’s ability to perform the task.
+
+
+
+Connectors
+======================================================================================================================================================
+======================================================================================================================================================
+- Connectors allow the AI system to connect with external tools, systems, data sources, or applications.
+- A connector tells the AI where it can get information from or send actions to.
+- A Connector is an integration that allows an AI assistant to access or interact with external systems, tools, files, databases, APIs, or platforms.
+- Connector: a safe link that lets AI reach one of your apps (files, email, messages).
+- Connector: a safe link that lets AI reach one of your apps (files, email, messages).
+
+
+- A Connector is how AI safely reaches your apps and data.
+- Connect Claude to Google Drive and it can search your files; connect it to Gmail and it can read your mail and draft replies for you to send;
+   connect it to Slack, Linear, Asana, Notion, and it can pull from and act in those tools.
+
+- Claude Connectors commonly use MCP — Model Context Protocol. 
+- MCP is an open standard through which AI applications can connect to external data sources, tools and workflows. 
+- The MCP documentation compares it to a USB-C port: one standardized interface that can connect many different systems. 
+
+   Claude / AI Client
+          │
+       MCP Client
+          │
+   ┌────┼───────────┐
+   │     │              │
+GitHub  Jira         Database
+Server  Server        Server
+
+
+
+Examples of Connectors:
+======================================================================================================================================================
+| Connector               | What It Connects AI With                     |
+| ----------------------- | -------------------------------------------- |
+| GitHub Connector        | Repositories, pull requests, commits, issues |
+| Jira Connector          | Tickets, bugs, sprint boards, backlog        |
+| Confluence Connector    | Documentation and knowledge base             |
+| Slack / Teams Connector | Team conversations and updates               |
+| Google Drive Connector  | Docs, sheets, files, PDFs                    |
+| Database Connector      | SQL Server, PostgreSQL, MySQL, MongoDB       |
+| API Connector           | External application APIs                    |
+| Cloud Connector         | Azure, AWS, Google Cloud services            |
+| CRM Connector           | Salesforce, HubSpot, Zoho                    |
+| Email Connector         | Gmail, Outlook messages                      |
+
+
+
+Example in AI-Driven Development
+======================================================================================================================================================
+A developer asks:  Check the Jira ticket, review the related GitHub PR, and summarize what changed.
+
+The AI may use:
+| Connector            | Purpose                               |
+| -------------------- | ------------------------------------- |
+| Jira Connector       | Read the requirement or bug ticket    |
+| GitHub Connector     | Review the code changes               |
+| Confluence Connector | Check related technical documentation |
+| Slack Connector      | Find recent team discussion           |
+
+
+
+
+Difference Between Skills and Connectors
+======================================================================================================================================================
+======================================================================================================================================================
+# Skills are the AI’s abilities to perform tasks.
+# Connectors are integrations that allow AI to access external systems and data.
+
+Together, they make AI useful in real development work:
+# Skills help AI think and execute. Connectors help AI access the right information and tools.
+
+
+| Area              | Skills                 | Connectors                               |
+| ----------------- | ---------------------- | ---------------------------------------- |
+| Meaning           | What AI can do         | What AI can connect to                   |
+| Purpose           | Perform tasks          | Access tools/data/systems                |
+| Example           | Write test cases       | Connect to Jira                          |
+| Example           | Review code            | Connect to GitHub                        |
+| Example           | Summarize requirements | Connect to Confluence                    |
+| Focus             | Capability             | Integration                              |
+| Question Answered | “What can the AI do?”  | “Where can the AI get/send information?” |
+
+
+Easy Example
+======================================================================================================================================================
+Suppose you say: Create test cases for the login feature from Jira ticket PMS-102.
+
+The AI needs both:
+| Component               | Role                                           |
+| ----------------------- | ---------------------------------------------- |
+| Jira Connector          | To open and read ticket PMS-102                |
+| Test Case Writing Skill | To create professional test cases              |
+| QA Knowledge Skill      | To classify positive, negative, and edge cases |
+
+So:
+Connector = brings the data
+Skill = performs the work
+
+
+In AI-Driven Development Workflow
+======================================================================================================================================================
+| Development Activity | Skill Used              | Connector Used             |
+| -------------------- | ----------------------- | -------------------------- |
+| Requirement analysis | BA / Product skill      | Jira, Confluence           |
+| Code generation      | Coding skill            | GitHub, IDE                |
+| Code review          | Code review skill       | GitHub PR                  |
+| Test case writing    | QA skill                | Jira, TestRail             |
+| Debugging            | Debugging skill         | Logs, monitoring tool      |
+| Deployment support   | DevOps skill            | Azure, AWS, GitHub Actions |
+| Documentation        | Technical writing skill | Confluence, Google Docs    |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Skills and Connectors in Deep dive
+======================================================================================================================================================
+======================================================================================================================================================
+
+# A skill is a folder with a text file in it.
+- The required text file is named SKILL.md (exactly that, capital letters and all).
+- It holds two things at the top, a name and a description, and below that, the instructions you want AI to follow.
+- That's the minimum.
+- A skill can be nothing but a name, a description, and a paragraph of plain-English instructions, and it will work.
+
+- Optionally, the folder can hold more: example files, a template document, reference notes, even small scripts.
+- But none of that is required to start.
+- The accountant's first skill could be five sentences of formatting rules.
+- The marketer's could be their brand voice guide, pasted in. 
+- And those optional scripts? They are real code, but you never write a line of it; AI writes any code a skill needs when you build it
+
+- Anthropic's own description: skills are "folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks." 
+- The key word is dynamically: 
+- AI doesn't carry every skill in its head at all times. 
+- It keeps a short list of what each skill is for (that's the description), and only opens the full instructions when your request actually matches one. 
+- Engineers call this progressive disclosure, and it is why you can have dozens of skills installed without slowing anything down or confusing the AI. 
+- We'll come back to it when you build one.
+
+## The mental model
+- A Skill is a recipe card you write once and pin to the kitchen wall.
+- Every time that dish is ordered, the cook follows the card: same result, no reminding. 
+- You are not in the kitchen, but your standards are.
+
+
+- Under the hood, connectors run on an open standard called MCP (Model Context Protocol).
+-  A connector is a small piece of software (an "MCP server") that a company, or increasingly an AI, built with code. 
+- You never build it or read it; you click Connect.
+- That's the same bargain the rest of this book calls code you never write: the code is real and working for you, but writing it was never your job.
+-  You don't need to understand MCP to use a connector, any more than you need to understand how email is delivered to send one. What matters are three facts:
+  1. AI inherits your permissions.
+            A connector can never reach something you yourself can't reach. 
+            If you don't have access to a file, channel, or record in the original app, the connector can't get to it either. 
+            Connecting Google Drive does not hand AI your whole company's drive, only what your own account can already open.
+  2. You choose read-only or read-and-write. 
+            "Search and summarize my email" is read-only and low-risk. 
+            "Send this email" or "create this issue" is a write action. Good practice is to start read-only and grant write access only once you trust how the tool behaves (more in the safety section).
+  3. You turn them on per conversation. 
+             Connecting an app once makes it available; you still decide which connectors a given chat may use.
+
+  There is a directory of ready-made connectors (Google Drive, Gmail, Slack, Notion, Figma, Linear, Atlassian, and many more), and you can also add a custom connector to any service that speaks MCP. 
+  Some connectors are interactive: they render a live dashboard, task board, or design surface right inside the conversation rather than just returning text.
+
+
+
+
+Example Skill (Markdown)
+======================================================================================================================================================
+---
+name: cloud-change-review
+description: Review Terraform, Kubernetes and cloud infrastructure changes for security, reliability, cost and deployment risk.
+---
+
+When reviewing a cloud infrastructure change:
+1. Summarize the proposed change.
+2. Identify affected resources and environments.
+3. Determine the potential blast radius.
+4. Check security and IAM implications.
+5. Check availability and disaster-recovery implications.
+6. Identify destructive or irreversible operations.
+7. Check naming, tagging and organizational standards.
+8. Classify findings as Critical, High, Medium or Low.
+9. Never deploy or approve the change automatically.
+10. Produce a final recommendation:
+    - Approve
+    - Approve with conditions
+    - Reject
+
+
+A Skill is not model training
+======================================================================================================================================================
+======================================================================================================================================================
+Creating a Skill does not normally retrain Claude or change the underlying language model.
+
+It provides Claude with:
+- procedures;
+- rules;
+- examples;
+- templates;
+- domain-specific instructions;
+- validation checklists;
+- output formats.
+Think of it as dynamic procedural knowledge, not permanent neural-network learning.
+
+
+
+### What a Skill does not provide:
+A Skill does not automatically provide access to:
+- GitHub;
+- Azure DevOps;
+- Jira;
+- Google Drive;
+- databases;
+- Azure or Google Cloud;
+- monitoring systems.
+That is the Connector’s job.
+
+
+
+
+Skills vs Connectors vs Projects vs Custom Instructions
+======================================================================================================================================================
+======================================================================================================================================================
+- Four features sound similar and beginners mix them up constantly. 
+- Skills and Connectors are the two stars of this course; the other two are their close cousins.
+
+
+** Skill vs Project. 
+- A Project always loads its context the moment you open a chat in it, which is useful but always on. 
+- A Skill stays dormant until a request matches it, then activates anywhere, even outside any project.
+- Standing background knowledge → Project. 
+- A procedure that fires on demand → Skill.
+
+** Skill vs Connector. 
+- This is the most important pair and the one you will use most. 
+- A Connector is access (what AI can reach); a Skill is expertise (how AI should behave). 
+- They are not alternatives; they are partners, which is the whole point of section 8.
+
+** Skill vs Custom instructions. 
+- Custom instructions touch everything you do. 
+- A Skill touches one kind of task. 
+- "Always reply in the same language I write to you in" is a custom instruction. 
+- "When I ask for a board paper, use this eight-section structure" is a skill.
+
+
+
+
+Skills: Safe-Use Checklist
+======================================================================================================================================================
+======================================================================================================================================================
+- Install skills from trusted sources. The built-in Anthropic skills and the official directory are the safe default. A random zip from a forum is not.
+- Read a skill before enabling it. 
+  Open the SKILL.md and any bundled files. 
+  You can even ask AI to do it for you: "Read this skill and tell me exactly what it instructs you to do. 
+  Flag anything that contacts external servers, handles credentials, or could leak my data." 
+  Pay special attention to scripts and to any instruction that reaches out to the internet.
+- Start connectors read-only.
+   Grant "search and summarize" before "send" or "create" or "delete." Move up to write access only after you have watched the tool behave well.
+- Scope to the smallest folder or app the task needs. 
+  Don't connect everything; don't grant whole-drive access for a one-folder job.
+- Before allowing AI to edit, move, or delete files, confirm how that specific connector handles recovery, version history, and undo. 
+  Some write actions may overwrite or bypass the recovery path you expect, so keep your own backups of anything you can't afford to lose.
+- On a team, route shared skills through your organization's directory, where an owner has reviewed them, rather than passing zips around.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Anatomy of a SKILL.md
+======================================================================================================================================================
+======================================================================================================================================================
+Every skill is the same simple structure. Here's a minimal version of our accountant skill;
+
+- The file must be named exactly SKILL.md.
+- A SKILL.md is the main instruction file inside a Skill folder. It tells Claude:
+  * What the Skill is
+  * When the Skill should be activated
+  * How the task should be performed
+  * What tools and supporting files may be used
+  * What the final result should look like
+
+- A basic Skill has this structure:
+azure-infrastructure-review/
+├── SKILL.md
+├── references/
+│   ├── security-standards.md
+│   └── azure-patterns.md
+├── examples/
+│   └── sample-review.md
+└── scripts/
+    └── validate-terraform.py
+
+# Only SKILL.md is essential. Reference files, examples, templates, assets and scripts are optional.
+# Two main parts
+
+SKILL.md
+│
+├── 1. YAML Frontmatter
+│      Metadata describing the Skill
+│
+└── 2. Markdown Body
+       Instructions Claude follows
+
+
+YAML frontmatter = When and how the Skill activates
+Markdown body = What Claude must do after activation
+Supporting files = Detailed knowledge, examples and executable helpers
+
+
+Its anatomy is:
+SKILL.md
+├── YAML frontmatter
+├── Purpose
+├── When this applies | When to use
+├── Required inputs
+├── Process | Workflow or procedure
+├── Confirmed-versus-assumed rules | Decision criteria
+├── Output format | Output format
+├── Ground rules | Rules and guardrails
+├── Delivery requirements
+├── Supporting resources
+└── Link to example | Examples
+
+
+
+meeting-notes-organizer.skill
+└── meeting-notes-organizer/
+    ├── SKILL.md
+    └── examples/
+        ├── sample.md
+        └── trigger-prompts.md
+
+
+Basic example: (Markdown)
+======================================================================================================================================================
+---
+name: azure-infrastructure-review
+description: Review Azure and Terraform changes for security, reliability, cost and deployment risk.
+---
+
+# Azure Infrastructure Review
+
+Review the supplied Azure or Terraform changes.
+
+## Procedure
+1. Summarize the proposed changes.
+2. Identify affected Azure resources.
+3. Review security and RBAC implications.
+4. Identify destructive operations.
+5. Review reliability and availability.
+6. Estimate cost implications.
+7. Classify findings by severity.
+8. Provide an approval recommendation.
+
+
+
+Part 1: YAML frontmatter
+======================================================================================================================================================
+======================================================================================================================================================
+- The section between the two --- lines is called YAML frontmatter.
+- This is the only thing AI keeps loaded at all times. 
+- It's how AI decides whether this skill is relevant: progressive disclosure, level one.
+
+---
+name: azure-infrastructure-review
+description: Review Azure and Terraform changes for security, reliability, cost and deployment risk.
+---
+
+- Frontmatter is metadata, not the main task procedure.
+- Claude uses it to understand:
+  * the Skill’s identity;
+  * what it does;
+  * when it should be activated;
+  * how it can be invoked;
+  * which tools it can use;
+  * whether it should run in the main conversation or a separate agent context.
+
+Important frontmatter fields:
+
+| Field                      | Purpose                                          | Example                                   |
+| -------------------------- | ------------------------------------------------ | ----------------------------------------- |
+| `name`                     | Human-readable Skill name                        | `azure-infrastructure-review`             |
+| `description`              | Explains what it does and when to use it         | `Review Azure and Terraform changes...`   |
+| `when_to_use`              | Gives additional activation examples             | `Use for PR reviews and deployment plans` |
+| `argument-hint`            | Shows the expected command input                 | `[pull-request-number]`                   |
+| `arguments`                | Defines named input parameters                   | `[issue, environment]`                    |
+| `allowed-tools`            | Tools Claude may use when the Skill is active    | `Read Grep Bash`                          |
+| `disallowed-tools`         | Tools that must not be used                      | `Write Edit`                              |
+| `disable-model-invocation` | Prevents automatic activation                    | `true`                                    |
+| `user-invocable`           | Determines whether it appears as a slash command | `false`                                   |
+| `context`                  | Runs the Skill in a separate context             | `fork`                                    |
+| 'agent'                    | Selects a subagent when using forked context     | `Explore`                                 |
+| `model`                    | Selects a model for the current Skill execution  | Model identifier                          |
+| `effort`                   | Selects the reasoning-effort level               | `high`                                    |
+| `paths`                    | Restricts automatic activation to matching files | `**/*.tf`                                 |
+
+
+name
+======================================================================================================================================================
+name: azure-infrastructure-review
+
+- This gives the Skill a readable identity.
+- For Claude Code Skills stored here:  .claude/skills/azure-infrastructure-review/SKILL.md
+- the directory name normally determines the slash command: /azure-infrastructure-review
+- The frontmatter name is mainly the display name.
+
+
+description
+======================================================================================================================================================
+description: Review Azure and Terraform changes for security, reliability, cost and deployment risk.
+
+- This is the most important metadata field.
+- Claude initially sees the Skill description and uses it to decide whether to load the complete instructions.
+- The description field is the whole game
+- If you remember one thing about building skills, remember this: the description decides whether your skill ever fires. 
+- AI doesn't read your instructions to decide relevance; it reads only the description. 
+- A vague description means a skill that never triggers; a sharp one means it activates exactly when it should.
+- The description in SKILL.md acts like the Skill’s activation rule. Claude uses it to decide:
+  * whether to load the Skill;
+  * whether the request belongs to another Skill;
+  * whether to answer normally without using any Skill.
+
+- A handy debugging trick once a skill is installed: ask AI, "When would you use my client-summary skill?" 
+- It will paraphrase the description back to you. 
+- If its answer is narrower or wider than you intended, you've found exactly what to fix in the description.
+
+- You can also add negative triggers when a skill fires too eagerly: "Do NOT use for one-off calculations or quick questions — only for full month-end reports."
+
+A weak description:
+description: Helps with cloud.
+
+A better description:
+description: Review Azure, Terraform and Bicep changes for security, RBAC, networking, reliability, cost and deployment risk. 
+Use for pull requests, architecture changes and infrastructure deployment reviews.
+
+The second version explains both:
+what the Skill does;
+when it should be used.
+
+This supports progressive disclosure: Claude can scan short Skill descriptions first and load the complete body only when relevant.
+
+
+Automatic versus manual invocation
+=====================================================================================================================================================
+- By default, Claude Code may activate a Skill automatically, or the user may invoke it manually:  /azure-infrastructure-review
+- For sensitive operations such as deployment, deletion, committing code or sending messages, use: disable-model-invocation: true
+
+Example:
+---
+name: production-deployment
+description: Deploy an approved release to the production environment.
+disable-model-invocation: true
+---
+
+- Claude cannot decide by itself to activate this Skill; the user must invoke it. Anthropic specifically recommends this control for workflows with side effects.
+
+
+
+Tool permissions
+=====================================================================================================================================================
+You can specify which tools the Skill may use.
+allowed-tools:
+  - Read
+  - Grep
+  - Bash
+
+You can also prohibit tools:
+disallowed-tools:
+  - Write
+  - Edit
+
+For example, a read-only code-review Skill could inspect files but not modify them:
+
+---
+name: security-review
+description: Review source code for security vulnerabilities without changing files.
+allowed-tools:
+  - Read
+  - Grep
+disallowed-tools:
+  - Write
+  - Edit
+---
+
+
+
+
+Part 2: Markdown body
+======================================================================================================================================================
+======================================================================================================================================================
+- Everything below the closing --- is the Markdown body.
+- The Markdown body contains the actual knowledge and working procedure Claude follows.
+- The body contains the actual instructions, loaded only when the description matches your request: level two.
+- A well-designed body commonly includes these sections.
+1. Purpose
+2. When to use
+3. Required inputs
+4. Workflow or procedure
+5. Rules and guardrails
+6. Output format
+7. Decision criteria
+8. Examples
+9. Supporting resources
+
+
+Complete example
+======================================================================================================================================================
+---
+name: azure-infrastructure-review
+description: Review Azure, Terraform and Bicep changes for security, RBAC, networking, reliability, cost and deployment risk. Use for
+  infrastructure pull requests, architecture changes and deployment plans.
+argument-hint: "[file-path-or-pr-number]"
+allowed-tools:
+  - Read
+  - Grep
+  - Bash
+disallowed-tools:
+  - Write
+  - Edit
+---
+
+# Azure Infrastructure Review
+
+## Purpose
+Review proposed Azure infrastructure changes before deployment.
+
+## Inputs
+Use the supplied:
+- Terraform or Bicep files
+- Pull-request diff
+- Target environment
+- Change request
+- Architecture documentation
+
+Do not invent missing configuration.
+
+## Procedure
+1. Summarize the proposed change.
+2. Identify affected subscriptions, resource groups and resources.
+3. Review RBAC and managed identities.
+4. Review network access and public exposure.
+5. Review encryption and secret handling.
+6. Identify destructive changes.
+7. Review availability and disaster recovery.
+8. Review logging, monitoring and alerting.
+9. Identify cost implications.
+10. Classify each finding by severity.
+
+## Severity
+- Critical: Immediate security or production failure risk
+- High: Significant risk requiring correction before deployment
+- Medium: Important improvement with manageable risk
+- Low: Minor improvement or best-practice recommendation
+
+## Guardrails
+- Do not modify files.
+- Do not deploy infrastructure.
+- Do not display credentials or secrets.
+- Clearly label assumptions.
+- Require human approval for production changes.
+
+## Output Format
+### Executive Summary
+
+Provide a concise summary of the change and overall risk.
+
+### Findings
+| Finding | Severity | Resource | Risk | Recommendation |
+|---|---|---|---|---|
+
+### Final Decision
+Select one:
+- Approve
+- Approve with conditions
+- Reject
+
+Explain the reason for the decision.
+
+## Additional Resources
+- Read [references/security-standards.md](references/security-standards.md)
+  for company security requirements.
+- Read [examples/sample-review.md](examples/sample-review.md)
+  when an example output is needed.
+
+
+Example
+======================================================================================================================================================
+---
+name: client-monthly-summary
+description: Prepares a monthly client financial summary for an
+  accounting firm. Use when the user asks for a "client summary",
+  "monthly close", or "month-end report". Formats amounts in the
+  firm's reporting currency, groups by expense head, and flags
+  tax-withholding items.
+---
+
+# Client Monthly Summary
+
+## Settings (edit these to make it yours)
+
+- Reporting currency: your currency (e.g., USD, EUR, NGN)
+- Withholding threshold: the amount above which to flag a payment (e.g., 50,000)
+
+## Instructions
+When asked to prepare a client summary or monthly close:
+1. Format every amount in the reporting currency above, with thousands
+   separators (e.g., "1,250,000").
+2. Group all line items by expense head. Sort heads by total,
+   largest first.
+3. Flag any single payment above the withholding threshold above
+   with a "⚑ WITHHOLDING" note.
+4. Produce the report in exactly four sections, in this order:
+   Overview, Income, Expenses by Head, Flags & Notes.
+
+## Example
+User: "Prepare the March summary for DEMO Trading."
+Result: A four-section report, currency-formatted, withholding lines flagged.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======================================================================================================================================================
+======================================================================================================================================================
+								
+							Skills and Connectors Exercises
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+
+
+
+Exercise 1: Trigger a built-in skill (automatic Skill invocation or automatic Skill triggering)
+======================================================================================================================================================
+======================================================================================================================================================
+Task:
+- you have to trigger a built-in skill from Claude.
+- Claude has already a lot of skills available for use.
+
+
+Pre-Requisites:
+- file-creation option should be enabled in settings
+- Confirm file-creation is on in claude (Settings → Capabilities)
+
+
+Prompt:
+"Turn this into a one-slide PowerPoint with a title and three bullet points: [paste any three facts about your work]."
+
+
+Expected Result:
+# You didn't name a skill; just watch the PowerPoint skill fire on its own.
+
+
+
+How to perform the exercise:
+======================================================================================================================================================
+1. Open Claude
+   - Go to Claude.ai and start a new conversation.
+
+2. Confirm/Enable file creation
+   - Settings → Capabilities → Code execution and file creation
+   - Make sure Claude is allowed to create files or artifacts.
+   - Toggle button should be enabled for "Code execution and file creation"
+
+# The exact option name may vary slightly depending on your Claude interface.
+
+3. Use the following prompt
+Turn this into a one-slide PowerPoint with a title and three bullet points:
+
+- I work with Microsoft Azure and Google Cloud.
+- I manage cloud infrastructure, security and deployment workflows.
+- I am studying AI-Driven Development to build AI-assisted engineering workflows.
+
+
+4. Observe what Claude does
+Claude should:
+- Understand that you need a .pptx presentation.
+- Recognize that presentation creation requires its PowerPoint Skill.
+- Activate the relevant built-in Skill automatically.
+- Generate a one-slide PowerPoint.
+- Provide the created file.
+
+# You did not explicitly write
+
+
+5. Result/Output
+What this exercise proves: It demonstrates the following process:
+
+Your prompt
+   ↓
+Claude identifies the requested task
+   ↓
+Claude matches the task with a Skill description
+   ↓
+The PowerPoint Skill is loaded
+   ↓
+Claude follows its presentation-creation procedure
+   ↓
+A PowerPoint file is generated
+
+# This is called automatic Skill invocation or automatic Skill triggering.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Exercise 2: Connect one app, read-only (google drive and GMAIL)
+======================================================================================================================================================
+======================================================================================================================================================
+
+Task:
+- Claude provides option to connect with external apps/systems like GMAIL, Google Drive, Jira etc
+- You have to connect with an external App.
+
+- Connect one app, read-only. Connect Google Drive (or Gmail), enable it for the chat, then:
+- Find [a specific document] in my Drive and give me a three-sentence summary plus the three numbers that matter most.
+
+# Notice you never downloaded or pasted anything.
+
+
+Prompt (if you connected with google drive):
+Find the document named "EMR Main Modules.docx" in my Google Drive.
+
+Give me:
+1. A three-sentence summary.
+2. The three numbers that matter most.
+3. A brief explanation of why each number matters.
+
+Use only information contained in the document.
+
+
+What happens behind the scenes
+The process is approximately:
+
+Your prompt
+     ↓
+Claude recognizes that Drive access is required
+     ↓
+Google Drive Connector searches your files
+     ↓
+The Connector finds the requested document
+     ↓
+Claude retrieves its permitted content
+     ↓
+Claude analyzes and summarizes it
+     ↓
+Claude selects the three most significant numbers
+     ↓
+Claude returns the answer with source references
+
+
+Prompt (if you connected with GMAIL):
+Read the Latest email, i received and provide me the summary of email.
+or
+send an email to Muhammad amir and remind her about his presentation on migration from Cloudflare DNS to AWS DNS
+
+
+
+
+
+How to perform the exercise: Google Drive
+======================================================================================================================================================
+1. Open Claude: Go to Claude.ai and start a new conversation.
+2. go to customized → connectors → Add → Browse connectors → search for google drive → click add → set permissions → done
+3. give above mentioned prompt(s)
+4. Claude will ask for your approval to connect to external app (google drive in this case)
+   i clicked on "Allow Once"
+   # see screenshots in skills and connector folder
+
+5. Output
+   I found the document (owned by mufarooq@gmail.com, titled "EMR Main Modules (1).docx"). Here's what's in it:
+
+1. Three-Sentence Summary
+The document describes an AI-Driven Electronic Health Record (EMR) Management System designed to improve clinical decision-making, patient outcomes, workflow efficiency, and data security for healthcare providers. It breaks the system into two major modules: Core EMR Components — covering login/authentication, patient profiles, billing and insurance, appointment scheduling, clinical documentation (SOAP notes, diagnoses, treatment plans), prescriptions, lab/diagnostic integration, clinical decision support, interoperability (HL7/FHIR), and document management — and a Patient Portal module giving patients self-service access to their health records, appointments, messaging, prescriptions, and educational resources. Throughout, the system emphasizes HIPAA/ONC compliance, encryption, and role-based access control to keep patient data secure.
+
+2. The Three Numbers That Matter Most
+A quick note first: this document is a functional/feature spec, not a report with performance metrics — it contains no percentages, dollar figures, or outcome statistics. The most meaningful numbers in it are structural counts of the system's scope:
+
+2 — major modules (Core EMR Components and Patient Portal)
+78 — individual features/sub-components listed under Core EMR Components
+32 — individual features/sub-components listed under the Patient Portal
+
+3. Why Each Number Matters
+2 modules: This split defines the system's basic architecture — one side built for clinical/administrative staff running the practice, the other built for patients managing their own care. It's the top-level scope boundary for the whole system.
+
+78 Core EMR features: This is by far the larger, more complex side of the build — spanning security, billing, clinical documentation, prescriptions, and compliance. Its size signals where most of the engineering, testing, and regulatory effort (HIPAA/ONC) will concentrate.
+
+32 Patient Portal features: This is a substantial secondary build in its own right, not an afterthought — covering everything from telemedicine to secure messaging to document upload. Its scale matters because it directly shapes the patient-facing experience and adoption, which is often what determines whether an EMR system succeeds in practice.
+
+
+
+
+How to perform the exercise: GMAIL
+======================================================================================================================================================
+1. same steps as defined in above to connect with GMAIL
+2. give prompt as above
+3. see screenshots in skills and connector folder
+
+
+
+Exercise 1 versus Exercise 2
+======================================================================================================================================================
+| Area                          | Exercise 1                           | Exercise 2                                        |
+| ----------------------------- | ------------------------------------ | ------------------------------------------------- |
+| Main concept                  | Skill                                | Connector                                         |
+| Request                       | Create a PowerPoint                  | Find and summarize a Drive document               |
+| External application required | No                                   | Yes                                               |
+| Existing data retrieved       | No                                   | Yes                                               |
+| New file generated            | Yes                                  | No                                                |
+| Manual file upload needed     | No                                   | No                                                |
+| Primary lesson                | Claude knows how to create something | Claude can access authorized external information |
+
+
+# The central lesson is: In Exercise 1, the Skill supplied the procedure. In Exercise 2, the Connector supplied the data.
+
+
+
+
+
+
+
+Exercise 3-A. Build your first skill, by talking. Pick the most repetitive "I keep re-explaining how" task in your week. Then:
+======================================================================================================================================================
+======================================================================================================================================================
+Use the skill-creator skill to help me build a skill for [your task].
+Here's exactly how I want it done every time: [list your rules, your format, your must-dos and must-nots]. 
+Ask me anything you need, then build it.
+
+
+Solution:
+- This exercise teaches you to convert your personal working method into a reusable Skill.
+- Instead of manually writing YAML and Markdown, you describe your process conversationally. 
+- Claude asks questions, organizes your requirements and creates the SKILL.md and any supporting files.
+- You are transferring a procedure from your head into an AI-readable Standard Operating Procedure.
+- Custom Skills are intended for specific, repeatable workflows. 
+- They can range from a few instructions to multi-file packages containing references, templates or executable scripts.
+
+
+
+A simpler first Skill is:
+======================================================================================================================================================
+Meeting Notes → Action Items Skill
+It needs only pasted text, so you can test it immediately without Terraform, AWS access, Connectors, or technical files.
+It will convert rough meeting notes into:
+a concise summary;
+decisions;
+action items;
+owners;
+due dates;
+risks and open questions.
+
+
+
+Correct process / Steps
+======================================================================================================================================================
+Step 1. Install or enable the Skill Creator skill in claude
+Step 2. Open a normal new chat and provide detailed prompt
+Step 3. Download and install the created Skill
+
+
+**Step 1. Install or enable the Skill Creator skill in claude**
+- In Claude.ai, go to: Customize → Skills
+- Check whether Skill Creator is already installed and enabled.
+- If it is not installed:  Customize → Skills → + → Browse skills
+- Search for Skill Creator, install it, and ensure its toggle is on. 
+- Installed Skills become available to Claude in normal chats and can activate automatically when relevant.
+
+
+**Step 2. Open a normal new chat**
+- Return to the standard Claude conversation screen and paste the full prompt into the ordinary message field:
+- Prompt is given below
+- Then send the message.
+- You do not paste the prompt into:
+  * the Skill description field;
+  * Settings;
+  * Customize;
+  * the upload screen;
+  * an existing SKILL.md file.
+- The Skill Creator is a capability Claude uses inside the conversation.
+
+
+What happens next:
+You paste the request into a normal chat
+                ↓
+Claude notices “Use the Skill Creator Skill”
+                ↓
+Claude loads the enabled Skill Creator
+                ↓
+Claude may ask questions
+                ↓
+Claude creates the Skill files
+                ↓
+You download the generated .skill or ZIP package
+                ↓
+You upload it through Customize → Skills
+
+
+
+**Step 3. Download and install the created Skill**
+- After Claude produces the completed package: Customize → Skills → + → Create skill → Upload a skill
+- Upload the ZIP or .skill package and enable it. 
+- Claude’s official instructions place custom Skill uploading under Customize → Skills; 
+- after installation, Claude can automatically use it when matching prompts appear.
+
+
+
+i used the below prompt:
+======================================================================================================================================================
+Use the Skill Creator Skill to help me build a custom Skill called **Meeting Notes Organizer**.
+
+The Skill should be used whenever I provide meeting notes, call notes, discussion notes, interview notes or an unstructured meeting transcript and ask Claude to organize, summarize or extract actions from them.
+
+Here is exactly how I want the task completed every time.
+
+## PURPOSE
+Convert unstructured meeting notes into a clear, professional and actionable meeting record.
+
+## INPUT
+The input may contain:
+* Rough meeting notes
+* Informal bullet points
+* A meeting transcript
+* Decisions discussed during a call
+* Names of participants
+* Tasks, deadlines and responsibilities
+* Questions that were not resolved
+
+The notes may be incomplete or poorly formatted.
+
+## PROCESS
+1. Identify the purpose of the meeting.
+2. Create a concise meeting summary.
+3. Extract confirmed decisions.
+4. Extract all action items.
+5. Identify the owner of each action item.
+6. Identify the due date where one is provided.
+7. Identify dependencies, blockers and risks.
+8. Identify unresolved questions.
+9. Clearly distinguish confirmed information from assumptions.
+10. Do not invent missing owners, deadlines or decisions.
+
+## OUTPUT FORMAT
+Produce the following sections:
+
+### Meeting Summary
+Write a concise summary of the meeting in three to five sentences.
+
+### Key Discussion Points
+List the most important topics discussed.
+
+### Decisions Made
+List only decisions that were clearly confirmed.
+
+### Action Items
+Use this table:
+
+| # | Action Item | Owner | Due Date | Priority | Status |
+| - | ----------- | ----- | -------- | -------- | ------ |
+
+Use **Not specified** when an owner or due date was not provided.
+
+Use one of these priorities:
+
+* High
+* Medium
+* Low
+* Not specified
+
+Use one of these statuses:
+
+* Not started
+* In progress
+* Blocked
+* Completed
+* Not specified
+
+### Risks and Blockers
+List any risks, dependencies or blockers mentioned.
+
+### Open Questions
+List questions or issues that still require a decision.
+
+### Missing Information
+Identify important information that was not included in the notes.
+
+## MUST-DOS
+* Keep the output professional and easy to scan.
+* Preserve the original meaning of the notes.
+* Clearly separate decisions from suggestions.
+* Clearly identify missing owners and due dates.
+* Include every meaningful action item.
+* Combine duplicated discussion points.
+* Use simple and concise language.
+
+## MUST-NOTS
+* Do not invent decisions.
+* Do not assign tasks to people unless the notes clearly do so.
+* Do not create deadlines that were not mentioned.
+* Do not treat suggestions as approved decisions.
+* Do not add information from outside the supplied notes.
+* Do not remove important risks or unresolved issues.
+* Do not create an excessively long summary.
+
+## SKILL ACTIVATION
+The Skill should activate for requests such as:
+* Organize these meeting notes.
+* Turn these notes into action items.
+* Summarize this meeting and identify decisions.
+* Convert this transcript into minutes of meeting.
+* Extract owners and deadlines from these call notes.
+* Prepare professional meeting minutes from this text.
+
+The Skill should not activate for:
+
+* Writing a meeting invitation
+* Scheduling a meeting
+* Creating a meeting agenda before a meeting
+* General advice about running meetings
+* Writing an email unrelated to meeting notes
+* Summarizing an article or report
+* Transcribing an audio recording
+
+Ask me any questions required to remove ambiguity. After that, create the complete Skill.
+
+The first version should remain simple and should contain:
+
+* `SKILL.md`
+* A sample input and output
+* Five prompts that should activate the Skill
+* Five prompts that should not activate the Skill
+
+Before finalizing it, pressure-test the Skill description and confirm that it activates only when meeting notes or a meeting transcript are being organized.
+
+
+Output: What happened after entering prompt in claude's chat
+======================================================================================================================================================
+- Claude Asked few questions with multiple answers
+- Claude Asked: How should the organized meeting notes be delivered?
+  I Selected:   docx or markdown file
+
+Output: Then a skill was created with following files.
+1. meeting-notes-organizer.skill
+2. sample.md
+3. Calude asked whether you want to publish this skill or not, i opted Yes and it published it publicly and gave me the following URL
+   https://claude.ai/public/artifacts/e539ed84-3864-4547-8575-b25fc46de257
+
+Install the Skill:
+- i downloaded the skill and manually uploaded in claude: customize  → Skills  → Add  → Upload a skill, then uploaded both above files (.skill and sample.md)
+- Meeting-Notes-Organizer skill displayed in the Skills Page on top with Last Updated (Today's Date) and Author (You) columns.  
+  
+	Skill			  		Last updated		Author
+        --------------------------------------------------------------------------
+	meeting-notes-organizer   		7/13/26			You
+	skill-creator				7/13/26			Anthropic
+
+
+meeting-notes-organizer.skill
+└── meeting-notes-organizer/
+    ├── SKILL.md
+    └── examples/
+        ├── sample.md
+        └── trigger-prompts.md
+
+The separately downloaded sample.md is the same example already included in the package.
+
+
+
+
+1. How to open the .skill file
+======================================================================================================================================================
+A .skill file is essentially a packaged ZIP archive.
+
+On Windows:
+Make a copy of meeting-notes-organizer.skill.
+Rename the copy to meeting-notes-organizer.zip.
+Right-click it and select Extract All.
+Open the extracted files in VS Code or Notepad.
+
+Keep the original .skill file unchanged for installation later.
+
+Files:
+Meeting Notes Organizer package
+sample.md
+
+
+
+
+2. Study SKILL.md first
+======================================================================================================================================================
+SKILL.md is the main file. Claude reads it to understand:
+when to activate the Skill;
+how to perform the work;
+what rules to follow;
+how to format the answer.
+
+Its anatomy is:
+SKILL.md
+├── YAML frontmatter
+├── Purpose
+├── When this applies
+├── Process
+├── Confirmed-versus-assumed rules
+├── Output format
+├── Ground rules
+├── Delivery requirements
+└── Link to example
+
+
+
+A. YAML frontmatter
+
+The file begins with:
+---
+name: meeting-notes-organizer
+description: Converts rough, unstructured meeting notes...
+---
+name
+name: meeting-notes-organizer
+
+This is the Skill’s identity.
+
+description
+
+The description is effectively the Skill’s trigger definition.
+It tells Claude to activate the Skill when the user provides:
+meeting notes;
+call notes;
+discussion notes;
+interview notes;
+an unstructured transcript;
+
+and asks to:
+organize;
+clean up;
+summarize;
+extract actions;
+extract owners and deadlines;
+create minutes of meeting.
+
+It also tells Claude not to activate it for:
+invitations;
+agendas;
+general meeting advice;
+articles or reports;
+audio transcription without a meeting-organization request.
+
+The description answers:
+When should Claude load this Skill?
+
+B. Purpose
+The purpose says that the Skill should turn messy notes into a professional record without inventing information.
+
+Its central principle is:
+Honesty is more important than making the output appear complete.
+For example, when the notes do not specify an owner:
+Owner: Not specified
+Claude must not select the most likely person.
+This is a strong design principle because meeting notes often contain incomplete information.
+
+C. When this applies
+This section repeats the activation boundary in greater detail.
+Use the Skill
+Clean these meeting notes.
+Turn this transcript into meeting minutes.
+Extract owners and deadlines.
+Organize these call notes.
+Do not use the Skill
+Write a meeting invitation.
+Create an agenda.
+Give me advice about running meetings.
+Transcribe this audio.
+Summarize this research report.
+
+The frontmatter description helps Claude decide whether to load the Skill. The When this applies section gives more detailed instructions after the Skill has loaded.
+
+
+D. Process
+This section provides the actual workflow:
+1. Read all notes first.
+2. Identify the meeting purpose.
+3. Write a 3–5 sentence summary.
+4. Extract confirmed decisions.
+5. Extract every meaningful action item.
+6. Identify owners only when clearly assigned.
+7. Identify due dates only when provided.
+8. Extract risks and blockers.
+9. Extract unresolved questions.
+10. Identify missing information.
+
+This is the main difference between a normal prompt and a Skill.
+Without the Skill, you would need to explain these ten steps repeatedly. With the Skill, Claude can reuse them whenever it encounters meeting notes.
+
+3. The most important logic: confirmed versus assumed
+This is the core of your Skill.
+Consider:
+Priya suggested reducing the form to three fields.
+Marcus wanted to see the data first.
+This is not a decision because the team did not approve it.
+
+It belongs under:
+Key Discussion Points
+not:
+Decisions Made
+
+However:
+The team agreed to review the funnel data before making a decision.
+That is a confirmed decision.
+Your sample demonstrates this distinction clearly: reducing the form was only proposed, while gathering the data first was confirmed.
+
+Other important rules
+Owner
+Need to follow up with the mobile team.
+
+No owner was named, so:
+Owner: Not specified
+Due date
+Priya will draft copy variants.
+No date was given, so:
+Due Date: Not specified
+Vague timing
+Do it soon.
+
+Claude should not convert this into Friday, next week or a calendar date.
+
+
+4. Output format
+The Skill forces every result to use these sections:
+Meeting Summary
+Key Discussion Points
+Decisions Made
+Action Items
+Risks and Blockers
+Open Questions
+Missing Information
+Action Items table
+| # | Action Item | Owner | Due Date | Priority | Status |
+|---|---|---|---|---|---|
+
+The fixed structure makes results consistent, even when different meetings contain very different information.
+Missing Information section
+This section is particularly useful.
+It could identify:
+an action with no owner;
+an action with no due date;
+an unconfirmed decision;
+a missing meeting date;
+an unresolved dependency.
+
+The result therefore does more than summarize the meeting—it shows what still needs clarification.
+
+
+5. Ground rules
+The ground rules protect the result from hallucination:
+Do not add external information.
+Do not editorialize.
+Do not invent owners.
+Do not invent deadlines.
+Do not manufacture content to fill empty sections.
+Preserve the original meaning.
+
+These are the Skill’s guardrails.
+A useful distinction is:
+Part	Responsibility
+Process	What Claude should do
+Output format	How Claude should present it
+Ground rules	What Claude must not do
+
+
+6. Delivery section
+Your Skill includes an additional requirement:
+After displaying the organized notes, save them as a Markdown file.
+It also says that when the user requests Word format, Claude should create a .docx instead.
+This part is optional from a business perspective. It does not affect the meeting analysis itself; it controls how the result is delivered.
+Decide whether you want Claude to generate a downloadable file every time.
+
+Keep it when:
+you frequently forward meeting minutes;
+you save records in folders;
+you need downloadable documentation.
+Remove or modify it when:
+a chat response is normally sufficient;
+you do not want an extra file for every simple request.
+
+A more flexible version would be:
+
+
+## Delivery
+Present the organized notes in the chat. Create a downloadable Markdown
+or Word file only when the user requests a file.
+
+
+7. Study sample.md
+======================================================================================================================================================
+The sample contains:
+
+Rough input
+    ↓
+Expected organized output
+
+It teaches Claude through demonstration.
+The input contains:
+a confirmed result: conversion increased by 4%;
+a proposal: shorten the signup form;
+a confirmed decision: gather data first;
+assigned tasks;
+tasks with missing owners;
+a blocker;
+unresolved questions.
+
+The output then correctly separates these categories. For example, it gives Dana ownership of pulling the data, Priya ownership of drafting copy, and uses Not specified when nobody was assigned to contact the mobile team.
+
+Why examples improve a Skill
+
+Instructions tell Claude:
+Do not treat suggestions as decisions.
+The example demonstrates exactly what that means.
+This is often more effective than adding several paragraphs of abstract instructions.
+
+
+8. Study trigger-prompts.md
+======================================================================================================================================================
+This file contains two groups.
+Should activate
+Examples include:
+Clean up these client-call notes and pull out who owns what.
+Turn this transcript into minutes of meeting.
+Extract action items and deadlines from this call transcript.
+
+
+Should not activate
+Examples include:
+Write a meeting invitation.
+Create an agenda.
+Give meeting-facilitation advice.
+Summarize a research paper.
+
+These examples are used to pressure-test the description.
+
+Important point:
+trigger-prompts.md is reference and testing material. It is not normally executable program code.
+You or the Skill Creator use these prompts to check whether Claude recognizes the correct activation boundary.
+
+10. Your study checklist
+Before installing the Skill, confirm that you understand these five concepts:
+
+| Question                             | File section containing the answer |
+| ------------------------------------ | ---------------------------------- |
+| When should the Skill activate?      | Frontmatter `description`          |
+| What is its objective?               | Purpose                            |
+| How should Claude complete the task? | Process                            |
+| What must Claude avoid?              | Ground rules                       |
+| What should the result look like?    | Output format and `sample.md`      |
+
+
+
+
+
+
+
+
+
+
+Contents of SKILL.md file
+======================================================================================================================================================
+---
+name: meeting-notes-organizer
+description: Converts rough, unstructured meeting notes, call notes, discussion notes, interview notes, or a raw meeting transcript into a clear, professional meeting record with a summary, decisions, an action-item table with owners/due dates, risks, and open questions. Use this skill whenever the user provides meeting notes or a transcript (however messy or informal) and asks to organize, clean up, summarize, structure, or extract action items/decisions/owners/deadlines from them, or asks to turn notes into "minutes of meeting." Do not use it for writing meeting invitations or agendas ahead of a meeting, general advice about running meetings, or summarizing content that isn't from a meeting (e.g. an article, report, or audio transcription task with no organizing step).
+---
+
+# Meeting Notes Organizer
+
+## Purpose
+
+Turn messy, informal meeting input into a clean, scannable, and actionable record — without ever inventing information that wasn't actually in the notes. The core tension this skill manages is between two goals that pull in opposite directions: making the output look complete and professional, while staying strictly honest about what was and wasn't actually said. When in doubt, always favor honesty over completeness — a gap clearly labeled "Not specified" is far more useful to the user than a plausible-looking guess.
+
+## When this applies
+
+Use this skill when the user supplies meeting notes, call notes, discussion notes, interview notes, or an unstructured transcript and asks to organize, summarize, structure, or extract actions/decisions from them. This includes requests like "clean this up," "turn this into minutes," or "pull out the owners and deadlines" — the user doesn't need to say the exact phrase "meeting notes."
+
+This skill does **not** apply to: drafting a meeting invite, building an agenda for an upcoming meeting, general meeting-facilitation advice, transcribing audio into text, or summarizing non-meeting content (articles, reports, papers). If the input isn't notes/transcript *from* a meeting that already happened, this skill isn't the right tool.
+
+## Process
+
+Work through the notes in this order:
+
+1. **Read the whole input first** before writing anything, so later mentions of a topic (e.g., a decision that gets revised mid-meeting) correctly override earlier ones.
+2. Identify the likely purpose of the meeting from context.
+3. Draft a concise summary (3–5 sentences — resist the urge to pad this out).
+4. Pull out confirmed decisions — something the group actually agreed on, not something merely floated.
+5. Pull out every action item mentioned, however casually phrased ("I'll take a look at X" counts).
+6. For each action item, identify the owner *only* if the notes clearly assign it to a named person.
+7. For each action item, identify a due date *only* if one is actually stated (a relative date like "by Friday" is fine to keep as-is, or convert to an explicit date if the meeting date is known — don't guess a date that was never mentioned).
+8. Note dependencies, blockers, and risks mentioned anywhere in the notes.
+9. Note unresolved questions — things the group explicitly flagged as needing a follow-up or decision.
+10. Note what important information seems to be missing (e.g., no date was given for the meeting itself, or a decision was discussed but never actually confirmed).
+
+### The line between confirmed and assumed
+
+This is the most important judgment call in the skill, and it's worth being deliberate about it:
+
+- A **decision** belongs in "Decisions Made" only if the notes show the group actually landed on it — not if someone merely proposed or suggested it. "We should probably switch to weekly syncs" is a suggestion; "Team agreed to move to weekly syncs starting next week" is a decision.
+- Never assign an owner to an action item unless a person is clearly named in connection with that task. Don't infer ownership from someone merely being the one who raised the topic.
+- Never invent a due date. If the notes say "soon" or give no timing at all, the due date is "Not specified" — don't convert vague language into a specific date.
+- If you're not sure whether something is a decision or a suggestion, treat it as a suggestion and, if it seems important, surface it in Key Discussion Points or Open Questions instead of Decisions Made.
+
+## Output format
+
+Always produce these sections, in this order:
+
+### Meeting Summary
+3–5 sentences covering what the meeting was about and its general outcome.
+
+### Key Discussion Points
+The main topics covered, as a bulleted list. Combine points that are really the same topic discussed more than once.
+
+### Decisions Made
+Only clearly confirmed decisions. If none were confirmed, say so explicitly rather than omitting the section.
+
+### Action Items
+A single table:
+
+| # | Action Item | Owner | Due Date | Priority | Status |
+| - | ----------- | ----- | -------- | -------- | ------ |
+
+- Owner / Due Date: use **Not specified** when not given in the notes.
+- Priority: one of `High`, `Medium`, `Low`, `Not specified`. Only mark High/Medium/Low if the notes give a real signal (urgency language, explicit priority, or a near-term hard deadline) — otherwise use Not specified rather than guessing.
+- Status: one of `Not started`, `In progress`, `Blocked`, `Completed`, `Not specified`. Default to `Not specified` unless the notes indicate otherwise.
+
+### Risks and Blockers
+Anything flagged as a risk, dependency, or blocker. If none were mentioned, say so.
+
+### Open Questions
+Anything left unresolved that needs a future decision or follow-up.
+
+### Missing Information
+Call out anything important that's absent from the notes — e.g. no clear meeting date, an action item with no owner, a decision that was discussed but never confirmed. This section is what lets the user quickly see what to go chase down.
+
+## Ground rules
+
+- Preserve the original meaning — don't editorialize or add opinions about what the team *should* have decided.
+- Every meaningful action item should make it into the table, even small ones — but don't split one task into multiple rows just to pad the list.
+- Keep language plain and concise; this is a working document, not a narrative.
+- Never pull in outside information about the topic, company, or people that wasn't in the supplied notes, even if you happen to know it.
+- If the notes are extremely sparse (e.g., just a list of names and one sentence), it's fine for several sections to be short or to say "None mentioned" — don't manufacture content to fill every section out.
+
+## Delivery
+
+After presenting the organized notes in the chat reply, also save the result as a Markdown (`.md`) file and share it with the user via the file-presenting tool, so they have something to download and forward. Use a filename based on the meeting topic and/or date if one is mentioned (e.g. `2026-07-13-product-sync-notes.md`), otherwise `meeting-notes-organized.md`. If the user explicitly asks for a Word document instead, use the docx skill to produce a `.docx` file rather than Markdown.
+
+## Example
+
+See `examples/sample.md` for a full worked example (input notes → output record) illustrating the confirmed-vs-assumed judgment calls above.
+
+
+
+
+Contents of sample.md file
+======================================================================================================================================================
+# Sample Input → Output
+
+## Sample Input (rough notes as the user might paste them)
+
+```
+product sync - july 8
+people: dana, marcus, priya, tom (late, joined halfway)
+
+dana: gave update on onboarding flow redesign, said conversion is up 4% since last change
+marcus: raised concern that new signup form is too long, priya agreed
+priya: thinks we should cut the form down to 3 fields, marcus said maybe but wants to see data first
+team agreed to pull the signup funnel drop-off data before deciding anything
+dana will pull that data, target end of week
+marcus: backend migration is still blocked on infra team, waiting on ticket INFRA-482
+tom (joined late): asked about mobile app timeline, nobody had a clear answer, need to follow up with mobile team
+priya to draft new onboarding copy variants for A/B test, no date given
+general agreement the weekly sync should move to bi-weekly starting next month, dana to confirm with rest of team over slack
+open question: do we need legal review on the new copy? nobody addressed it
+```
+
+## Sample Output
+
+### Meeting Summary
+The product team reviewed onboarding flow performance and discussed simplifying the signup form. Dana reported a 4% conversion lift from recent onboarding changes, while Marcus and Priya debated shortening the signup form, agreeing to pull drop-off data before deciding. The team also touched on a blocked backend migration and an unresolved question about the mobile app timeline. The group tentatively agreed to shift the sync cadence to bi-weekly, pending confirmation.
+
+### Key Discussion Points
+- Onboarding flow redesign is showing a 4% conversion improvement.
+- Signup form length — Marcus and Priya discussed whether to reduce it to 3 fields; no final call was made.
+- Backend migration status, currently blocked on the infra team.
+- Mobile app timeline — raised by Tom, no clear answer available in the meeting.
+- Proposal to shift from weekly to bi-weekly syncs.
+
+### Decisions Made
+- Pull signup funnel drop-off data before deciding on shortening the form.
+
+*(Note: shortening the form to 3 fields was proposed by Priya but not confirmed — Marcus wanted to see data first, so it's treated as a discussion point, not a decision.)*
+
+### Action Items
+
+| # | Action Item | Owner | Due Date | Priority | Status |
+| - | ----------- | ----- | -------- | -------- | ------ |
+| 1 | Pull signup funnel drop-off data | Dana | End of week | Not specified | Not started |
+| 2 | Draft new onboarding copy variants for A/B test | Priya | Not specified | Not specified | Not started |
+| 3 | Confirm bi-weekly sync change with the team | Dana | Not specified | Not specified | Not started |
+| 4 | Follow up with mobile team on app timeline | Not specified | Not specified | Not specified | Not started |
+
+### Risks and Blockers
+- Backend migration is blocked on the infra team, pending ticket INFRA-482.
+
+### Open Questions
+- Does the new onboarding copy need legal review? Not addressed in the meeting.
+- What is the mobile app timeline? No clear answer was given.
+
+### Missing Information
+- No owner was assigned for following up with the mobile team.
+- No priority levels were discussed for any action item.
+- The exact date of the "next month" bi-weekly sync switch wasn't specified.
+
+
+
+
+Contents of trigger-prompts.md file
+======================================================================================================================================================
+# Trigger Prompts (for pressure-testing the skill description)
+
+## Should activate
+
+1. "Here are my messy notes from the client call this morning — can you clean these up and pull out who owns what? [notes pasted]"
+2. "Turn this into proper minutes of meeting: [transcript pasted]"
+3. "I typed these bullet points during standup, can you organize them and tell me what's still unresolved? [notes pasted]"
+4. "Summarize this interview and flag any follow-up questions we still need to ask the candidate. [interview notes pasted]"
+5. "Can you extract the action items and deadlines from this call transcript? It's pretty unstructured. [transcript pasted]"
+
+## Should NOT activate
+
+1. "Write an invite for our sprint planning meeting next Tuesday at 10am with the design and eng teams."
+2. "Can you draft an agenda for tomorrow's budget review meeting? We need to cover Q3 spend and the new hire requests."
+3. "What are some good techniques for keeping a meeting on time when people keep going off-topic?"
+4. "Write a follow-up email to a client thanking them for their time yesterday, unrelated to any notes I have."
+5. "Summarize this research paper on transformer architectures for me — just the key findings."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Exercise 3-B. Build your first skill, by talking. Pick the most repetitive "I keep re-explaining how" task in your week. Then:
+======================================================================================================================================================
+======================================================================================================================================================
+Use the skill-creator skill to help me build a skill for [your task].
+Here's exactly how I want it done every time: [list your rules, your format, your must-dos and must-nots]. 
+Ask me anything you need, then build it.
+
+
+Solution:
+- This exercise teaches you to convert your personal working method into a reusable Skill.
+- Instead of manually writing YAML and Markdown, you describe your process conversationally. 
+- Claude asks questions, organizes your requirements and creates the SKILL.md and any supporting files.
+- You are transferring a procedure from your head into an AI-readable Standard Operating Procedure.
+- Custom Skills are intended for specific, repeatable workflows. 
+- They can range from a few instructions to multi-file packages containing references, templates or executable scripts.
+
+
+i used the below prompt:
+======================================================================================================================================================
+Use the Skill Creator Skill to help me build a custom Skill called **AWS Infrastructure Change Review**.
+
+The Skill should be used whenever I ask Claude to review an AWS, Terraform, CloudFormation or AWS CDK infrastructure change, deployment plan or pull request.
+
+Here is exactly how I want the review performed every time.
+
+## PURPOSE
+
+Review proposed AWS infrastructure changes before deployment and identify security, reliability, operational, cost and deployment risks.
+
+## REQUIRED INPUTS
+
+Use the information available from:
+
+* Terraform, CloudFormation or AWS CDK code
+* Pull-request changes or diff
+* Target AWS account and environment
+* Target AWS Region
+* Related change request or ticket
+* Architecture documentation
+* Company security and compliance standards
+
+If important information is unavailable, clearly identify what is missing. Do not invent configuration details.
+
+## REVIEW PROCESS
+
+1. Summarize the proposed infrastructure change.
+2. Identify the affected AWS accounts, Regions, VPCs and resources.
+3. Review IAM roles, policies, users and permissions for excessive access.
+4. Check for wildcard permissions and violations of least privilege.
+5. Review VPC configuration, security groups, network ACLs and public exposure.
+6. Review S3 bucket access, public access settings and encryption.
+7. Review encryption using AWS KMS.
+8. Check secrets management through AWS Secrets Manager or Systems Manager Parameter Store.
+9. Identify destructive, replacement or irreversible operations.
+10. Estimate the deployment blast radius.
+11. Review availability, Multi-AZ configuration, redundancy and fault tolerance.
+12. Review backup, recovery and disaster-recovery configurations.
+13. Review CloudWatch logs, metrics, alarms and audit logging.
+14. Check AWS CloudTrail and AWS Config coverage where relevant.
+15. Identify likely cost implications.
+16. Review naming, tagging and organizational standards.
+17. Classify every finding by severity.
+18. Provide a final deployment recommendation.
+
+## AWS-SPECIFIC CHECKS
+
+Review the following where relevant:
+
+* IAM least-privilege configuration
+* Root account and privileged access risks
+* VPC and subnet architecture
+* Public and private subnet placement
+* Security group rules
+* Open inbound ports
+* Public IP addresses
+* Internet Gateway and NAT Gateway usage
+* S3 public access
+* S3 encryption and versioning
+* RDS encryption, backup and Multi-AZ configuration
+* EC2 instance exposure and IAM instance profiles
+* Lambda permissions and environment variables
+* API Gateway authorization
+* ECS and EKS security configuration
+* KMS key policies and rotation
+* Secrets Manager usage
+* CloudTrail logging
+* CloudWatch monitoring and alarms
+* AWS Config compliance
+* AWS Backup coverage
+* Cross-account access
+* Resource tagging
+* Cost-impacting resources
+* Terraform or CloudFormation resource replacement
+
+## SEVERITY LEVELS
+
+* **Critical:** Immediate security exposure, data-loss risk or major production failure risk.
+* **High:** Significant risk that should be corrected before deployment.
+* **Medium:** Important issue that should be planned for correction.
+* **Low:** Minor issue or best-practice improvement.
+
+## OUTPUT FORMAT
+
+Produce the following sections:
+
+1. Executive Summary
+2. Proposed Changes
+3. Affected AWS Resources
+4. Security Findings
+5. Reliability and Availability Findings
+6. Cost Findings
+7. Deployment and Blast-Radius Assessment
+8. Required Actions
+9. Final Recommendation
+
+Use this findings table:
+
+| Finding | Severity | AWS Resource | Risk | Recommended Action |
+| ------- | -------- | ------------ | ---- | ------------------ |
+
+The final recommendation must be one of:
+
+* Approve
+* Approve with conditions
+* Reject
+
+## MUST-DOS
+
+* Explain why each finding matters.
+* Clearly identify assumptions.
+* Separate confirmed findings from possible risks.
+* Prioritize Critical and High findings.
+* Mention missing evidence or configuration.
+* Identify AWS account, Region and environment where possible.
+* Highlight destructive or replacement operations.
+* Check for excessive IAM permissions.
+* Check for publicly accessible resources.
+* Keep the executive summary concise.
+
+## MUST-NOTS
+
+* Do not deploy infrastructure.
+* Do not modify source files unless I explicitly request it.
+* Do not execute Terraform, CloudFormation or AWS CDK deployments.
+* Do not approve unresolved Critical findings.
+* Do not expose AWS credentials, access keys, secrets or tokens.
+* Do not recommend using the AWS root account.
+* Do not assume that a development configuration is suitable for production.
+* Do not claim that a configuration is secure without supporting evidence.
+* Do not make changes to AWS accounts or resources.
+* Do not ignore destructive Terraform or CloudFormation operations.
+
+## PERMISSIONS
+
+The first version of this Skill must be read-only.
+
+It may:
+
+* Read infrastructure code
+* Analyze pull-request changes
+* Review Terraform plans
+* Review CloudFormation change sets
+* Identify risks
+* Recommend corrections
+
+It must not:
+
+* Modify files
+* Apply Terraform plans
+* Deploy CloudFormation stacks
+* Run AWS CDK deployments
+* Create, update or delete AWS resources
+* Change IAM policies
+* Modify production systems
+
+## SKILL ACTIVATION
+
+The Skill should activate for requests such as:
+
+* Review this AWS Terraform plan.
+* Check this CloudFormation template before deployment.
+* Review this AWS CDK pull request.
+* Identify security risks in this AWS infrastructure change.
+* Assess the blast radius of this AWS deployment.
+
+The Skill should not activate for general learning questions such as:
+
+* What is Amazon EC2?
+* Explain AWS Lambda.
+* Compare AWS with Azure.
+* Help me prepare for the AWS Solutions Architect exam.
+
+Ask me any questions needed to remove ambiguity. After I answer, create the complete Skill package, including:
+
+* `SKILL.md`
+* AWS review checklist
+* Severity definitions
+* Sample expected output
+* Three prompts that should trigger the Skill
+* Three prompts that should not trigger the Skill
+
+Before finalizing it, review the Skill for unclear instructions, overlapping rules, unsafe permissions and overly broad activation criteria.
