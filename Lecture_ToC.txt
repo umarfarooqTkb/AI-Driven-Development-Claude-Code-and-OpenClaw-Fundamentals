@@ -344,14 +344,69 @@ PS C:\WINDOWS\System32> opencode.cmd --version
 1.17.19
 
 
+======================================
+open cmd and navigates to your project folder
+type opencode in terminal 
+opencode will be working in your terminal
+
+Type /models to see every model across your connected providers and switch between them; the active model is also shown in the TUI. 
+(From the command line, opencode models prints the available provider/model names — handy when setting a default in your config.)
 
 
 
+Current as of 2026. Both tools update frequently. Before you start any session, run claude update or opencode upgrade to make sure you have the latest version.
+
+
+| Command    | Purpose                                                                          |
+| ---------- | -------------------------------------------------------------------------------- |
+| `/connect` | Connects OpenCode to an AI **provider** by signing in or entering an API key.    |
+| `/models`  | Selects the specific AI **model** you want to use from your connected providers. |
+
+
+/connect
+======================================================================================================================================================
+Use this first to connect services such as:
+Anthropic
+OpenAI
+Google
+OpenCode Zen
+GitHub Copilot
+DeepSeek
+
+Example:
+/connect
+Select Anthropic, then authenticate or enter your Anthropic API key. OpenCode stores the provider credentials so they remain available in later sessions.
 
 
 
+/models
+======================================================================================================================================================
+After connecting a provider, run:
+/models
+
+You can then select a model such as:
+Anthropic / Claude Sonnet
+OpenAI / GPT
+Google / Gemini
+
+The selected model is the one OpenCode uses to understand your requests and work on your code.
+Correct order
+/connect
+Connect the provider and supply credentials.
+
+Then:
+
+/models
+Choose a model available through that provider.
+
+One correction: the current documented command is /models, plural, not /model.
 
 
+A simple analogy:
+Provider: mobile network, such as Jazz or Zong
+Model: the specific package or service you use on that network
+
+Connecting Anthropic does not automatically mean every Anthropic model is selected; /models lets you choose which one OpenCode should use.
 
 
 
