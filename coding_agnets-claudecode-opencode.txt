@@ -1,0 +1,491 @@
+======================================================================================================================================================
+======================================================================================================================================================
+
+								Coding Agent
+							Claude Code, Open Code, Cursor
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+ToC
+======================================================================================================================================================
+Claude Code
+Open Code
+Cursor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======================================================================================================================================================
+======================================================================================================================================================
+								
+								Claude Code
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+Claude Code
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Claude Code is Anthropic’s agentic coding tool.
+- It works inside your terminal, IDE, desktop app, or browser and can understand an entire software project—not just a single code snippet.
+- Claude Code is more like a terminal coding agent. 
+- Anthropic describes Claude Code as an agentic coding tool that lives in your terminal, understands your codebase, executes routine tasks, explains complex code, 
+  and handles Git workflows through natural language.
+- Claude Code is an AI coding agent that can inspect, modify, test, and manage a software project through natural-language instructions.
+
+It can:
+ * Read and explain your codebase
+ * Create and edit files
+ * Fix bugs and implement features
+ * Run terminal commands
+ * Execute tests and analyze errors
+ * Refactor code across multiple files 
+ * Work with Git and help review changes
+ * Automate repetitive development tasks
+
+- You talk to it in the terminal and it reads your entire codebase, understands your project, and writes code.
+- You type "Add user authentication to my app": Claude Code reads your existing code, generates the auth module, writes tests, and integrates everything.
+- It works in your codebase and can help with coding tasks from the terminal, IDE, web, Slack, or desktop. 
+- Anthropic says it can understand codebases, edit files, run tests, work with Git/GitHub/GitLab flows, and help produce pull requests
+- In simple words: Claude Code is like a senior AI developer sitting inside your project.
+- You can ask: 
+- Find the bug in this API and fix it.
+- or:
+- Refactor this authentication module and add tests.
+- It can inspect your files, make changes, run commands, and explain what it did.
+
+
+For example, inside a project folder you can run: claude
+Then ask: Analyze this project and explain its architecture.
+or:
+Find the cause of the login error, fix it, and run the relevant tests.
+
+- The main difference from the regular Claude chat interface is that Claude Code can directly work with your local project files and development tools, 
+  subject to the permissions you approve. 
+- It is therefore closer to an AI software-engineering agent than a normal coding chatbot.
+
+| Component    | Example                                  |
+| ------------ | ---------------------------------------- |
+| Coding agent | OpenCode, Claude Code                    |
+| AI provider  | Anthropic, OpenAI, Google                |
+| AI model     | Claude, GPT, Gemini                      |
+| Project      | Your local application or Git repository |
+
+
+
+Common alternatives to Claude Code
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- As of July 2026, the closest alternatives are terminal-based AI coding agents that can read a project, edit files, execute commands, and run tests.
+
+| Tool                   | Type                      | Main advantage                                          |
+| ---------------------- | ------------------------- | ------------------------------------------------------- |
+| **OpenCode**           | Terminal, IDE and desktop | Open-source and supports multiple AI providers          |
+| **OpenAI Codex CLI**   | Terminal and IDE          | Strong choice for ChatGPT/OpenAI users                  |
+| **Gemini CLI**         | Terminal                  | Open-source and integrates well with Google services    |
+| **GitHub Copilot CLI** | Terminal                  | Best integration with GitHub repositories and workflows |
+| **Aider**              | Terminal                  | Lightweight, Git-focused and model-flexible             |
+| **Cline**              | Terminal and IDE          | Open-source, model-flexible and transparent approvals   |
+| **Cursor**             | AI code editor and CLI    | Complete visual IDE with powerful coding agents         |
+| **Devin Desktop**      | AI IDE and agent manager  | Visual environment for managing multiple coding agents  |
+
+
+
+
+OpenCode versus Claude Code
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+| OpenCode                                     | Claude Code                                 |
+| -------------------------------------------- | ------------------------------------------- |
+| Open-source coding agent                     | Anthropic’s proprietary coding agent        |
+| Supports multiple providers and models       | Primarily designed around Claude models     |
+| Can use Claude, GPT, Gemini and local models | Deep integration with Anthropic’s ecosystem |
+| More provider flexibility                    | More standardized Claude experience         |
+| Requires choosing a provider and model       | Claude is already the core model            |
+
+
+
+
+
+Installation of Claude Code
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+Installation of Claude Code on Local machine:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Pre-requisites:
+1. Git
+2. Node
+3. VS Code
+
+
+# Type following command as per your OS
+++++++++++++++++++++++++++++++++++++++++
+# macOS / Linux / WSL — recommended (auto-updates)
+curl -fsSL https://claude.ai/install.sh | bash
+
+# Windows PowerShell: Run Windows Power Shell as an Administrator
+irm https://claude.ai/install.ps1 | iex
+
+# macOS Homebrew (no auto-update — run `brew upgrade claude-code` periodically)
+brew install --cask claude-code
+
+# npm fallback
+npm install -g @anthropic-ai/claude-code
+
+
+### Troubleshooting:
+# if claude code is not installed on windows via power shell then, open cmd with administrator and run the command
+npm install -g @anthropic-ai/claude-code
+
+### End of Installation
+
+
+Run Claude Code
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# enter following command on terminal
+- claude --version
+- now type claude in powershell
+- if not run, use the following command: & "C:\Users\Administrator\.local\bin\claude.exe"
+
+- To Add Claude Code to PATH permanently
+- Run this in PowerShell:
+$claudePath = "$env:USERPROFILE\.local\bin"
+$currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
+
+if ($currentPath -notlike "*$claudePath*") {
+    [Environment]::SetEnvironmentVariable(
+        "Path",
+        "$currentPath;$claudePath",
+        "User"
+    )
+}
+
+Then close all PowerShell and Windows Terminal windows, open a new PowerShell window, and test:
+claude --version
+It should return: 2.1.207
+
+
+
+
+
+
+
+
+
+
+
+
+======================================================================================================================================================
+======================================================================================================================================================
+								
+								Open Code
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+OpenCode
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- OpenCode is an open-source AI coding agent that works with your software project.
+- Open-source coding agent where you can use different models and customize more.
+- Its official docs describe it as available through a terminal interface, desktop app, or IDE extension
+- OpenCode is like an open-source alternative to Claude Code where you get more control and model flexibility.
+- You run it inside a project folder, give it instructions in natural language, and it can inspect the codebase, explain code, create or modify files, 
+  run terminal commands, troubleshoot errors, and execute tests.
+
+- OpenCode is not an AI model
+- OpenCode is the agent or working environment. It connects to an AI model that provides the intelligence.
+
+| Component    | Example                                  |
+| ------------ | ---------------------------------------- |
+| Coding agent | OpenCode                                 |
+| AI provider  | Anthropic, OpenAI, Google                |
+| AI model     | Claude, GPT, Gemini                      |
+| Project      | Your local application or Git repository |
+
+
+This is why OpenCode has two separate commands: 
+/connect = Connects your account or API key to an AI provider.
+/models  = Lets you select the model OpenCode should use.
+
+- OpenCode supports numerous cloud providers and local models, so you are not restricted to one AI company.
+
+
+
+
+
+What OpenCode can do
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Suppose you start it inside this project: cd /d C:\ufk\project-management
+opencode
+
+You can then ask: Explain the architecture of this project.
+OpenCode can search the project files and explain how the components interact.
+You can also ask: Find the cause of the login error, fix it, and run the related tests.
+
+OpenCode may then:
+ * Inspect the relevant code.
+ * Search for authentication components.
+ * identify the likely problem.
+ * Modify the necessary files.
+ * Run tests or build commands.
+ * Show you the resulting changes.
+
+It can use built-in tools for reading and editing files, searching code, running shell commands, and connecting to external systems through MCP servers.
+
+
+
+
+Build and Plan agents
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- OpenCode includes two important built-in working modes.
+1. Build agent
+2. Plan agent
+
+
+Build Agent
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+The Build agent is used for actual development work. It can:
+ * Create and edit files
+ * Run commands
+ * Implement features
+ * Fix bugs
+ * Refactor code
+ * Run tests
+ 
+
+Plan agent
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- The Plan agent is primarily for analysis. 
+- It can inspect the project, explain the code and propose a solution without immediately changing files. 
+- File modifications are denied by default, and shell commands require permission.
+
+
+A good workflow is:
+ * Plan mode  → understand and design the solution
+ * Build mode → implement and test the solution
+
+You can switch between these agents using the Tab key, or invoke specialized agents with an @ mention.
+
+
+
+Specialized agents
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+You can create custom agents for particular responsibilities, such as:
+ * @code-reviewer
+ * @security-reviewer
+ * @test-writer
+ * @documentation-writer
+ * @azure-architect
+
+Each agent can have its own:
+ * Instructions
+ * Selected model
+ * Tool permissions
+ * Development responsibilities
+
+This allows one OpenCode installation to support different development workflows.
+
+
+
+Models and providers
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- OpenCode can connect to providers offering Claude, GPT, Gemini and many other models. It also supports local models.
+- You normally configure it like this: /connect
+- Select a provider and authenticate.
+- Then: /models
+- Select the model you want to use.
+- You can also use OpenCode Zen, a curated model service maintained by the OpenCode team, instead of configuring providers independently.
+
+
+
+Main OpenCode interfaces
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- OpenCode is available through several interfaces:
+
+| Interface           | Use                                         |
+| ------------------- | ------------------------------------------- |
+| Terminal interface  | Run `opencode` inside your project          |
+| Desktop application | Visual OpenCode interface                   |
+| Editor extensions   | Work from supported editors such as VS Code |
+| ACP integration     | Connect OpenCode to ACP-compatible editors  |
+
+
+
+
+
+OpenCode versus Claude Code
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| OpenCode                                     | Claude Code                                 |
+| -------------------------------------------- | ------------------------------------------- |
+| Open-source coding agent                     | Anthropic’s proprietary coding agent        |
+| Supports multiple providers and models       | Primarily designed around Claude models     |
+| Can use Claude, GPT, Gemini and local models | Deep integration with Anthropic’s ecosystem |
+| More provider flexibility                    | More standardized Claude experience         |
+| Requires choosing a provider and model       | Claude is already the core model            |
+
+
+
+
+
+
+
+
+Installation of Open Code
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Installation of Open Code on windows:
+========================================================================================================================================================
+# All platforms — recommended
+curl -fsSL https://opencode.ai/install | bash
+
+# macOS Homebrew
+brew install opencode
+
+# npm / bun / pnpm / yarn
+npm install -g opencode-ai
+
+Incase of error, type
+npm.cmd install -g opencode-ai
+
+PS C:\WINDOWS\System32> opencode.cmd --version
+1.17.19
+
+
+
+Run Claude Code
+========================================================================================================================================================
+- open cmd and navigates to your project folder
+- type opencode in terminal 
+- open code will be working in your terminal
+
+- Type /models to see every model across your connected providers and switch between them; the active model is also shown in the TUI. 
+- (From the command line, opencode models prints the available provider/model names — handy when setting a default in your config.)
+- Current as of 2026. Both tools update frequently. Before you start any session, run claude update or opencode upgrade to make sure you have the latest version.
+
+| Command    | Purpose                                                                          |
+| ---------- | -------------------------------------------------------------------------------- |
+| /connect   | Connects OpenCode to an AI **provider** by signing in or entering an API key.    |
+| /models    | Selects the specific AI **model** you want to use from your connected providers. |
+
+
+/connect
+======================================================================================================================================================
+Use this first to connect services such as:
+Anthropic
+OpenAI
+Google
+OpenCode Zen
+GitHub Copilot
+DeepSeek
+
+Example:
+/connect
+Select Anthropic, then authenticate or enter your Anthropic API key. OpenCode stores the provider credentials so they remain available in later sessions.
+
+
+
+/models
+======================================================================================================================================================
+After connecting a provider, run: /models
+
+You can then select a model such as:
+Anthropic / Claude Sonnet
+OpenAI / GPT
+Google / Gemini
+
+The selected model is the one OpenCode uses to understand your requests and work on your code.
+Correct order
+/connect
+Connect the provider and supply credentials.
+
+Then:
+
+/models
+Choose a model available through that provider.
+
+One correction: the current documented command is /models, plural, not /model.
+
+
+A simple analogy:
+Provider: mobile network, such as Jazz or Zong
+Model: the specific package or service you use on that network
+
+Connecting Anthropic does not automatically mean every Anthropic model is selected; /models lets you choose which one OpenCode should use.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======================================================================================================================================================
+======================================================================================================================================================
+								
+								Cursor
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+
+
+
+
+
+Cursor
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- AI coding agent.
+- AI-powered code editor, like VS Code with an AI agent inside.
+- Cursor is more like an AI IDE/editor. 
+- You open your project inside Cursor and work visually like VS Code.
+- Cursor says its agents can plan, write, and review code while understanding your codebase, across desktop, CLI, web, and mobile.
+
+
+
+Claude Code vs. Opencode vs. cursor
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Cursor      = AI coding editor
+Claude Code = AI coding agent in terminal
+OpenCode    = open-source AI coding agent/framework
+
