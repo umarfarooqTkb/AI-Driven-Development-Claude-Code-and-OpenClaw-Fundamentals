@@ -433,6 +433,73 @@ Connecting Anthropic does not automatically mean every Anthropic model is select
 
 
 
+run open code
+======================================================================================================================================================
+open your project folder in windows explorer and open terminal ad type opencode
+opencode will start in command prompt
+
+
+
+Exercise 1
+======================================================================================================================================================
+- i created three files from claude or ChatGPT with the following prompt
+
+"create two ms excel files with few records, which i will use in different learning projects
+bookkeeper_expense
+bookkeeper_bank_statement
+also provide me the code, which you write to generate these files"
+
+following files were created
+01_bookkeeper_expense
+02_bookkeeper_bank_statement
+generate_bookkeeper_files
+
+- i created a folder and pasted three files in that folder, then open cmd/terminal in that folder and enter command, opencode
+- open code started in terminal
+- i gave this prompt: i want you to review both the excel files and give your review.
+- press enter
+- it will for permissions like to access a directory etc etc
+- press enter everytime, it ask for permission
+
+
+
+How to run and use open code freely
+======================================================================================================================================================
+Open & Signup:
+- openrouter is a platform, where you can get all popular models at one place.
+- open browser
+- url = openrouter.ai
+- signup with google
+- Generate API Key = your_openrouter_api_key_here
+
+Generate API Key:
+- in openrouter, click on your profile (top-right) >> workspace >> API Keys >> Create >> New Key
+- Enter Name, credit limit, reset limit every, expiration >> click create
+- API Key = your_openrouter_api_key_here
+
+
+- Open router has two types of models, free and paid
+- free models are not unlimited, as of 16th July 2026, you can do 50 free api calls.
+- lets say you send a hi command, it will be considered as one api call and so one. you mean requests or prompts
+- so free models are limited
+
+- type /model
+- you have to connect with a provide, type ctrl+a
+- connect to provider page will open
+- you can search and select your provider
+- i searched for openrouter
+- it will ask for the API key, enter API key and press enter
+- now it will provide you the list of all models, which were available on their website
+- type free. all free models will be displayed
+- you can select any model and use it.
+
+- but reality is that, these models will sometime work and sometimes does not work.
+
+i was here at video (8 Agentic Coding) 1:10:46
+
+
+
+
 
 
 
