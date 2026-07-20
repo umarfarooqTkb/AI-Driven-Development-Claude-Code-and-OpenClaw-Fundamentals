@@ -73,6 +73,9 @@ AI Protocols:
 - Claude Mythos vs Regular Claude
 
 
+-- Coding Agents (Claude code, Codex, Open Code)
+
+-- Modern AI Tool Landscape
 
 -- Vector Database?
 
@@ -923,6 +926,401 @@ Claude Mythos vs Regular Claude
 
 
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+							Modern AI Tools Landscape
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+AI Models
+   ↓
+AI Assistants
+   ↓
+Coding Agents / AI IDEs
+   ↓
+Agent Builders and Frameworks
+   ↓
+RAG and Vector Databases
+   ↓
+Automation and Integration
+   ↓
+Deployment, Monitoring and Evaluation
+
+
+
+1. General AI assistants
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- These are general-purpose tools for conversation, research, analysis, writing, planning and coding assistance.
+- Use these when you need to think, research, design, explain or prepare work.
+
+| Tool                | Provider   | Main use                                                  |
+| ------------------- | ---------- | --------------------------------------------------------- |
+| ChatGPT**           | OpenAI     | General AI work, reasoning, research and content creation |
+| Claude**            | Anthropic  | Long-document analysis, writing and reasoning             |
+| Gemini**            | Google     | General AI with Google Workspace and cloud integration    |
+| Microsoft Copilot** | Microsoft  | Microsoft 365 and enterprise productivity                 |
+| Perplexity**        | Perplexity | AI-assisted web research                                  |
+| NotebookLM**        | Google     | Research and question-answering over your documents       |
+
+
+
+2. Coding agents
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Coding agents work directly with software repositories and can often read files, modify code, run terminal commands and execute tests.
+
+| Tool                   | Main characteristic                                            |
+| ---------------------- | -------------------------------------------------------------- |
+| **Claude Code**        | Anthropic’s terminal-first coding agent                        |
+| **Codex**              | OpenAI coding agent across terminal, editor, cloud and ChatGPT |
+| **OpenCode**           | Open-source, model-flexible coding agent                       |
+| **Gemini CLI**         | Google’s terminal coding agent                                 |
+| **Aider**              | Lightweight Git-aware terminal assistant                       |
+| **Cline**              | Open-source coding agent with model flexibility                |
+| **Roo Code**           | Customizable agent modes inside an editor                      |
+| **GitHub Copilot CLI** | GitHub-oriented terminal assistance                            |
+
+- Codex, for example, can read, modify and run code in the selected directory and can also handle larger cloud-based tasks.
+Prompt
+  ↓
+Inspect repository
+  ↓
+Create implementation plan
+  ↓
+Modify files
+  ↓
+Run tests
+  ↓
+Review Git diff
+
+
+
+
+3. AI IDEs and intelligent code editors
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- An AI IDE provides the complete coding environment: editor, terminal, debugger, Git tools, autocomplete and an integrated coding agent.
+
+| Tool                              | Agent inside it          |
+| --------------------------------- | ------------------------ |
+| **Cursor**                        | Cursor Agent             |
+| **Windsurf**                      | Cascade                  |
+| **VS Code + GitHub Copilot**      | Copilot Agent            |
+| **Replit**                        | Replit Agent             |
+| **JetBrains IDEs + AI Assistant** | JetBrains AI Agent       |
+| **Zed**                           | Integrated AI assistance |
+
+# Cursor has evolved beyond ordinary autocomplete into an agent-oriented software-development workspace.
+
+
+
+
+4. Visual AI application builders
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- These tools let you visually connect LLMs, prompts, tools, memory and data sources.
+
+| Tool                               | Best for                                             |
+| ---------------------------------- | ---------------------------------------------------- |
+| **Flowise**                        | Visual RAG, chatbots and agent workflows             |
+| **Langflow**                       | Visual LangChain-style AI applications               |
+| **Dify**                           | AI applications, workflows, RAG and model management |
+| **Microsoft Copilot Studio**       | Enterprise copilots and Microsoft integrations       |
+| **Google Vertex AI Agent Builder** | Enterprise agents on Google Cloud                    |
+| **Amazon Bedrock Agents**          | Agents using AWS services and knowledge bases        |
+| **Botpress**                       | Conversational agents and customer-service bots      |
+| **Voiceflow**                      | Conversational and voice-interface design            |
+
+
+
+
+5. Workflow automation and integration platforms
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- These connect applications, APIs, databases and business processes.
+
+| Tool                               | Primary ecosystem                         |
+| ---------------------------------- | ----------------------------------------- |
+| **n8n**                            | Flexible, self-hosted and cross-platform  |
+| **Microsoft Power Automate**       | Microsoft 365 and Dynamics                |
+| **Azure Logic Apps**               | Azure enterprise integration              |
+| **Zapier**                         | Easy SaaS automation                      |
+| **Make**                           | Visual business automation                |
+| **Workato**                        | Enterprise integration and automation     |
+| **MuleSoft**                       | APIs and enterprise integration           |
+| **Boomi**                          | Integration platform as a service         |
+| **Google Application Integration** | Google Cloud integration                  |
+| **Pipedream**                      | Developer-oriented API workflows          |
+| **Temporal**                       | Durable code-based workflow orchestration |
+
+
+
+
+6. Code-based AI agent frameworks
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- These are libraries developers use to build agents directly in Python, C#, Java or TypeScript.
+
+| Framework                        | Best suited for                                       |
+| -------------------------------- | ----------------------------------------------------- |
+| **LangChain**                    | General LLM applications, tools and agents            |
+| **LangGraph**                    | Stateful, controlled and long-running agent workflows |
+| **LlamaIndex**                   | RAG and data-connected AI applications                |
+| **Semantic Kernel**              | Enterprise agents in Microsoft/.NET environments      |
+| **AutoGen**                      | Multi-agent systems                                   |
+| **CrewAI**                       | Role-based teams of agents                            |
+| **OpenAI Agents SDK**            | Agents built around OpenAI models and tools           |
+| **Google Agent Development Kit** | Google-based agent applications                       |
+| **Haystack**                     | Search, RAG and NLP pipelines                         |
+| **PydanticAI**                   | Typed Python agent development                        |
+| **Mastra**                       | TypeScript agent workflows                            |
+
+
+
+
+
+Visual builder versus framework:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Flowise
+Visual, low-code agent development
+
+LangChain / Semantic Kernel
+Code-based agent development
+
+n8n
+Business-process and system orchestration
+
+
+
+
+
+7. RAG and knowledge-management tools
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- RAG means Retrieval-Augmented Generation. 
+- These tools let an AI retrieve relevant information from documents before answering.
+
+| Tool                               | Role                                       |
+| ---------------------------------- | ------------------------------------------ |
+| **LlamaIndex**                     | Document ingestion, indexing and retrieval |
+| **LangChain**                      | RAG pipeline and agent integration         |
+| **Unstructured**                   | Document extraction and parsing            |
+| **Docling**                        | PDF and document processing                |
+| **Azure AI Search**                | Enterprise search and RAG on Azure         |
+| **Vertex AI Search**               | Google Cloud search and grounding          |
+| **Amazon Bedrock Knowledge Bases** | Managed AWS RAG                            |
+| **Elastic Search**                 | Keyword, semantic and hybrid search        |
+| **GraphRAG**                       | Knowledge-graph-based retrieval            |
+
+
+# LlamaIndex is particularly focused on loading data from documents, databases and APIs and using that information in RAG and agent applications.
+
+PDFs and documents
+       ↓
+Extract text
+       ↓
+Divide into chunks
+       ↓
+Create embeddings
+       ↓
+Store in vector database
+       ↓
+Retrieve relevant chunks
+       ↓
+LLM produces grounded answer
+
+
+
+
+8. Vector databases
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Vector databases store embeddings representing the meaning of text, images or other data.
+
+| Tool                            | Type                                    |
+| ------------------------------- | --------------------------------------- |
+| **Pinecone**                    | Fully managed vector database           |
+| **Weaviate**                    | Open-source and managed                 |
+| **Qdrant**                      | Open-source and high-performance        |
+| **Milvus**                      | Large-scale open-source vector database |
+| **Chroma**                      | Simple local development                |
+| **pgvector**                    | Vector search inside PostgreSQL         |
+| **Azure AI Search**             | Search plus vectors                     |
+| **Elasticsearch**               | Keyword, vector and hybrid retrieval    |
+| **Redis Vector Search**         | Vector retrieval within Redis           |
+| **MongoDB Atlas Vector Search** | Vector retrieval inside MongoDB         |
+
+
+
+
+9. Local model runners and model serving
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- These tools run AI models locally or expose them through an API.
+
+| Tool                          | Main use                            |
+| ----------------------------- | ----------------------------------- |
+| **Ollama**                    | Easily run local models             |
+| **LM Studio**                 | Desktop local-model interface       |
+| **vLLM**                      | High-performance model serving      |
+| **Hugging Face Transformers** | Load and use open models            |
+| **Text Generation Inference** | Production Hugging Face serving     |
+| **LocalAI**                   | OpenAI-compatible local APIs        |
+| **llama.cpp**                 | Efficient local inference           |
+| **NVIDIA NIM**                | Optimized enterprise model services |
+| **Azure AI Foundry**          | Deploy and manage cloud AI models   |
+| **Vertex AI Model Garden**    | Google-managed model catalogue      |
+| **Amazon Bedrock**            | Managed foundation-model APIs       |
+
+
+# Typical architecture:
+OpenCode or Flowise
+        ↓
+Ollama API
+        ↓
+Local Llama, Qwen or Mistral model
+
+
+
+
+10. AI model and API platforms
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- These provide access to foundation models.
+
+| Platform              | Examples                                 |
+| --------------------- | ---------------------------------------- |
+| **OpenAI API**        | GPT and reasoning models                 |
+| **Anthropic API**     | Claude models                            |
+| **Google Gemini API** | Gemini models                            |
+| **Azure OpenAI**      | OpenAI models managed through Azure      |
+| **Amazon Bedrock**    | Anthropic, Amazon and other models       |
+| **Vertex AI**         | Gemini and partner models                |
+| **Hugging Face**      | Open-source model ecosystem              |
+| **OpenRouter**        | One API for multiple providers           |
+| **Together AI**       | Hosted open models                       |
+| **GroqCloud**         | High-speed inference                     |
+| **Cohere**            | Enterprise language and embedding models |
+| **Mistral AI**        | Commercial and open-weight models        |
+
+# These are the model layer. 
+# Flowise, n8n, coding agents and applications normally call one or more of these providers.
+
+
+
+
+11. AI observability and evaluation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- These tools help inspect prompts, tool calls, latency, cost, failures and answer quality.
+
+| Tool                       | Main purpose                          |
+| -------------------------- | ------------------------------------- |
+| **LangSmith**              | Tracing, evaluation and monitoring    |
+| **Langfuse**               | Open-source LLM observability         |
+| **Arize Phoenix**          | AI tracing and evaluation             |
+| **Weights & Biases Weave** | Experimentation and observability     |
+| **Helicone**               | LLM proxy, cost and request tracking  |
+| **PromptLayer**            | Prompt management and analytics       |
+| **AgentOps**               | Monitoring agent executions           |
+| **TruLens**                | RAG and LLM evaluation                |
+| **Ragas**                  | RAG quality evaluation                |
+| **DeepEval**               | Automated AI test framework           |
+| **Braintrust**             | Evaluation and prompt experimentation |
+
+Without these tools, teams often know that an AI response failed but cannot clearly determine:
+Which prompt caused it
+What documents were retrieved
+Which tool was called
+How many tokens were used
+Where latency occurred
+Whether the answer was grounded
+
+
+
+
+12. Prompt management and AI gateways
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- These provide centralized control over models, prompts, security, cost and routing.
+
+| Tool                      | Main purpose                                     |
+| ------------------------- | ------------------------------------------------ |
+| **LiteLLM**               | Unified API and gateway for many model providers |
+| **Portkey**               | AI gateway and observability                     |
+| **Kong AI Gateway**       | Enterprise API and AI traffic management         |
+| **Azure API Management**  | Governance for AI APIs                           |
+| **Cloudflare AI Gateway** | Caching, analytics and routing                   |
+| **PromptLayer**           | Version and manage prompts                       |
+| **Humanloop**             | Prompt experimentation and evaluation            |
+
+Example:
+AI application
+      ↓
+AI gateway
+      ├── OpenAI
+      ├── Claude
+      ├── Gemini
+      └── Local model
+
+The gateway can provide:
+Authentication
+Rate limits
+Model fallback
+Cost controls
+Request logging
+Security policies
+Provider switching
+
+
+
+
+
+13. MCP tools and connectors
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Model Context Protocol, or MCP, is a standard for connecting AI agents to external tools and data.
+
+Common MCP servers connect agents to:
+GitHub
+Filesystems
+PostgreSQL
+Slack
+Google Drive
+Microsoft services
+Browsers
+Cloud platforms
+Vector databases
+
+Conceptually:
+Claude Code / Codex / OpenCode
+                            ↓
+             MCP
+     ┌────────┼─────────┐
+          ↓                 ↓                  ↓
+  GitHub   Database   Cloud API
+
+
+MCP does not replace n8n or Flowise. It provides a standard interface through which agents can discover and use tools.
+
+
+
+
+
+How all these categories fit together
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- A complete enterprise AI application may look like this:
+
+User interface
+Chatbot, web app or Teams bot
+              ↓
+Agent application
+Flowise, LangChain or Semantic Kernel
+              ↓
+Model
+OpenAI, Claude, Gemini or local model
+              ↓
+Knowledge layer
+LlamaIndex + Pinecone/pgvector
+              ↓
+Automation layer
+n8n, Logic Apps or Power Automate
+              ↓
+Enterprise systems
+EHR, CRM, email, database and APIs
+              ↓
+Monitoring
+Langfuse, LangSmith or Azure Monitor
 
 
 
@@ -931,10 +1329,41 @@ Claude Mythos vs Regular Claude
 
 
 
+Recommended learning path for you
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Based on your cloud, healthcare, architecture and AI-development focus, do not try to learn every tool.
+
+Core set:
+| Area                      | Tool to learn                   |
+| ------------------------- | ------------------------------- |
+| General AI                | ChatGPT and Claude              |
+| Coding agent              | Claude Code, Codex and OpenCode |
+| AI IDE                    | Cursor or VS Code with Copilot  |
+| Visual AI builder         | Flowise                         |
+| Automation                | n8n                             |
+| Microsoft agent framework | Semantic Kernel                 |
+| General agent framework   | LangChain and LangGraph         |
+| RAG                       | LlamaIndex                      |
+| Vector database           | Pinecone, followed by pgvector  |
+| Local models              | Ollama                          |
+| Observability             | Langfuse or LangSmith           |
+| Enterprise cloud AI       | Azure AI Foundry and Vertex AI  |
 
 
 
+A practical progression would be:
+1. ChatGPT and Claude
+2. Claude Code, Codex and OpenCode
+3. Cursor
+4. Flowise
+5. n8n
+6. RAG with Pinecone
+7. LangChain or Semantic Kernel
+8. MCP connectors
+9. Langfuse observability
+10. Azure AI Foundry / Vertex AI
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 

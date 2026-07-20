@@ -1,8 +1,9 @@
 ======================================================================================================================================================
 ======================================================================================================================================================
 
-								Coding Agent
-							Claude Code, Open Code, Cursor
+					Coding Agents: Claude Code, Open Code, Codex, Cursor(IDE)
+					Flowise:
+					N8N:
 
 ======================================================================================================================================================
 ======================================================================================================================================================
@@ -17,14 +18,118 @@ Cursor
 
 
 
+Category 1: Coding agents
+======================================================================================================================================================
+
+| Coding agent    | Provider    | Main characteristic                                                |
+| --------------- | ----------- | ------------------------------------------------------------------ |
+| **Codex**       | OpenAI      | OpenAI coding agent for terminal, IDE, web and delegated workflows |
+| **Claude Code** | Anthropic   | Agentic coding environment built around Claude                     |
+| **OpenCode**    | Open source | Model-flexible, open-source coding agent                           |
+
+
+Terminal-first coding agents
+├── Claude Code — Anthropic
+├── Codex CLI — OpenAI
+└── OpenCode — open-source and model-flexible
+
+Conceptually:
+
+Codex
+Claude Code
+OpenCode
+    ↓
+AI coding agents
+    ↓
+You give them an engineering task
+    ↓
+They inspect, modify, execute and verify
+
+
+
+
+Category 2: AI code editor
+======================================================================================================================================================
+- Cursor is primarily an AI-powered code editor or IDE, like VSCode
+
+It provides:
+A VS Code-like editor
+Project explorer
+Extensions
+Integrated terminal
+Debugging
+Git interface
+AI autocomplete
+Inline code editing
+AI chat
+Cursor Agent
+
+Cursor describes itself as an AI-powered code editor, although its built-in Agent can also perform multi-file changes and run terminal commands.
+
+
+Conceptually:
+Cursor
+   ↓
+Complete coding workspace
+   ↓
+Editor + autocomplete + chat + coding agent
+
+
+Cursor is not completely separate from coding agents, because Cursor includes its own agent.
+-----------------------------------------------------------------------------------------------------
+AI coding agents
+├── Codex
+├── Claude Code
+├── OpenCode
+└── Cursor Agent
+
+AI code editors
+└── Cursor
+    ├── Code editor
+    ├── Autocomplete
+    ├── Terminal
+    ├── Debugger
+    └── Cursor Agent
+
+
+Traditional comparison:
+------------------------------------------
+VS Code + Claude Code
+VS Code + Codex
+VS Code + OpenCode
+
+
+These combinations mean you retain your normal editor and add an external coding agent.
+With Cursor: Cursor editor + Cursor Agent
+
+The editor and agent are integrated into one product.
 
 
 
 
 
+However, they are not the only major tools. A more complete leading group is:
+======================================================================================================================================================
+Terminal agents
+├── Claude Code
+├── Codex CLI
+├── OpenCode
+├── Gemini CLI
+├── GitHub Copilot CLI
+└── Aider
 
+IDE-based agents
+├── Cursor Agent
+├── GitHub Copilot Agent
+├── Cline
+├── Roo Code
+└── Windsurf Cascade
 
-
+Cloud/delegated agents
+├── Codex Cloud
+├── GitHub Copilot coding agent
+├── Jules
+└── Devin
 
 
 
@@ -523,6 +628,104 @@ i was here at video (8 Agentic Coding) 1:10:46
 
 
 
+
+
+
+
+
+
+
+
+
+
+======================================================================================================================================================
+======================================================================================================================================================
+								
+								Codex
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+Codex
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+How to Install Codex on Ubuntu
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- open terminal
+- curl -fsSL https://chatgpt.com/codex/install.sh | sh
+- codex --version
+- Open your project folder: cd ~/Documents/your-project
+- codex
+# The first time it starts, select Sign in with ChatGPT and authenticate in the browser. 
+# OpenAI currently recommends this standalone installer for macOS and Linux.
+
+
+Troubleshooting:
+- Close and reopen the terminal first.
+- which codex
+- source ~/.bashrc		# Also reload your shell configuration:
+- codex --version
+
+
+
+Alternative Installation: install using npm
+- When Node.js and npm are already installed: npm install -g @openai/codex
+- codex --version 
+- Update later with: npm install -g @openai/codex@latest
+
+
+
+Start Codex in a Git repository
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+cd ~/Documents/Desktop/opencode/helloworld
+git status
+codex
+
+
+
+
+Inside Codex, useful initial commands include:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/init
+/status
+/model
+/permissions
+/review
+
+
+/init creates an AGENTS.md file where you can describe the project structure, coding standards and test commands. /permissions controls what Codex may edit or execute.
+
+Your first prompt could be:
+Inspect this repository and explain its structure. Do not modify anything yet.
+Then:
+Create a simple hello-world feature, run the project tests, and show me the changes before making any additional modifications.
+
+
+
+
+
+Install Codex in VS Code
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Codex is also available as an IDE extension for:
+VS Code
+Cursor
+Windsurf
+VS Code Insiders
+
+In VS Code:
+Open Extensions.
+Search for Codex by OpenAI.
+Install the extension.
+Open your project.
+Select the Codex icon.
+Sign in with your ChatGPT account.
+
+If the icon is not visible, open the Command Palette:
+Ctrl + Shift + P
+Then run: Codex: Open Codex Sidebar
 
 
 

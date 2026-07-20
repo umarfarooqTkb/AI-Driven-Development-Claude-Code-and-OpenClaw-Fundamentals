@@ -30,11 +30,14 @@ What is flowise
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Flowise is an open-source visual AI workflow builder that lets you create chatbots, AI agents, RAG systems, and LangChain workflows without writing much code.
 
-
-
-
-
-
+Flowise
+├── Prompt
+├── LLM
+├── Memory
+├── Vector database
+├── Documents
+├── Tools
+└── Agent logic
 
 
 
