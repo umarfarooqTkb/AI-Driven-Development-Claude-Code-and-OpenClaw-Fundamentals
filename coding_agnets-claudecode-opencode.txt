@@ -456,7 +456,7 @@ Installation of Open Code
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-Installation of Open Code on windows:
+Installation of Open Code
 ========================================================================================================================================================
 # All platforms — recommended
 curl -fsSL https://opencode.ai/install | bash
@@ -470,16 +470,33 @@ npm install -g opencode-ai
 Incase of error, type
 npm.cmd install -g opencode-ai
 
+# on Windows
 PS C:\WINDOWS\System32> opencode.cmd --version
 1.17.19
 
+# on Ubuntu
+opencode --version
+1.18.4
+
+which opencode
+/home/umar-farooq/.opencode/bin/opencode
+
+echo $PATH
+
+ls -lh ~/.opencode/bin
 
 
-Run Claude Code
+
+Run open Code
 ========================================================================================================================================================
 - open cmd and navigates to your project folder
 - type opencode in terminal 
 - open code will be working in your terminal
+
+/help
+/models
+/connect
+/provider
 
 - Type /models to see every model across your connected providers and switch between them; the active model is also shown in the TUI. 
 - (From the command line, opencode models prints the available provider/model names — handy when setting a default in your config.)
@@ -522,7 +539,6 @@ Correct order
 Connect the provider and supply credentials.
 
 Then:
-
 /models
 Choose a model available through that provider.
 
@@ -568,7 +584,7 @@ generate_bookkeeper_files
 
 
 
-How to run and use open code freely
+How to run and use open code freely - via openrouter
 ======================================================================================================================================================
 Open & Signup:
 - openrouter is a platform, where you can get all popular models at one place.
@@ -600,7 +616,19 @@ Generate API Key:
 
 - but reality is that, these models will sometime work and sometimes does not work.
 
-i was here at video (8 Agentic Coding) 1:10:46
+Exercise:
+create two excel files with 5 records each with the help of AI, like ChatGPT
+1. Bookkeeper_expense_report
+2. Bookkeeper_ledger_report
+
+- go to the folder, in which excel files are saved, open terminal, type opencode
+- select any free model of your choice, i selected openrouter >> Nemotron 3 Ultra (free)
+- give prompt: read and analyze these excel files
+- it might give you some error or it might work well.
+- so sometimes it will work and sometime it might fail, and you have to change the model and start it again
+- thats why, it is better to purchase claude code subscription for your learning path.
+
+---------- Result of above prompt ----------------
 
 
 
@@ -609,15 +637,52 @@ i was here at video (8 Agentic Coding) 1:10:46
 
 
 
+Uninstall Opencode
+======================================================================================================================================================
+======================================================================================================================================================
+- Since you installed OpenCode using: curl -fsSL https://opencode.ai/install | bash
+- you did not install it using apt, so:sudo apt remove opencode     # will not work
+- You need to remove the binary and related files manually.
+
+Step 1: Find OpenCode installation location
+- Run:which opencode
+- You will likely see: /home/umar-farooq/.local/bin/opencode
+  or:
+- /usr/local/bin/opencode
 
 
+Step 2: Remove OpenCode binary
+- If it is in your home directory:rm ~/.local/bin/opencode
+  or
+- rm /home/umar-farooq/.opencode/bin/opencode
+- If it is in /usr/local/bin: sudo rm /usr/local/bin/opencode
+
+Step 3: Verify removal
+- Run:opencode --version
+- Expected:Command 'opencode' not found
 
 
+Step 4: Remove OpenCode configuration (optional)
+- Your OpenCode projects may contain:
+- opencode.json
+- Example:
+- find ~/Documents -name "opencode.json"
+- Remove if you want:
+- rm /path/to/opencode.json
 
 
+Step 5: Remove OpenCode user files/cache
+- Check: ls -la ~/.config
+- Look for: opencode
+- Remove: rm -rf ~/.config/opencode
+- Also check: ls -la ~/.local/share
+- Remove if present:rm -rf ~/.local/share/opencode
 
 
-
+Step 6: Check npm installation (Important)
+- Earlier you installed OpenCode on Windows using: npm install -g opencode-ai
+- If you also installed it on Ubuntu through npm, check: npm list -g | grep opencode
+- If found: npm uninstall -g opencode-ai
 
 
 

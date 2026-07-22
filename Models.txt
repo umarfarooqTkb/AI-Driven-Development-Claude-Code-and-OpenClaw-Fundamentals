@@ -1,0 +1,743 @@
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+							Free Models
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+Free Opencode models
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+| Model Name              | Platform / Runtime          | Runs Where | Free Status    | Best For                    |
+| ----------------------- | --------------------------- | ---------- | -------------- | --------------------------- |
+| Qwen3 Coder             | Ollama / LM Studio          | Local      | Free           | Coding and codebase work    |
+| Gemma 3 / Gemma 3n      | Ollama / LM Studio          | Local      | Free           | Lightweight coding and chat |
+| DeepSeek-R1             | Ollama / LM Studio          | Local      | Free           | Reasoning and mathematics   |
+| DeepSeek-V3             | Ollama / compatible runtime | Local      | Free           | Coding and general writing  |
+| Llama 3.1 / 3.2         | Ollama / LM Studio          | Local      | Free           | General development         |
+| Code Llama              | Ollama / LM Studio          | Local      | Free           | Code generation             |
+| Qwen2.5 Coder           | Ollama / LM Studio          | Local      | Free           | Coding on modest hardware   |
+| North Mini Code Free    | OpenCode Zen                | Cloud      | Free           | Fast, smaller coding tasks  |
+| Nemotron 3 Ultra Free   | OpenCode Zen                | Cloud      | Free           | Coding and reasoning        |
+| DeepSeek V4 Flash Free  | OpenCode Zen                | Cloud      | Free           | Fast coding and debugging   |
+| MiMo V2.5 Free          | OpenCode Zen                | Cloud      | Free           | General coding and learning |
+| Big Pickle              | OpenCode Zen                | Cloud      | Free           | General experimentation     |
+| Nemotron 3 Ultra (free) | OpenRouter                  | Cloud      | Free           | Coding and reasoning        |
+| LongCat 2.0             | OpenRouter                  | Cloud      | Check provider | General development         |
+| Kimi K3                 | OpenRouter                  | Cloud      | Check provider | Long-context work           |
+| InKling                 | OpenRouter                  | Cloud      | Check provider | General AI tasks            |
+| KAT-Coder-Air V2.5      | OpenRouter                  | Cloud      | Check provider | Fast coding                 |
+| KAT-Coder-Pro V2.5      | OpenRouter                  | Cloud      | Check provider | Advanced coding             |
+
+
+
+# OpenCode does not include Qwen3 Coder by default. 
+# You first need to install a local runtime (such as Ollama) and then connect OpenCode to it.
+   * OpenCode is the interface.
+   * Ollama is the runtime.
+   * Qwen3 Coder is the model.
+
+
+Model Creator 	= Company that built the model
+Runtime 	= Software that runs a local model
+Cloud Provider 	= Online service that gives access to a model
+
+Model Creator: 	Builds and trains the AI model (e.g., Alibaba for Qwen3 Coder).
+Runtime: 	Executes the model on your machine (e.g., Ollama, LM Studio).
+Application: 	Provides the user interface and workflows (e.g., OpenCode, VS Code extensions, chat applications).
+
+
+
+For Example:
+Qwen3 Coder 	= Model
+Alibaba Cloud 	= Model creator
+Ollama 		= Local runtime
+OpenCode 	= Coding application
+
+
+Company                Product
+------------------------------------------------
+Alibaba Cloud    --->  Qwen3 Coder
+DeepSeek AI      --->  DeepSeek-R1 / DeepSeek-V3
+Meta             --->  Llama 3.x
+Google           --->  Gemma 3
+Anthropic        --->  Claude
+OpenAI           --->  GPT-5
+
+Ollama, Inc.     --->  Ollama (local runtime)
+LM Studio        --->  LM Studio (local runtime)
+OpenCode         --->  AI coding assistant/interface
+
+
+
+
+
+FREE MODELS FOR OPENCODE
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1. Qwen3 Coder
+Model Creator: Alibaba Cloud / Qwen Team
+Platform / Runtime: Ollama or LM Studio
+Runs Where: Local
+Free: Yes
+Best For: Coding
+Strengths: Strong open-source coding model
+Limitations: Larger versions require powerful hardware
+
+2. Gemma 3 / Gemma 3n
+Model Creator: Google
+Platform / Runtime: Ollama or LM Studio
+Runs Where: Local
+Free: Yes
+Best For: General coding and chat
+Strengths: Fast and lightweight
+Limitations: Less capable than premium coding models
+
+3. DeepSeek-R1
+Model Creator: DeepSeek
+Platform / Runtime: Ollama or LM Studio
+Runs Where: Local
+Free: Yes
+Best For: Reasoning and mathematics
+Strengths: Strong reasoning capabilities
+Limitations: Can be slow on CPU-only computers
+
+4. DeepSeek-V3
+Model Creator: DeepSeek
+Platform / Runtime: Ollama, LM Studio, or another compatible runtime
+Runs Where: Local
+Free: Yes
+Best For: Coding and writing
+Strengths: Strong general-purpose model
+Limitations: Full model requires significant RAM and storage
+
+5. Llama 3.1 / 3.2
+Model Creator: Meta
+Platform / Runtime: Ollama or LM Studio
+Runs Where: Local
+Free: Yes
+Best For: General development
+Strengths: Good general-purpose performance
+Limitations: Coding performance is below newer coding models
+
+6. Code Llama
+Model Creator: Meta
+Platform / Runtime: Ollama or LM Studio
+Runs Where: Local
+Free: Yes
+Best For: Code generation
+Strengths: Specifically trained for programming
+Limitations: Older than newer coding models
+
+7. Qwen2.5 Coder
+Model Creator: Alibaba Cloud / Qwen Team
+Platform / Runtime: Ollama or LM Studio
+Runs Where: Local
+Free: Yes
+Best For: Coding
+Strengths: Fast, reliable, and available in several sizes
+Limitations: Older than Qwen3 Coder
+
+8. NVIDIA Nemotron
+Model Creator: NVIDIA
+Cloud Provider: NVIDIA API / NVIDIA Build
+Runs Where: Cloud
+Free: Free tier
+Best For: Coding and reasoning
+Strengths: Good performance without requiring a local GPU
+Limitations: Free quota and rate limits apply
+
+9. OpenCode Free Models
+Model Creator: Varies by model
+Cloud Provider: OpenCode Zen
+Runs Where: Cloud
+Free: Limited free
+Best For: Learning and coding tasks
+Strengths: Easy integration with OpenCode
+Limitations: Free model availability and limits may change
+
+10. OpenRouter Free Models
+Model Creator: Varies by model
+Cloud Provider: OpenRouter
+Runs Where: Cloud
+Free: Selected models
+Best For: Testing different models
+Strengths: Access to multiple free models
+Limitations: Availability, limits, and tool support vary
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+						Setup Ollama &  Qwen3 Coder model on local machine
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- For Qwen3 coder model you need a local model runtime such as Ollama.
+- First you install ollama then using ollama, we will setup/install model locally.
+- Ollama runs the model locally.
+- Qwen3 Coder  Model is created by Alibaba Cloud / Qwen Team.
+
+- Flow: Install OLlama >> install Qwen3 COder model
+
+Qwen3 Coder (Model)
+        |
+        | runs on
+        ↓
+Ollama (Runtime)
+        |
+        | used by
+        ↓
+OpenCode (Application)
+
+
+
+
+Step 0: Check current system storage (Before Installation)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- df -h			# check disk space
+
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           3.2G  3.3M  3.2G   1% /run
+/dev/nvme0n1p2  457G  126G  308G  29% /
+tmpfs            16G  314M   16G   2% /dev/shm
+tmpfs           5.0M   12K  5.0M   1% /run/lock
+efivarfs        256K  127K  125K  51% /sys/firmware/efi/efivars
+/dev/nvme0n1p1  1.1G  6.2M  1.1G   1% /boot/efi
+tmpfs           3.2G  168K  3.2G   1% /run/user/1000
+
+
+
+Step 1: Install Ollama
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- ollama --version			# Check, if ollama already installed
+
+  If not installed: bash: /usr/local/bin/ollama: No such file or directory
+  If Installed****: ollama version is 0.32.1
+
+- curl -fsSL https://ollama.com/install.sh | sh		# On Ubuntu
+- ollama --version
+
+- systemctl status ollama		# Check Ollama service status
+- sudo systemctl start ollama		# if service not already started
+- sudo systemctl enable ollama		# Enable on startup
+- systemctl status ollama		# Check again
+
+- ollama --help				# list of all commands
+- ollama serve				# start ollama
+- ollama --version
+  ollama version is 0.32.1
+
+# Test Ollama API
+- curl http://localhost:11434/api/tags	
+  {"models":[]} 			# This is good because Ollama is running but you have no models yet.
+
+- ps aux | grep ollama
+  umar-fa+   62869  0.0  0.1 2339492 39732 pts/0   Sl+  14:17   0:00 ollama serve
+  umar-fa+   64508  0.0  0.0   9152  2300 pts/1    S+   14:19   0:00 grep --color=auto ollama
+
+
+Notes:
+Executable Location: /usr/local/bin/ollama
+Service: /etc/systemd/system/ollama.service
+
+
+Step 2: Model Download - Qwen3 Coder (AI Model)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- ollama list				# to check already installed models
+- ollama pull qwen3-coder		# simply pull the model/install the model
+  During download you will see:
+   pulling manifest
+   pulling layers
+   success
+  # it showed 45 mins time, and approx size is 18GB (22-July-2026)
+  # The model name must exist in Ollama registry.
+  # Check available models: https://ollama.com/library 
+  
+  
+- If there are different sizes (e.g., 4B, 8B, 14B, 32B), choose one appropriate for your hardware, for example:
+- ollama pull qwen3-coder:8b
+- ollama pull qwen3-coder:4b
+ 
+ 
+ 
+Step 3: Verify AI Model Installation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- ollama list				# List models
+  NAME                  ID              SIZE     MODIFIED       
+  qwen3-coder:latest    06c1097efce0    18 GB    30 minutes ago    
+
+Confirm Ollama is running:
+- curl http://localhost:11434/api/tags
+- You should receive JSON containing your installed models. Ollama normally exposes its local API on port 11434.
+{"models":[{"name":"qwen3-coder:latest","model":"qwen3-coder:latest","modified_at":"2026-07-22T17:52:50.560601347+05:00","size":18556700761,"digest":"06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca","details":{"parent_model":"","format":"gguf","family":"qwen3moe","families":["qwen3moe"],"parameter_size":"30.5B","quantization_level":"Q4_K_M","context_length":262144,"embedding_length":2048},"capabilities":["completion","tools"]}]}
+
+
+- If the connection fails, start Ollama manually: ollama serve
+- Keep that terminal open and use another terminal for OpenCode. 
+ 
+ 
+Create the OpenCode configuration:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Go to your project: cd ~/Documents/Desktop/opencode/helloworld
+- Create an opencode.json file: nano opencode.json
+- Paste this: 
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama Local",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3-coder:latest": {
+          "name": "Qwen3 Coder Local"
+        }
+      }
+    }
+  }
+}
+ 
+- Save in Nano: 
+  Ctrl + O
+  Enter
+  Ctrl + X
+
+- Verify the file: cat opencode.json
+- The model ID in opencode.json must match the name shown by ollama list.
+- OpenCode’s official Ollama configuration uses the OpenAI-compatible package and the endpoint http://localhost:11434/v1.
+- ollama list
+
+
+
+Step 4: Connect Ollama in OpenCode & connect with the model
+- opencode
+- OpenCode connects to Ollama through opencode.json configuration.
+- No API key is required.
+- Verify using: /models
+- Because /connect is mainly for cloud providers.
+ 
+ 
+Step 5: Select the model
+ - Type: /models
+ - You should now see something like:
+   OpenCode Zen
+   ---------------
+   North Mini Code
+
+   Ollama
+   ---------------
+   qwen3-coder:8b
+   llama3.2
+   gemma3
+ 
+   Select: qwen3-coder:8b
+   Now every prompt is answered by your local Qwen3 Coder model.
+   Select:
+qwen3-coder:latest
+
+
+Step 7: Test it
+ - ollama run qwen3-coder:8b
+   or
+ - ollama run qwen3-coder:8b
+- Example:
+ - >>> Write a Python hello world
+ - If it responds, the model is working locally.
+  - Exit the model using: /bye
+ 
+ You can also verify that Ollama is processing the request by running this in another terminal: ollama ps
+
+
+## Troubleshooting:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Check that Ollama is running: ollama serve
+In another terminal: curl http://localhost:11434/api/tags
+You should get JSON listing your installed models.
+
+
+Recommended model sizes:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| RAM    | Recommended Model |
+| ------ | ----------------- |
+| 8 GB   | Qwen3 Coder 4B    |
+| 16 GB  | Qwen3 Coder 8B    |
+| 32 GB  | Qwen3 Coder 14B   |
+| 64 GB+ | Qwen3 Coder 32B   |
+
+
+Your workflow:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Ubuntu
+   │
+   ├── Install Ollama
+   │
+   ├── Download Qwen3 Coder
+   │
+   ├── Start Ollama
+   │
+   ├── Open OpenCode
+   │
+   ├── /connect → Ollama
+   │
+   ├── /models → qwen3-coder
+   │
+   └── Start coding
+   
+   
+## Your OpenCode setup
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+When you run: ollama pull qwen3-coder
+
+this is what happens:
+Ollama downloads the Qwen3 Coder model created by Alibaba Cloud.
+Ollama stores it on your computer.
+OpenCode connects to Ollama.
+When you ask OpenCode a question, Ollama runs the model locally and returns the answer.
+
+
+
+
+
+
+
+
+Model & Ollama Installation Location 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- which ollama
+  /usr/local/bin/ollama
+  # This tells where the Ollama executable is installed.
+  
+- ls -lh $(which ollama)
+  -rwxr-xr-x 1 root root 38M Jul 16 10:32 /usr/local/bin/ollama
+  
+  
+Ollama model location depends on installation method and environment.
+Possible locations:
+
+System installation:
+ /usr/share/ollama/.ollama/models
+
+User installation:
+ ~/.ollama/models
+ exp: /home/umar-farooq/.ollama/models
+
+
+
+
+
+
+
+Method 1: Check Ollama model storage location 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- echo $OLLAMA_MODELS			# If it returns nothing, Ollama is using the default location.
+- The default location on Linux is:/usr/share/ollama/.ollama/models
+- Check it: ls -lh /usr/share/ollama/.ollama/models
+
+
+Method 2: Find the actual model files
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Run: sudo find / -name "qwen3-coder*" 2>/dev/null
+- Example output:
+- /usr/share/ollama/.ollama/models/blobs/sha256-06c1097efce0...
+- /home/umar-farooq/.ollama/models/
+
+umar-farooq@TS01-GM-UMAR:~/.ollama/models/blobs$ ls -la
+total 18121824
+drwxr-xr-x 2 umar-farooq umar-farooq        4096 Jul 22 17:52 .
+drwxr-xr-x 4 umar-farooq umar-farooq        4096 Jul 22 14:17 ..
+-rw-r--r-- 1 umar-farooq umar-farooq 18556688736 Jul 22 17:52 sha256-1194192cf2a187eb02722edcc3f77b11d21f537048ce04b67ccf8ba78863006a
+-rw-r--r-- 1 umar-farooq umar-farooq         542 Jul 22 17:52 sha256-24a94682582c6045f4950846fc7711479dcecb478b86759f0306a2ef8484d318
+-rw-r--r-- 1 umar-farooq umar-farooq         148 Jul 22 17:52 sha256-69aa441ea44ff5e1e7b56cac4f471e71e8a5e2e3963c29684a9234d5d5e5f7aa
+-rw-r--r-- 1 umar-farooq umar-farooq       11338 Jul 22 17:52 sha256-d18a5cc71b84bc4af394a31116bd3932b42241de70c77d2b76d69a314ec8aa12
+
+
+
+Method 3: Check Ollama process environment
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Run: ps aux | grep ollama
+  umar-farooq@TS01-GM-UMAR:~/.ollama/models/blobs$ ps aux | grep ollama
+  umar-fa+   62869  0.8  0.1 2922960 36996 pts/0   Sl+  14:17   2:36 ollama serve
+  umar-fa+  232300  0.0  0.0   9152  2296 pts/1    S+   19:33   0:00 grep --color=auto ollama
+
+- If you installed Ollama manually, 
+- check: systemctl status ollama
+- Then: systemctl cat ollama
+  # /etc/systemd/system/ollama.service
+  [Unit]
+  Description=Ollama Service
+  After=network-online.target
+
+  [Service]
+  ExecStart=/usr/local/bin/ollama serve
+  User=ollama
+  Group=ollama
+  Restart=always
+  RestartSec=3
+  Environment="PATH=/home/umar-farooq/.opencode/bin:/home/umar-farooq/.nvm/versions/node/v20.20.2/bin:/home/umar-farooq/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin>
+
+  [Install]
+  WantedBy=default.target
+
+------
+Look for:Environment="OLLAMA_MODELS=/some/path"
+
+
+
+Method 4: Check model details
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Run: ollama show qwen3-coder:latest
+You will see information like:
+Model
+    architecture        qwen3moe    
+    parameters          30.5B       
+    context length      262144      
+    embedding length    2048        
+    quantization        Q4_K_M  
+
+Note: ollama show does not directly display the disk path.
+
+In your case, Your model: qwen3-coder:latest
+Size: 18 GB
+is most likely stored under:
+/usr/share/ollama/.ollama/models/
+You can check its size:
+sudo du -sh /usr/share/ollama/.ollama/models
+If you want models stored somewhere else
+
+For example, move them to another disk:
+export OLLAMA_MODELS=/mnt/data/ollama-models
+Then restart Ollama:
+sudo systemctl restart ollama
+This is useful if you have limited space on your Ubuntu root partition.
+
+
+Step 0: Check current system storage (Before Installation)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- df -h			# check disk space
+
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           3.2G  3.3M  3.2G   1% /run
+/dev/nvme0n1p2  457G  144G  291G  34% /
+tmpfs            16G  393M   16G   3% /dev/shm
+tmpfs           5.0M   12K  5.0M   1% /run/lock
+efivarfs        256K  127K  125K  51% /sys/firmware/efi/efivars
+/dev/nvme0n1p1  1.1G  6.2M  1.1G   1% /boot/efi
+tmpfs           3.2G  176K  3.2G   1% /run/user/1000
+
+
+
+                    Alibaba Cloud
+                         |
+                         |
+                  Qwen3 Coder Model
+                         |
+                         |
+                  Ollama Runtime
+                  localhost:11434
+                         |
+                         |
+                    OpenCode
+                         |
+                         |
+                  Developer Terminal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+						Remove Model and Uninstall Ollama Runtime
+						
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Recommended order:
+1. Remove AI Models
+2. Remove Ollama Runtime
+3. Remove Configuration (optional)
+
+remove the AI Model - Qwen3 Coder model from Ollama,
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1. Check installed models: ollama list
+
+NAME                  ID              SIZE     MODIFIED     
+qwen3-coder:latest    06c1097efce0    18 GB    16 hours ago 
+
+
+2. Remove the model
+- ollama rm qwen3-coder:latest
+  or
+- ollama rm qwen3-coder
+- You should see:deleted 'qwen3-coder:latest'
+
+3. Verify removal
+- ollama list
+- The model should no longer appear.
+
+4. Check disk space
+- Since your model was about 18 GB, you can verify that space is released:
+- df -h
+
+
+Important notes
+* This removes only the AI model weights.
+* It does not uninstall Ollama.
+* It does not remove your OpenCode configuration (opencode.json).
+
+If later you want it again: ollama pull qwen3-coder
+will download it again.
+
+
+
+Uninstall Ollama
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Note:
+- Ollama was installed using: curl -fsSL https://ollama.com/install.sh | sh
+- Therefore apt remove will not work.
+Use:
+- sudo systemctl stop ollama
+- sudo systemctl disable ollama
+- sudo rm /usr/local/bin/ollama
+- sudo rm /etc/systemd/system/ollama.service
+- sudo systemctl daemon-reload
+
+
+Remove Ollama data:
+- sudo rm -rf /usr/share/ollama
+- rm -rf ~/.ollama
+
+Verify Removal:
+- ollama --version
+
+Other Options:
+- sudo apt remove ollama
+- and optionally remove its model storage:
+- sudo rm -rf /usr/share/ollama
+
+
+
+Summary
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Remove Model:
+    ollama rm <model-name>
+
+Remove Ollama:
+ Stop service
+ Remove binary
+ Remove service
+ Remove model storage
+
+
+
+
+
+## Troubleshooting:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Error: E: Unable to locate package ollama
+because you did not install Ollama through apt.
+
+You installed Ollama using the official script: curl -fsSL https://ollama.com/install.sh | sh
+That installs it differently (binary + system service), not as an apt package.
+
+which ollama
+You will probably see: /usr/local/bin/ollama
+ls -lh $(which ollama)
+
+2. Remove Ollama service
+You already stopped it:sudo systemctl stop ollama
+Now disable it:sudo systemctl disable ollama
+
+3. Remove Ollama binary
+Run: sudo rm $(which ollama)
+or directly:
+sudo rm /usr/local/bin/ollama
+
+
+4. Remove Ollama service file
+Check:
+systemctl cat ollama
+You will see something like:/etc/systemd/system/ollama.service
+Remove it:sudo rm /etc/systemd/system/ollama.service
+Reload systemd:sudo systemctl daemon-reload
+
+
+5. Remove Ollama directories
+Remove model storage: sudo rm -rf /usr/share/ollama
+Remove user cache/config: rm -rf ~/.ollama
+
+
+6. Verify removal
+Run: ollama --version
+Expected:Command 'ollama' not found
+Check service: systemctl status ollama
+Expected:Unit ollama.service could not be found
+
+
+
+Why your disk space did not change much
+Your df -h showed: /dev/nvme0n1p2  457G  Used 126G
+
+Before removing Qwen:Model size: ~18 GB
+After removing: You should see available space increase by around 18 GB.
+
+However, Linux filesystem may not immediately show the difference if:
+Ollama process still had files open
+Another cache directory exists
+You already stopped Ollama, so it should release the space.
+Check: sudo du -sh /usr/share/ollama
+
+
+
+
+
