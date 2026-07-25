@@ -250,7 +250,7 @@ Connector:
 
 
 
-Lecture 8:  3-July-2026
+Lecture 8:  3-July-2026 [ Agentic Coding Part1 ]
 ======================================================================================================================================================
 ======================================================================================================================================================
 - General Agents
@@ -272,148 +272,50 @@ Lecture 8:  3-July-2026
 - but to use claude code, you need models of anthropic
 - In Open Code, we can use free models.
 
-Installation of Claude Code and Open Code on Local machine:
-Pre-requisites:
-1. Git
-2. Node
-3. VS Code
+Installation of Claude Code and Open Code on Local machine
+How to run and use claude code
+# see reference files for details >> coding_agents
 
-# Type following command as per your OS
+Installation & configuration of Opencode
+# see reference files for details >> coding_agents
+How to run and use opencode 
+how to use free models
+how to use openrouter in opencode
+if you do not have claude code subscription and looking for a cheap alternative, then
 
-# macOS / Linux / WSL — recommended (auto-updates)
-curl -fsSL https://claude.ai/install.sh | bash
-
-# Windows PowerShell
-# Run Windows Power Shell as an Administrator
-irm https://claude.ai/install.ps1 | iex
-
-# macOS Homebrew (no auto-update — run `brew upgrade claude-code` periodically)
-brew install --cask claude-code
-
-# npm fallback
-npm install -g @anthropic-ai/claude-code
+create account on deepseek API (Deepseek Platform) and topup for use, like $2, $5 etc .(https://platform.deepseek.com)
+deepseek is very cheap.
+may be 5000Rs will be sufficient for 3-4 months.
+now you do not need openrouter as well, just purchase(topup) on deepseek and create deepseek API and use it directly in opencode.
+# see reference files for details >> coding_agent
 
 
-if claude code is not installed via power shell then, open cmd with administrator and run the commanf
-npm install -g @anthropic-ai/claude-code
+Plan Mode:
+- in claude code /plan = plan mode enabled
+- code likhny sy phely, yeh sara plan liky ga aur app to share kary ga
+- in plan mode, it decides, how to execute, means planning, then present you the plan before execution, after your review, you will ask agent to fix it.
+- it means planning before implementation
 
-# End of Installation
 
-
-Run Claude Code
-- claude --version
-- now type claude in powershell
-- if not run, use the following command: 
-  & "C:\Users\Administrator\.local\bin\claude.exe"
-
-- Add Claude Code to PATH permanently
-- Run this in PowerShell:
-$claudePath = "$env:USERPROFILE\.local\bin"
-$currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
-
-if ($currentPath -notlike "*$claudePath*") {
-    [Environment]::SetEnvironmentVariable(
-        "Path",
-        "$currentPath;$claudePath",
-        "User"
-    )
-}
-
-Then close all PowerShell and Windows Terminal windows, open a new PowerShell window, and test:
-claude --version
-It should return:
-2.1.207
+Permissions discipline:
+- For opencode >> opencode.json
 
 
 
-Installation of Open Code on windows:
-===================================================================================
-# All platforms — recommended
-curl -fsSL https://opencode.ai/install | bash
-
-# macOS Homebrew
-brew install opencode
-
-# npm / bun / pnpm / yarn
-npm install -g opencode-ai
-
-Incase of error, type
-npm.cmd install -g opencode-ai
-
-PS C:\WINDOWS\System32> opencode.cmd --version
-1.17.19
-
-
-======================================
-open cmd and navigates to your project folder
-type opencode in terminal 
-opencode will be working in your terminal
-
-Type /models to see every model across your connected providers and switch between them; the active model is also shown in the TUI. 
-(From the command line, opencode models prints the available provider/model names — handy when setting a default in your config.)
+Contents of .claude folder on your local system
+ * settings.local (JSON file) - study it
+ - All settings of claude are saved in this file.
+ - the more you use claude code, more it will be customized itself as per your preferences.
 
 
 
-Current as of 2026. Both tools update frequently. Before you start any session, run claude update or opencode upgrade to make sure you have the latest version.
-
-
-| Command    | Purpose                                                                          |
-| ---------- | -------------------------------------------------------------------------------- |
-| `/connect` | Connects OpenCode to an AI **provider** by signing in or entering an API key.    |
-| `/models`  | Selects the specific AI **model** you want to use from your connected providers. |
-
-
-/connect
-======================================================================================================================================================
-Use this first to connect services such as:
-Anthropic
-OpenAI
-Google
-OpenCode Zen
-GitHub Copilot
-DeepSeek
-
-Example:
-/connect
-Select Anthropic, then authenticate or enter your Anthropic API key. OpenCode stores the provider credentials so they remain available in later sessions.
-
-
-
-/models
-======================================================================================================================================================
-After connecting a provider, run:
-/models
-
-You can then select a model such as:
-Anthropic / Claude Sonnet
-OpenAI / GPT
-Google / Gemini
-
-The selected model is the one OpenCode uses to understand your requests and work on your code.
-Correct order
-/connect
-Connect the provider and supply credentials.
-
-Then:
-
-/models
-Choose a model available through that provider.
-
-One correction: the current documented command is /models, plural, not /model.
-
-
-A simple analogy:
-Provider: mobile network, such as Jazz or Zong
-Model: the specific package or service you use on that network
-
-Connecting Anthropic does not automatically mean every Anthropic model is selected; /models lets you choose which one OpenCode should use.
+Match the model to the task:
 
 
 
 
 
-
-Lecture 9:  5-July-2026
+Lecture 9:  5-July-2026 [ Agentic Coding Part 2 ]
 ======================================================================================================================================================
 ======================================================================================================================================================
 

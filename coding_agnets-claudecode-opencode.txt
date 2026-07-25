@@ -11,8 +11,53 @@
 
 ToC
 ======================================================================================================================================================
-Claude Code
-Open Code
+- What are coding agents
+- Categories of coding agnets
+- 
+
+*** Claude Code ***
+- Introduction to Claude code
+- Common alternatives to Claude Code
+- Open Code versus Claude Code
+- Installation of Claude Code
+- Run Claude Code
+
+- Contents of .claude folder on your local system
+  - when your ask claude to perform some action, it asks you for different permissions, all these are saved in a file inside .claude folder in local machine
+  - settings.local (JSON file) - study it
+  - All settings of claude are saved in this file.
+  - the more you use claude code, more it will be customized itself as per your preferences.
+
+
+*** Open Code ***
+- Introduction to Open Code
+- Installation of Open Code
+- Run open Code
+- /connect
+- /models
+- How to run & use open code
+- How to run and use open code freely - via openrouter
+- DeepSeek Topup and usage in Open Code
+- Uninstall Opencode
+- Setup Ollama &  Qwen3 Coder model on local machine (Opencode , Ubuntu)
+- Model & Ollama Installation Location 
+- Remove Model and Uninstall Ollama Runtime
+
+- For opencode >> opencode.json
+
+
+** Plan mode and Build mode **
+
+** Match the model to the task **
+
+** Permission Discipline **
+
+
+
+
+
+
+
 Cursor
 
 
@@ -164,6 +209,7 @@ It can:
 - You type "Add user authentication to my app": Claude Code reads your existing code, generates the auth module, writes tests, and integrates everything.
 - It works in your codebase and can help with coding tasks from the terminal, IDE, web, Slack, or desktop. 
 - Anthropic says it can understand codebases, edit files, run tests, work with Git/GitHub/GitLab flows, and help produce pull requests
+
 - In simple words: Claude Code is like a senior AI developer sitting inside your project.
 - You can ask: 
 - Find the bug in this API and fix it.
@@ -187,6 +233,17 @@ Find the cause of the login error, fix it, and run the relevant tests.
 | AI provider  | Anthropic, OpenAI, Google                |
 | AI model     | Claude, GPT, Gemini                      |
 | Project      | Your local application or Git repository |
+
+
+- Anthropic dictates, that use models of anthropic only. (Sonnet, Fable,Opus etc)
+- Claude Code is not free, and you have to buy the subscription of Claude Code.
+- As of 25 July 2026, it is $20 per month.
+- If you have not the subscription of claude code, you can use open code and use free models.
+- Also if you do not have claude code subscription and looking for a cheap alternative, then
+  create an account on deepseek API (Deepseek Platform) and topup for use, like $2, $5 etc .(https://platform.deepseek.com)
+  deepseek is very cheap.
+  may be 5000Rs will be sufficient for 3-4 months.
+
 
 
 
@@ -294,6 +351,22 @@ It should return: 2.1.207
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ======================================================================================================================================================
 ======================================================================================================================================================
 								
@@ -302,13 +375,12 @@ It should return: 2.1.207
 ======================================================================================================================================================
 ======================================================================================================================================================
 
-
 OpenCode
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - OpenCode is an open-source AI coding agent that works with your software project.
 - Open-source coding agent where you can use different models and customize more.
 - Its official docs describe it as available through a terminal interface, desktop app, or IDE extension
-- OpenCode is like an open-source alternative to Claude Code where you get more control and model flexibility.
+- Open Code is like an open-source alternative to Claude Code where you get more control and model flexibility.
 - You run it inside a project folder, give it instructions in natural language, and it can inspect the codebase, explain code, create or modify files, 
   run terminal commands, troubleshoot errors, and execute tests.
 
@@ -323,19 +395,22 @@ OpenCode
 | Project      | Your local application or Git repository |
 
 
-This is why OpenCode has two separate commands: 
+This is why Open Code has two separate commands: 
 /connect = Connects your account or API key to an AI provider.
 /models  = Lets you select the model OpenCode should use.
 
 - OpenCode supports numerous cloud providers and local models, so you are not restricted to one AI company.
-
-
-
+- you can use openrouter website to use all free and paid models. (see reference section)
+- if you do not have claude code subscription and looking for a cheap alternative, then
+- Create an account on deepseek API (Deepseek Platform) and topup for use, like $2, $5 etc >> (https://platform.deepseek.com)
+- deepseek is very cheap.
+- May be Rs.5000 will be sufficient for 3-4 months.
+- In this way, you do not need openrouter as well, just purchase(topup) on deepseek and create deepseek API and use it directly in open code.
 
 
 What OpenCode can do
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Suppose you start it inside this project: cd /d C:\ufk\project-management
+Suppose you start it inside this project: cd C:\ufk\project-management
 opencode
 
 You can then ask: Explain the architecture of this project.
@@ -355,59 +430,6 @@ It can use built-in tools for reading and editing files, searching code, running
 
 
 
-Build and Plan agents
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- OpenCode includes two important built-in working modes.
-1. Build agent
-2. Plan agent
-
-
-Build Agent
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-The Build agent is used for actual development work. It can:
- * Create and edit files
- * Run commands
- * Implement features
- * Fix bugs
- * Refactor code
- * Run tests
- 
-
-Plan agent
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- The Plan agent is primarily for analysis. 
-- It can inspect the project, explain the code and propose a solution without immediately changing files. 
-- File modifications are denied by default, and shell commands require permission.
-
-
-A good workflow is:
- * Plan mode  → understand and design the solution
- * Build mode → implement and test the solution
-
-You can switch between these agents using the Tab key, or invoke specialized agents with an @ mention.
-
-
-
-Specialized agents
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-You can create custom agents for particular responsibilities, such as:
- * @code-reviewer
- * @security-reviewer
- * @test-writer
- * @documentation-writer
- * @azure-architect
-
-Each agent can have its own:
- * Instructions
- * Selected model
- * Tool permissions
- * Development responsibilities
-
-This allows one OpenCode installation to support different development workflows.
-
-
-
 Models and providers
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - OpenCode can connect to providers offering Claude, GPT, Gemini and many other models. It also supports local models.
@@ -416,6 +438,10 @@ Models and providers
 - Then: /models
 - Select the model you want to use.
 - You can also use OpenCode Zen, a curated model service maintained by the OpenCode team, instead of configuring providers independently.
+- Because OpenCode is model-agnostic, you can point it at whatever gives the best cost-to-quality ratio. 
+- Among hosted models, the strongest value as of mid-2026 is DeepSeek V4, which comes in two tiers:
+  * deepseek-v4-flash:   $0.14 per 1M input tokens (as low as $0.0028 on a cache hit) and $0.28 per 1M output tokens, with a 1M-token context window
+  * deepseek-v4-pro:     the step-up tier when you need stronger reasoning. More capable, still a fraction of frontier pricing.
 
 
 
@@ -429,8 +455,6 @@ Main OpenCode interfaces
 | Desktop application | Visual OpenCode interface                   |
 | Editor extensions   | Work from supported editors such as VS Code |
 | ACP integration     | Connect OpenCode to ACP-compatible editors  |
-
-
 
 
 
@@ -683,6 +707,901 @@ Step 6: Check npm installation (Important)
 - Earlier you installed OpenCode on Windows using: npm install -g opencode-ai
 - If you also installed it on Ubuntu through npm, check: npm list -g | grep opencode
 - If found: npm uninstall -g opencode-ai
+
+
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+						Setup Ollama &  Qwen3 Coder model on local machine (Opencode , Ubuntu)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- For Qwen3 coder model you need a local model runtime such as Ollama.
+- First you install ollama then using ollama, we will setup/install model locally.
+- Ollama runs the model locally.
+- Qwen3 Coder  Model is created by Alibaba Cloud / Qwen Team.
+
+- Flow: Install OLlama >> install Qwen3 COder model
+
+Qwen3 Coder (Model)
+        |
+        | runs on
+        ↓
+Ollama (Runtime)
+        |
+        | used by
+        ↓
+OpenCode (Application)
+
+
+
+
+Step 0: Check current system storage (Before Installation)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- df -h			# check disk space
+
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           3.2G  3.3M  3.2G   1% /run
+/dev/nvme0n1p2  457G  126G  308G  29% /
+tmpfs            16G  314M   16G   2% /dev/shm
+tmpfs           5.0M   12K  5.0M   1% /run/lock
+efivarfs        256K  127K  125K  51% /sys/firmware/efi/efivars
+/dev/nvme0n1p1  1.1G  6.2M  1.1G   1% /boot/efi
+tmpfs           3.2G  168K  3.2G   1% /run/user/1000
+
+
+
+Step 1: Install Ollama
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- ollama --version			# Check, if ollama already installed
+
+  If not installed: bash: /usr/local/bin/ollama: No such file or directory
+  If Installed****: ollama version is 0.32.1
+
+- curl -fsSL https://ollama.com/install.sh | sh		# On Ubuntu
+- ollama --version
+
+- systemctl status ollama		# Check Ollama service status
+- sudo systemctl start ollama		# if service not already started
+- sudo systemctl enable ollama		# Enable on startup
+- systemctl status ollama		# Check again
+
+- ollama --help				# list of all commands
+- ollama serve				# start ollama
+- ollama --version
+  ollama version is 0.32.1
+
+# Test Ollama API
+- curl http://localhost:11434/api/tags	
+  {"models":[]} 			# This is good because Ollama is running but you have no models yet.
+
+- ps aux | grep ollama
+  umar-fa+   62869  0.0  0.1 2339492 39732 pts/0   Sl+  14:17   0:00 ollama serve
+  umar-fa+   64508  0.0  0.0   9152  2300 pts/1    S+   14:19   0:00 grep --color=auto ollama
+
+
+Notes:
+Executable Location: /usr/local/bin/ollama
+Service: /etc/systemd/system/ollama.service
+
+
+Step 2: Model Download - Qwen3 Coder (AI Model)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- ollama list				# to check already installed models
+- ollama pull qwen3-coder		# simply pull the model/install the model
+  During download you will see:
+   pulling manifest
+   pulling layers
+   success
+  # it showed 45 mins time, and approx size is 18GB (22-July-2026)
+  # The model name must exist in Ollama registry.
+  # Check available models: https://ollama.com/library 
+  
+  
+- If there are different sizes (e.g., 4B, 8B, 14B, 32B), choose one appropriate for your hardware, for example:
+- ollama pull qwen3-coder:8b
+- ollama pull qwen3-coder:4b
+ 
+ 
+ 
+Step 3: Verify AI Model Installation
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- ollama list				# List models
+  NAME                  ID              SIZE     MODIFIED       
+  qwen3-coder:latest    06c1097efce0    18 GB    30 minutes ago    
+
+Confirm Ollama is running:
+- curl http://localhost:11434/api/tags
+- You should receive JSON containing your installed models. Ollama normally exposes its local API on port 11434.
+{"models":[{"name":"qwen3-coder:latest","model":"qwen3-coder:latest","modified_at":"2026-07-22T17:52:50.560601347+05:00","size":18556700761,"digest":"06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca","details":{"parent_model":"","format":"gguf","family":"qwen3moe","families":["qwen3moe"],"parameter_size":"30.5B","quantization_level":"Q4_K_M","context_length":262144,"embedding_length":2048},"capabilities":["completion","tools"]}]}
+
+
+- If the connection fails, start Ollama manually: ollama serve
+- Keep that terminal open and use another terminal for OpenCode. 
+ 
+ 
+Create the OpenCode configuration:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Go to your project: cd ~/Documents/Desktop/opencode/helloworld
+- Create an opencode.json file: nano opencode.json
+- Paste this: 
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama Local",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3-coder:latest": {
+          "name": "Qwen3 Coder Local"
+        }
+      }
+    }
+  }
+}
+ 
+- Save in Nano: 
+  Ctrl + O
+  Enter
+  Ctrl + X
+
+- Verify the file: cat opencode.json
+- The model ID in opencode.json must match the name shown by ollama list.
+- OpenCode’s official Ollama configuration uses the OpenAI-compatible package and the endpoint http://localhost:11434/v1.
+- ollama list
+
+
+
+Step 4: Connect Ollama in OpenCode & connect with the model
+- opencode
+- OpenCode connects to Ollama through opencode.json configuration.
+- No API key is required.
+- Verify using: /models
+- Because /connect is mainly for cloud providers.
+ 
+ 
+Step 5: Select the model
+ - Type: /models
+ - You should now see something like:
+   OpenCode Zen
+   ---------------
+   North Mini Code
+
+   Ollama
+   ---------------
+   qwen3-coder:8b
+   llama3.2
+   gemma3
+ 
+   Select: qwen3-coder:8b
+   Now every prompt is answered by your local Qwen3 Coder model.
+   Select:
+qwen3-coder:latest
+
+
+Step 7: Test it
+ - ollama run qwen3-coder:8b
+   or
+ - ollama run qwen3-coder:8b
+- Example:
+ - >>> Write a Python hello world
+ - If it responds, the model is working locally.
+  - Exit the model using: /bye
+ 
+ You can also verify that Ollama is processing the request by running this in another terminal: ollama ps
+
+
+## Troubleshooting:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Check that Ollama is running: ollama serve
+In another terminal: curl http://localhost:11434/api/tags
+You should get JSON listing your installed models.
+
+
+Recommended model sizes:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| RAM    | Recommended Model |
+| ------ | ----------------- |
+| 8 GB   | Qwen3 Coder 4B    |
+| 16 GB  | Qwen3 Coder 8B    |
+| 32 GB  | Qwen3 Coder 14B   |
+| 64 GB+ | Qwen3 Coder 32B   |
+
+
+Your workflow:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Ubuntu
+   │
+   ├── Install Ollama
+   │
+   ├── Download Qwen3 Coder
+   │
+   ├── Start Ollama
+   │
+   ├── Open OpenCode
+   │
+   ├── /connect → Ollama
+   │
+   ├── /models → qwen3-coder
+   │
+   └── Start coding
+   
+   
+## Your OpenCode setup
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+When you run: ollama pull qwen3-coder
+
+this is what happens:
+Ollama downloads the Qwen3 Coder model created by Alibaba Cloud.
+Ollama stores it on your computer.
+OpenCode connects to Ollama.
+When you ask OpenCode a question, Ollama runs the model locally and returns the answer.
+
+
+
+
+
+
+
+
+Model & Ollama Installation Location 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- which ollama
+  /usr/local/bin/ollama
+  # This tells where the Ollama executable is installed.
+  
+- ls -lh $(which ollama)
+  -rwxr-xr-x 1 root root 38M Jul 16 10:32 /usr/local/bin/ollama
+  
+  
+Ollama model location depends on installation method and environment.
+Possible locations:
+
+System installation:
+ /usr/share/ollama/.ollama/models
+
+User installation:
+ ~/.ollama/models
+ exp: /home/umar-farooq/.ollama/models
+
+
+
+
+
+
+
+Method 1: Check Ollama model storage location 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- echo $OLLAMA_MODELS			# If it returns nothing, Ollama is using the default location.
+- The default location on Linux is:/usr/share/ollama/.ollama/models
+- Check it: ls -lh /usr/share/ollama/.ollama/models
+
+
+Method 2: Find the actual model files
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Run: sudo find / -name "qwen3-coder*" 2>/dev/null
+- Example output:
+- /usr/share/ollama/.ollama/models/blobs/sha256-06c1097efce0...
+- /home/umar-farooq/.ollama/models/
+
+umar-farooq@TS01-GM-UMAR:~/.ollama/models/blobs$ ls -la
+total 18121824
+drwxr-xr-x 2 umar-farooq umar-farooq        4096 Jul 22 17:52 .
+drwxr-xr-x 4 umar-farooq umar-farooq        4096 Jul 22 14:17 ..
+-rw-r--r-- 1 umar-farooq umar-farooq 18556688736 Jul 22 17:52 sha256-1194192cf2a187eb02722edcc3f77b11d21f537048ce04b67ccf8ba78863006a
+-rw-r--r-- 1 umar-farooq umar-farooq         542 Jul 22 17:52 sha256-24a94682582c6045f4950846fc7711479dcecb478b86759f0306a2ef8484d318
+-rw-r--r-- 1 umar-farooq umar-farooq         148 Jul 22 17:52 sha256-69aa441ea44ff5e1e7b56cac4f471e71e8a5e2e3963c29684a9234d5d5e5f7aa
+-rw-r--r-- 1 umar-farooq umar-farooq       11338 Jul 22 17:52 sha256-d18a5cc71b84bc4af394a31116bd3932b42241de70c77d2b76d69a314ec8aa12
+
+
+
+Method 3: Check Ollama process environment
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Run: ps aux | grep ollama
+  umar-farooq@TS01-GM-UMAR:~/.ollama/models/blobs$ ps aux | grep ollama
+  umar-fa+   62869  0.8  0.1 2922960 36996 pts/0   Sl+  14:17   2:36 ollama serve
+  umar-fa+  232300  0.0  0.0   9152  2296 pts/1    S+   19:33   0:00 grep --color=auto ollama
+
+- If you installed Ollama manually, 
+- check: systemctl status ollama
+- Then: systemctl cat ollama
+  # /etc/systemd/system/ollama.service
+  [Unit]
+  Description=Ollama Service
+  After=network-online.target
+
+  [Service]
+  ExecStart=/usr/local/bin/ollama serve
+  User=ollama
+  Group=ollama
+  Restart=always
+  RestartSec=3
+  Environment="PATH=/home/umar-farooq/.opencode/bin:/home/umar-farooq/.nvm/versions/node/v20.20.2/bin:/home/umar-farooq/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin>
+
+  [Install]
+  WantedBy=default.target
+
+------
+Look for:Environment="OLLAMA_MODELS=/some/path"
+
+
+
+Method 4: Check model details
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Run: ollama show qwen3-coder:latest
+You will see information like:
+Model
+    architecture        qwen3moe    
+    parameters          30.5B       
+    context length      262144      
+    embedding length    2048        
+    quantization        Q4_K_M  
+
+Note: ollama show does not directly display the disk path.
+
+In your case, Your model: qwen3-coder:latest
+Size: 18 GB
+is most likely stored under:
+/usr/share/ollama/.ollama/models/
+You can check its size:
+sudo du -sh /usr/share/ollama/.ollama/models
+If you want models stored somewhere else
+
+For example, move them to another disk:
+export OLLAMA_MODELS=/mnt/data/ollama-models
+Then restart Ollama:
+sudo systemctl restart ollama
+This is useful if you have limited space on your Ubuntu root partition.
+
+
+Step 0: Check current system storage (Before Installation)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- df -h			# check disk space
+
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           3.2G  3.3M  3.2G   1% /run
+/dev/nvme0n1p2  457G  144G  291G  34% /
+tmpfs            16G  393M   16G   3% /dev/shm
+tmpfs           5.0M   12K  5.0M   1% /run/lock
+efivarfs        256K  127K  125K  51% /sys/firmware/efi/efivars
+/dev/nvme0n1p1  1.1G  6.2M  1.1G   1% /boot/efi
+tmpfs           3.2G  176K  3.2G   1% /run/user/1000
+
+
+
+                    Alibaba Cloud
+                         |
+                         |
+                  Qwen3 Coder Model
+                         |
+                         |
+                  Ollama Runtime
+                  localhost:11434
+                         |
+                         |
+                    OpenCode
+                         |
+                         |
+                  Developer Terminal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+						Remove Model and Uninstall Ollama Runtime
+						
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Recommended order:
+1. Remove AI Models
+2. Remove Ollama Runtime
+3. Remove Configuration (optional)
+
+remove the AI Model - Qwen3 Coder model from Ollama,
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1. Check installed models: ollama list
+
+NAME                  ID              SIZE     MODIFIED     
+qwen3-coder:latest    06c1097efce0    18 GB    16 hours ago 
+
+
+2. Remove the model
+- ollama rm qwen3-coder:latest
+  or
+- ollama rm qwen3-coder
+- You should see:deleted 'qwen3-coder:latest'
+
+3. Verify removal
+- ollama list
+- The model should no longer appear.
+
+4. Check disk space
+- Since your model was about 18 GB, you can verify that space is released:
+- df -h
+
+
+Important notes
+* This removes only the AI model weights.
+* It does not uninstall Ollama.
+* It does not remove your OpenCode configuration (opencode.json).
+
+If later you want it again: ollama pull qwen3-coder
+will download it again.
+
+
+
+Uninstall Ollama
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Note:
+- Ollama was installed using: curl -fsSL https://ollama.com/install.sh | sh
+- Therefore apt remove will not work.
+Use:
+- sudo systemctl stop ollama
+- sudo systemctl disable ollama
+- sudo rm /usr/local/bin/ollama
+- sudo rm /etc/systemd/system/ollama.service
+- sudo systemctl daemon-reload
+
+
+Remove Ollama data:
+- sudo rm -rf /usr/share/ollama
+- rm -rf ~/.ollama
+
+Verify Removal:
+- ollama --version
+
+Other Options:
+- sudo apt remove ollama
+- and optionally remove its model storage:
+- sudo rm -rf /usr/share/ollama
+
+
+
+Summary
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Remove Model:
+    ollama rm <model-name>
+
+Remove Ollama:
+ Stop service
+ Remove binary
+ Remove service
+ Remove model storage
+
+
+
+
+
+## Troubleshooting:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Error: E: Unable to locate package ollama
+because you did not install Ollama through apt.
+
+You installed Ollama using the official script: curl -fsSL https://ollama.com/install.sh | sh
+That installs it differently (binary + system service), not as an apt package.
+
+which ollama
+You will probably see: /usr/local/bin/ollama
+ls -lh $(which ollama)
+
+2. Remove Ollama service
+You already stopped it:sudo systemctl stop ollama
+Now disable it:sudo systemctl disable ollama
+
+3. Remove Ollama binary
+Run: sudo rm $(which ollama)
+or directly:
+sudo rm /usr/local/bin/ollama
+
+
+4. Remove Ollama service file
+Check:
+systemctl cat ollama
+You will see something like:/etc/systemd/system/ollama.service
+Remove it:sudo rm /etc/systemd/system/ollama.service
+Reload systemd:sudo systemctl daemon-reload
+
+
+5. Remove Ollama directories
+Remove model storage: sudo rm -rf /usr/share/ollama
+Remove user cache/config: rm -rf ~/.ollama
+
+
+6. Verify removal
+Run: ollama --version
+Expected:Command 'ollama' not found
+Check service: systemctl status ollama
+Expected:Unit ollama.service could not be found
+
+
+
+Why your disk space did not change much
+Your df -h showed: /dev/nvme0n1p2  457G  Used 126G
+
+Before removing Qwen:Model size: ~18 GB
+After removing: You should see available space increase by around 18 GB.
+
+However, Linux filesystem may not immediately show the difference if:
+Ollama process still had files open
+Another cache directory exists
+You already stopped Ollama, so it should release the space.
+Check: sudo du -sh /usr/share/ollama
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Build and Plan agents
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Open Code & Claude Code includes two important built-in working modes.
+1. Build mode
+2. Plan mode
+
+
+A good workflow is:
+ * Plan mode  → understand and design the solution
+ * Build mode → implement and test the solution
+
+You can switch between these agents using the Tab key, or invoke specialized agents with an @ mention.
+
+
+
+
+Plan mode / Plan agent
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- The Plan mode or agent is primarily for analysis and planning. 
+- It can inspect the project, explain the code and propose a solution without immediately changing files. 
+- File modifications are denied by default, and shell commands require permission.
+- code likhny sy phely, yeh sara plan liky ga aur app to share kary ga
+- in plan mode, it decides, how to execute, means planning, then present you the plan before execution, after your review, you will ask agent to fix it.
+- it means planning before implementation
+
+- It puts the AI in a "look but do not touch" state
+- Instead of doing the work, it writes out a step-by-step plan of what it would do.
+- You read the plan, suggest changes, and only then let it start the actual work.
+
+Claude Code:
+- In Claude Code /plan = plan mode enabled
+- Press Shift+Tab to cycle through permission modes. 
+- The first press puts you in auto-accept; the second press puts you in plan mode. 
+- In plan mode, the model can read but cannot write: no file edits, no shell commands.
+
+Open Code:
+- In Open Code, Press Tab to switch between Build mode (AI can do everything) and Plan mode (AI can only read, not change anything).
+- In Plan mode, if you ask it to write or edit something, it will tell you it cannot and wait for you to switch back to Build. 
+- Same idea as Claude Code: look first, then act.
+
+
+
+
+
+Build Agent
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+The Build agent is used for actual development work. It can:
+ * Create and edit files
+ * Run commands
+ * Implement features
+ * Fix bugs
+ * Refactor code
+ * Run tests
+ 
+
+
+Specialized agents
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+You can create custom agents for particular responsibilities, such as:
+ * @code-reviewer
+ * @security-reviewer
+ * @test-writer
+ * @documentation-writer
+ * @azure-architect
+
+Each agent can have its own:
+ * Instructions
+ * Selected model
+ * Tool permissions
+ * Development responsibilities
+
+This allows one OpenCode installation to support different development workflows.
+
+
+
+
+
+
+
+
+Match the model to the task:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- The most capable models are the best thinkers — they plan, reason about tricky code, and handle ambiguity — but they cost the most and use up your limits the fastest. 
+- Cheaper (and free) models are perfectly good at following a clear plan: editing files, running tests, reformatting, repetitive changes. 
+- The skill is sending each kind of work to the right one.
+- For Planning, debugging related task, use the most capable model and for task, where you just have to follow a plan, you can use some lighter/less-expensive model.
+
+- Planning, architecture, "figure out how to do this," debugging something confusing	          >> 	The most capable model you have
+- Following a plan you already approved — routine edits, formatting, running tests, boilerplate   >> 	A cheaper or free model
+
+- The expensive part of any task is the thinking — reading the project, deciding the approach, spotting what could go wrong. 
+- Once that is a written plan, the rest is "just follow these steps," which a cheap model does fine. 
+- So: plan with a strong model, execute with a cheap one. 
+- That single move is where most of the cost savings come from, with no loss of quality 
+
+- Two honest caveats. 
+- First, cheaper models need clearer instructions — they follow a good plan well but improvise badly, so the weaker the model, the more the plan has to spell out. 
+- Second, don't over-optimize: switching models every few minutes costs you attention to save pennies. 
+- Default to a strong model, drop to a cheap one for the obvious chores, and leave it there.
+- Rule of thumb: 
+  a strong model to decide what to do, a cheap model to do it. 
+  When a cheap model starts going in circles, that is your signal the task needed the stronger one — switch up, don't keep retrying.
+
+
+
+
+
+
+
+Permission Discipline
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Every time these tools want to do something (edit a file, run a command), they ask you for permission first.
+- You can skip this and let them do everything without asking, but do not do that when you are starting out. 
+- You want to see what the AI is doing before it does it.
+- But, After a few sessions, you will notice that some actions are always safe (like reading files or running tests). 
+- You can tell the tool to stop asking about those specific actions and auto-approve them. 
+- This is the normal arc, not a beginner crutch.
+- Anthropic's own product team observes that at launch, users read every single permission request, and over time most graduated to auto-accepting.
+— Trust that was earned session by session, which is exactly how you should grant it. 
+- In Claude Code, these permissions are saved in .claude/settings.json file
+- In Open Code, these permissions are saved in opencode.json file
+
+
+** In Claude Code >> .claude/settings.json **
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Bash(npm test)",
+      "Bash(npm run lint)",
+      "Bash(npm run build)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)"
+    ],
+    "deny": ["Bash(rm -rf *)", "Bash(npm publish *)", "Bash(git push *)"]
+  }
+} 
+
+
+
+
+** In Open Code >> opencode.json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "*": "ask",
+    "read": "allow",
+    "edit": "allow",
+    "bash": {
+      "*": "ask",
+      "npm test": "allow",
+      "npm run lint": "allow",
+      "npm run build": "allow",
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "rm -rf*": "deny",
+      "npm publish*": "deny",
+      "git push*": "deny"
+    }
+  }
+}
+
+# OpenCode gives you more control over permissions. 
+# You can set rules for each type of action separately (reading, editing, running commands). 
+# It also has a built-in safety feature: if the AI tries the same action three times in a row with no progress, it stops automatically.
+
+
+
+
+opencode.json file >> Open Code
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+opencode.json is the configuration file for opencode. It controls settings like:
+- Model selection (model, small_model)
+- Agents (custom agents, default agent)
+- Skills (local/remote skill paths)
+- MCP servers (local commands or remote URLs)
+- Plugins (npm packages, local files)
+- Permissions (tool access rules)
+- Providers (API keys, enabled/disabled providers)
+- References (external docs/repos for context)
+
+- opencode.json is the configuration file that tells OpenCode how to connect to AI models and providers. 
+- It is a JSON-format file placed in your project directory, usually at the root of the OpenCode project.
+
+Key locations:
+- Project: ./opencode.json or .opencode/opencode.json
+- Global: ~/.config/opencode/opencode.json
+
+On Windows: C:\Users\Administrator\.config\opencode
+
+
+Typical Structure:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama Local",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3-coder:latest": {
+          "name": "Qwen3 Coder Local"
+        }
+      }
+    }
+  }
+}
+
+
+## Explanation of fields:
+| Field              | Description                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------ |
+| `$schema`          | Reference to OpenCode’s JSON schema for validation                                         |
+| `provider`         | List of AI providers (local or cloud) that OpenCode can use                                |
+| `npm`              | The SDK used to interact with this provider                                                |
+| `name`             | Friendly name for the provider                                                             |
+| `options.baseURL`  | The endpoint where the provider runtime is listening (for local Ollama, this is localhost) |
+| `models`           | List of models exposed by this provider                                                    |
+| `models.<id>.name` | Friendly name of the model for OpenCode’s UI                                               |
+
+
+## How OpenCode uses it
+- When you run opencode in a project, OpenCode reads opencode.json.
+- It connects to each provider listed.
+- You can then list models inside OpenCode using: /models
+- Select the model (e.g., Qwen3 Coder Local) to start using it in the project.
+
+
+## Notes
+- Project-specific: You can have a different opencode.json per project.
+- Do not delete unless you want OpenCode to forget the connection.
+- Editing: If you install a new model in Ollama, you can add its ID to opencode.json so OpenCode can see it.
+
+
+
+
+.claude/settings.json >> Claude Code 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- The file .claude/settings.json is a configuration file used by Claude (Anthropic AI) clients. 
+- All settings of claude are saved in this file.
+- The more you use claude code, more it will be customized itself as per your preferences.
+- Its purpose is similar to OpenCode’s opencode.json, but specifically for Claude.
+
+- it stores 
+   * user settings
+   * runtime preferences
+   * connection details for the local or cloud Claude clien
+   * API keys (if connecting to Claude cloud)
+   * Preferred model version
+   * Runtime environment (local vs cloud)
+   * UI or CLI preferences
+   * Memory and session settings
+
+
+Key locations:
+- Typically found in your home directory or user profile under .claude/.
+- Example path: ~/.claude/settings.json
+
+
+Typical Structure:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+{
+  "api_key": "YOUR_API_KEY",
+  "default_model": "claude-2",
+  "max_tokens": 1000,
+  "temperature": 0.7,
+  "memory_enabled": true,
+  "local_runtime": {
+    "host": "127.0.0.1",
+    "port": 11434
+  }
+}
+
+
+
+## How Open Code uses it: When you run a Claude client or app, it reads settings.json to:
+- Decide which model to load
+- Connect to a local or cloud instance
+- Apply user-specific settings like temperature, token limits, or memory
+- Changes in this file take effect on next client start.
+
+
+## SUMMARY
+
+| File                    | Purpose                        | Contains                                                   |
+| ----------------------- | ------------------------------ | ---------------------------------------------------------- |
+| `.claude/settings.json` | Claude client configuration    | API keys, model selection, local runtime, user preferences |
+| `opencode.json`         | OpenCode project configuration | Providers, models, endpoints, options                      |
+
+
+
+
+
+
+
+
+Contents of .claude folder
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Contents of .claude folder on your local system
+ 
+
+
+
+
 
 
 

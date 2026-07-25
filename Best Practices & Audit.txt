@@ -1,0 +1,42 @@
+==============================================================================================================================================================================
+==============================================================================================================================================================================
+
+									Best Practices & Audit 
+
+==============================================================================================================================================================================
+==============================================================================================================================================================================
+- If a task takes more than [5] mins, use the plan mode first.
+- Ask the AI to save the plan to a directory for all important tasks.
+- Set permissions set
+- Model selection as per your tasks.
+
+Rule of thumb: 
+If the task will take more than 10 minutes, use plan mode first. 
+For bigger tasks, ask the AI to save the plan to a file (like docs/plans/my-plan.md) so you can come back to it later or share it with a fresh session.
+
+
+
+- Do not use "stealth models" in production. they are released under a codename with the maker undisclosed (for example, OpenCode Zen's Big Pickle at the time of writing).
+- They are temporary and unannounced.
+- A stealth model is a vendor quietly testing something before revealing it. 
+- It can change behaviour, get renamed, or disappear with no notice — so do not build habits, defaults, or course/project setups around one.
+- Free" can mean you are the product. 
+- During a model's free testing window, your prompts and code may be used to train and improve it. 
+- Never point a stealth model at anything confidential — client work, private repos, anything under NDA.
+- They are fine for throwaway experiments and trying out the workflow. 
+- For anything you rely on, prefer a stable, privately-billed model (see the DeepSeek V4 callout below) where the provider, pricing, and data policy are all known 
+  and not going to shift under you.
+
+- Plan with a strong model, execute with a cheap one. 
+- That single move is where most of the cost savings come from, with no loss of quality 
+
+- Two honest caveats. 
+- First, cheaper models need clearer instructions — they follow a good plan well but improvise badly, so the weaker the model, the more the plan has to spell out. 
+- Second, don't over-optimize: switching models every few minutes costs you attention to save pennies. 
+- Default to a strong model, drop to a cheap one for the obvious chores, and leave it there.
+
+- Rule of thumb: 
+  a strong model to decide what to do, a cheap model to do it. 
+  When a cheap model starts going in circles, that is your signal the task needed the stronger one — switch up, don't keep retrying.
+
+
