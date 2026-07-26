@@ -318,13 +318,160 @@ Match the model to the task:
 Lecture 9:  5-July-2026 [ Agentic Coding Part 2 ]
 ======================================================================================================================================================
 ======================================================================================================================================================
+- Part2: Context Management (Skiiped for now)
+- Part3: The Rules file
+- CLAUDE.md and AGENTS.md
+
+*** CLAUDE.md / AGENTS.md File ***
+======================================================================================================================================================
+- info related to your project can be written in this file.
+- Rules can be defined in this file.
+- you can define stack of your dev project in this file.
+- Think of it as a set of permanent instructions for your project. 
+- Every time you start a new session, AI reads this file first so it knows the rules.
+
+Claude Code  >> CLAUDE.md
+Open Code    >> AGENTS.md
+
+*** /init ***
+- You do not need to write this file yourself. 
+- Run /init in either tool and AI will scan your project folder and create the file for you. After that, your job is to delete the parts you do not need.
+- AI tends to generate a very long file. Most of it is unnecessary.
+
+- If you already have a CLAUDE.md and switch to OpenCode, you do not need to rewrite it.
+- Open Code automatically reads CLAUDE.md when no AGENTS.md exists. 
+- If both files exist, Open Code uses AGENTS.md and ignores CLAUDE.md.
+
+
+- The biggest mistake people make: They treat this file like a full manual, putting in everything about the project: architecture, coding rules, naming conventions, team preferences. 
+- The problem? AI reads this file on every single message. 
+- A huge rules file slows AI down and uses up your conversation space, even when most of the information is not relevant to the current task.
+- Keep it short. 
+- Write only what AI cannot figure out by looking at your files. 
+- Think of it as a table of contents, not an encyclopedia. Point to other files for details, and let AI load those only when it needs them:
+
+
+*** Example CLAUDE.md
+# Project: my-app
+
+## Stack
+Next.js 14, TypeScript, Postgres, Drizzle ORM.
+
+## Commands
+- `npm run dev`: start local server
+- `npm test`: run vitest
+- `npm run db:migrate`: apply migrations
+
+## Critical rules
+- Never edit files in `src/generated/`. They're rebuilt by codegen.
+- All API routes use the auth middleware in `src/lib/auth.ts`.
+- See @docs/conventions.md for naming and folder rules.
+- See @docs/db-schema.md for table structure.
+
+
+*** Example AGENTS.md ***
+# Project: my-app
+
+## Stack
+Next.js 14, TypeScript, Postgres, Drizzle ORM.
+
+## Commands
+- `npm run dev`: start local server
+- `npm test`: run vitest
+- `npm run db:migrate`: apply migrations
+
+## Critical rules
+- Never edit files in `src/generated/`. They're rebuilt by codegen.
+- All API routes use the auth middleware in `src/lib/auth.ts`.
+
+## External references
+- When you encounter @docs/conventions.md or @docs/db-schema.md, load them on a need-to-know basis with the read tool. 
+- Do not preemptively load all references; only load what's relevant to the current task.
+
+
+- One difference: in Claude Code, writing @docs/conventions.md automatically loads that file when needed. 
+- In OpenCode, this does not work automatically. 
+- You have two options: either write in your AGENTS.md "load docs/conventions.md when relevant," or list the files in opencode.json:
+
+----
+
+Or, cleaner, list them in opencode.json:
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["docs/conventions.md", "docs/db-schema.md"]
+}
+
+
+This is not just for code projects. 
+You can use the same rules file for any kind of work: writing essays, organizing research, managing a blog, planning events. 
+Here is an example for a writing project:
+
+# Project: blog-and-newsletter
+
+## What this is
+A folder of drafts, research, and published posts. I write a weekly newsletter and occasional long-form posts.
+
+## Where things live
+- `drafts/`: in-progress posts, one per file
+- `research/`: source notes and clippings, organized by topic
+- `published/`: shipped posts (do not edit)
+
+## Critical rules
+- Never edit anything in `published/`. Fixes go in a new draft with a correction note.
+- Footnotes go in `[brackets]` inline; we resolve them to numbered footnotes only at publish time.
+- Tone: conversational, no bullet lists in body copy.
+
+
+
+*** A simple test for every line you add: 
+- Ask yourself, "If I remove this line, will AI make a mistake?" If the answer is no, delete it. 
+- For example, you do not need to tell AI that your project uses Python if all the files end in .py.
+- AI can see that. But you do need to tell AI "never edit files in the published/ folder," because there is no way for AI to know that just by looking.
+
+
+- Add rules when something goes wrong, not before. 
+- If AI makes a mistake that your rules file would have prevented, add that rule. 
+- Do not try to guess every possible mistake in advance. 
+- Over time, your rules file will grow naturally into something useful.
+
+- Rules written in CLAUDE.md are loaded with every request, if you want that some rules are only loaded when required, then define them in a separate .md file.
+- and add the reference of that file in CLAUDE.md file.
+- This way Claude will not read this file everytime, so the tokens required to read that file will be saved.
+
+*** AGENTS.md
+- for Open Code, AGENTS.md file will be created.
+- You can copy the contents of CLAUDE.md to AGENTS.md file.
+- So if you open Claude code project in open code, same reference which you have mentioned in CLAUDE.md file, will also be linked via AGENTS.md file
 
 
 
 
+**** Global Settings and Project Settings ****
+- Every project has its own settings file (CLAUDE.md)
+- Similarly, you can create a Global settings (CLAUDE.md) file., which will be linked with every project, like hierarchy
+- Whenever you will start a project, this GLOBAL File (CLAUDE.md) will also be loaded.
+- But i have not created it yet, just to save tokens.
+- This global file is saved in the folder, where Claude was installed.
+
+- Just like CLAUDE.md file, Claude Code also creates a settings.local file in .Claude folder of each project.
+- This settings file can be global level and project level as well, just like Global level CLAUDE.md and Project level CLAUDE.md
 
 
 
+
+**** PART 2: Context Management ****
+======================================================================================================================================================
+- Model can only act on what is currently in front of it — its context. 
+- Context Management is the practice of tracking and using relevant information about a session, environment, or user so that a system can act intelligently, 
+  provide relevant responses, or maintain continuity.
+
+- Context Management refers to the process of tracking, storing, and using relevant information about the current state, environment, or interaction 
+  to make better decisions, respond appropriately, or maintain continuity in systems, applications, or conversations.
+
+- Context Management is the method by which a system keeps track of relevant information about a user, session, or environment so that it can provide accurate, 
+  relevant, and coherent responses or actions.
+
+i was here on 27july2026, video 1:08 mins of class 10 Agentic coding Part 2
 
 
 

@@ -40,3 +40,10 @@ For bigger tasks, ask the AI to save the plan to a file (like docs/plans/my-plan
   When a cheap model starts going in circles, that is your signal the task needed the stronger one — switch up, don't keep retrying.
 
 
+CLAUDE.md Best Practices
+==============================================================================================================================================================================
+- Keep it short
+- By default Edit and Delete should be restricted
+- Rules written in CLAUDE.md are loaded with every request, if you want that some rules are only loaded when required, then define them in a separate .md file.
+- CLAUDE.md file should not be like an encyclopedia, it should be like Table of Contents
+- Create code formatting rules for the entire organization, like Team-wise, project-wise, stack-wise
