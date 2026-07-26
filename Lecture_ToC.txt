@@ -298,8 +298,8 @@ Plan Mode:
 
 
 Permissions discipline:
-- For opencode >> opencode.json
-
+- For Open Code    >>  opencode.json
+- For Claude Code  >> .claude/settings.json >> Claude Code 
 
 
 Contents of .claude folder on your local system

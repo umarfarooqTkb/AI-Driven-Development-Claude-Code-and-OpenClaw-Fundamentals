@@ -377,7 +377,7 @@ It should return: 2.1.207
 
 OpenCode
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- OpenCode is an open-source AI coding agent that works with your software project.
+- Open Code is an open-source AI coding agent that works with your software project. It’s available as a terminal-based interface, desktop app, or IDE extension.
 - Open-source coding agent where you can use different models and customize more.
 - Its official docs describe it as available through a terminal interface, desktop app, or IDE extension
 - Open Code is like an open-source alternative to Claude Code where you get more control and model flexibility.
@@ -417,6 +417,7 @@ You can then ask: Explain the architecture of this project.
 OpenCode can search the project files and explain how the components interact.
 You can also ask: Find the cause of the login error, fix it, and run the related tests.
 
+
 OpenCode may then:
  * Inspect the relevant code.
  * Search for authentication components.
@@ -424,6 +425,11 @@ OpenCode may then:
  * Modify the necessary files.
  * Run tests or build commands.
  * Show you the resulting changes.
+ * Writing and debugging code
+ * Understanding existing codebases
+ * Refactoring and optimization
+ * Answering technical questions
+ * Automating repetitive tasks
 
 It can use built-in tools for reading and editing files, searching code, running shell commands, and connecting to external systems through MCP servers.
 
@@ -480,7 +486,7 @@ Installation of Open Code
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-Installation of Open Code
+Installation of Open Code (Panaversity.org) - 
 ========================================================================================================================================================
 # All platforms — recommended
 curl -fsSL https://opencode.ai/install | bash
@@ -508,6 +514,326 @@ which opencode
 echo $PATH
 
 ls -lh ~/.opencode/bin
+
+
+
+========================================================================================================================================================
+========================================================================================================================================================
+
+								Installation of Open Code
+
+========================================================================================================================================================
+========================================================================================================================================================
+
+
+
+Method 1: Quick Installer (Recommended) -- [Linux/macOS/Windows/WSL]
+========================================================================================================================================================
+
+Linux / macOS:
+--------------
+curl -fsSL https://opencode.ai/install | bash
+- Official installer from OpenCode website.
+- Requires curl and Bash shell
+- Ensure curl is installed: sudo apt install curl (Ubuntu) or brew install curl (macOS)
+- Adds OpenCode to PATH automatically
+- Verify installation:
+  - which opencode
+  - opencode --version
+				
+
+Windows:
+--------
+# Note: curl + bash requires WSL or Git Bash
+
+Option 1: PowerShell Installer
+- Run PowerShell as Administrator
+- iwr https://opencode.ai/install.ps1 -useb | iex
+- May require: Set-ExecutionPolicy RemoteSigned
+- Verify:
+  - opencode --version
+  - where opencode
+
+Option 2: WSL + Linux Installer
+- Install Ubuntu (or another Linux distro) via WSL
+- In WSL terminal: curl -fsSL https://opencode.ai/install | bash
+- Note: Available only inside WSL shell
+- Verify inside WSL:
+  - which opencode
+  - opencode --version
+
+
+
+
+Method 2: Install via Package Managers
+========================================================================================================================================================
+
+macOS / Linux:
+--------------
+Homebrew (Package Manager):
+- brew install opencode
+- brew install anomalyco/tap/opencode
+
+Arch Linux / AUR:
+- paru -S opencode
+
+
+
+Windows:
+--------
+1. Scoop (CLI package manager) - not working on 26july2026
+- Install Scoop first: iwr -useb get.scoop.sh | iex
+- Install OpenCode: scoop install opencode
+- Update: scoop update opencode
+- Default directory: C:\Users\<YourUser>\scoop\apps\opencode\current\
+- scoop --version (PowerShell)
+
+2. PowerShell script (.ps1)  - not working on 26july2026
+- Run PowerShell as Administrator
+- Installer: iwr https://opencode.ai/install.ps1 -useb | iex
+- May require: Set-ExecutionPolicy RemoteSigned 
+- Verify: opencode --version, where opencode
+
+3. Chocolatey (Windows package manager) - worked on 26july2026
+- Install: choco install opencode
+- Update: choco upgrade opencode
+- Requires Chocolatey installed
+- choco --version	(Command Prompt or PowerShell)
+   v2.7.0
+- opencode --version
+  1.18.5 on 26-July-2026
+- choco info opencode
+- Installed Path: C:\ProgramData\chocolatey\bin\opencode.exe
+- Package Folder: C:\ProgramData\chocolatey\lib\opencode
+
+
+Cross-platform JavaScript / TypeScript runtimes: [Linux/macOS/Windows/WSL]
+--------------------------------------------------------------------------
+1. Bun (JS runtime package Manager)
+- Requires Bun installed
+- Verify bun: bun --version
+- Command: bun add -g opencode-ai
+
+- Installs binary to ~/.bun/bin
+- Works on Linux/macOS/WSL/Windows
+- Bun is a JavaScript/TypeScript runtime with a built-in package manager. 
+- It is an alternative to Node.js + npm/yarn/pnpm, combining runtime execution and package management in one.
+- Install Bun (Linux)
+  - curl -fsSL https://bun.sh/install | bash
+  - export PATH="$HOME/.bun/bin:$PATH"
+  - bun --version
+- Install Bun (Windows)
+  - Option A — Install Bun inside WSL (Recommended on Windows)
+     * Open PowerShell as Administrator and run: wsl --install
+     * wsl --update
+     * wsl
+     * curl -fsSL https://bun.sh/install | bash
+     * export PATH="$HOME/.bun/bin:$PATH"
+     * bun --version
+  - Option B — Install via Scoop (if network allows)
+
+
+2. npm / pnpm / yarn	- worked on 26july2026
+- Command: npm install -g opencode-ai   OR  npm i -g opencode-ai
+- Requires Node.js installed
+- npm --version (Command Prompt or PowerShell)
+- May need PowerShell execution policy change on Windows
+
+- opencode --version
+  1.18.5 on 26-July-2026
+- where opencode
+  C:\Users\Administrator\AppData\Roaming\npm\opencode
+  C:\Users\Administrator\AppData\Roaming\npm\opencode.cmd
+
+
+Package Manager | Command Example                  | Notes
+--------------- | ------------------------------- | ------------------------------------------
+npm             | npm install -g opencode-ai       | Comes with Node.js
+Yarn            | yarn global add opencode-ai      | Faster, caching, workspaces
+pnpm            | pnpm add -g opencode-ai          | Disk-efficient, fast installs
+
+
+# Yarn is a JavaScript/TypeScript package manager, created by Facebook (Meta) as an alternative to npm.
+# Yarn installs, updates, and manages dependencies for your project.
+
+# pnpm is another modern package manager for JavaScript/TypeScript.
+
+| Tool | Key Feature                  | Monorepo Support             | Notes                                 |
+| ---- | ---------------------------- | ---------------------------- | ------------------------------------- |
+| npm  | Default JS package manager   | Limited (via npm workspaces) | Widely supported                      |
+| Yarn | Fast installs, deterministic | ✅ via Yarn Workspaces        | Lockfile ensures reproducibility      |
+| pnpm | Disk-efficient, fast         | ✅ via pnpm Workspaces        | Hard-links packages, strict isolation |
+
+
+
+
+WSL (Windows Subsystem for Linux):
+----------------------------------
+- Install Ubuntu or another Linux distro via WSL
+- Run Linux installer inside WSL: curl -fsSL https://opencode.ai/install | bash
+- Verify inside WSL: which opencode, opencode --version
+- Only available inside WSL shell
+
+Notes:
+------
+- For local AI models (like Qwen3 Coder), install a runtime such as Ollama separately.
+- Always verify PATH includes the OpenCode binary after installation.
+- Use npm.cmd install -g opencode-ai if any npm/Bun errors occur.
+
+- Incase of error, type
+- npm.cmd install -g opencode-ai worked on 26july2026
+
+
+
+
+Method 3: Desktop App
+========================================================================================================================================================
+- Download from https://opencode.ai/download
+- Native Windows/macOS experience
+
+
+
+
+Verify Installation
+========================================================================================================================================================
+opencode --version
+
+
+
+========================================================================================================================================================
+								End of -- Installation of Open Code
+========================================================================================================================================================
+
+
+
+
+
+
+
+
+Uninstall Opencode
+======================================================================================================================================================
+======================================================================================================================================================
+- Since you installed OpenCode using: curl -fsSL https://opencode.ai/install | bash
+- you did not install it using apt, so:sudo apt remove opencode     # will not work
+- You need to remove the binary and related files manually.
+
+Step 1: Find OpenCode installation location
+- Run:which opencode
+- You will likely see: /home/umar-farooq/.local/bin/opencode
+  or:
+- /usr/local/bin/opencode
+
+
+Step 2: Remove OpenCode binary
+- If it is in your home directory:rm ~/.local/bin/opencode
+  or
+- rm /home/umar-farooq/.opencode/bin/opencode
+- If it is in /usr/local/bin: sudo rm /usr/local/bin/opencode
+
+Step 3: Verify removal
+- Run:opencode --version
+- Expected:Command 'opencode' not found
+
+
+Step 4: Remove OpenCode configuration (optional)
+- Your OpenCode projects may contain:
+- opencode.json
+- Example:
+- find ~/Documents -name "opencode.json"
+- Remove if you want:
+- rm /path/to/opencode.json
+
+
+Step 5: Remove OpenCode user files/cache
+- Check: ls -la ~/.config
+- Look for: opencode
+- Remove: rm -rf ~/.config/opencode
+- Also check: ls -la ~/.local/share
+- Remove if present:rm -rf ~/.local/share/opencode
+
+
+Step 6: Check npm installation (Important)
+- Earlier you installed OpenCode on Windows using: npm install -g opencode-ai
+- If you also installed it on Ubuntu through npm, check: npm list -g | grep opencode
+- If found: npm uninstall -g opencode-ai
+
+
+
+
+Uninstall Opencode from windows, when installed via chocolatey - worked on 26July2026
+======================================================================================================================================================
+- Open PowerShell as Administrator
+- choco uninstall opencode
+
+Verify:
+- opencode --version
+- where opencode
+
+Optional: Clean leftover directories
+Remove-Item -Recurse -Force "C:\ProgramData\chocolatey\lib\opencode"
+Remove-Item -Recurse -Force "C:\ProgramData\chocolatey\bin\opencode.exe"
+
+# Remove folders in C:\ProgramData\chocolatey\lib\opencode and bin
+
+
+
+
+
+
+Uninstall Opencode from windows, when installed via npm - worked on 26July2026
+======================================================================================================================================================
+- Open Command Prompt or PowerShell as Administrator
+- If using PowerShell, make sure execution policy is not blocking scripts: Set-ExecutionPolicy RemoteSigned
+- npm uninstall -g opencode-ai
+  This will remove the global OpenCode package.
+  Removes the files:
+  C:\Users\Administrator\AppData\Roaming\npm\opencode
+  C:\Users\Administrator\AppData\Roaming\npm\opencode.cmd
+  And other associated global npm package files.
+
+Verify:
+- opencode --version
+- where opencode
+
+
+Optional cleanup:
+- Remove leftover configuration or project folders if you want a fully clean uninstall:
+- Project-level OpenCode folders (.opencode)
+- opencode.json in projects
+- Global npm cache (optional): npm cache clean --force
+
+
+
+
+
+
+End of -- Uninstall Opencode
+======================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -655,58 +981,6 @@ create two excel files with 5 records each with the help of AI, like ChatGPT
 ---------- Result of above prompt ----------------
 
 
-
-
-
-
-
-
-Uninstall Opencode
-======================================================================================================================================================
-======================================================================================================================================================
-- Since you installed OpenCode using: curl -fsSL https://opencode.ai/install | bash
-- you did not install it using apt, so:sudo apt remove opencode     # will not work
-- You need to remove the binary and related files manually.
-
-Step 1: Find OpenCode installation location
-- Run:which opencode
-- You will likely see: /home/umar-farooq/.local/bin/opencode
-  or:
-- /usr/local/bin/opencode
-
-
-Step 2: Remove OpenCode binary
-- If it is in your home directory:rm ~/.local/bin/opencode
-  or
-- rm /home/umar-farooq/.opencode/bin/opencode
-- If it is in /usr/local/bin: sudo rm /usr/local/bin/opencode
-
-Step 3: Verify removal
-- Run:opencode --version
-- Expected:Command 'opencode' not found
-
-
-Step 4: Remove OpenCode configuration (optional)
-- Your OpenCode projects may contain:
-- opencode.json
-- Example:
-- find ~/Documents -name "opencode.json"
-- Remove if you want:
-- rm /path/to/opencode.json
-
-
-Step 5: Remove OpenCode user files/cache
-- Check: ls -la ~/.config
-- Look for: opencode
-- Remove: rm -rf ~/.config/opencode
-- Also check: ls -la ~/.local/share
-- Remove if present:rm -rf ~/.local/share/opencode
-
-
-Step 6: Check npm installation (Important)
-- Earlier you installed OpenCode on Windows using: npm install -g opencode-ai
-- If you also installed it on Ubuntu through npm, check: npm list -g | grep opencode
-- If found: npm uninstall -g opencode-ai
 
 
 
@@ -1474,6 +1748,8 @@ opencode.json is the configuration file for opencode. It controls settings like:
 - Providers (API keys, enabled/disabled providers)
 - References (external docs/repos for context)
 
+
+- You can configure OpenCode using a JSON config file.
 - opencode.json is the configuration file that tells OpenCode how to connect to AI models and providers. 
 - It is a JSON-format file placed in your project directory, usually at the root of the OpenCode project.
 
