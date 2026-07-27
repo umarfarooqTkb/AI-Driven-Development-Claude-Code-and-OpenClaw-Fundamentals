@@ -47,3 +47,12 @@ CLAUDE.md Best Practices
 - Rules written in CLAUDE.md are loaded with every request, if you want that some rules are only loaded when required, then define them in a separate .md file.
 - CLAUDE.md file should not be like an encyclopedia, it should be like Table of Contents
 - Create code formatting rules for the entire organization, like Team-wise, project-wise, stack-wise
+- Keep the file focused and ideally under approximately 200 lines.
+- Use direct instructions such as:
+  - Use 4-space indentation.
+  - Run pytest tests/auth before completing authentication changes.
+  - Never expose secrets in logs.
+- Avoid vague instructions such as:
+  - Write good code.
+  - Follow best practices.
+  - Make everything secure.

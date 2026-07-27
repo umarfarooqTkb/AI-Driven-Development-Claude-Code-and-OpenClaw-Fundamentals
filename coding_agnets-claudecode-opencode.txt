@@ -47,18 +47,16 @@ ToC
 
 
 ** Plan mode and Build mode **
-
 ** Match the model to the task **
-
 ** Permission Discipline **
+** CLAUDE.md and AGENTS.md
 
 
 
 
 
 
-
-Cursor
+***** Codex *****
 
 
 
@@ -1688,7 +1686,7 @@ Check: sudo du -sh /usr/share/ollama
 
 
 
-Build and Plan agents
+Plan mode and Build mode
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Open Code & Claude Code includes two important built-in working modes.
@@ -2021,6 +2019,499 @@ Contents of .claude folder on your local system
 
 
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+								CLAUDE.md
+						
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ToC
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- What is CLAUDE.md and AGENTS.md  - The Rules File
+- Example CLAUDE.md
+- How to create it automatically >> /init
+- How to verify that Claude loaded it
+- Using nested CLAUDE.md files
+- Importing other files
+- Where should it be placed?
+- Different types of CLAUDE.md
+- CLAUDE.md versus CLAUDE.local.md
+- 
+- 
+
+
+What is CLAUDE.md and AGENTS.md  - The Rules File
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- A CLAUDE.md file is a project instruction file for Claude Code.( you can say it onboarding guide)
+- Info related to your project can be written in this file.
+- Rules can be defined in this file.
+- you can define stack of your dev project in this file.
+- Think of it as a set of permanent instructions for your project. 
+- Every time you start a new session, AI reads this file first so it knows the rules.
+
+- Claude Code  >> CLAUDE.md
+- Open Code    >> AGENTS.md
+
+- It tells Claude important information about your project that it should remember in every coding session, such as:
+   * Project architecture
+   * Coding standards
+   * Build and test commands
+   * Preferred frameworks and libraries
+   * Files or directories Claude should avoid
+   * Rules for implementing and reviewing changes
+
+- Claude Code automatically reads the file and includes its instructions in the session context. It is similar to an onboarding guide for an AI developer working on your project.
+- CLAUDE.md guides Claude’s behaviour, but it is not a hard security control. 
+- For strict prevention—such as permanently blocking particular commands or files—use Claude Code permissions or hooks instead.
+- This is not just for code projects. 
+- You can use the same rules file for any kind of work: writing essays, organizing research, managing a blog, planning events. 
+
+
+
+*** Example CLAUDE.md
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Project: my-app
+
+# Project Overview
+This is a Django REST Framework application used for remote patient monitoring.
+
+
+## Stack
+Python 3.12, Next.js 14, TypeScript, Postgres, Drizzle ORM, Redis and Celery, Nginx and Gunicorn
+
+## Commands
+ npm run dev: start local server
+ npm test: run vitest
+ bash
+ pip install -r requirements.txt
+  npm run db:migrate: apply migrations
+
+## Critical rules
+- Never edit files in `src/generated/`. They're rebuilt by codegen.
+- All API routes use the auth middleware in `src/lib/auth.ts`.
+- See @docs/conventions.md for naming and folder rules.
+- See @docs/db-schema.md for table structure.
+
+
+
+Example CLAUDE.md - for a non-development project
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Project: blog-and-newsletter
+
+## What this is
+A folder of drafts, research, and published posts. I write a weekly newsletter and occasional long-form posts.
+
+## Where things live
+- `drafts/`: in-progress posts, one per file
+- `research/`: source notes and clippings, organized by topic
+- `published/`: shipped posts (do not edit)
+
+## Critical rules
+- Never edit anything in `published/`. Fixes go in a new draft with a correction note.
+- Footnotes go in `[brackets]` inline; we resolve them to numbered footnotes only at publish time.
+- Tone: conversational, no bullet lists in body copy.
+
+
+
+
+
+How to create it automatically >> /init
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- You do not need to write this file by yourself. 
+- Run /init in either tool and AI will scan your project folder and create the file for you. After that, your job is to delete the parts you do not need.
+- AI tends to generate a very long file. Most of it is unnecessary.
+
+- If you already have a CLAUDE.md and switch to OpenCode, you do not need to rewrite it again.
+- Open Code automatically reads CLAUDE.md when no AGENTS.md exists. 
+- If both files exist, Open Code uses AGENTS.md and ignores CLAUDE.md.
+
+- The biggest mistake people make: 
+  They treat this file like a full manual, putting in everything about the project: architecture, coding rules, naming conventions, team preferences. 
+- The problem? AI reads this file on every single message. 
+- A huge rules file slows AI down and uses up your conversation space, even when most of the information is not relevant to the current task.
+- Keep it short. 
+- Write only what AI cannot figure out by looking at your files. 
+- Think of it as a table of contents, not an encyclopedia. Point to other files for details, and let AI load those only when it needs them:
+
+- Whenever Claude Code starts in this project, it reads these instructions and uses them while analyzing or changing the code.
+
+Steps to create CLAUDE.md:
+- Start Claude Code inside the project: cd "C:\path\to\your-project"
+- claude
+- /init
+
+- Claude analyzes the project and generates an initial CLAUDE.md containing discovered build commands, test instructions and project conventions. 
+- If the file already exists, /init suggests improvements instead of simply overwriting it.
+
+- You can also create it manually: notepad CLAUDE.md
+
+
+
+## Where should it be placed?
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- For team-shared project instructions, place it in either location
+
+your-project/
+├── CLAUDE.md
+├── src/
+├── tests/
+└── requirements.txt
+
+or:
+
+your-project/
+├── .claude/
+│   └── CLAUDE.md
+├── src/
+└── tests/
+
+# Both ./CLAUDE.md and ./.claude/CLAUDE.md are supported project-level locations. 
+# These files should normally be committed to Git so every developer using Claude Code receives the same project instructions.
+
+
+
+How to verify that Claude loaded it
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Inside Claude Code, run: /context
+- Check the Memory files section. CLAUDE.md should appear there.
+- You can also use: /memory
+  to view or edit loaded memory and instruction files.
+
+
+Using nested CLAUDE.md files
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Large projects can have additional instruction files inside particular modules:
+project/
+├── CLAUDE.md
+├── backend/
+│   ├── CLAUDE.md
+│   └── src/
+└── frontend/
+    ├── CLAUDE.md
+    └── src/
+
+- The root file may contain general project rules, while the backend file can contain Django rules and the frontend file can contain React rules.
+- Claude loads files above the current working directory at startup. 
+- Instructions in subdirectories are loaded when Claude begins working with files in those directories.
+
+
+
+Importing other files
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- A CLAUDE.md can import existing documentation using @:
+
+# Project Instructions
+@README.md
+@docs/architecture.md
+@docs/testing-guide.md
+
+## Claude-Specific Rules
+- Do not change production infrastructure without approval.
+- Run security checks before modifying authentication code.
+
+
+
+Different types of CLAUDE.md
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| Scope         | Location                                | Purpose                                       |
+| ------------- | --------------------------------------- | --------------------------------------------- |
+| Organization  | C:\Program Files\ClaudeCode\CLAUDE.md   | Company-wide security and coding policies     |
+| User          | ~/.claude/CLAUDE.md                     | Your personal preferences across all projects |
+| Project       | ./CLAUDE.md                             | Team-shared project instructions              |
+| Project       | ./.claude/CLAUDE.md                     | Alternative project instruction location      |
+| Local project | ./CLAUDE.local.md                       | Private project-specific preferences          |
+
+# On your Windows account, the user-level file would normally be: C:\Users\Administrator\.claude\CLAUDE.md
+
+
+
+CLAUDE.md versus CLAUDE.local.md
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+CLAUDE.md: Use it for instructions shared with the team:
+- Run pytest before submitting changes.
+- Use the repository pattern for database access.
+- All APIs must include authorization checks.
+
+Commit it to Git.
+
+
+CLAUDE.local.md : Use it for personal or machine-specific information:
+- My local PostgreSQL port is 5433.
+- Use the development database named rpm_local.
+- My preferred test tenant is tenant_demo.
+
+Add it to .gitignore because it should generally not be shared.
+
+
+
+
+*** A simple test for every line you add: 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Ask yourself, "If I remove this line, will AI make a mistake?" If the answer is no, delete it. 
+- For example, you do not need to tell AI that your project uses Python if all the files end in .py.
+- AI can see that. But you do need to tell AI "never edit files in the published/ folder," because there is no way for AI to know that just by looking.
+
+
+- Add rules when something goes wrong, not before. 
+- If AI makes a mistake that your rules file would have prevented, add that rule. 
+- Do not try to guess every possible mistake in advance. 
+- Over time, your rules file will grow naturally into something useful.
+
+- Rules written in CLAUDE.md are loaded with every request, if you want that some rules are only loaded when required, then define them in a separate .md file.
+- and add the reference of that file in CLAUDE.md file.
+- This way Claude will not read this file everytime, so the tokens required to read that file will be saved.
+
+*** AGENTS.md
+- for Open Code, AGENTS.md file will be created.
+- You can copy the contents of CLAUDE.md to AGENTS.md file.
+- So if you open Claude code project in open code, same reference which you have mentioned in CLAUDE.md file, will also be linked via AGENTS.md file
+
+
+
+
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+								AGENTS.md (Open Code)
+						
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ToC
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- What is AGENTS.md  - The Rules File
+- What should it contain?
+- Example
+- Where is it placed?
+- How to create it automatically >> /init
+- AGENTS.md versus CLAUDE.md
+
+
+
+What is AGENTS.md File  - The Rules File
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- An AGENTS.md file is a project instruction file for AI coding agents.
+- It is similar to a README.md, but instead of explaining the project mainly to developers, it tells AI tools how to work safely and correctly inside the repository. 
+- The format is open and supported by tools such as OpenCode, Codex, Gemini CLI, Aider, Cursor, GitHub Copilot, and others.
+- AGENTS.md is an onboarding and operating guide for AI coding agents.
+- OpenCode supports CLAUDE.md as a fallback. However, when both files exist in the same project, OpenCode gives preference to AGENTS.md.
+- This is not just for code projects. 
+- You can use the same rules file for any kind of work: writing essays, organizing research, managing a blog, planning events. 
+
+
+
+
+Common information includes:
+ * Project overview and architecture
+ * Installation and setup commands
+ * Build, lint, and test commands
+ * Coding standards
+ * Folder structure
+ * Security restrictions
+ * Files the agent should not modify
+ * Database and migration rules
+ * Commit and pull-request guidelines
+
+
+Example-1: AGENTS.md
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Project Overview
+This is a Django REST API for a remote patient monitoring platform.
+
+## Technology Stack
+- Python 3.12
+- Django REST Framework
+- PostgreSQL
+- Redis and Celery
+
+## Development Commands
+
+Install dependencies:
+    pip install -r requirements.txt
+Run the server:
+    python manage.py runserver
+Run tests:
+    pytest
+
+## Coding Rules
+- Follow PEP 8.
+- Use type hints for new functions.
+- Keep business logic out of API views.
+- Put reusable logic in service classes.
+- Add tests for every bug fix.
+- Do not create migrations unless requested.
+
+## Security Rules
+- Never expose API keys or passwords.
+- Never modify production configuration.
+- Do not log patient health information.
+
+## Completion Checklist
+- Run relevant tests.
+- Report modified files.
+- Explain any tests that could not be executed.
+
+
+Example-2: AGENTS.md
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Project: my-app
+
+## Stack
+Next.js 14, TypeScript, Postgres, Drizzle ORM.
+
+## Commands
+- `npm run dev`: start local server
+- `npm test`: run vitest
+- `npm run db:migrate`: apply migrations
+
+## Critical rules
+- Never edit files in `src/generated/`. They're rebuilt by codegen.
+- All API routes use the auth middleware in `src/lib/auth.ts`.
+
+## External references
+- When you encounter @docs/conventions.md or @docs/db-schema.md, load them on a need-to-know basis with the read tool. 
+- Do not preemptively load all references; only load what's relevant to the current task.
+
+
+
+
+How to create it automatically >> /init
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- cd "C:\path\to\your-project" opencode
+- /init
+
+- OpenCode scans the repository and creates/updates AGENTS.md with useful information such as build commands, testing steps, architecture, conventions, and project-specific setup issues. 
+- Existing content is improved rather than blindly replaced.
+- You should review the generated file and commit it to Git so the same rules apply to the whole team.
+
+
+
+
+Where is it placed?
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Place the project-level file in the repository root:
+my-project/
+├── AGENTS.md
+├── README.md
+├── src/
+├── tests/
+└── package.json
+
+- OpenCode applies this file when working in that project or its subdirectories. It also supports a personal global file at:
+  C:\Users\Administrator\.config\opencode\AGENTS.md
+- The global file can contain preferences that should apply across all your OpenCode projects.
+
+
+
+
+Importing other files
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+- One difference: in Claude Code, writing @docs/conventions.md automatically loads that file when needed. 
+- In OpenCode, this does not work automatically. 
+- You have two options: either write in your AGENTS.md "load docs/conventions.md when relevant," or list the files in opencode.json:
+
+----
+
+Or, cleaner, list them in opencode.json:
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["docs/conventions.md", "docs/db-schema.md"]
+}
+
+
+
+
+Nested AGENTS.md files
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Large projects can have separate instructions for different modules:
+
+project/
+├── AGENTS.md
+├── backend/
+│   ├── AGENTS.md
+│   └── src/
+└── frontend/
+    ├── AGENTS.md
+    └── src/
+
+- The root file can contain general rules, while the nested files contain backend- or frontend-specific guidance. 
+- In tools supporting the open convention, the closest relevant AGENTS.md normally takes precedence for files in that section.
+
+
+
+Important distinction
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- AGENTS.md does not create an agent.
+- It only gives instructions to agents, such as:
+  - OpenCode Build agent
+  - OpenCode Plan agent
+  - Codex
+  - Gemini CLI
+  - Other compatible coding agents
+- The AI model still performs the reasoning and coding; AGENTS.md tells it how your project expects that work to be performed.
+
+
+
+
+Example CLAUDE.md - for a non-development project
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Project: blog-and-newsletter
+
+## What this is
+A folder of drafts, research, and published posts. I write a weekly newsletter and occasional long-form posts.
+
+## Where things live
+- `drafts/`: in-progress posts, one per file
+- `research/`: source notes and clippings, organized by topic
+- `published/`: shipped posts (do not edit)
+
+## Critical rules
+- Never edit anything in `published/`. Fixes go in a new draft with a correction note.
+- Footnotes go in `[brackets]` inline; we resolve them to numbered footnotes only at publish time.
+- Tone: conversational, no bullet lists in body copy.
+
+
+
+
+AGENTS.md versus CLAUDE.md
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| AGENTS.md                                | CLAUDE.md                               |
+| ---------------------------------------- | --------------------------------------- |
+| Open format for multiple AI coding tools | Primarily designed for Claude Code      |
+| Native instruction file for OpenCode     | Native instruction file for Claude Code |
+| More portable across coding agents       | More closely tied to Anthropic tooling  |
+| Created in OpenCode with `/init`         | Created in Claude Code with `/init`     |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2117,34 +2608,4 @@ Ctrl + Shift + P
 Then run: Codex: Open Codex Sidebar
 
 
-
-======================================================================================================================================================
-======================================================================================================================================================
-								
-								Cursor
-
-======================================================================================================================================================
-======================================================================================================================================================
-
-
-
-
-
-
-
-Cursor
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- AI coding agent.
-- AI-powered code editor, like VS Code with an AI agent inside.
-- Cursor is more like an AI IDE/editor. 
-- You open your project inside Cursor and work visually like VS Code.
-- Cursor says its agents can plan, write, and review code while understanding your codebase, across desktop, CLI, web, and mobile.
-
-
-
-Claude Code vs. Opencode vs. cursor
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Cursor      = AI coding editor
-Claude Code = AI coding agent in terminal
-OpenCode    = open-source AI coding agent/framework
 
