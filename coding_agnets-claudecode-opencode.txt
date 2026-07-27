@@ -843,6 +843,135 @@ Run open Code
 - type opencode in terminal 
 - open code will be working in your terminal
 
+
+
+
+# Start OpenCode
+opencode
+
+# Start with debug logging
+opencode -d
+
+# Start with a specific working directory
+opencode -c /path/to/project
+
+
+
+
+
+
+Output Formats
+OpenCode supports the following output formats in non-interactive mode:
+
+Format	Description
+text	Plain text output (default)
+json	Output wrapped in a JSON object
+The output format is implemented as a strongly-typed OutputFormat in the codebase, ensuring type safety and validation when processing outputs.
+
+
+OpenCode Non-interactive Prompt Mode
+-----------------------------------
+
+Description:
+- Run OpenCode with a single prompt from the command line.
+- Useful for automation, scripting, or quick answers without launching full UI.
+- All permissions auto-approved for the session.
+
+Flags:
+-------
+-p / --prompt          Run a single prompt
+-f / --output-format   Output format: text (default) or json
+-q / --quiet           Disable spinner (for scripts/automation)
+
+Examples:
+---------
+1. Plain text output:
+   opencode -p "Explain the use of context in Go"
+
+2. JSON output:
+   opencode -p "Explain the use of context in Go" -f json
+
+3. Disable spinner:
+   opencode -p "Explain the use of context in Go" -q
+
+Notes:
+------
+- Non-interactive mode prints output to terminal and exits.
+- Spinner shows progress by default; use -q to hide.
+- Supports scripting and automated workflows.
+
+
+
+OpenCode Command-Line Flags:
+----------------------------
+--help / -h          Display help information
+--debug / -d         Enable debug mode
+--cwd / -c           Set current working directory
+--prompt / -p        Run a single prompt in non-interactive mode
+--output-format / -f Output format for non-interactive mode (text, json)
+--quiet / -q         Hide spinner in non-interactive mode
+
+Keyboard Shortcuts:
+
+Global:
+--------
+Ctrl+C        Quit application
+Ctrl+?        Toggle help dialog
+?             Toggle help dialog (not editing)
+Ctrl+L        View logs
+Ctrl+A        Switch session
+Ctrl+K        Command dialog
+Ctrl+O        Toggle model selection
+Esc           Close current overlay/dialog
+
+Chat Page:
+-----------
+Ctrl+N        Create new session
+Ctrl+X        Cancel current operation/generation
+i             Focus editor (not writing mode)
+Esc           Exit writing mode, focus messages
+
+Editor:
+--------
+Ctrl+S        Send message (editor focused)
+Enter / Ctrl+S Send message (editor not focused)
+Ctrl+E        Open external editor
+Esc           Blur editor, focus messages
+
+Session Dialog:
+----------------
+↑ / k          Previous session
+↓ / j          Next session
+Enter          Select session
+Esc            Close dialog
+
+Model Dialog:
+-------------
+↑ / k          Move up
+↓ / j          Move down
+← / h          Previous provider
+→ / l          Next provider
+Esc            Close dialog
+
+Permission Dialog:
+------------------
+← / Left       Switch options left
+→ / Right / Tab Switch options right
+Enter / Space  Confirm selection
+a              Allow permission
+A              Allow permission for session
+d              Deny permission
+
+Logs Page:
+----------
+Backspace / q  Return to chat page
+
+
+
+
+
+
+
 /help
 /models
 /connect
