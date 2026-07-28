@@ -1,0 +1,93 @@
+
+
+======================================================================================================================================================
+======================================================================================================================================================
+								
+								Codex
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+Codex
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+How to Install Codex on Ubuntu
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- open terminal
+- curl -fsSL https://chatgpt.com/codex/install.sh | sh
+- codex --version
+- Open your project folder: cd ~/Documents/your-project
+- codex
+# The first time it starts, select Sign in with ChatGPT and authenticate in the browser. 
+# OpenAI currently recommends this standalone installer for macOS and Linux.
+
+
+Troubleshooting:
+- Close and reopen the terminal first.
+- which codex
+- source ~/.bashrc		# Also reload your shell configuration:
+- codex --version
+
+
+
+Alternative Installation: install using npm
+- When Node.js and npm are already installed: npm install -g @openai/codex
+- codex --version 
+- Update later with: npm install -g @openai/codex@latest
+
+
+
+Start Codex in a Git repository
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+cd ~/Documents/Desktop/opencode/helloworld
+git status
+codex
+
+
+
+
+Inside Codex, useful initial commands include:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/init
+/status
+/model
+/permissions
+/review
+
+
+/init creates an AGENTS.md file where you can describe the project structure, coding standards and test commands. /permissions controls what Codex may edit or execute.
+
+Your first prompt could be:
+Inspect this repository and explain its structure. Do not modify anything yet.
+Then:
+Create a simple hello-world feature, run the project tests, and show me the changes before making any additional modifications.
+
+
+
+
+
+Install Codex in VS Code
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Codex is also available as an IDE extension for:
+VS Code
+Cursor
+Windsurf
+VS Code Insiders
+
+In VS Code:
+Open Extensions.
+Search for Codex by OpenAI.
+Install the extension.
+Open your project.
+Select the Codex icon.
+Sign in with your ChatGPT account.
+
+If the icon is not visible, open the Command Palette:
+Ctrl + Shift + P
+Then run: Codex: Open Codex Sidebar
+
+
+

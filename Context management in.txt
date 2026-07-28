@@ -1,0 +1,704 @@
+Context management in Claude Code and OpenCode
+
+The fundamental concept is the same in both tools:
+
+System instructions
++ project rules
++ conversation history
++ selected files
++ command output
++ tool definitions and results
++ response space
+= current model context
+
+However, the implementation is different.
+
+Comparison
+Area	Claude Code	OpenCode
+Main project instructions	CLAUDE.md	AGENTS.md
+Additional instructions	Rules, imports, skills and plugins	instructions in opencode.json
+Automatic compaction	Yes	Yes
+Manual compaction	/compact	/compact or /summarize
+Auto memory	Built-in auto memory	No identical documented equivalent
+Permanent user-written rules	User and project CLAUDE.md files	Global and project AGENTS.md files
+Memory management	/memory	Edit AGENTS.md and configured files
+Context inspection	/context	Interface, session and provider information
+Subagent context	Separate context for each subagent	Subagents isolate specialized work
+Context size	Based on selected Claude model and account configuration	Based on the selected provider and model
+
+Claude Code starts every session with a fresh model context window but can load knowledge from CLAUDE.md and auto-memory files. OpenCode primarily uses instruction files, session history and compaction checkpoints to preserve important context.
+
+What is a context window?
+Every AI model has a maximum context-window capacity.
+The context window is measured in tokens.
+A token is a small piece of text.
+One English word may use one or several tokens.
+Code, logs, JSON, XML, tool output and special characters can consume tokens quickly.
+Different models can have different context-window sizes.
+A larger context window allows more information to be processed, but more context does not always produce better results.
+Accuracy and recall may decline as the context becomes very large.
+
+The context window includes both input and output:
+
+System prompt
++ project instructions
++ previous messages
++ files and documents
++ tool definitions
++ tool results
++ current prompt
++ generated response
+
+Anthropic describes the context window as the text the model can reference while producing a response. It also notes that accuracy and recall can degrade as token count grows, a phenomenon commonly called context rot.
+
+Claude models and the 1M context window
+
+As of July 28, 2026:
+
+Multiple current Claude models support a 1-million-token context window.
+Claude Sonnet 5 uses a 1M context window on the Anthropic API.
+Claude Code normally auto-compacts Sonnet 5 sessions at approximately 967K tokens.
+Other model or account configurations may provide a different context window.
+Sonnet 4.6 may require selecting its 1M variant and may require usage credits depending on the account and plan.
+Therefore, do not write that every Claude Sonnet session always provides 1M tokens.
+
+A safer statement is:
+
+The context-window size depends on the selected Claude model, provider, plan and configuration. Sonnet 5 supports a 1M context window and normally auto-compacts near 967K tokens in Claude Code.
+
+
+
+
+Understanding the /context command in Claude Code
+
+The /context command shows what is occupying the current context window.
+
+Depending on the Claude Code version and configuration, the display may include categories such as:
+
+System prompt
+System tools
+Skills
+Messages
+Memory files
+Auto-compaction buffer
+Free space
+
+The exact categories and figures can change between Claude Code versions.
+
+System prompt
+
+The system prompt contains Claude Code’s core instructions.
+
+It tells the model things such as:
+
+How Claude Code should behave
+How it should use tools
+How it should handle permissions
+How it should interact with project files
+How it should report its work
+How it should follow safety and operational rules
+
+The system prompt occupies context before your project conversation becomes long.
+
+System tools
+
+Claude Code has built-in tools for activities such as:
+
+Reading files
+Editing files
+Searching files
+Running shell commands
+Searching the web where available
+Fetching web pages where available
+Creating and coordinating subagents
+
+Tool definitions explain to the model:
+
+What each tool does
+What parameters it accepts
+When it should be used
+What output it returns
+
+These definitions can occupy context even when the tool has not yet been invoked.
+
+There is an important difference between:
+
+Tool definition
+
+and:
+
+Tool result
+
+A tool definition describes the tool and may already be present in context.
+
+A tool result is added only after the tool is used, for example:
+
+File contents
+Command output
+Search result
+Test result
+
+Claude Code has built-in tools for reading, editing, searching, executing commands and orchestrating subagents. MCP tool definitions are generally deferred, so only limited information is initially included and detailed definitions are loaded when required.
+
+Skills
+
+Skills are reusable instructions or workflows that extend Claude Code.
+
+Current Claude Code versions include some bundled skills and can also load:
+
+User-created skills
+Project skills
+Plugin-provided skills
+Organization-managed skills
+
+Examples of documented bundled skills include:
+
+/doctor
+/code-review
+/batch
+/debug
+/loop
+/claude-api
+
+A skill’s detailed body normally loads when the skill is used. Once loaded, it can remain in context across subsequent turns.
+
+Therefore:
+
+Do not assume that every available skill body is already occupying context.
+Do not assume a presentation or slide capability is necessarily a default skill.
+It may come from a bundled feature, plugin, custom skill or the particular Claude Code environment.
+Check /skills, available slash commands and installed plugins to identify its actual source.
+
+Claude Code documents that skill bodies load when used rather than being fully loaded with CLAUDE.md at startup. It also includes certain bundled skills in current versions.
+
+Messages
+
+The Messages category may include:
+
+Your prompts
+Claude’s responses
+Tool calls
+Tool results
+File contents that were read
+Command output
+Test output
+Previous summaries
+Other conversation events
+
+As you continue a session, the Messages category generally grows.
+
+However, token usage has two different meanings:
+
+Context utilization
+
+This means how much of the current model context is occupied.
+
+Billable or usage tokens
+
+These are tokens processed by model requests and may affect API cost, subscription usage or rate limits.
+
+A token occupying the current context is not exactly the same concept as a new token being billed for the first time. Prompt caching may reduce the cost of repeatedly processed context, although cached content still occupies the context window.
+
+Free space
+
+Free space is the context capacity that remains available for:
+
+Additional prompts
+More source files
+Tool output
+Test results
+Claude’s next response
+Continued reasoning and implementation
+
+As the session grows, free space decreases.
+
+Why context is already occupied in a new session
+
+When you start Claude Code, the context may already contain:
+
+System instructions
+Tool definitions
+User-level CLAUDE.md
+Project-level CLAUDE.md
+Applicable rules
+Auto-memory index
+Skill metadata
+Plugin instructions
+MCP information
+
+Therefore, /context can show occupied context even before you have held a long conversation.
+
+However, use careful wording:
+
+Starting a session loads or reserves context information. Actual model usage or billing normally occurs when Claude Code sends a request to the model.
+
+Do not simply say:
+
+Starting Claude immediately spends all displayed tokens.
+
+The display describes the context composition or capacity; it is not necessarily identical to the account’s billed usage.
+
+Effect of changing project folders
+
+Suppose Project A has no project-level CLAUDE.md, while Project B has a detailed CLAUDE.md.
+
+If you start Claude Code in Project B, its project instructions are loaded into the session and occupy context.
+
+Therefore, the /context output may differ between the two projects.
+
+The increase may appear under:
+
+Memory files
+Project instructions
+System prompt-related categories
+Messages or another category
+
+The category shown can depend on the Claude Code version. Do not assume the increase will always be placed specifically under “System Prompt.”
+
+Claude Code loads applicable CLAUDE.md instructions at the beginning of a session. Auto memory is also loaded, subject to its loading limits.
+
+Claude Code auto memory
+
+Claude Code has an auto-memory feature.
+
+Auto memory can save reusable information such as:
+
+Build commands
+Debugging discoveries
+Architecture information
+Code-style preferences
+Workflow habits
+Repeated corrections
+
+Auto memory does not necessarily save every discussion point or every completed task.
+
+Claude decides whether information is likely to be helpful in future sessions.
+
+Auto-memory files are stored per repository. Claude uses a MEMORY.md file as an index and may create additional topic files.
+
+At the start of a conversation, Claude Code loads the first:
+
+200 lines
+
+or:
+
+25 KB
+
+of MEMORY.md, whichever limit is reached first.
+
+Auto memory is enabled by default but can be disabled:
+
+Through /memory
+Through project or user settings
+Through the CLAUDE_CODE_DISABLE_AUTO_MEMORY environment variable
+
+
+
+
+Memory and context are different
+
+Memory and context are related but not identical.
+
+Memory
+
+Memory is information stored so it can be reused in future sessions.
+
+Examples:
+
+CLAUDE.md
+Claude Code auto memory
+MEMORY.md
+AGENTS.md
+Project documentation
+Saved session transcripts
+Context
+
+Context is the information currently supplied to the model for its present work.
+
+A memory file stored on disk does not affect the current response until it is loaded into context.
+
+Simple distinction:
+
+Memory = information saved for later
+Context = information currently available to the model
+Reading project files
+
+Suppose you ask Claude:
+
+Read src/auth/token-service.ts and explain it.
+
+Claude reads the file through a tool.
+
+The returned file contents become part of the conversation context.
+
+If you later refer to the file, Claude may be able to use the earlier content without immediately reading it again.
+
+However, it is incorrect to say Claude will never reread it.
+
+Claude may reread the file when:
+
+The file was modified.
+The earlier tool result was removed or compacted.
+The content is no longer available in sufficient detail.
+Claude needs to verify exact lines.
+Another process may have changed the file.
+The current task requires the latest version.
+
+Correct statement:
+
+After a file is read, its tool result becomes part of the session context. Claude may still reread the file when verification or updated content is required.
+
+Auto-compaction buffer
+
+Compaction summarizes older conversation content so work can continue without exceeding the model’s context limit.
+
+Suppose /context displays:
+
+40.4K / 967K tokens
+Auto-compact buffer: approximately 33K
+
+For a 1M-token model:
+
+1,000K total model context
+- approximately 33K reserved buffer
+= approximately 967K auto-compaction threshold
+
+The 967K figure is already the approximate usable threshold before automatic compaction.
+
+Therefore, this calculation is incorrect:
+
+967K - 33K = 934K
+
+It subtracts the buffer twice.
+
+The correct interpretation is:
+
+Total context window:       approximately 1,000K
+Auto-compaction buffer:     approximately    33K
+Compaction threshold:       approximately   967K
+Current context usage:      40.4K
+
+Claude Code normally begins auto-compaction around the configured threshold, not after reaching the full 1M limit. For Sonnet 5, the documented default threshold is approximately 967K.
+
+What happens during compaction?
+
+During compaction:
+
+Older messages are summarized.
+Important goals and decisions are preserved.
+Completed work is recorded.
+Relevant files and next steps may be retained.
+Detailed older content is replaced by a shorter summary.
+More context space becomes available.
+
+Compaction is lossy.
+
+This means some details may be:
+
+Shortened
+Generalized
+Omitted
+Remembered imperfectly
+
+Permanent requirements should therefore be stored in:
+
+CLAUDE.md
+AGENTS.md
+Project documentation
+Auto memory where appropriate
+
+They should not depend only on a very long chat history.
+
+/compact in Claude Code
+
+Run:
+
+/compact
+
+to manually summarize the current conversation.
+
+You can also give instructions about what should be preserved:
+
+/compact Preserve authentication decisions, modified files, test results and unresolved errors.
+
+Use /compact when:
+
+A long phase of work is complete.
+Context usage is high.
+Large tool outputs have accumulated.
+You need to continue the same task.
+Important implementation decisions should remain available.
+
+Claude Code also automatically compacts sessions as they approach their configured context threshold.
+
+/compact in OpenCode
+
+OpenCode provides:
+
+/compact
+
+Alias:
+
+/summarize
+
+OpenCode can automatically compact a session when its context becomes full.
+
+Its configuration can include:
+
+{
+  "$schema": "https://opencode.ai/config.json",
+  "compaction": {
+    "auto": true,
+    "prune": false,
+    "reserved": 10000
+  }
+}
+
+Meaning:
+
+auto: automatically compact when required
+prune: remove older tool output when enabled
+reserved: preserve context space so compaction can occur before overflow
+
+OpenCode’s compaction summary can preserve objectives, important details, completed work, active work, blockers, next steps and relevant files.
+
+/clear
+
+Use:
+
+/clear
+
+when moving to a different and unrelated task.
+
+Example:
+
+Current session: Fix authentication refresh-token problem
+New task: Design inventory dashboard
+
+The inventory task should normally begin with a fresh context rather than carrying all authentication investigation into the new task.
+
+Benefits of /clear:
+
+Removes stale conversation context
+Reduces irrelevant information
+Reduces repeated context processing
+Improves focus
+Reduces the risk of context rot
+Can reduce token usage on subsequent prompts
+
+Before clearing an important session, you may rename it so it is easier to find again:
+
+/rename Authentication refresh-token fix
+
+Claude Code recommends clearing between unrelated tasks because stale context is processed again in later messages.
+
+/clear versus /compact
+/clear	/compact
+Starts with fresh conversation context	Continues the same task
+Removes previous discussion from active context	Replaces older details with a summary
+Best for unrelated tasks	Best for continuing long tasks
+Maximum freshness	Preserves major decisions
+Previous session can still be resumed	Current session remains active
+
+Simple rule:
+
+Same task but long session → /compact
+Different task → /clear or start a new session
+Resuming sessions
+
+You can resume an earlier Claude Code session with:
+
+claude --resume
+
+You can also continue the most recent applicable session with:
+
+claude --continue
+
+Resuming a session restores its previous transcript and working context.
+
+Important correction:
+
+Opening the session does not mean its history has disappeared or becomes free.
+
+When you send a new prompt, relevant previous conversation content is supplied to the model again. That content occupies context and can contribute to token usage.
+
+Therefore, this statement is incomplete:
+
+Resuming a session does not cost tokens.
+
+A more accurate statement is:
+
+Selecting or opening a saved session may not itself require a new model response. However, once you continue the conversation, the resumed context is processed and consumes context-window capacity and potentially billable usage.
+
+Use resume when:
+
+Continuing the same feature
+Returning to an unresolved bug
+Reviewing earlier decisions
+Continuing a paused implementation
+
+Start fresh when:
+
+The new task is unrelated
+The previous context is mostly irrelevant
+The old session is excessively long
+You want a clean investigation
+Token limit versus account usage limit
+
+These are different concepts.
+
+Context-window limit
+
+The maximum amount of information the model can process in one request or active context.
+
+Examples:
+
+200K tokens
+1M tokens
+
+When the context approaches this limit:
+
+Claude Code may compact the session.
+OpenCode may compact the session.
+You may start a fresh session.
+The tool may remove or summarize old information.
+
+Reaching the context-window limit does not necessarily mean you can no longer use the model.
+
+Account usage limit or quota
+
+A subscription, organization or API account may have:
+
+Spending limits
+Rate limits
+Daily or weekly usage limits
+Usage-credit limits
+Requests-per-minute limits
+Tokens-per-minute limits
+
+When an account usage limit is reached, you may have to:
+
+Wait for the limit to reset
+Purchase usage credits
+Change plan
+Use another available model
+Adjust an API spending limit
+
+Do not write:
+
+Every model gives you a limited quota called the token limit.
+
+Correct statement:
+
+Every model has a context-window limit. Separately, your account or API plan may impose usage, rate or spending limits.
+
+Context utilization versus token consumption
+
+These terms should also be separated.
+
+Context utilization
+
+How much of the active context window is occupied.
+
+Example:
+
+40.4K of 967K
+Input token usage
+
+How many tokens are sent to the model in a request.
+
+Output token usage
+
+How many tokens the model generates.
+
+Cached input tokens
+
+Repeated prompt content may be retrieved through prompt caching, reducing cost and latency, but it still occupies the context window.
+
+Account usage
+
+How token processing contributes to subscription limits, API charges or rate limits.
+
+Therefore:
+
+A token shown inside /context represents occupied model context. It should not automatically be interpreted as a unique token that has just been billed once.
+
+Context rot
+
+Context rot is the decline in model accuracy, attention or recall as the context becomes increasingly large and crowded.
+
+It can happen before the maximum context-window limit is reached.
+
+Possible effects include:
+
+Forgetting earlier instructions
+Missing previously stated requirements
+Confusing old and new decisions
+Using outdated file contents
+Repeating completed work
+Producing inconsistent changes
+Paying less attention to important information hidden in the middle of a long context
+
+A very large context window does not completely eliminate context rot. Anthropic explicitly notes that more context is not automatically better and that accuracy and recall can degrade as token count grows.
+
+Context-management best practices
+Keep each session focused on one main task.
+Avoid unrelated discussions in the same coding session.
+Use concise prompts.
+Put permanent instructions in CLAUDE.md or AGENTS.md.
+Do not place temporary task details in permanent rules files.
+Read only files relevant to the current task.
+Avoid loading entire repositories unnecessarily.
+Filter very large logs before giving them to the model.
+Run focused tests before full test suites.
+Use subagents for isolated investigations.
+Use /compact when continuing a long task.
+Use /clear or a new session for an unrelated task.
+Restate critical requirements after major compaction.
+Review auto-memory entries periodically.
+Remove stale rules and documentation.
+Resume old sessions only when their historical context remains useful.
+
+In simple words:
+
+Keep the session focused and avoid unnecessary discussion.
+
+Or informally:
+
+Yabriyan na maarain—keep the discussion relevant to the task.
+
+Recommended workflow
+1. Open Claude Code or OpenCode in the correct project.
+2. Let it load CLAUDE.md or AGENTS.md.
+3. Give one clear objective.
+4. Investigate only relevant files.
+5. Create a plan.
+6. Implement the smallest required change.
+7. Run focused tests.
+8. Record permanent discoveries in project instructions or memory.
+9. Use /compact if the same task becomes long.
+10. Use /clear or a new session for the next unrelated task.
+Final summary
+Context
+= Information currently available to the AI model
+
+Context window
+= Maximum amount of information the model can process at once
+
+Context management
+= Deciding what to load, retain, summarize or remove
+
+Memory
+= Information stored for reuse in future sessions
+
+Compaction
+= Replacing older detailed context with a shorter summary
+
+Context rot
+= Reduced accuracy or recall as context becomes too large
+
+Usage quota
+= Account, plan, rate or spending limitation
+
+Token usage
+= Tokens processed as model input or generated as model output

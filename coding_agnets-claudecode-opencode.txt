@@ -50,7 +50,7 @@ ToC
 ** Match the model to the task **
 ** Permission Discipline **
 ** CLAUDE.md and AGENTS.md
-
+** Context Management **
 
 
 
@@ -345,7 +345,7 @@ It should return: 2.1.207
 
 
 
-
+>>>> Remaining sections can be foung after open code INTRO
 
 
 
@@ -1684,9 +1684,11 @@ Check: sudo du -sh /usr/share/ollama
 
 
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+								Plan mode and Build mode
 
-Plan mode and Build mode
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Open Code & Claude Code includes two important built-in working modes.
@@ -1765,9 +1767,11 @@ This allows one OpenCode installation to support different development workflows
 
 
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+						Match the model to the task
 
-Match the model to the task:
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - The most capable models are the best thinkers — they plan, reason about tricky code, and handle ambiguity — but they cost the most and use up your limits the fastest. 
@@ -1795,9 +1799,11 @@ Match the model to the task:
 
 
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+							Permission Discipline
 
-Permission Discipline
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Every time these tools want to do something (edit a file, run a command), they ask you for permission first.
@@ -2068,6 +2074,12 @@ What is CLAUDE.md and AGENTS.md  - The Rules File
 - This is not just for code projects. 
 - You can use the same rules file for any kind of work: writing essays, organizing research, managing a blog, planning events. 
 
+- The biggest mistake people make: They treat this file like a full manual, putting in everything about the project: architecture, coding rules, naming conventions, team preferences. 
+- The problem? AI reads this file on every single message. 
+- A huge rules file slows AI down and uses up your conversation space, even when most of the information is not relevant to the current task.
+- Keep it short. 
+- Write only what AI cannot figure out by looking at your files. 
+- Think of it as a table of contents, not an encyclopedia. Point to other files for details, and let AI load those only when it needs them:
 
 
 *** Example CLAUDE.md
@@ -2196,6 +2208,18 @@ project/
 - Claude loads files above the current working directory at startup. 
 - Instructions in subdirectories are loaded when Claude begins working with files in those directories.
 
+**** Global Settings and Project Settings ****
+- Every project has its own settings file (CLAUDE.md)
+- Similarly, you can create a Global settings (CLAUDE.md) file., which will be linked with every project, like hierarchy
+- Whenever you will start a project, this GLOBAL File (CLAUDE.md) will also be loaded.
+- But i have not created it yet, just to save tokens.
+- This global file is saved in the folder, where Claude was installed.
+
+- Just like CLAUDE.md file, Claude Code also creates a settings.local file in .Claude folder of each project.
+- This settings file can be global level and project level as well, just like Global level CLAUDE.md and Project level CLAUDE.md
+
+
+
 
 
 Importing other files
@@ -2301,16 +2325,19 @@ ToC
 
 What is AGENTS.md File  - The Rules File
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- An AGENTS.md file is a project instruction file for AI coding agents.
+- An AGENTS.md file is a project instruction file for AI coding agents like open code. ( you can say it onboarding guide)
+- Info related to your project can be written in this file.
+- Rules can be defined in this file.
+- you can define stack of your dev project in this file.
+- Think of it as a set of permanent instructions for your project. 
+- Every time you start a new session, AI reads this file first so it knows the rules.
+
 - It is similar to a README.md, but instead of explaining the project mainly to developers, it tells AI tools how to work safely and correctly inside the repository. 
 - The format is open and supported by tools such as OpenCode, Codex, Gemini CLI, Aider, Cursor, GitHub Copilot, and others.
 - AGENTS.md is an onboarding and operating guide for AI coding agents.
 - OpenCode supports CLAUDE.md as a fallback. However, when both files exist in the same project, OpenCode gives preference to AGENTS.md.
 - This is not just for code projects. 
 - You can use the same rules file for any kind of work: writing essays, organizing research, managing a blog, planning events. 
-
-
-
 
 Common information includes:
  * Project overview and architecture
@@ -2322,6 +2349,29 @@ Common information includes:
  * Files the agent should not modify
  * Database and migration rules
  * Commit and pull-request guidelines
+
+- Claude Code  >> CLAUDE.md
+- Open Code    >> AGENTS.md
+
+- It tells open code important information about your project that it should remember in every coding session, such as:
+   * Project architecture
+   * Coding standards
+   * Build and test commands
+   * Preferred frameworks and libraries
+   * Files or directories Claude should avoid
+   * Rules for implementing and reviewing changes
+
+- Open Code automatically reads the file and includes its instructions in the session context. It is similar to an onboarding guide for an AI developer working on your project.
+- AGENTS.md guides open code’s behaviour, but it is not a hard security control. 
+- This is not just for code projects. 
+- You can use the same rules file for any kind of work: writing essays, organizing research, managing a blog, planning events. 
+
+- The biggest mistake people make: They treat this file like a full manual, putting in everything about the project: architecture, coding rules, naming conventions, team preferences. 
+- The problem? AI reads this file on every single message. 
+- A huge rules file slows AI down and uses up your conversation space, even when most of the information is not relevant to the current task.
+- Keep it short. 
+- Write only what AI cannot figure out by looking at your files. 
+- Think of it as a table of contents, not an encyclopedia. Point to other files for details, and let AI load those only when it needs them:
 
 
 Example-1: AGENTS.md
@@ -2395,6 +2445,14 @@ How to create it automatically >> /init
 - Existing content is improved rather than blindly replaced.
 - You should review the generated file and commit it to Git so the same rules apply to the whole team.
 
+- You do not need to write this file yourself. 
+- Run /init in either tool and AI will scan your project folder and create the file for you. After that, your job is to delete the parts you do not need.
+- AI tends to generate a very long file. Most of it is unnecessary.
+
+- If you already have a CLAUDE.md and switch to OpenCode, you do not need to rewrite it.
+- Open Code automatically reads CLAUDE.md when no AGENTS.md exists. 
+- If both files exist, Open Code uses AGENTS.md and ignores CLAUDE.md.
+
 
 
 
@@ -2417,12 +2475,9 @@ my-project/
 
 Importing other files
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 - One difference: in Claude Code, writing @docs/conventions.md automatically loads that file when needed. 
 - In OpenCode, this does not work automatically. 
 - You have two options: either write in your AGENTS.md "load docs/conventions.md when relevant," or list the files in opencode.json:
-
-----
 
 Or, cleaner, list them in opencode.json:
 {
@@ -2448,6 +2503,19 @@ project/
 
 - The root file can contain general rules, while the nested files contain backend- or frontend-specific guidance. 
 - In tools supporting the open convention, the closest relevant AGENTS.md normally takes precedence for files in that section.
+
+
+
+**** Global Settings and Project Settings ****
+- Every project has its own settings file (CLAUDE.md)
+- Similarly, you can create a Global settings (CLAUDE.md) file., which will be linked with every project, like hierarchy
+- Whenever you will start a project, this GLOBAL File (CLAUDE.md) will also be loaded.
+- But i have not created it yet, just to save tokens.
+- This global file is saved in the folder, where Claude was installed.
+
+- Just like CLAUDE.md file, Claude Code also creates a settings.local file in .Claude folder of each project.
+- This settings file can be global level and project level as well, just like Global level CLAUDE.md and Project level CLAUDE.md
+
 
 
 
@@ -2497,6 +2565,26 @@ AGENTS.md versus CLAUDE.md
 
 
 
+*** A simple test for every line you add: 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Ask yourself, "If I remove this line, will AI make a mistake?" If the answer is no, delete it. 
+- For example, you do not need to tell AI that your project uses Python if all the files end in .py.
+- AI can see that. But you do need to tell AI "never edit files in the published/ folder," because there is no way for AI to know that just by looking.
+
+
+- Add rules when something goes wrong, not before. 
+- If AI makes a mistake that your rules file would have prevented, add that rule. 
+- Do not try to guess every possible mistake in advance. 
+- Over time, your rules file will grow naturally into something useful.
+
+- Rules written in CLAUDE.md are loaded with every request, if you want that some rules are only loaded when required, then define them in a separate .md file.
+- and add the reference of that file in CLAUDE.md file.
+- This way Claude will not read this file everytime, so the tokens required to read that file will be saved.
+
+*** AGENTS.md
+- for Open Code, AGENTS.md file will be created.
+- You can copy the contents of CLAUDE.md to AGENTS.md file.
+- So if you open Claude code project in open code, same reference which you have mentioned in CLAUDE.md file, will also be linked via AGENTS.md file
 
 
 
@@ -2517,95 +2605,281 @@ AGENTS.md versus CLAUDE.md
 
 
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+							Context Management
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+What is context?
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Context is the AI model’s temporary working memory.
+- The model can act only on information currently available in its context.
+
+Context may include:
+ * System instructions
+ * Project instructions
+ * Conversation history
+ * Files that were read
+ * Command and test output
+ * Tool definitions
+ * Tool results
+ * MCP server information
+ * Skills loaded for the current task
+ * Space required for the model’s response
+
+- A context window is different from the information on which the model was originally trained.
+- Training knowledge is part of the model.
+- Context is the temporary information supplied to the model for the current request or session.
+
+Every model request has a limited context window.
+Everything sent with the request—including the system prompt, messages, tool definitions, documents, images and tool results—occupies that window. 
+The response generated by the model also needs room within the context window.
+
+
+
+What is context management?
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- Context management is the process of selecting, organizing, preserving, summarizing and removing information so the AI model receives the information it needs 
+  without filling its limited context window with unnecessary material.
+- Context management means keeping the right information in the AI model’s temporary working memory while excluding or summarizing unnecessary information.
+
+Context management includes:
+ * Loading project instructions
+ * Reading only relevant files
+ * Keeping conversation history focused
+ * Removing obsolete tool output
+ * Summarizing long conversations
+ * Compacting a session
+ * Starting a fresh session for unrelated tasks
+ * Using subagents for isolated work
+ * Preserving important decisions in permanent instruction or memory files
+
+
+
+
+
+- Context is the AI agent’s temporary working memory.
+- Model can only act on what is currently in front of it — its context. 
+- Context Management is the practice of tracking and using relevant information about a session, environment, or user so that a system can act intelligently, 
+  provide relevant responses, or maintain continuity.
+- Context Management refers to the process of tracking, storing, and using relevant information about the current state, environment, or interaction 
+  to make better decisions, respond appropriately, or maintain continuity in systems, applications, or conversations.
+- Context Management is the method by which a system keeps track of relevant information about a user, session, or environment so that it can provide accurate, 
+  relevant, and coherent responses or actions.
+
+- The basic concept of context management in Claude code and Open code is the same, but the implementation is different.
+
+- Both tools must manage a limited model context containing:
+  System instructions
+  + project rules
+  + conversation history
+  + files read
+  + terminal output
+  + tool/MCP descriptions
+  + space for the next response
+
+When this information becomes too large, both tools summarize or compact earlier content.
+
+
+Comparison
 ======================================================================================================================================================
+| Area                    | Claude Code                              | OpenCode                                                            |
+| ----------------------- | ---------------------------------------- | ------------------------------------------------------------------- |
+| Project rules           | `CLAUDE.md`                              | `AGENTS.md`                                                         |
+| Additional instructions | Imported files, skills, hooks            | `instructions` in `opencode.json`                                   |
+| Automatic compaction    | Yes, enabled by default                  | Yes, enabled by default                                             |
+| Manual compaction       | `/compact`                               | `/compact` or `/summarize`                                          |
+| Persistent memory       | Built-in auto memory plus `CLAUDE.md`    | Primarily rules files and session checkpoints                       |
+| View loaded context     | `/context`                               | Context/session information through its interface and configuration |
+| Manage memory files     | `/memory`                                | Edit `AGENTS.md` and configured instruction files                   |
+| Separate agent context  | Each subagent has its own context window | Subagents are used to isolate specialized work                      |
+| Context size            | Determined by the selected Claude model  | Determined by whichever provider/model you select                   |
+
+
+
+
+
+
+What is a context window?
 ======================================================================================================================================================
-								
-								Codex
+- Every AI model has a maximum context window, measured in tokens.
+- A token is approximately part of a word. Source code, JSON, terminal logs and long files can consume tokens quickly.
+- every model has its own token capacity
+- As of today(27july2026), SONNET(claude code) is providing 1M tokens, which will increase with time.
 
+- For example, the context might contain:
+  + Project instructions
+  + conversation
+  + source code
+  + command output
+  + test results
+  + tool definitions
+  + space for the model’s answer
+
+
+/context  command in claude code
 ======================================================================================================================================================
+/context command provides information about following points.
+- System Prompt
+- System Tools
+- Skills
+- Messages
+- Free space
+-----
+- Memory File
+- Autocompact buffer
+
+
+System Prompt:
+
+
+System Tools:
+ask claude: tell me about the tools you can use
+- we saw in the output of /context command in claude, it showed some tokens were used for tools.
+- although, we did not used any tools.
+- there are many tools, which comes with claude by default.
+- you can say, some basic tools are already enabled in claude, like
+  * Read, Edit
+  * Websearch, Web Fetch
+  * run commands on shell/terminal
+  * etc etc
+- so when we give command to claude, it uses these tools internally to fulfil our request or tasks.
+- so token utilized, which were displayed in the output of /context commands are these tools
+
+
+
+/skills
+- no skill found at the moment
+- but claude comes with some by default skills
+- like when we asked claude to generate a slide, it used that skills. 
+- so token consumed by claude, which you saw in the output of /context are those skills.
+
+
+Messages:
+
+Free SPace
+
+now close that session and close claude
+move to some other folder and run claude
+give command
+/context
+now see, is the response is similar to the previous command or not?
+now check, that in this output tokens for system prompt has increased, although we haven't give any prompt to cluade.
+the reason is that, when we open claude in the other project/folder, that folder has a CLAUDE.md file and it has read that file and token consumed.
+- so it means, when we start a session only, token are consumed.
+
+
+Memory File:
+- claude save all important point in this file for future references.
+- you can turn on or off this memory file.
+
+
+
+Autocompact Buffer:
+- 33k tokens (3.4%)
+
+
+sum all tokens and calculate total token consumed without free and autocompact
+90,000 or 90K
+
+suppose currently in claude and selected SONNET model. when we entered command /context, it gave us below output
+40.4k/967k tokens (4%)
+autocompact buffer: 33k tokens (3.4%)
+so in above example, you have 967K tokens available, but in reality it reserves 33K tokens for autocompact buffer.
+claude will use this memory or space to create summary of rest of tokens.
+when you will reach to 967K-33K = 934K tokens, it will create summary of your whole conversation.
+
+
+
+
+
+
+
+
+Token limit or context-window limit
 ======================================================================================================================================================
+- The token limit, or context-window limit, is the maximum amount of information an AI model can process in one request.
+- A token is a small piece of text. 
+- One English word may use one or several tokens, while code, JSON, logs, and special characters can consume tokens quickly.
+- every model gives you a limited quota, which is called token limit.
+- You can not use a model further, if token or quota limit has reached.
 
-Codex
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-
-How to Install Codex on Ubuntu
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- open terminal
-- curl -fsSL https://chatgpt.com/codex/install.sh | sh
-- codex --version
-- Open your project folder: cd ~/Documents/your-project
-- codex
-# The first time it starts, select Sign in with ChatGPT and authenticate in the browser. 
-# OpenAI currently recommends this standalone installer for macOS and Linux.
+That information includes:
 
 
-Troubleshooting:
-- Close and reopen the terminal first.
-- which codex
-- source ~/.bashrc		# Also reload your shell configuration:
-- codex --version
+Simple analogy
+Think of the model’s context as a desk:
+Token limit: The physical size of the desk
+Context: Everything currently placed on the desk
+Context management: Deciding what to place on the desk, what to remove, and what to summarize
 
 
+- memory and context are two different things
+- suppose you are in your project folder and you ask claude to read one file from project directory, it can be any file.
+- after the prompt, claude will read this file and now this file has become the part of context, previously it was not.
+- now if you refernce this file again in some other prompt, claude will not read it again, as it is already part of context.
 
-Alternative Installation: install using npm
-- When Node.js and npm are already installed: npm install -g @openai/codex
-- codex --version 
-- Update later with: npm install -g @openai/codex@latest
+- now lets give the /context command again.
+- /context
+- you will see that tokens has increased, specially in Messages category.
+- the more you use claude, token will be spent
+
+*** Context Rot ***
+when your conversation becomes too long, then AI start forgetting previous discussion points or referenced files, even your token limit is not exhausted.
+this situation is called context rot.
 
 
-
-Start Codex in a Git repository
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-cd ~/Documents/Desktop/opencode/helloworld
-git status
-codex
+so please keep your conversation short and to the point, in this way you will manage your context and ultimately your tokens
+it means yabriaaan na marin.
+always keep a session to a specific point of discussion.
+after completing the task, it is better to close the session and start a new session for next topic, in this way you will have a new context.
 
 
 
 
-Inside Codex, useful initial commands include:
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/init
-/status
-/model
-/permissions
-/review
+*** /Clear***
 
+*** /compact
 
-/init creates an AGENTS.md file where you can describe the project structure, coding standards and test commands. /permissions controls what Codex may edit or execute.
+*** Resume Sessions
+- session resume will not cost you any tokens, but if you start some new conversation in that session, it will cost you tokens
 
-Your first prompt could be:
-Inspect this repository and explain its structure. Do not modify anything yet.
-Then:
-Create a simple hello-world feature, run the project tests, and show me the changes before making any additional modifications.
+claude --resume
 
 
 
 
 
-Install Codex in VS Code
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Codex is also available as an IDE extension for:
-VS Code
-Cursor
-Windsurf
-VS Code Insiders
 
-In VS Code:
-Open Extensions.
-Search for Codex by OpenAI.
-Install the extension.
-Open your project.
-Select the Codex icon.
-Sign in with your ChatGPT account.
 
-If the icon is not visible, open the Command Palette:
-Ctrl + Shift + P
-Then run: Codex: Open Codex Sidebar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
