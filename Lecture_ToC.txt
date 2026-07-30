@@ -345,123 +345,58 @@ Open Code    >> AGENTS.md
 
 **** PART 2: Context Management ****
 ======================================================================================================================================================
-- Model can only act on what is currently in front of it — its context. 
-- Context Management is the practice of tracking and using relevant information about a session, environment, or user so that a system can act intelligently, 
-  provide relevant responses, or maintain continuity.
-
-- Context Management refers to the process of tracking, storing, and using relevant information about the current state, environment, or interaction 
-  to make better decisions, respond appropriately, or maintain continuity in systems, applications, or conversations.
-
-- Context Management is the method by which a system keeps track of relevant information about a user, session, or environment so that it can provide accurate, 
-  relevant, and coherent responses or actions.
-
-- every model has its own token capacity
-- as of today(27july2026), SONNET(claude code) is providing 1M tokens, which will increase with time.
-
-i was here on 27july2026, video 1:08 mins of class 10 Agentic coding Part 2
-
-- /context in claude code
-- System Prompt
-- System Tools
-- Skills
-- Messages
-- Free space
------
 - Memory File
 - Autocompact buffer
-
-
 System Prompt:
-
-
 System Tools:
-ask claude: tell me about the tools you can use
-- we saw in the output of /context command in claude, it showed some tokens were used for tools.
-- although, we did not used any tools.
-- there are many tools, which comes with claude by default.
-- you can say, some basic tools are already enabled in claude, like
-  * Read, Edit
-  * Websearch, Web Fetch
-  * run commands on shell/terminal
-  * etc etc
-- so when we give command to claude, it uses these tools internally to fulfil our request or tasks.
-- so token utilized, which were displayed in the output of /context commands are these tools
-
-
-
 /skills
-- no skill found at the moment
-- but claude comes with some by default skills
-- like when we asked claude to generate a slide, it used that skills. 
-- so token consumed by claude, which you saw in the output of /context are those skills.
-
-
 Messages:
-
 Free SPace
 
-now close that session and close claude
-move to some other folder and run claude
-give command
-/context
-now see, is the response is similar to the previous command or not?
-now check, that in this output tokens for system prompt has increased, although we haven't give any prompt to cluade.
-the reason is that, when we open claude in the other project/folder, that folder has a CLAUDE.md file and it has read that file and token consumed.
-- so it means, when we start a session only, token are consumed.
-
-
-Memory File:
-- claude save all important point in this file for future references.
-- you can turn on or off this memory file.
-
-
-
-Autocompact Buffer:
-- 33k tokens (3.4%)
-
-
-sum all tokens and calculate total token consumed without free and autocompact
-90,000 or 90K
-
-suppose currently in claude and selected SONNET model. when we entered command /context, it gave us below output
-40.4k/967k tokens (4%)
-autocompact buffer: 33k tokens (3.4%)
-so in above example, you have 967K tokens available, but in reality it reserves 33K tokens for autocompact buffer.
-claude will use this memory or space to create summary of rest of tokens.
-when you will reach to 967K-33K = 934K tokens, it will create summary of your whole conversation.
-
-
-# every model gives you a limited quota, which is called token limit.
-- you can not use a model further, if token or quota limit has reached.
-
-- memory and context are two different things
-- suppose you are in your project folder and you ask claude to read one file from project directory, it can be any file.
-- after the prompt, claude will read this file and now this file has become the part of context, previously it was not.
-- now if you refernce this file again in some other prompt, claude will not read it again, as it is already part of context.
-
-- now lets give the /context command again.
-- /context
-- you will see that tokens has increased, specially in Messages category.
-- the more you use claude, token will be spent
 
 *** Context Rot ***
-when your conversation becomes too long, then AI start forgetting previous discussion points or referenced files, even your token limit is not exhausted.
-this situation is called context rot.
-
-
-so please keep your conversation short and to the point, in this way you will manage your context and ultimately your tokens
-it means yabriaaan na marin.
-always keep a session to a specific point of discussion.
-after completing the task, it is better to close the session and start a new session for next topic, in this way you will have a new context.
-
-
-
-
 *** /Clear***
-
 *** /compact
+*** claude --resume
 
-*** Resume Sessions
-- session resume will not cost you any tokens, but if you start some new conversation in that session, it will cost you tokens
 
-claude --resume
+
+Lecture 8:  10-July-2026 [ Agentic Coding Part 3 ]
+======================================================================================================================================================
+======================================================================================================================================================
+revision of previous lecture - claude code/ open code basics
+
+Q1. What is the purpose of CLAUDE.md
+Ans. File for claude code, instructions/information about the project
+
+Q2. When CLAUDE.md file is loaded
+    - At the start of claude, 
+    - With every message we send to claude
+Q3. how many instructions should i write in CLAUDE.md, or which type of instructions, should i write
+Ans. Not very detailed
+     project level rules
+
+Q4.  what is included in context window
+Ans. system prompt, entire conversation history, MCP, Tools, Skills, Tool definition, referenced files, rule file(CLAUDE.md)
+
+Q5. every model has its own context window, what is the context limit of opus
+Ans. 1M tokens
+
+Q6. When context of a model increases too much, what it is called, when it start malfunctioning
+Ans. Context rot
+
+Q7. Diff between /clear and /compact
+Ans. 
+   /clear    >> clears current context, reset the context
+   /compact  >> compact current context of current session creating a summary of current context by removing unnecessary information
+   
+Q8. What is Resume session
+Ans. if you have some conversation already opened with claude an dyour machine rebooted, then you do not have to start it again, you can resume your previous session
+     claude --resume
+     after starting claude/open code /resume
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+undo or ewind
+double press escape button
+
