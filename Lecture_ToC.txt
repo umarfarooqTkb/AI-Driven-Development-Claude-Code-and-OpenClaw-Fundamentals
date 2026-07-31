@@ -396,7 +396,139 @@ Ans. if you have some conversation already opened with claude an dyour machine r
      after starting claude/open code /resume
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
+Restore previous conversation state
 
-undo or ewind
+** undo or rewind
 double press escape button
+- in claude code double press escape key
+/undo in opencode
+/rewind in claude code
+no token is consumed in rewind
+
+
+
+** Undo or Rewind Changes in Claude Code and OpenCode ***
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Both Claude Code and OpenCode provide features to restore an earlier conversation state and reverse code changes.
+
+Claude Code:
+Claude Code uses checkpointing. It automatically creates a checkpoint before each user prompt and tracks changes made through Claude’s file-editing tools.
+
+Open the Rewind Menu
+Use either:
+/rewind
+Or press:
+Esc, Esc
+
+Press the Esc key twice while the prompt input is empty.
+If text is present in the prompt, pressing Esc twice clears the text instead of opening the rewind menu.
+
+Rewind Options
+After selecting a previous checkpoint, Claude Code provides the following options:
+Restore code and conversation
+Revert both the code changes and conversation to the selected checkpoint.
+Restore conversation
+Rewind the conversation while keeping the current code changes.
+Restore code
+Revert code changes while keeping the full conversation.
+Summarize from here
+Compress the conversation from the selected point onward to free context-window space.
+Summarize up to here
+Compress the earlier conversation while keeping the newer messages.
+Important Limitations
+
+Claude Code rewind does not necessarily restore:
+
+Files changed through Bash commands such as rm, mv, cp, or shell redirection
+Changes made by background subagents
+Manual changes made outside Claude Code
+Changes from another Claude Code session
+Symlinked or hard-linked files
+
+Therefore, Claude Code checkpointing should be treated as a session-level undo feature, not as a replacement for Git.
+
+
+OpenCode
+
+OpenCode provides the /undo command.
+
+Undo the Last Interaction
+/undo
+This removes:
+The most recent user message
+OpenCode’s responses after that message
+Associated file changes
+
+It also restores the original prompt so that you can edit and submit it again.
+
+You can run /undo multiple times to move further back through the conversation.
+
+
+Keyboard Shortcut
+Ctrl+X, then U
+
+
+Redo an Undone Interaction
+/redo
+Keyboard shortcut:
+Ctrl+X, then R
+/redo restores the previously undone conversation and file changes.
+
+Important Limitation
+OpenCode uses Git internally to restore file changes. Therefore, the project should be inside a Git repository for reliable file restoration.
+
+
+Simple Summary
+Claude Code:
+Esc + Esc → Select checkpoint → Restore code, conversation, or both
+/rewind
+
+OpenCode:
+/undo
+/redo
+
+
+
+*** resume  previous sessions in claude code an dopencode
+-----------------------------------------------------------------------------------------------------------------------------------------------
+claude code  >> /resume
+open code    >> /sessions , Ctrl+X, then L , opencode --continue, opencode -c, opencode --session <session-id>, opencode --continue --fork
+
+Restore or resume a previous OpenCode session
+Inside OpenCode TUI:
+/sessions
+
+Keyboard shortcut:
+Ctrl+X, then L
+
+From the terminal:
+opencode -c
+or
+opencode --continue
+
+Resume a specific session:
+opencode -s <session-id>
+
+Fork a sessions:
+opencode --continue --fork
+
+
+
+
+*** /clear , /new
+-----------------------------------------------------------------------------------------------------------------------------------------------
+claudecode = /clear
+opencode   = /new
+
+
+how to identify context rot situation
+-------------------------------------------------------------------------------------------------------------------------------------------------
+- AI will take instruction from you  but will not do the changes and keep saying sorry
+- AI will keep you sending the same response again and again
+- AI forgets a rule, which you told earlier
+
+# in such situations, stop sending messages to AI, you will waste your tokens or usage limit
+you can use /compact, /clear//rewind or start a new session
+
+i was on 11. agentic coding part 3 video 29:16 min on 31 July 2026
 
