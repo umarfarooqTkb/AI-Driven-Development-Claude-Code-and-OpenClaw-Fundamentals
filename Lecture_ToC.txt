@@ -1112,6 +1112,127 @@ It lets me (the agent) call external tools through a standardized protocol — e
 
 project: part 6, https://agentfactory.panaversity.org/docs/agentic-coding-crash-course
 
+Build your own context library
+
+*** Memory ***
+- memory MCP server
+
+read above URL
+
+
+
+
+Cowork & Openwork 
+*****************************************************************************************************************************
+with this our Crash Course is completed, now lets move to Cowork & Openwork for professionals.
+URL: https://agentfactory.panaversity.org/docs/cowork-crash-course
+
+
+Claude Cowork Installation:
+- To install Claude cowork on your local system, you have to install claude software.
+- there is no separate software for claude cowork, we have to install claude software on local system.
+- Claude Application = Chat + Claude Cowork + Claude Code
+- Install Claude Application on your local machine
+- To Download >> https://claude.com/download
+
+
+Openwork Installation:
+- To download & install openwork >> https://openworklabs.com/download
+- cd ~/Downloads
+- ls -lh
+- You should see a filename similar to: openwork-linux-x86_64-0.18.12.AppImage
+- chmod +x openwork-linux-*.AppImage
+- ./openwork-linux-*.AppImage
+  # If you receive a FUSE error
+  For Ubuntu 24.04:
+  sudo apt update
+  sudo apt install -y libfuse2t64
+
+# Move OpenWork to a permanent location
+- mkdir -p ~/Applications
+mv ~/Downloads/openwork-linux-*.AppImage ~/Applications/OpenWork.AppImage
+chmod +x ~/Applications/OpenWork.AppImage
+
+# Run it with:
+- ~/Applications/OpenWork.AppImage
+
+# Add OpenWork to the Ubuntu application menu
+mkdir -p ~/.local/share/applications
+
+cat > ~/.local/share/applications/openwork.desktop <<EOF
+[Desktop Entry]
+Name=OpenWork
+Comment=Open-source AI desktop workspace
+Exec=$HOME/Applications/OpenWork.AppImage
+Icon=applications-development
+Terminal=false
+Type=Application
+Categories=Development;Utility;
+StartupNotify=true
+EOF
+
+chmod +x ~/.local/share/applications/openwork.desktop
+
+
+
+
+
+
+Claude code is for developers, but for other professionals like Finance, Audit etc tool is cowork/openwork
+cowork is mixture of browser and claude code
+
+install cowork:
+
+INstall claude desktop: https://code.claude.com/docs/en/desktop-linux
+- sudo apt install curl gnupg
+sudo curl -fsSLo /usr/share/keyrings/claude-desktop-archive-keyring.asc https://downloads.claude.ai/claude-desktop/key.asc
+sudo apt update && sudo apt install claude-desktop
+
+openwork:
+
+
+
+Cowork
+*****************************************************************************************************************************
+- open claude application installed on your local machine.
+- there are two options, CHat and Cowork, select cowork
+- project or folder >> create a new project and add folder to it.
+
+Set up a Project:
+  give project name, path and instructions
+  instructions = system prompt or rules or instructions for the project
+  Add files = you can add files to your project
+- now your UI is change >> into your cowork project, chat is not available in your project
+- Memory = same concept of claude code, 
+- Context = same concept of claude code, i gave my three excel files of shopkeeper ledger
+- Schedule = we will cover shortly
+
+- Auto Dropdown: 
+  1. Manually Approve
+  2. Automatically approve
+  3. Skip all approvals
+
+- Same options when claude code ask for permissions before performing an action
+
+- Prompt:
+  "can you tell which files are in this folder" 
+   press enter
+   look , we do not tell him, about which folder we are talking, lets see, what it does.
+   cowork will accurately tell you the names of the files, even if you delete one of the file.
+
+- few new options will come on your right side.
+  progress
+  Outputs
+  COntext
+  
+- prompt " create me a smilar dummy file"
+- it created an excel file.
+
+- think, where these commands were ran
+- claude cowork ran all these commands on cloud, in the sandbox of anthropic
+- whereas claude code, which runs in the terminal of local machine, run commands on your local machine.
+
+### i was on 1:30:00 min of video # 13
 
 Lecture 14:  19-July-2026 [ Agentic Coding Part 6 ]
 ======================================================================================================================================================
