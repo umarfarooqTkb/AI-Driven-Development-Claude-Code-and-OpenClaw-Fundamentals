@@ -1110,6 +1110,9 @@ It lets me (the agent) call external tools through a standardized protocol — e
 
 /mcp
 
+project: part 6, https://agentfactory.panaversity.org/docs/agentic-coding-crash-course
+
+
 Lecture 14:  19-July-2026 [ Agentic Coding Part 6 ]
 ======================================================================================================================================================
 ======================================================================================================================================================
