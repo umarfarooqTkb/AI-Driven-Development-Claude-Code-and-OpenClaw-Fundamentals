@@ -20,7 +20,7 @@ Agentic AI Book: URL:https://agentfactory.panaversity.org/
 
 
 
-Lecture 1:  Orientation Session [22-May-2026]
+Lecture 1:  Introduction to General Agent problem solving - Orientation Session [22-May-2026]
 ======================================================================================================================================================
 ======================================================================================================================================================
 - From AI as a tool TO AI as a Worker.
@@ -45,7 +45,7 @@ URL for Assignment: - https://github.com/panaversity/agentfactory-labs
 
 
 
-Lecture 2: Prompting & LLMs [5-June-2026]
+Lecture 2: AI Prompting & LLMs [5-June-2026]
 ======================================================================================================================================================
 ======================================================================================================================================================
 Topic Covered:
@@ -80,7 +80,7 @@ PDF Link: https://github.com/panaversity/agentfactory-labs/blob/main/AI-101/ai-p
 
 
 
-Lecture 3:  7-June-2026
+Lecture 3:  AI Prompting [7-June-2026]
 ======================================================================================================================================================
 ======================================================================================================================================================
 - AI Prompting i 2026
@@ -114,7 +114,7 @@ Assignment:
 
 
 
-Lecture 4:  12-June-2026
+Lecture 4: AI Operating Layer  [12-June-2026]
 ======================================================================================================================================================
 ======================================================================================================================================================
 - How to install and run claude code agent on local machine.
@@ -141,7 +141,14 @@ Lecture 4:  12-June-2026
 - Study Agent Factory Thesis
 
 
-Lecture 5:  19-June-2026
+
+Lecture 5: GitHub mini Session  [18-June-2026]
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+
+Lecture 6: Markdown In, HTML Out  [19-June-2026]
 ======================================================================================================================================================
 ======================================================================================================================================================
 1. HTML and Markdown, Markdown In HTML Out,  Practice on https://markdownlivepreview.com/
@@ -532,3 +539,602 @@ you can use /compact, /clear//rewind or start a new session
 
 i was on 11. agentic coding part 3 video 29:16 min on 31 July 2026
 
+
+
+
+
+
+
+**** Prompt Caching: 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+- A long and messy conversation does not only reduce the AI agent’s effectiveness; it can also increase token usage and cost.
+- As a session grows, the request context may include:
+  System instructions
+  CLAUDE.md or AGENTS.md
+  Previous user and assistant messages
+  File contents
+  Tool calls and tool results
+  MCP tool definitions
+  Compaction summaries
+
+- when we send a message/prompt to AI and it responds to us.
+- Every time we send message to AI, the whole previous conversation (context) also goes with it every time.
+- It means every time cost is increasing with each message you send to AI. context is increasing and so the cost.
+- In coding, relevant code base and all associated files are also going with the context, which is actually huge, which actually increases our cost too much.
+- Coding agents normally send much of this context to the model again with each request. 
+- Claude Code, for example, sends the conversation history with subsequent requests, including additional requests made during tool use.
+
+- So LLM companies come up with a concept of Cache
+- in this technique, they started to cache your context, if it is not changing
+- Prompt caching makes repeated context cheaper, not free.
+
+- Every cache is updated when you change something in rule files (CLAUDE.md or AGENTS.md), files, tools, context.
+- Whenever cache is updated, whole cache will go with the next message, and a spike in cost is expected
+- Also cache has some time, after that time, cache will be automatically cleared and new cache is stored, another spike in cost.
+
+
+Cache Hit
+-----------
+- A cache hit happens when the beginning of the new request matches a previously cached prompt prefix.
+Example:
+- Previous request: A + B
+- New request:      A + B + C
+- A + B may be read from the cache.
+- Only C is new input.
+- Cached tokens may still be billed, but at the provider’s lower cache-read rate.
+
+Cache Miss
+-------------
+- A cache miss happens when the provider cannot reuse some or all of the previous cached prefix.
+Example:
+- Previous request: A + B
+- New request:      A + X
+
+- A cache miss can happen when:
+  The cache expires.
+  CLAUDE.md, AGENTS.md or another instruction file changes.
+  Tool or MCP definitions change.
+  The selected model or provider changes.
+  Thinking or reasoning settings change.
+  Tool-choice configuration changes.
+  Images or documents are added or removed.
+  Earlier conversation history is edited, rewound, forked or reordered.
+  A new session produces a differently structured prompt.
+
+
+- Simply viewing or navigating the conversation does not necessarily break the cache. The cache is affected when the actual prompt sent to the provider changes.
+
+
+
+Cache Lifetime
+---------------------------------
+- Cache lifetime depends on the provider and environment.
+Examples:
+- Anthropic API caching normally uses a five-minute lifetime.
+- Anthropic also supports a paid one-hour cache.
+- Current Claude subscription sessions use a one-hour cache lifetime.
+- DeepSeek caching is automatic and best-effort; unused entries are generally cleared within several hours to several days.
+
+- Claude Code and OpenCode are built to keep that front stable so the cache keeps working — but the caching itself is the provider's feature, and a model without it gets no discount. 
+- The catch: the discount holds only while the front of the context stays unchanged.
+- Edit your rules file, or jump around your history, and the cache resets from that point and you pay full price again. 
+
+
+
+Cache Expiration
+Prompt caches normally expire after a period of inactivity.
+A successful cache hit may refresh the expiration timer.
+After the cache expires, the next request may need to process and cache the input again.
+This may cause the first request after a long break to be slower or more expensive.
+
+Cache lifetime depends on the provider and authentication method.
+
+Anthropic
+The standard Anthropic API cache lifetime is normally five minutes.
+A paid one-hour cache lifetime is also available.
+Claude Code generally requests a one-hour cache lifetime for Claude subscription users.
+When Claude Code uses an API key or supported third-party provider, the default is normally five minutes unless the one-hour option is enabled.
+DeepSeek
+DeepSeek context caching is enabled automatically.
+It operates on a best-effort basis, so cache hits are not guaranteed.
+Unused cache entries are generally cleared within a few hours to a few days.
+
+
+
+
+- Compaction makes the context smaller.
+
+
+
+
+/compact
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+*** personalizing your Tool
+-------------------------------------------------------------------------------------------------------------------------------------------------
+commands and skills
+
+/skills
+
+in claude code, skills are stored in .claude/skills folder
+skill.sh - a market place by vercel
+
+try to create a skill and upload on skills.sh website
+
+find remotion skill in claude
+
+
+
+skills & Settings can be setup on project level and global level.
+
+
+
+
+
+
+Install a skill from https://www.skills.sh using a terminal command
+-------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------
+1. Open the website, find the required skill and copy the installation command
+3. open terminal (PowerShell in windows) and paste the command
+   npx skills add https://github.com/design-layers/agent-skills --skill sleek-design-mobile-apps
+4. it will ask for some permissions or selection of coding agent, select opencode or claude code
+5. Installation scope: project or global
+
+
+
+Install a skill from https://www.skills.sh using prompt
+-------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------
+1. Open the website, find the required skill and copy the installation prompt
+2. Open your project in PowerShell and type cd "C:\path\to\your-project"
+3. Start OpenCode, opencode
+4. Paste the complete prompt into OpenCode
+   Run `npx skills use "https://github.com/mattpocock/skills" --skill "improve-codebase-architecture"` and follow the generated skill instructions now. Read its complete output, redirecting it to a temporary file first if necessary. Resolve relative paths from the supporting-files directory it provides.
+
+OpenCode should then:
+ Run the npx skills use command.
+ Download the skill into a temporary directory.
+ Read the generated prompt.
+ Read the referenced supporting files.
+ Analyze your current project.
+ Generate an architecture-review HTML report.
+
+The skills use command does not permanently install the skill. It temporarily resolves the selected skill, places its files in a temporary directory, and prints the generated instructions for the agent to follow.
+
+
+# Permanently install the skill:
+npx.cmd skills add "https://github.com/mattpocock/skills" `
+  --skill "improve-codebase-architecture" `
+  --agent opencode `
+  --global `
+  --copy `
+  --yes
+
+
+
+
+Installation Path or location
+-------------------------------------------------------------------------------------------------------------------------------------------------
+On Windows:
+-------------
+C:\Users\Administrator\.agents\skills   		# Global level Installation, within user's home directory
+C:\ufk\opencode\test01\.agents\skills			# Project level Installation, within project folder
+%USERPROFILE%\.config\opencode\skills\			# The global OpenCode skill location 
+
+
+List all skills installed: 
+npx.cmd skills list --global --agent opencode
+
+
+
+
+
+
+
+how to invoke a skill/ how to use skill after installation
+-------------------------------------------------------------------------------------------------------------------------------------------------
+/skills
+select your skill and ask what can you do with this skill, it will explain
+
+
+/skills >> select your skill and type like create a video on ai agents
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+skill-lock.json
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+*** command
+-------------------------------------------------------------------------------------------------------------------------------------------------
+starts with /
+
+exp: /clear
+
+# all commands perform a builtin task, to perform that task, you have to write that command. without mentioning the command, that task will not be performed
+# but you can perform the task of a skill, without mentioning the name of that skill.
+# you can create your custome commands
+
+
+
+
+
+
+
+
+Lecture 12:  12-July-2026 [ Agentic Coding Part 4 ]
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+*** Hooks (Claude code), Open Code (Plugins)
+-------------------------------------------------------------------------------------------------------------------------------------------------
+*** events
+*** update-config skill of claude code
+
+*** Hooks:
+they work on claude code level not on LLM level.
+if LLM said that do this task (like delete a .py file), then this event will be triggered and before this event trigger, claude code will invoke hooks.
+just think a situation of context rot, where LLM has start forgetting and start doing undesireable actions.
+now using hooks, claude code will jump in and manage the situation, it means now tool is also watching what to do, not only LLM
+so control is moving from AI(LLM) to Claude code/Open code, because LLM is now working not correct
+
+- by using hooks, we change the behavior of our claudecode/opencode. it will stop certain actions planned by the model(AI or LLM).
+
+give this prompt to opencode
+i want opencode/claude code to stop working whenever it is about to delete a file
+when i gave above prompt on open code, it created or updated opencode.json file with deny rule.
+
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "bash": {
+      "*": "allow",
+      "Remove-Item *": "ask",
+      "ri *": "ask",
+      "rm *": "ask",
+      "del *": "ask",
+      "erase *": "ask",
+      "rd *": "ask",
+      "rmdir *": "ask",
+      "unlink *": "ask"
+      "Remove-Item *": "deny",
+      "ri *": "deny",
+      "rm *": "deny",
+      "del *": "deny",
+      "erase *": "deny",
+      "rd *": "deny",
+      "rmdir *": "deny",
+      "unlink *": "deny"
+    }
+  }
+}
+
+
+# these settings can be applied on project level or global level (all projects)
+
+
+
+
+
+hook and webhook
+-------------------------------------------------------------------------------------------------------------------------------------------------
+- The basic idea of a hook: A hook is a predefined point in a system where you can attach your own logic.
+- In simple words:“When this stage or event happens, run my code.”
+
+System event
+    ↓
+Hook is triggered
+    ↓
+Your custom code runs
+
+Examples:
+Before a file is saved, format it.
+After a user logs in, record an audit log.
+Before an API request is sent, add an authentication token.
+After Claude Code uses a tool, run a validation script.
+
+A hook normally works inside the same application or execution environment.
+
+
+- Hooks can be defined at project level and global level.
+- it is better that you should defin hooks on project level, as they are not become part of context, so hooks are not supplied in each request as part of context.
+- so hooks does not cost any tokens.
+- if you give command /context in claude code, you will not see the hooks in the output
+- the reason is that, hooks are not part of LLM, they are linked with the tool.
+
+
+Sample prompts:
+- can you tell me which hooks are enabled?
+
+
+
+
+2. General event hooks
+
+Many tools use the term hook for lifecycle events.
+
+For example:
+
+Before action → Pre-hook
+Action runs
+After action  → Post-hook
+
+Examples include:
+
+Git hooks
+Claude Code hooks
+OpenCode plugin hooks
+WordPress hooks
+database hooks
+CI/CD hooks
+application lifecycle hooks
+Git hook example
+Developer runs git commit
+        ↓
+pre-commit hook runs
+        ↓
+Linting and tests execute
+        ↓
+Commit is allowed or blocked
+Claude Code hook example
+Claude Code attempts a command
+        ↓
+PreToolUse hook runs
+        ↓
+Security script checks the command
+        ↓
+Command is allowed or denied
+
+These hooks are usually internal to the tool or local environment.
+
+
+
+
+3. Webhooks
+
+A webhook is an HTTP-based notification sent from one application to another application when an event occurs.
+
+Application A
+Event occurs
+     ↓
+HTTP POST request
+     ↓
+Application B webhook URL
+     ↓
+Application B processes the event
+
+For example:
+
+Customer completes Stripe payment
+        ↓
+Stripe sends an HTTP POST
+        ↓
+Your backend webhook endpoint receives it
+        ↓
+Your system marks the invoice as paid
+
+A webhook usually includes JSON:
+
+{
+  "event": "payment.completed",
+  "customerId": "12345",
+  "amount": 100
+}
+
+The receiving application provides a URL such as:
+
+https://api.example.com/webhooks/stripe
+
+That URL is known as a webhook endpoint.
+
+
+
+
+Hooks versus webhooks
+
+| Area                  | Hook                                           | Webhook                                   |
+| --------------------- | ---------------------------------------------- | ----------------------------------------- |
+| Main purpose          | Attach logic to an event or lifecycle stage    | Notify another application about an event |
+| Communication         | Usually internal or local                      | HTTP over a network                       |
+| Applications involved | Usually one system                             | Usually two systems                       |
+| Trigger               | Internal event                                 | Event in an external system               |
+| Data format           | Function parameters, objects or standard input | Usually JSON in an HTTP request           |
+| Example               | Run validation before saving                   | GitHub notifies your server about a push  |
+
+
+The simplest distinction is:
+
+Hook:
+Something happened inside my system,
+so run some code inside my system.
+
+Webhook:
+Something happened in another system,
+so it sends an HTTP request to my system.
+Their relationship
+
+A webhook is conceptually a special network-based form of event callback.
+
+Both follow the same general pattern:
+
+Something happens
+       ↓
+Registered logic is triggered
+
+But the location is different.
+
+Hook
+Application
+├── Event happens
+└── Internal hook function runs
+Webhook
+Application A
+├── Event happens
+└── Sends HTTP request
+          ↓
+Application B
+└── Webhook endpoint runs
+
+A hook can also call a webhook:
+
+Claude Code finishes a task
+        ↓
+Stop hook runs
+        ↓
+Hook sends HTTP POST
+        ↓
+Microsoft Teams receives notification
+
+In this example:
+
+Stop is the hook.
+The HTTP request is the webhook call.
+The Teams URL is the webhook endpoint.
+
+
+
+
+
+How webhooks appear in frontend development
+
+Webhooks are used in web applications, but they are usually handled by the backend, not directly by the browser frontend.
+
+Suppose you are developing an e-commerce website.
+
+Frontend
+Customer clicks Pay
+        ↓
+Backend creates Stripe payment
+        ↓
+Stripe processes payment
+        ↓
+Stripe sends webhook to backend
+        ↓
+Backend updates database
+        ↓
+Frontend displays paid status
+
+The frontend may initiate the process, but the webhook normally goes to the backend.
+
+Why not send Stripe webhooks directly to React?
+
+Because a frontend application:
+
+may not be open when the event occurs;
+does not have a permanent public server endpoint;
+cannot safely store webhook secrets;
+can be manipulated by the user;
+should not be trusted for payment confirmation.
+
+Therefore:
+
+Wrong:
+Stripe → React browser
+
+Correct:
+Stripe → Backend webhook endpoint → Database → React frontend
+
+
+
+
+
+opencode has hooks, though they work differently from Claude Code's /hooks. 
+In opencode, hooks are provided by plugins (not a standalone hook config key).
+In opencode.json, you register plugins, and plugins return hooks: "plugin": ["./.opencode/plugin/my-plugin.ts"]
+
+Key differences from Claude Code:
+- Hooks aren't declared as a config array; they're JS/TS callbacks from a plugin.
+- You add behavioral hooks (tool/command/chat/permission). 
+- Claude Code's hook events like PreToolUse/PostToolUse map to tool.execute.before/tool.execute.after.
+- Hooks are auto-discovered from any *.ts/*.js in .opencode/plugin/ or .opencode/plugins/, or registered explicitly via the plugin array.
+- There's no hook key in opencode.json that lists hook scripts directly.
+To hook a specific event in your project, create a plugin file (e.g. .opencode/plugin/mine.ts) and it'll load automatically — but remember to restart opencode afterward since config isn't hot-reloaded.
+
+
+- we can setup a hook that whenever claude code/open code is started, review all of my codebase or project files.
+- similarly, if you are a BA/Product Owner/Project Manager, ask claude code/open code to scan all project or requirement docs and do let me know, if a new change or req came.
+- you can create hooks for all those tasks, which you normally perform on regular basis, like plan and create hooks of all those tasks
+  check my code base for new changes by other devs
+  check new changes in DB
+  check new updates in project docs etc
+- you can configure your claude/opencode in such a way, that when it does something at the backend via prompt or hooks, it generates a voice that your job is done or need pemissions
+
+
+
+***** Subegents
+-------------------------------------------------------------------------------------------------------------------------------------------------
+Main Agent >> Subagent
+
+- subagent will send valuable info (summary) to the main agent
+- suppose you started a main agent and that main agent initiated a sub-agent to perform a google search.
+- now the subagent may search 100 of pages, and now all those pages become the part of your main context.
+- to avoid this clutter info, subagent will create a summary of valuable info and pass it to the main agent.
+- so only valuable info will become part of your context.
+
+- main agent and sub-agent both have their own context, which are different from each other.
+- main agent can have its own model and sub-agent can have its own model.
+
+Example: prompt >> i want you to use sugagents. press enter in claude or opencode
+
+What they are
+Subagents are separate AI sessions you (the main agent) can launch mid-task. They get a fresh context — they can't see our conversation — so they work from your prompt alone.
+
+
+are there any default aubagents with you (prompt i given to opencode)
+Yes. The built-in subagents already available to me:
+- explore — fast, read-only agent for searching/investigating a codebase (find files, grep, answer "how does X work"). Takes a thoroughness level: quick / medium / very thorough.
+- general — general-purpose agent for multi-step work: research, web searches, writing code, anything that needs several actions.
+(These are built into opencode and always available; you can define additional custom subagents in .opencode/agent/*.md with mode: subagent.)
+
+# you can create your own custom sub-agents
+
+
+
+
+
+Lecture 13:  17-July-2026 [ Agentic Coding Part 5 ]
+======================================================================================================================================================
+======================================================================================================================================================
+
+*** MCP ***
+
+What MCP is
+It lets me (the agent) call external tools through a standardized protocol — e.g. a database, a browser (Playwright), GitHub, a file system, or a custom API — instead of just built-in tools.
+
+
+Lecture 14:  19-July-2026 [ Agentic Coding Part 6 ]
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+Lecture 15:  24-July-2026 [ Spec driven Development ]
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+
+Lecture 16:  26-July-2026 [ Agentic Coding Part 5 ]
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+Lecture 17:  17-July-2026 [ Agentic Coding Part 5 ]
+======================================================================================================================================================
+======================================================================================================================================================

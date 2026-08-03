@@ -39,6 +39,15 @@ For bigger tasks, ask the AI to save the plan to a file (like docs/plans/my-plan
   a strong model to decide what to do, a cheap model to do it. 
   When a cheap model starts going in circles, that is your signal the task needed the stronger one — switch up, don't keep retrying.
 
+- Write in your rule files, that do not delete anything from DB, or modify any record. very important in case of context rot.
+  because in case of context rot, AI might forget this rule and delte your DB.
+  So in case of context rot, stop everything, especially in prod env
+
+- Creat hooks on claude code/open code across the organization.
+  create a policy and perform enforcement across the org.
+  document it, regularly review it
+  compliance is important
+
 
 CLAUDE.md Best Practices
 ==============================================================================================================================================================================
@@ -56,3 +65,68 @@ CLAUDE.md Best Practices
   - Write good code.
   - Follow best practices.
   - Make everything secure.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==============================================================================================================================================================================
+==============================================================================================================================================================================
+
+									FAQs & Interview Questions
+
+==============================================================================================================================================================================
+==============================================================================================================================================================================
+Q. Explain Caching or prompt caching
+A. Temporary storage of context
+
+Q. When a cache is invalidated and new cache is created
+A. when you change in rule files, system prompts, idle timeout
+
+Q. i am doing a long conversation with a model, caching is working and suddenly i change my model, suppose from sonnet to opus, will it effect the cache and pricing
+A. usually yes, your cache will be removed and a new cache will be created and in the next message whole cache will be sent to model, so cost will increase (spike)
+
+Q. Cache is handled at tool level or model level
+A. Model level
+
+Q. Diff between Cache hit and Cache miss
+A
+
+Q. Causes of Cache miss
+A.
+The cache expires.
+CLAUDE.md, AGENTS.md or another instruction/rule file changes.
+Tool or MCP definitions change.
+The selected model or provider changes.
+Thinking or reasoning settings change.
+Tool-choice configuration changes.
+Images or documents are added or removed.
+Earlier conversation history is edited, rewound, forked or reordered.
+A new session produces a differently structured prompt.
+
+Q. Diff between Skill and Command
+A. 
+
+Q. Does claude code/open code has a Trash folder or bin. if claude has deleted a file or DB, how can we recover it.
+   if it doest not have trash, cant we undo the recent action?
+
+
+Q. Diff between skill and sub-agent
+
