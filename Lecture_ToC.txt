@@ -1108,6 +1108,7 @@ Lecture 13:  17-July-2026 [ Agentic Coding Part 5 ]
 What MCP is
 It lets me (the agent) call external tools through a standardized protocol — e.g. a database, a browser (Playwright), GitHub, a file system, or a custom API — instead of just built-in tools.
 
+/mcp
 
 Lecture 14:  19-July-2026 [ Agentic Coding Part 6 ]
 ======================================================================================================================================================
