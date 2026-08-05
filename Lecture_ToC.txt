@@ -1232,6 +1232,23 @@ Set up a Project:
 - claude cowork ran all these commands on cloud, in the sandbox of anthropic
 - whereas claude code, which runs in the terminal of local machine, run commands on your local machine.
 
+
+
+- Claude is the underlying model, and there are multiple products/interfaces built around it, each suited to different work:
+   * Chat — conversational, back-and-forth, good for questions, writing, brainstorming, analysis, etc.
+   * Claude Code — agentic coding tool for developers
+   * Claude Cowork — agentic knowledge-work tool for non-developers, hands off multi-step tasks
+
+- For Coding related tasks, use Claude code
+- For non-development related tasks, use CLaude cowork. 
+
+
+*** Scheduled ****
+- works in browser, code and cowork
+- i can schedule as task on claude, that at 9 am everyday, read all new mails, write replies and save them in drafts
+
+
+
 ### i was on 1:30:00 min of video # 13
 
 Lecture 14:  19-July-2026 [ Agentic Coding Part 6 ]
