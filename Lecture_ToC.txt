@@ -1241,15 +1241,23 @@ Set up a Project:
 
 - For Coding related tasks, use Claude code
 - For non-development related tasks, use CLaude cowork. 
+- Skills created in calude can also be used in cowork.
+- cowork is mostly for non-developers (HR, Finance, Admin, Marketing, or you want to remain a non-developer, etc etc)
 
 
 *** Scheduled ****
-- works in browser, code and cowork
+- works in browser, claude code and claude cowork
 - i can schedule as task on claude, that at 9 am everyday, read all new mails, write replies and save them in drafts
 
+- My Idea: I want you to link with linkedin and search for jobs, i have put all resumes for different roles, also i want to provide you a excel file, where i will provide list of all job roles and Resume path. i want you to search and apply against jobs and send my resume.
+after applying i want you to create a record in e separate sheet names Applied
 
 
-### i was on 1:30:00 min of video # 13
+study : https://agentfactory.panaversity.org/docs/agentic-coding-crash-course
+
+mem0.ai
+
+
 
 Lecture 14:  19-July-2026 [ Agentic Coding Part 6 ]
 ======================================================================================================================================================
