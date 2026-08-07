@@ -17,3 +17,4 @@ write a PRD,
 
 
 -- Create a hook, to copy data/file/db to a trash before deleting
+- Create Skills related to Project Management, Scrum, Product Development, DevOps

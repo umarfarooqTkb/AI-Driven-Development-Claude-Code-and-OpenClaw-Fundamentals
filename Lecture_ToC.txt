@@ -1248,6 +1248,7 @@ Set up a Project:
 *** Scheduled ****
 - works in browser, claude code and claude cowork
 - i can schedule as task on claude, that at 9 am everyday, read all new mails, write replies and save them in drafts
+- Schedular is feature of cowork.
 
 - My Idea: I want you to link with linkedin and search for jobs, i have put all resumes for different roles, also i want to provide you a excel file, where i will provide list of all job roles and Resume path. i want you to search and apply against jobs and send my resume.
 after applying i want you to create a record in e separate sheet names Applied
@@ -1259,9 +1260,36 @@ mem0.ai
 
 
 
+
+
+
+
+
+
 Lecture 14:  19-July-2026 [ Agentic Coding Part 6 ]
 ======================================================================================================================================================
 ======================================================================================================================================================
+- General Agents crash course is completed
+- Now lets move on on Claude Cowork.
+
+
+Cowork
+======================================================================================================================================================
+- Claude Cowork is for Non-Developers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
