@@ -1266,39 +1266,162 @@ mem0.ai
 
 
 
-Lecture 14:  19-July-2026 [ Agentic Coding Part 6 ]
+Lecture 14:  19-July-2026 [ Agentic Coding Part 6 ] -- Start of Claude Cowork
 ======================================================================================================================================================
 ======================================================================================================================================================
-- General Agents crash course is completed
+- General Agents crash course is completed (Cloud Code, Open Code, or similar coding agents)
 - Now lets move on on Claude Cowork.
 
 
 Cowork
 ======================================================================================================================================================
 - Claude Cowork is for Non-Developers.
+- Schedule is a feature of cowork. available in Max account type in web UI. also available in desktop application.
+- Cowork can read and handle following types of files
+   * Native Text files (Txt, PDF, Word, Excel, PPT)
+   * Scanned PDF files (through OCR)
+- Cowork is a paid-tier feature: it requires an Anthropic Pro, Max, Team, or Enterprise plan.
+- The Claude Desktop app itself is a free download; the Cowork tab appears once you sign in on a paid plan.
+
+
+Install Claude cowork on local machine (desktop app)
+======================================================================================================================================================
+- Download Claude Desktop from claude.com/download (Mac or Windows).
+- Sign in with your Anthropic account.
+- Click the Cowork tab at the top of the window.
+- You're in. Connectors, skills, plugins, and projects are all reached from inside the Cowork tab.
+
+
+Install Openwork on local machine (desktop app) - Windows
+======================================================================================================================================================
+- Go to Official download page >> - https://openworkco.com/download
+- Select your OS >> macOS | Windows | Linux
+- Under Windows, choose:
+   * x64 Installer → for almost all Intel/AMD Windows PCs.
+   * ARM64 Installer → only for ARM-based Windows machines.
+    Start with the x64 Installer unless you know your Windows machine is ARM-based.
+- openwork downloading will start >> openwork-win-x64-0.18.39.exe
+- Run .exe file as Administrator 
+- Start OpenWork from the Windows Start menu.
+- sign-in to openwork cloud or use without cloud
+- I logged-in with Google account
+
+
+Initial configuration after openwork installation of openwork
+======================================================================================================================================================
+After installation: OpenWork will guide you through creating a workspace and connecting an LLM provider. 
+- The official documentation says you can sign in with ChatGPT or provide your own LLM API key
+
+1. Install OpenWork
+        ↓
+2. Create your first workspace
+        ↓
+3. Connect ChatGPT / OpenAI
+        ↓
+4. Test the agent
+        ↓
+5. Configure filesystem access
+        ↓
+6. Configure MCP servers
+        ↓
+7. Configure browser/Chrome automation
+
+
+- The next important step is creating a workspace
+- On the left, under Workspaces, click the + button. 
+- A workspace is essentially the folder/environment where OpenWork will be allowed to work with your files and execute tasks.
+- For your first test, I recommend creating a dedicated folder in Windows first, for example:
+- C:\OpenWork\test-workspace
+- Then click: Workspaces + → Create workspace → select Local workspace → click select folder → select C:\OpenWork\test-workspace → Click "Create workspace"
+
+- Now test the workspace before configuring anything else. In Describe your task... at the bottom, enter:
+  Create a file named hello.txt in this workspace. Put the text "Hello from OpenWork" inside it. Then tell me the full path of the file.
+  Submit it with the ↑ button.
+- OpenWork may ask you to approve filesystem/tool access. 
+- Approve the file-write operation for this test workspace. We specifically want to verify that the agent can actually modify files, rather than just chat.
+- After it finishes, check that hello.txt exists in your test-work folder in Windows Explorer.
+- So the basic chain is working:
+  Prompt → AI model → OpenWork tool → Windows filesystem → file created
+
+- Next: test command execution, In the same session, enter this:
+  Run a command in this workspace that displays the current directory, lists all files in the directory, and shows the contents of hello.txt. 
+
+- So you now have both major local capabilities working:
+  OpenWork → filesystem access ✅ → PowerShell/command execution ✅
+- The next useful test is web/browser access. Open a New session and give it:
+  Open the web and find the current official Microsoft documentation page for Azure Kubernetes Service. Tell me the page title and URL. Do not create or modify any local files.
+- This will establish whether browser/web tooling is functioning independently of local command execution.
+
+- Your setup has now passed the three basic capability tests:
+   Filesystem ✅ → PowerShell/commands ✅ → Web search/access ✅
+   The next step should be model configuration. You're still using Big Pickle, shown at the bottom of the screen.
+
+Model Configuration:
+- Change the model to GPT5.5 and enter following prompt
+  Inspect this workspace. 
+  Create a PowerShell script named system-info.ps1 that reports the Windows version, hostname, PowerShell version, CPU, total RAM and available disk space. 
+  Then execute the script and summarize the results.
 
 
 
 
 
+Your first real task: a multi-source follow-up brief
+======================================================================================================================================================
+- Open Panaversity's Book (The AGent Factory) >> Your first real task: a multi-source follow-up brief
+- There are few sample files from a fictitious call of a sales person. we will provide these files to cowork/openwork, and ask to perform followup tasks.
+- 
+
+Step 1: 
+- Download the starter folder. 
+- https://agentfactory.panaversity.org/assets/files/acme-followup-starter-82aaba90193df09ab8155da304a66ad6.zip
+- Grab acme-followup-starter.zip (≈2 KB), it contains acme-call-notes.md, acme-chat-thread.md, and a short README. 
+- Unzip anywhere convenient, Desktop, Documents, wherever. The agent will write the deliverable into this same folder.
+
+Step 2: 
+- Open the folder in your tool.
+- Cowork: Open Cowork. When you run the prompt below, an inline permission card appears the first time the agent tries to read; 
+  click Choose folder and pick the unzipped acme-followup-starter/ folder.
+- OpenWork: Click + Add workspace > Local workspace, pick the unzipped folder, click Create Workspace. Future sessions in that workspace inherit the scope.
+
+Step 3: 
+- First, let the agent see what's in the folder. No plan yet, just orient. Type:
+  Read everything in this folder and tell me what's here. Then ask me 1-2 questions about what I'm trying to do before we start.
+- The agent reads both files, summarizes what it found, and asks something like
+  I read the folder. It contains a small Acme sales follow-up exercise:
+
+  README.md:
+   explains this is a starter folder for a Cowork/OpenWork walkthrough and says the expected output is acme-followup.md.
+
+  acme-call-notes.md:    discovery call notes for Acme:
+   Prospect: Raj, VP Eng at Acme
+   Problem: stalled six-month internal tool rollout
+   Constraints: fiscal year close Sept 30, security review adds 4–6 weeks, procurement prefers annual contracts
+   Follow-ups promised: pricing comparison by Friday, proposal walkthrough next week
+ 
+  acme-chat-thread.md: chat questions from Raj:
+   realistic implementation timeline for a team of 40
+   annual vs monthly pricing for procurement modeling
+ 
+  Before we start, two questions:
+   Do you want me to draft the acme-followup.md email/message now?
+   Should the tone be more polished/formal, or more concise and conversational?
 
 
+Step 4: 
+- Now ask for the deliverable, with a plan. Once the agent has the context, send the real ask:
+  Yes, draft the follow-up email. It should:
+  - Thank Raj and reference one specific thing from the call
+  - Answer the two questions he asked in the chat thread
+  - Suggest next steps (proposal walkthrough, timeline)
+  - Match my normal email tone (direct, no throat-clearing)
 
+  Save as acme-followup.md in this folder. Lay out your plan first, then pause for my approval before touching anything.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Why "lay out your plan first" matters. 
+- Without it, the agent may just start executing with per-step approval cards: 
+ fine for simple tasks, less useful for multi-source synthesis where you want to catch a misreading before the agent commits to it. 
+- The instruction makes the plan-review step deterministic across both tools.
 
 
 
@@ -1315,4 +1438,58 @@ Lecture 16:  26-July-2026 [ Agentic Coding Part 5 ]
 
 Lecture 17:  17-July-2026 [ Agentic Coding Part 5 ]
 ======================================================================================================================================================
+======================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+							Cowork Projects, Tasks, To Dos
+
+======================================================================================================================================================
+======================================================================================================================================================
+- Daily Email Responder
+- Daily Calendar Notification at start of the day.
+
+
+
+
+
+
+
+
+
+
+
+							
+
+====================================================== End of - Cowork Projects, Tasks, To Dos =======================================================
 ======================================================================================================================================================
