@@ -768,7 +768,7 @@ exp: /clear
 
 
 
-i was here on revision
+
 Lecture 12:  12-July-2026 [ Agentic Coding Part 4 ]
 ======================================================================================================================================================
 ======================================================================================================================================================
@@ -875,6 +875,7 @@ WordPress hooks
 database hooks
 CI/CD hooks
 application lifecycle hooks
+
 Git hook example
 Developer runs git commit
         ↓
@@ -883,6 +884,7 @@ pre-commit hook runs
 Linting and tests execute
         ↓
 Commit is allowed or blocked
+
 Claude Code hook example
 Claude Code attempts a command
         ↓
@@ -1424,6 +1426,8 @@ Step 4:
 - The instruction makes the plan-review step deterministic across both tools.
 
 
+
+i was on 1:01 on lecture 14
 
 Lecture 15:  24-July-2026 [ Spec driven Development ]
 ======================================================================================================================================================
