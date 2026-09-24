@@ -202,7 +202,7 @@ Lecture 7:  28-June-2026
    * Description
    * Some Rules/Instructions (written in plain English)
 - Instructions are important, AI will work as given in instructions
-- Calude introduced SKILL and INstructions
+- Calude introduced SKILL and Instructions
 - Open Claude >> customized = skills and connectors >> skill creator
 
 Now Questions is , how to create skills + Instructions
@@ -398,7 +398,7 @@ Ans.
    /compact  >> compact current context of current session creating a summary of current context by removing unnecessary information
    
 Q8. What is Resume session
-Ans. if you have some conversation already opened with claude an dyour machine rebooted, then you do not have to start it again, you can resume your previous session
+Ans. if you have some conversation already opened with claude and your machine rebooted, then you do not have to start it again, you can resume your previous session
      claude --resume
      after starting claude/open code /resume
 
@@ -768,7 +768,7 @@ exp: /clear
 
 
 
-
+i was here on revision
 Lecture 12:  12-July-2026 [ Agentic Coding Part 4 ]
 ======================================================================================================================================================
 ======================================================================================================================================================
@@ -1369,7 +1369,7 @@ Model Configuration:
 Your first real task: a multi-source follow-up brief
 ======================================================================================================================================================
 - Open Panaversity's Book (The AGent Factory) >> Your first real task: a multi-source follow-up brief
-- There are few sample files from a fictitious call of a sales person. we will provide these files to cowork/openwork, and ask to perform followup tasks.
+- There are few sample files from a fictitious call of a sales person. we will provide these files to cowork/openwork, and ask to perform follow-up tasks.
 - 
 
 Step 1: 
