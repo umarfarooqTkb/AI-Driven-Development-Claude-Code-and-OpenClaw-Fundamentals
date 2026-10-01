@@ -1426,8 +1426,41 @@ Step 4:
 - The instruction makes the plan-review step deterministic across both tools.
 
 
+- Check what is the purpose of README.md file, how to create it and how to manage it over the lifecycle of your project/development
+- In Cowork, you csn use /undo or /rewind. what has been done is done
+- even if cowork has edited a word document, you can not undo, as of today, it is a limitation of cowork
+- you can try revert
+- one tip is to write instructions in calude, that whenever you start a work, always create a backup of each file, you are touching.
 
-i was on 1:01 on lecture 14
+- Types of instructions available in claude
+  * Global Level instructions (defined in claude >> settings >> General >> Instructions for Claude)
+  * Folder/ project level instructions
+  * session prompt instructions, actual instructions for this session and prompt
+
+- Create best practices for using claude code just like coding standards. (part of AI Policy)
+
+- Ask me questions before execution (it is not plan and execute)
+  we are telling AI to ask me questions before you implement/execute)
+  " ask me few clarifying questions before you start work (it can be part of your  best practices)
+
+
+Plugins:
+-----------------------------------------------------
+- with plugin, you can club following things and ship/share it as a one thing to other user/developer, like
+   claude.md
+   skills
+   connectors
+   sub-agent
+- now the other user/developer can install it on his machine and he will get the same claude.md, skills and connectors. like a zip file
+- in one plugin, i shipped 10 skills + 5 connectors and installed it on my machine, otherwise, i have to install 10 skills and 5 connectors separately.
+
+- How to create plugins:
+  settings >> customize >> plugins
+
+i was here on 1:43 on lecture 14
+
+
+
 
 Lecture 15:  24-July-2026 [ Spec driven Development ]
 ======================================================================================================================================================
