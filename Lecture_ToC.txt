@@ -1457,7 +1457,22 @@ Plugins:
 - How to create plugins:
   settings >> customize >> plugins
 
-i was here on 1:43 on lecture 14
+- Explore Plugins related to your domain like Project Management, product management, Engineering, figma Productivity, Design etc etc
+
+
+END OF - COWORk
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1467,6 +1482,400 @@ Lecture 15:  24-July-2026 [ Spec driven Development ]
 ======================================================================================================================================================
 
 
+				constitution → Research → Specify → Clarify → Build
+
+
+Vibe Coding:
+======================================================================================================================================================
+- Giving the AI a vague idea and hoping it guesses correctly.
+- It puts the thinking during the build, so each round trip loses context and the AI fills gaps with reasonable-but-wrong assumptions; the cost shows up later, all at once.
+- Vibe coding means building software by describing what you want in natural language and letting an AI coding assistant generate, modify, debug, and iterate on the code for you.
+- initially it is very interesting, that you just provided a prompt and AI provided you a solution.
+- but in long-term, when you asked for some modifications and then AI made that but broke few other feature, which were working fine. then frustration spikes.(irritating)
+- good for prototyping, but risky for complex product/requirement.
+- then what is the solution, the solution is Spec Driven Development.
+
+Instead of writing every line yourself, you work more like this:
+“Create a FastAPI endpoint that accepts patient readings, validates the payload, saves it to PostgreSQL, and returns a proper error if the patient doesn’t exist.”
+
+The AI writes the code. Then you might say:
+“Now add logging, tests, SQLAlchemy transactions, and handle duplicate readings.”
+
+You keep steering it through prompts until the feature works.
+
+
+
+
+Traditional coding vs vibe coding:
+======================================================================================================================================================
+
+| Traditional coding 			| Vibe coding 							|
+|---------------------------------------|---------------------------------------------------------------|
+| You write most code manually 		| AI writes a large portion of the code 			|
+| You search documentation yourself 	| AI explains APIs and libraries 				|
+| You debug line-by-line 		| You describe the error and ask AI to fix it 			|
+| You design implementation details 	| You can start from business intent 				|
+| Strong syntax knowledge is essential 	| Clear requirements and architecture become more important 	|
+| Development is slower for boilerplate | Prototypes can be extremely fast 				|
+
+
+
+
+Spec driven development:
+======================================================================================================================================================
+- Spec-Driven Development (SDD) is the way out of vibe coding. 
+- Writing down what you want, agreed with the AI, before any code exists.
+- Instead of describing what you want and hoping, you write it down, clearly enough that you and the AI agree before any code exists.
+- That written agreement is the spec. Code becomes what the spec produces, not the other way around.
+- The spec is the source of truth; code is a build output.
+- Specs become the real programming language.
+- Code becomes an ephemeral artifact.
+
+- SDD is a thinking discipline, not a coding skill.
+- The spec is the product; code is a build output
+
+- Reading SDD is not learning SDD. 
+- The discipline only becomes yours once you have run the full loop on something real and felt the Clarify phase catch a mistake you would otherwise have shipped.
+- For every project, produce the same four artifacts (constitution, spec.md, plan.md, tasks.md) plus the working result.
+
+
+A good spec answers three questions, in order:
+
+Why: what problem are we solving, and for whom? (The thing most vibe sessions never state.)
+What: what must be true when this is done? Behaviours, inputs, outputs, rules, edge cases, and explicitly what is out of scope.
+What not to build: the boundaries. This single section prevents most "it did too much / it did the wrong thing" failures.
+
+Notice what is missing: the how. 
+A spec describes behaviour, not implementation. 
+"Users can reset a forgotten password via an emailed link that expires in 30 minutes" is spec. 
+"Use a JWT and a Postgres tokens table" is implementation, and belongs in the plan, a later phase.
+Mixing the two too early is the most common beginner mistake: you lock in a technical choice before agreeing on the behaviour it is supposed to deliver.
+
+
+
+The three levels of SDD:
+lvl1: Spec-First
+lvl2: Spec-Anchored
+lvl3: Spec-as-Source
+
+
+Level            | What it means                                                                 | Use it when
+-----------------|-------------------------------------------------------------------------------|-----------------------------------------------
+Spec-First       | Write the spec once at the beginning, then build from it. The implementation   | Most features. Good default approach.
+                 | may later drift from the original spec.                                        |
+-----------------|-------------------------------------------------------------------------------|-----------------------------------------------
+Spec-Anchored    | The specification remains the source of truth. Update it whenever behavior     | Systems or features maintained for months
+                 | changes and keep implementation aligned with it.                               | or years.
+-----------------|-------------------------------------------------------------------------------|-----------------------------------------------
+Spec-as-Source   | The specification itself is the primary source. Code is generated or           | Mature teams with strong engineering
+                 | regenerated from it and treated as a derived output that still requires        | discipline, automation, and tooling.
+                 | review and testing.                                                            |
+
+
+Vibe coding vs. spec-driven development:
+- The difference is when you do the thinking.
+- In vibe coding, you think while the AI builds, discovering what you actually want by reacting to what it hands you. 
+- That feels fast: something appears on screen immediately. 
+- But each round trip loses a little context, the AI fills gaps with reasonable-but-wrong assumptions, and the result rarely matches the rest of your project.
+- The cost shows up later, all at once, when you try to change or trust the thing.
+
+- In spec-driven development, you do the thinking first and write it down. 
+- The AI does not start building until you both agree on what "done" means. 
+- The build is then mostly mechanical: it is executing an agreement, not guessing at one.
+
+
+
+
+
+
+The Method
+======================================================================================================================================================
+The workflow has one foundation (the constitution) and four phases  (Research → Specify → Clarify → Build)
+
+ 0. The Constitution
+ 1. Research 
+ 2. Specify 
+ 3. Clarify 
+ 4. Build
+
+
+
+Phase 0: The Constitution
+======================================================================================================================================================
+- Before any one feature, you write a short document of persistent rules for all of them: the constitution. 
+- In the coding agents it is the rules file (CLAUDE.md / AGENTS.md); in claude.ai, your Project instructions. 
+- Same idea everywhere: the principles, constraints, and conventions you want every spec and build to follow.
+- A short document of persistent project-wide rules that guide every spec and build.
+
+
+Sample:
+# Constitution — Smart Notes
+
+## Principles
+
+- Plain language over cleverness. A new contributor should understand any file in 5 minutes.
+- Prefer well-established libraries over custom code. Research before reinventing.
+- Every feature ships with its spec in `specs/`. The spec is the source of truth.
+
+## Constraints
+
+- Stack: keep it to what's already here. Propose, don't add, new dependencies.
+- Never touch `published/` or anything in `src/generated/`.
+
+## Definition of done
+
+- Behaviour matches the spec, edge cases included.
+- A human has reviewed the diff against the spec before merge.
+
+
+
+
+Phase 1: Research before you write
+======================================================================================================================================================
+- You cannot spec what you do not understand. 
+- Before writing a line of spec, get the AI to map the territory: the problem, the users, the constraints, 
+  and (for an existing project) how the current code works and where the new thing has to fit.
+
+- The output is not code and not yet a spec. 
+- It is a short findings document, what exists, the options, the unknowns, and it feeds the spec. 
+- A prompt that works in any of the three tools:
+
+Research what's involved in building [feature]. 
+Investigate these separately and report each on its own: 
+(1) how this kind of thing is usually done,
+(2) the main approaches and their trade-offs, 
+(3) anything in our existing project it has to fit, 
+(4) the failure modes and edge cases I should worry about. 
+Give me a one-page findings doc: what exists, the options, and what's still unknown. Don't propose a final design or write any code yet.
+
+
+Q. What is the output of the Research phase?
+A. A short findings doc: what exists, the options, what is unknown.
+
+
+
+
+Phase 2: Write the spec (the what and why, never the how)
+======================================================================================================================================================
+Now write the spec, grounded in the research. Do not start from a blank page: draft it with the AI, then make it precise. 
+The three questions from Concept 2 (why, what, and what not to build) expand into six concrete sections. 
+
+A workable spec has, at minimum:
+
+Goal: 			  the why, in two or three sentences.
+User scenarios: 	  "when a user does X, they get Y" walkthroughs.
+Functional requirements:  the testable musts, each specific enough to fail a build that ignores it.
+Edge cases & rules: 	  input that is empty, huge, duplicate, malformed, unauthorized.
+Out of scope:		  what this explicitly does not do. Do not skip this.
+Acceptance criteria: 	  the checklist that says "done" (the constitution's project-wide definition of done still applies on top).
+
+
+
+Draft it with a prompt like this, then tighten by hand:
+
+Using the research above and our constitution, draft spec.md for [feature]. 
+Include: goal (the why), user scenarios, functional requirements, edge cases & rules, out-of-scope, and acceptance criteria. 
+Describe behaviour only, no databases, frameworks, or file layout. Make each requirement specific enough that a build which ignored it would visibly fail.
+
+
+What "tighten by hand" means.
+
+Before: "Users can reset their password."
+
+After: "A signed-out user can request a password reset by email. The link works once, expires after 30 minutes, and a used or expired link shows a 'request a new link' message. The response never reveals whether an email is registered."
+
+
+
+Q. What three questions does a good spec answer, in order?
+A. 
+1. Why
+2. What
+3. What not to build
+
+
+Q. What does a spec deliberately leave out?
+A. The how. A spec describes behaviour, not implementation.
+
+
+
+Phase 3: Clarify by interview (make the AI ask you)
+======================================================================================================================================================
+- This is the highest-value, most-skipped step. 
+- Before building, turn the questioning around: instead of instructing the AI, have it interview you to reveal everything the spec left ambiguous. 
+
+- One prompt does most of the work:
+Before we build anything, interview me about this spec. 
+Ask one question at a time, focusing on ambiguities, missing edge cases, and unstated assumptions. 
+Keep going until you could hand this spec to a stranger and trust they'd build exactly what I mean. 
+Don't write any code yet.
+
+
+
+Phase 4: Build from the spec
+======================================================================================================================================================
+- The spec is agreed. Now you build from it, and the amount of process you add scales with the change. 
+- There is no fixed pipeline to run every time: do the smallest amount of planning the change needs, then supervise the build against the spec.
+
+- A change you could describe in one sentence (a typo, one rule, one new field): just ask for it. Skip the plan. 
+- Forcing heavy process on a one-line fix is the overkill side of the same mistake.
+A change where the approach is uncertain, or it touches a few files: plan first. Have the agent propose the approach, and review it before any code.
+A multi-file or architectural change: the full loop, plan then build then verify, with the work broken into small checkable steps.
+Two things stay constant at every size: you review the approach before code, and you check the result against the spec. Verify is never the step you skip.
+
+Who breaks the work into tasks? The agent does. This is the part that changed. You do not hand-write a task list. Claude Code and OpenCode plan and decompose the work into their own tracked checklist and work through it, marking each item done as they go. Your job is reviewing that breakdown and checking each step against the spec, not authoring it. (In claude.ai, which has no task tool, you capture the plan and tasks as Artifacts yourself: that is the one place the old "write a tasks file" still fits.)
+
+Plan (when the change earns it):
+Based on the agreed spec, propose a technical plan: stack, structure, and the key decisions, each with its trade-off. Match our constitution and reuse what already exists rather than adding new dependencies. Don't write code yet; I'll review the plan first.
+
+
+Build (supervised):
+Implement the agreed plan in small, checkable steps. Do one step at a time, and after each, check it against the spec and stop for me to confirm before the next. Commit after each so every step has a clean rollback point.
+
+
+
+
+The four prompts, in order:
+======================================================================================================================================================
+RESEARCH:  Research what's involved in building [feature]. Investigate separately and
+           report each on its own: (1) how this is usually done, (2) the main approaches
+           and trade-offs, (3) what in our existing project it must fit, (4) failure modes
+           and edge cases. One-page findings doc. No design or code yet.
+
+SPECIFY:   Using the research and our constitution, draft spec.md for [feature]: goal,
+           user scenarios, functional requirements, edge cases & rules, out-of-scope,
+           acceptance criteria. Behaviour only — no tech choices. Make each requirement
+           specific enough that a build ignoring it would visibly fail.
+
+CLARIFY:   Before we build anything, interview me about this spec, one question at a
+           time — ambiguities, missing edge cases, unstated assumptions — until there's
+           nothing left to misread. No code yet.
+
+BUILD:     Right-size it. Tiny change: just ask. Otherwise: have the agent propose a
+           plan and review it, then let it build in small steps, checking each against
+           the spec and committing as you go. Turn acceptance criteria into checks.
+
+
+
+
+Set up once, the constitution:
+======================================================================================================================================================
+Create a Project for your work (e.g. "Smart Notes").
+Put your constitution in the Project's custom instructions. Upload research, existing docs, or screenshots to Project knowledge so every chat in the project can see them.
+Run the four phases, each producing an Artifact:
+
+Research → ask Claude to investigate and produce a findings Artifact. (No subagents in the web app, so ask for several questions covered in one structured document.)
+Specify → ask Claude to draft spec.md as an Artifact. Edit it directly in the Artifact panel until it is right.
+Clarify → paste the interview prompt from Concept 7. Answer the questions; have Claude fold the answers back into the spec Artifact.
+Build → ask for a plan.md Artifact, then a tasks.md Artifact, then implement task by task. Each code file is its own Artifact you can preview and download.
+
+
+
+
+Claude Code, the discipline in your repo
+======================================================================================================================================================
+When your project is real software, Claude Code removes the copy-paste: spec, plan, and tasks live as files in your repo, next to the code they generate. The native features below are all you need, no extra frameworks. What it adds over the chat loop is built-in machinery for each phase:
+
+The constitution is a file Claude reads every session. CLAUDE.md loads at the start of every conversation, so you re-paste nothing, but treat it as persistent guidance, not a hard guarantee (back must-never rules with hooks or tests, per Concept 4). Run /init, then trim to real rules.
+Plan mode is your Specify/Clarify gate, enforced. Shift+Tab into plan mode puts Claude in read-only: it can study your code and draft the spec, but cannot write a line until you approve. That is "agree before you build," built into the tool.
+Subagents do parallel research without polluting your context. Each investigates one area in its own window and hands back only a summary, so Phase 1 stays fast and your main session lean.
+The agent maintains its own task list; you supervise it. Once you approve the plan, Claude breaks the work into its own tracked checklist and works through it, marking each item done as it goes. You do not author that list; your job is to review the breakdown, then after each step run the relevant checks against the spec and commit before the next, so every step has a clean rollback point. That commit-after-each rhythm is a workflow you drive (and can bake into the constitution); if it must happen every time, enforce it with a hook.
+Because all four artifacts are plain files, your spec is now under version control: you can diff it, review it in a pull request, and see exactly when behaviour was supposed to change. That is the jump from "a spec I wrote once" to "a spec that governs the repo."
+
+
+
+
+
+
+ A Complete Worked Example -  One feature, start to finish, twice
+======================================================================================================================================================
+
+- Let us run the whole loop on a small, real feature: a "weekly digest" that emails each user a summary of their notes every Monday. 
+- It touches several files (a scheduled job, the notes query, the mailer), so by the right-sizing rule from Concept 8 it earns the full loop.
+- We do it twice: first in claude.ai, where the thinking is visible, then in Claude Code, where the loop runs against real files in a repo.
+
+In claude.ai
+
+Phase 0: Constitution (already set in the Project). 
+- Principles: plain language, prefer existing libraries, every feature ships with a spec, never touch published/.
+
+Phase 1: Research. 
+
+Prompt:
+Research what's involved in a "weekly digest email" for our notes app. 
+Cover: how we'd select which notes to include, scheduling options, email-sending approaches, and the main failure modes (no notes that week, send failures, time zones).
+Give me a one-page findings doc. 
+Don't propose a final design yet.
+
+
+Claude returns a findings Artifact. You skim it; the time-zone question is one you had not considered.
+
+
+
+Phase 2: Specify. 
+
+Prompt:
+Using those findings and our constitution, draft spec.md for the weekly digest. 
+Include goal, user scenarios, functional requirements, edge cases, out-of-scope, and acceptance criteria. 
+Describe behaviour only, no tech choices yet.
+
+
+You get a spec Artifact. It is good, but generic in places.
+
+
+
+Phase 3: Clarify. 
+
+Prompt:
+Before we plan anything, interview me about this spec, one question at a time, until there's nothing left to misread.
+
+
+The interview surfaces decisions you never stated: digests use the user's local Monday, not UTC; a week with zero notes sends nothing rather than an empty email; unsubscribed users are skipped. You answer; Claude folds each answer into the spec Artifact. This is the moment SDD earns its keep: three future bugs just died as sentences.
+
+
+
+Phase 4: Build.
+
+Now write plan.md: the technical approach for this spec, given our existing stack. Then tasks.md: an ordered, checkable task list.
+
+
+You review the plan (it reuses your existing mailer, matching the constitution), approve it, then implement task by task, checking each against the spec and saving as you go. When a task reveals the spec was silent on something (say, the email subject line), you update the spec first, then continue. The spec stays true.
+
+
+
+The same feature, in Claude Code
+
+Same four phases, same prompts; what changes is that every artifact is a file and the tool enforces the gates you self-imposed in the browser.
+
+Research: 	instead of one findings doc, spin up subagents, one per area, so your main session stays lean. Findings land in specs/weekly-digest/research.md.
+Specify: 	Shift+Tab into plan mode (read-only): the "don't build yet" rule, now enforced by the tool, not your willpower.
+Build: 		Claude plans the work into its own tracked task list and builds through it; you review each step against the spec and commit after each, 
+		so git log reads like that task list and every step is a clean rollback point.
+
+
+The one real difference is where the spec ends up: in claude.ai it lived in an Artifact you copy forward; in Claude Code it lives in specs/, version-controlled next to the code it produced. (OpenCode is identical: swap CLAUDE.md for AGENTS.md and Shift+Tab for Tab.)
+
+The result is not just working code; it is working code plus a spec that explains and governs it, ready for the next person (or the next you) to change safely.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======================================================================================================================================================
+
+
+i was here on  on lecture 15 on 4 oct 2026
+@2nPJ2gN$NuDsPpZXV0&e3
 
 Lecture 16:  26-July-2026 [ Agentic Coding Part 5 ]
 ======================================================================================================================================================
