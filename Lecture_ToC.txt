@@ -1713,6 +1713,9 @@ Don't write any code yet.
 
 Phase 4: Build from the spec
 ======================================================================================================================================================
+				
+					Plan → Task → Implement → Verify
+
 - The spec is agreed. Now you build from it, and the amount of process you add scales with the change. 
 - There is no fixed pipeline to run every time: do the smallest amount of planning the change needs, then supervise the build against the spec.
 
@@ -1874,7 +1877,7 @@ The result is not just working code; it is working code plus a spec that explain
 ======================================================================================================================================================
 
 
-i was here on  on lecture 15 on 4 oct 2026
+i was here on 50 mins  on lecture 15 on 4 oct 2026
 @2nPJ2gN$NuDsPpZXV0&e3
 
 Lecture 16:  26-July-2026 [ Agentic Coding Part 5 ]
