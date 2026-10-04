@@ -1600,7 +1600,7 @@ The workflow has one foundation (the constitution) and four phases  (Research â†
 
 
 
-Phase 0: The Constitution
+Phase 0: The Constitution - the rules above every spec
 ======================================================================================================================================================
 - Before any one feature, you write a short document of persistent rules for all of them: the constitution. 
 - In the coding agents it is the rules file (CLAUDE.md / AGENTS.md); in claude.ai, your Project instructions. 
