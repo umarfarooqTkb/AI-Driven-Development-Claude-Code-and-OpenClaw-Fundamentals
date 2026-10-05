@@ -1554,6 +1554,7 @@ Mixing the two too early is the most common beginner mistake: you lock in a tech
 
 
 The three levels of SDD:
+======================================================================================================================================================
 lvl1: Spec-First
 lvl2: Spec-Anchored
 lvl3: Spec-as-Source
@@ -1573,6 +1574,7 @@ Spec-as-Source   | The specification itself is the primary source. Code is gener
 
 
 Vibe coding vs. spec-driven development:
+======================================================================================================================================================
 - The difference is when you do the thinking.
 - In vibe coding, you think while the AI builds, discovering what you actually want by reacting to what it hands you. 
 - That feels fast: something appears on screen immediately. 
@@ -1600,8 +1602,38 @@ The workflow has one foundation (the constitution) and four phases  (Research �
 
 
 
+Research
+   ↓
+Specify
+   ↓
+Clarify
+   ↓
+Plan
+   ↓
+Implement
+   ↓
+Validate
+
+
+
+
+
+Phase       | Meaning
+------------|------------------------------------------------------------
+Research    | Understand the problem, users, existing system, constraints
+Specify     | Write the initial specification for what should be built
+Clarify     | Resolve ambiguities, contradictions, edge cases, open questions
+Plan        | Decide implementation approach, architecture, tasks, dependencies
+Implement   | Build the feature according to the approved spec
+Validate    | Test implementation against the specification
+
+
+
 Phase 0: The Constitution - the rules above every spec
 ======================================================================================================================================================
+
+## 			The constitution sits above every phase
+
 - Before any one feature, you write a short document of persistent rules for all of them: the constitution. 
 - In the coding agents it is the rules file (CLAUDE.md / AGENTS.md); in claude.ai, your Project instructions. 
 - Same idea everywhere: the principles, constraints, and conventions you want every spec and build to follow.
@@ -1632,6 +1664,10 @@ Sample:
 
 Phase 1: Research before you write
 ======================================================================================================================================================
+
+	## Understand the problem & the existing code. 
+	## before you decide anything
+
 - You cannot spec what you do not understand. 
 - Before writing a line of spec, get the AI to map the territory: the problem, the users, the constraints, 
   and (for an existing project) how the current code works and where the new thing has to fit.
@@ -1655,10 +1691,11 @@ A. A short findings doc: what exists, the options, what is unknown.
 
 
 
-Phase 2: Write the spec (the what and why, never the how)
+Phase 2: Write the spec (the what and why, what not (out of scope) & never the how)
 ======================================================================================================================================================
-Now write the spec, grounded in the research. Do not start from a blank page: draft it with the AI, then make it precise. 
-The three questions from Concept 2 (why, what, and what not to build) expand into six concrete sections. 
+- Now write the spec, grounded in the research. 
+- Do not start from a blank page: draft it with the AI, then make it precise. 
+- The three questions from Concept 2 (why, what, and what not to build) expand into six following concrete sections. 
 
 A workable spec has, at minimum:
 
@@ -1686,6 +1723,87 @@ After: "A signed-out user can request a password reset by email. The link works 
 
 
 
+Q. What is the output of Specification Phase?
+A.
+
+Q. Do we document all specs (requirements) in one go then start development? as we do in SRS, PRD, NFR, Backlog etc.
+======================================================================================================================================================
+A. No, you generally should not write every requirement for the entire product in one giant spec and only then start development. That would push you toward waterfall.
+   In modern spec-driven development, you normally create enough product-level direction up front, then write detailed specs incrementally per epic, feature, or story.
+
+   A better model is:
+
+   	Product Vision / PRD
+
+        	↓
+
+	High-Level Architecture
+
+        	↓
+
+	Epics / Roadmap
+
+        	↓
+
+	Feature Spec
+
+        	↓
+
+	Development
+
+        	↓
+
+	Feedback
+
+        	↓
+
+	Update Spec
+
+        	↓
+
+	Next Feature
+
+
+
+Example: For example, for your healthcare platform:
+
+PRD
+ ├── Patient Management
+ ├── Claims
+ ├── Payments
+ ├── Eligibility
+ ├── RPM
+ └── Reporting
+
+# You do not need to fully specify every screen, validation, API, edge case, and test case for all six modules before development starts.
+
+Instead:
+
+Sprint 1
+Patient Registration Spec
+        ↓
+Build
+        ↓
+Test
+        ↓
+Update spec if needed
+
+Sprint 2
+Eligibility Spec
+        ↓
+Build
+        ↓
+Test
+
+
+# That is still spec-driven development.
+
+
+
+
+
+
+
 Q. What three questions does a good spec answer, in order?
 A. 
 1. Why
@@ -1698,10 +1816,14 @@ A. The how. A spec describes behaviour, not implementation.
 
 
 
+
+
+
 Phase 3: Clarify by interview (make the AI ask you)
 ======================================================================================================================================================
 - This is the highest-value, most-skipped step. 
 - Before building, turn the questioning around: instead of instructing the AI, have it interview you to reveal everything the spec left ambiguous. 
+- we will do question answering with AI, to remove ambiguities or clarification of specs.
 
 - One prompt does most of the work:
 Before we build anything, interview me about this spec. 
@@ -1711,10 +1833,16 @@ Don't write any code yet.
 
 
 
+
+
+
+
+
 Phase 4: Build from the spec
 ======================================================================================================================================================
 				
 					Plan → Task → Implement → Verify
+
 
 - The spec is agreed. Now you build from it, and the amount of process you add scales with the change. 
 - There is no fixed pipeline to run every time: do the smallest amount of planning the change needs, then supervise the build against the spec.
@@ -1868,6 +1996,455 @@ The result is not just working code; it is working code plus a spec that explain
 
 
 
+Q. Should SRS, PRD, NFR, backlog, Figma, etc. all go into CLAUDE.md?
+======================================================================================================================================================
+A. 
+- No. Do not put all project documentation inside one CLAUDE.md.
+- CLAUDE.md should be more like an instruction and navigation file for Claude, not your entire product documentation repository.
+
+
+A good project structure would be:
+
+project/
+│
+├── CLAUDE.md
+│
+├── README.md
+│
+├── docs/
+│   │
+│   ├── product/
+│   │   ├── PRD.md
+│   │   ├── SRS.md
+│   │   └── product-roadmap.md
+│   │
+│   ├── architecture/
+│   │   ├── architecture.md
+│   │   ├── database-design.md
+│   │   ├── api-design.md
+│   │   └── integrations.md
+│   │
+│   ├── requirements/
+│   │   ├── functional-requirements.md
+│   │   ├── non-functional-requirements.md
+│   │   └── security-requirements.md
+│   │
+│   ├── specs/
+│   │   ├── patient-registration.md
+│   │   ├── claims.md
+│   │   ├── eligibility.md
+│   │   └── payments.md
+│   │
+│   └── decisions/
+│       ├── ADR-001-authentication.md
+│       └── ADR-002-database.md
+│
+├── backend/
+├── frontend/
+└── tests/
+
+
+
+
+Then CLAUDE.md might contain something like:
+
+# Project Instructions
+
+- This is a healthcare PMS/RPM platform.
+
+## Architecture
+- Backend: FastAPI
+- Database: PostgreSQL
+- Frontend: React
+
+## Important Documentation
+
+Product requirements:
+- docs/product/PRD.md
+
+System requirements:
+- docs/product/SRS.md
+
+Non-functional requirements:
+- docs/requirements/non-functional-requirements.md
+
+Architecture:
+- docs/architecture/architecture.md
+
+Feature specifications:
+- docs/specs/
+
+## Development Rules
+
+- Follow existing architecture.
+- Do not introduce new dependencies without approval.
+- Follow HIPAA-related security requirements.
+- Write tests for all business logic.
+- Do not modify database schema without migration.
+- Read the relevant feature spec before implementation.
+
+
+
+Think of CLAUDE.md as:
+			CLAUDE.md = AI Developer Handbook + Project Rules + Documentation Index + Coding Conventions
+
+Not:
+			CLAUDE.md != PRD + SRS + NFR + Backlog + Architecture +All Features + All Designs + Everything
+
+# That would become huge and difficult to maintain.
+# For Figma, usually you do not copy the whole design into markdown. Store the Figma link/reference in the relevant feature spec.
+
+
+Example: 
+Feature: 	Patient Registration
+Design: 	Figma: <link>
+Requirements: 	docs/specs/patient-registration.md
+API: 		POST /patients
+Acceptance Criteria:
+1. MRN must be unique.
+2. DOB cannot be future date.
+3. Email is optional.
+4. Required fields must be validated.
+
+
+- For Jira backlog, similarly, Jira can remain the work-management system.
+- A Jira story might reference:
+
+Spec:
+docs/specs/eligibility-verification.md
+
+Figma:
+<figma link>
+
+Epic:
+PMS-120
+
+Acceptance Criteria:
+...
+
+
+
+So you end up with:
+
+Jira
+   │
+   ├── Work tracking
+   │
+   ↓
+Feature Spec
+   │
+   ├── Requirements
+   ├── Edge cases
+   ├── APIs
+   └── Acceptance criteria
+   │
+   ↓
+Claude Code
+
+
+
+
+
+Q. Does spec driven development use Agile/Jira, Waterfall, or another methodology?
+A.
+
+- Spec-driven development is not a project-management methodology.
+
+It can be used with:
+Agile
+Scrum
+Kanban
+Waterfall
+SAFe
+Shape Up
+DevOps
+
+
+
+Spec-driven development answers: 
+How do we define what should be built?
+
+Scrum answers:
+How do we organize and deliver work?
+
+They solve different problems.
+
+For your organization, I would combine them like this:
+
+                    Product Vision
+                         │
+                         ↓
+                        PRD
+                         │
+                         ↓
+                 Product Roadmap
+                         │
+                         ↓
+                       Epics
+                         │
+                         ↓
+              Feature Specification
+                         │
+                         ↓
+                    Jira Backlog
+                         │
+                         ↓
+                  Sprint Planning
+                         │
+                         ↓
+              AI-Assisted Development (Claude/Developers)
+                         │
+                         ↓
+                  Code Review
+                         │
+                         ↓
+                       QA
+                         │
+                         ↓
+                   Sprint Review
+                         │
+                         ↓
+                  Update Spec
+
+
+So your model becomes: Agile/Scrum + Spec-Driven Development + AI-Driven Development + DevOps
+
+
+Each layer has a different role:
+
+Layer             | Purpose
+------------------|----------------------------------------------
+PRD/SRS           | Define product/system requirements
+Feature Specs     | Define exactly what should be built
+Jira/Scrum        | Plan and track delivery
+Claude Code / AI  | Help implement the specifications
+Git               | Version-control code and specs
+CI/CD             | Test and deploy
+Figma             | UI/UX source of truth
+ADR               | Record important architecture decisions
+
+
+
+
+A very practical model for your teams would be:
+
+PRD
+  ↓
+Epic
+  ↓
+Feature Spec
+  ↓
+Jira Stories
+  ↓
+Sprint
+  ↓
+Claude/Developers
+  ↓
+PR
+  ↓
+QA
+  ↓
+UAT
+  ↓
+Production
+
+
+# The important shift with spec-driven AI development is that the spec becomes the contract between Product/BA and the AI/development team.
+
+# And for long-lived enterprise software, 
+I would lean toward Spec-Anchored Development rather than pure Spec-First: keep the relevant feature spec updated whenever behavior changes, instead of letting documentation become stale.
+
+
+
+
+Q. How & when we will perform UiUx in spec-driven development?
+A.
+- UI/UX fits into all three phases — Research, Specify, and Clarify — but with different responsibilities in each phase.
+
+For a practical spec-driven workflow, I would place it like this:
+
+Phase        | UI/UX Activity
+-------------|------------------------------------------------------------
+Research     | Understand users, workflows, pain points, current process
+Clarify      | Resolve UX questions, edge cases, states, user journeys
+Specify      | Produce approved flows, wireframes, Figma designs, UI rules
+Develop      | Developers implement against the approved UX/UI specification
+Validate     | QA/UAT checks implementation against Figma + acceptance criteria
+
+
+
+The important point is:
+- UI/UX does NOT start only after the specification is finished.
+- UI/UX helps CREATE the specification.
+
+Recommended flow
+For your teams, I would structure it like this:
+
+Discovery
+   ↓
+Research
+   ├── Business research
+   ├── User research
+   └── UX research
+   ↓
+Clarify
+   ├── Requirements clarification
+   ├── User journeys
+   ├── Wireframes
+   └── Edge cases
+   ↓
+Specify
+   ├── Feature specification
+   ├── Acceptance criteria
+   ├── Final Figma
+   ├── UX states
+   └── NFR/security requirements
+   ↓
+Ready for Development
+   ↓
+Sprint Planning
+   ↓
+Development
+   ↓
+QA
+   ↓
+UAT
+
+
+Research
+   |
+   |-- User research
+   |-- Existing workflow analysis
+   |-- Pain points
+   |-- UX research
+   ↓
+Specify
+   |
+   |-- Initial user flow
+   |-- Wireframes
+   |-- Functional requirements
+   |-- Initial Figma concepts
+   ↓
+Clarify
+   |
+   |-- Missing states
+   |-- Error states
+   |-- Edge cases
+   |-- Permissions
+   |-- Responsive behavior
+   |-- UX questions
+   |-- Update Figma/spec
+   ↓
+Plan
+   |
+   |-- Technical design
+   |-- APIs
+   |-- DB changes
+   |-- Components
+   ↓
+Implement
+
+
+Q. How to perform Testing
+A.
+- In spec-driven development, testing should be derived from the specification rather than created independently after coding.
+- In spec-driven development, QA should ideally become involved during Clarify and Specify, not only after development.
+
+A practical flow is:
+
+Requirements / Spec
+        ↓
+Acceptance Criteria
+        ↓
+Test Scenarios
+        ↓
+Test Cases
+        ↓
+Automated + Manual Testing
+        ↓
+Defects
+        ↓
+Fix
+        ↓
+Regression Testing
+        ↓
+UAT
+
+
+For your process, I would perform testing in these layers:
+
+Testing Level        | What to Test
+---------------------|---------------------------------------------------------
+Unit Testing         | Individual functions, methods, services, calculations
+API Testing          | Endpoints, payloads, validations, status codes, errors
+Integration Testing  | Service-to-service, DB, queues, third-party integrations
+UI Testing           | Screens, forms, buttons, validations, navigation
+Functional Testing   | Whether feature behaves according to specification
+Negative Testing     | Invalid data, missing fields, unauthorized actions
+Security Testing     | Authentication, authorization, data exposure, OWASP risks
+Performance Testing  | Load, response time, concurrency, stress
+Regression Testing   | Existing features still work after new changes
+UAT                  | Business/Product confirms feature meets requirements
+
+
+The key concept is traceability.
+For every requirement, you should be able to trace:
+
+Requirement
+   ↓
+Acceptance Criteria
+   ↓
+Test Case
+   ↓
+Test Result
+
+
+
+Example:
+
+
+Requirement:
+Patient DOB cannot be a future date.
+
+Acceptance Criteria:
+System must reject any DOB later than today's date.
+
+Test Cases:
+TC-01  Enter valid past DOB      → Accepted
+TC-02  Enter today's date        → Accepted
+TC-03  Enter future DOB          → Rejected
+TC-04  Leave mandatory DOB empty → Validation shown
+
+
+
+
+A good lifecycle is:
+
+Research
+   ↓
+Clarify
+   ├── QA identifies testability issues
+   └── QA identifies edge cases
+   ↓
+Specify
+   ├── Acceptance Criteria
+   ├── Test scenarios
+   └── Expected behavior
+   ↓
+Development
+   ├── Unit tests
+   ├── Integration tests
+   └── Automated tests
+   ↓
+QA Testing
+   ↓
+Regression
+   ↓
+UAT
+   ↓
+Production
+
+
 
 
 
@@ -1877,8 +2454,23 @@ The result is not just working code; it is working code plus a spec that explain
 ======================================================================================================================================================
 
 
-i was here on 50 mins  on lecture 15 on 4 oct 2026
+i was here on 1:44 mins on lecture 15 on 5 oct 2026
 @2nPJ2gN$NuDsPpZXV0&e3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Lecture 16:  26-July-2026 [ Agentic Coding Part 5 ]
 ======================================================================================================================================================
