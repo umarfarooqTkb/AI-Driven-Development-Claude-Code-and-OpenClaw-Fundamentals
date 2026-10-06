@@ -19,6 +19,25 @@ Agentic AI Book: URL:https://agentfactory.panaversity.org/
 
 
 
+Here are the 9 sessions (watch in order):
+
+Transformer Fundamentals — https://lnkd.in/gaaRDexT
+Transformer Models + Practical Tricks — https://lnkd.in/gy4FUwNY
+Transformers → Large Language Models — https://lnkd.in/gsPiCrEU
+How LLMs Are Trained — https://lnkd.in/gvHJvgqP
+Tuning & Adaptation (fine-tuning, etc.) — https://lnkd.in/g6kgtPKR
+Reasoning in LLMs — https://lnkd.in/gAACSUG6
+Agentic LLMs (tools, planning, workflows) — https://lnkd.in/gVm6js9z
+Evaluation: what “good” really means — https://lnkd.in/gJhbFQ4s
+Recap + What’s trending now — https://lnkd.in/g5JMNTsf
+
+My suggestion: treat it like a mini-bootcamp, one lecture at a time, take notes, and pause to implement small experiments after each video.
+
+If you’re learning LLMs in 2026, this is a solid foundation.
+
+
+
+
 
 Lecture 1:  Introduction to General Agent problem solving - Orientation Session [22-May-2026]
 ======================================================================================================================================================
