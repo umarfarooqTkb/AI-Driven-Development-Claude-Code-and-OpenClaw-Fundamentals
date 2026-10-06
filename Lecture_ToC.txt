@@ -1524,12 +1524,20 @@ Traditional coding vs vibe coding:
 Spec driven development:
 ======================================================================================================================================================
 - Spec-Driven Development (SDD) is the way out of vibe coding. 
+- SDD is a software engineering approach where you write a detailed natural language or markdown specification as the single source of truth before any coding begins, 
+  replacing ad-hoc AI prompting
 - Writing down what you want, agreed with the AI, before any code exists.
 - Instead of describing what you want and hoping, you write it down, clearly enough that you and the AI agree before any code exists.
 - That written agreement is the spec. Code becomes what the spec produces, not the other way around.
 - The spec is the source of truth; code is a build output.
 - Specs become the real programming language.
 - Code becomes an ephemeral artifact.
+
+
+• Intent-First: Shift focus from writing syntax to defining what the system must do before worrying about how to implement it.
+• Artifacts: 	Use structured files like requirements.md, specs.md, plan.md, and tasks.md to guide AI agents step-by-step.
+• Alternative to Vibe Coding: Prevent context drift, hallucinations, and messy code by giving AI a precise blueprint instead of chaotic, iterative prompts.
+
 
 - SDD is a thinking discipline, not a coding skill.
 - The spec is the product; code is a build output
@@ -1553,6 +1561,9 @@ Mixing the two too early is the most common beginner mistake: you lock in a tech
 
 
 
+
+
+
 The three levels of SDD:
 ======================================================================================================================================================
 lvl1: Spec-First
@@ -1573,6 +1584,56 @@ Spec-as-Source   | The specification itself is the primary source. Code is gener
                  | review and testing.                                                            |
 
 
+
+Approach           | Meaning
+-------------------|------------------------------------------------------------
+Spec-First         | Write the spec before development starts. After that,
+                   | the spec may not be continuously maintained.
+
+Spec-Anchored      | The spec remains the reference point throughout development.
+                   | When behavior changes, update the spec and keep code aligned.
+
+Spec-as-Source     | The spec becomes the primary source from which code or other
+                   | artifacts are generated/re-generated and reviewed.
+
+
+
+Spec-First
+"Write the spec before coding."
+
+Spec-Anchored
+"Keep the spec and code synchronized."
+
+Spec-as-Source
+"Treat the spec as the main source, and derive implementation from it."
+
+
+
+
+SDD = overall methodology/discipline
+
+Spec-First = basic level
+Spec-Anchored = stronger ongoing discipline
+Spec-as-Source = most advanced/automated model
+
+
+
+Spec-First Development (Old Way of doing):
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+In Spec-First Development, the specification is written before implementation begins/ before any code is generated.
+It may take the form of user stories, acceptance criteria, feature specifications, or a formal requirements document.
+As the software evolves, the specification may become outdated or drift from the actual system.
+Therefore, Spec-First Development is often considered the entry point to SDD, while more mature approaches such as Spec-Anchored Development keep the specification continuously aligned with the software.
+
+
+Before AI: 	Spec → Human Developer → Code
+
+With AI:	Spec → AI Agent → Code
+
+
+
+
+
 Vibe coding vs. spec-driven development:
 ======================================================================================================================================================
 - The difference is when you do the thinking.
@@ -1590,7 +1651,7 @@ Vibe coding vs. spec-driven development:
 
 
 
-The Method
+Standard workflow of SDD  - Phases of Spec-Driven Development
 ======================================================================================================================================================
 The workflow has one foundation (the constitution) and four phases  (Research → Specify → Clarify → Build)
 
@@ -1726,83 +1787,6 @@ After: "A signed-out user can request a password reset by email. The link works 
 Q. What is the output of Specification Phase?
 A.
 
-Q. Do we document all specs (requirements) in one go then start development? as we do in SRS, PRD, NFR, Backlog etc.
-======================================================================================================================================================
-A. No, you generally should not write every requirement for the entire product in one giant spec and only then start development. That would push you toward waterfall.
-   In modern spec-driven development, you normally create enough product-level direction up front, then write detailed specs incrementally per epic, feature, or story.
-
-   A better model is:
-
-   	Product Vision / PRD
-
-        	↓
-
-	High-Level Architecture
-
-        	↓
-
-	Epics / Roadmap
-
-        	↓
-
-	Feature Spec
-
-        	↓
-
-	Development
-
-        	↓
-
-	Feedback
-
-        	↓
-
-	Update Spec
-
-        	↓
-
-	Next Feature
-
-
-
-Example: For example, for your healthcare platform:
-
-PRD
- ├── Patient Management
- ├── Claims
- ├── Payments
- ├── Eligibility
- ├── RPM
- └── Reporting
-
-# You do not need to fully specify every screen, validation, API, edge case, and test case for all six modules before development starts.
-
-Instead:
-
-Sprint 1
-Patient Registration Spec
-        ↓
-Build
-        ↓
-Test
-        ↓
-Update spec if needed
-
-Sprint 2
-Eligibility Spec
-        ↓
-Build
-        ↓
-Test
-
-
-# That is still spec-driven development.
-
-
-
-
-
-
 
 Q. What three questions does a good spec answer, in order?
 A. 
@@ -1917,7 +1901,8 @@ Because all four artifacts are plain files, your spec is now under version contr
 
 
 
- A Complete Worked Example -  One feature, start to finish, twice
+A Complete Worked Example -  One feature, start to finish, twice
+======================================================================================================================================================
 ======================================================================================================================================================
 
 - Let us run the whole loop on a small, real feature: a "weekly digest" that emails each user a summary of their notes every Monday. 
@@ -1928,6 +1913,7 @@ In claude.ai
 
 Phase 0: Constitution (already set in the Project). 
 - Principles: plain language, prefer existing libraries, every feature ships with a spec, never touch published/.
+
 
 Phase 1: Research. 
 
@@ -1995,6 +1981,411 @@ The result is not just working code; it is working code plus a spec that explain
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Important Points:
+======================================================================================================================================================
+======================================================================================================================================================
+
+1. Keep the spec alive
+- Keep the spec alive (the part everyone forgets). 
+- A spec is only the source of truth if it stays true. 
+- When behaviour changes (a new rule, a removed feature, a fixed edge case), change the spec first, then re-derive the code. 
+- This is the move that turns Spec-First into Spec-Anchored, 
+  and it is the difference between a spec that grows more valuable over time and one that becomes a lie in your repo within a month.
+
+What drift looks like in practice: someone tweaks the digest email's subject line directly in the code and ships it. 
+The spec still describes the old subject. 
+Three weeks later a new teammate reads the spec, "fixes" the code to match it, and quietly breaks the thing that was working. 
+Nobody lied; the spec just stopped being true, and it cost a bug to find out. The fix is cheap and boring: the change goes into spec.md in the same commit as the code, every time.
+
+# Specs become the real programming language. Code becomes an ephemeral artifact.
+# No human ever reads an implementation again, and agents handle generation, review, deployment, and the 2am incident.
+
+First: a spec must be precise enough to pin down design starts to look like code. 
+ Natural language is accessible, and that is its whole advantage. 
+ Once your spec fixes module boundaries, error handling, naming rules, testing strategy, and every constraint that matters, 
+ you have written a program in a language with no compiler and  no type checker. 
+ You have not escaped programming. 
+
+
+Second: agents are not deterministic, so a human sits on the far side of the black box.
+ A compiler given the same input returns the same output, every time. 
+ An agent asked for the same feature five times returns five designs, each with different trade-offs baked in. 
+ Someone has to decide whether the trade-offs it happened to choose are the right ones for this system. 
+ That decision is judgment, and it does not live in a spec file.
+
+Third: agent-written code decays, and the agent will let it.
+ Most agent-generated codebases in the industry are still young. 
+ They have not yet met the hundredth feature or the second year in production.
+ What we already know is that agents are worse than humans at leaving a file better than they found it, 
+ and that a spec written once and delegated forever has an older name in this industry: Waterfall.
+
+
+
+How SDD survives all three. 
+
+---------------------------------------------------------------------------------------------------
+The Objection                         | Where This Course Answers It
+--------------------------------------|-------------------------------------------------------------
+Natural language is ambiguous         | Acceptance criteria become executable checks, not prose.
+                                      | The formal, unambiguous part of your spec is the test suite.
+--------------------------------------|-------------------------------------------------------------
+Agents are non-deterministic          | You review the plan before any code, and review the result
+                                      | after every step. These gates exist for this reason.
+--------------------------------------|-------------------------------------------------------------
+Code decays quietly                   | The spec is your fixed point for a design pass, not a
+                                      | replacement for one. Read and review what actually shipped.
+--------------------------------------|-------------------------------------------------------------
+Spec once, then delegate forever      | That is Waterfall, not SDD. "Keep the spec alive" is the
+                                      | key difference.
+
+
+
+Your code now has two readers. 
+A human who must judge whether the system still makes sense, and an agent that must change it next week. 
+Both readers suffer from the same defects: tangled dependencies, one rule written in three places, names that lie about what they do. 
+Both readers get faster and cheaper when the design is clean.
+
+So the discipline is not "spec instead of code." 
+It is: agree on the what, generate the how, then go look at what came out.
+
+
+
+Practice:
+======================================================================================================================================================
+For every project, produce the same four artifacts (constitution, spec.md, plan.md, tasks.md) plus the working result.
+
+1. Clarify before implementation.
+2. Write edge cases into the spec.
+3. Keep spec.md updated when requirements change.
+4. Make code and spec remain synchronized.
+5. Test the spec by giving it to someone with no prior context.
+
+
+
+
+SDD Practice - Main Points
+==========================================================================
+
+Core Rule
+---------
+Reading about SDD is not enough.
+You learn SDD by running the full cycle on real work.
+
+Main success test:
+Can a stranger build the correct thing from the spec alone,
+without asking any questions?
+
+Core Artifacts
+--------------
+1. Constitution
+2. spec.md
+3. plan.md
+4. tasks.md
+5. Working implementation/result
+
+Main Practice Lessons
+---------------------
+
+1. Always run the full SDD loop
+   Research → Specify → Clarify → Plan → Implement → Validate
+
+2. Do not skip Clarify
+   Make the AI interview you before coding.
+   The purpose is to expose:
+   - Missing requirements
+   - Hidden assumptions
+   - Edge cases
+   - Ambiguous behavior
+   - Decisions you forgot to document
+
+3. Specify edge cases before implementation
+   Even simple features should define:
+   - Empty states
+   - Duplicate data
+   - No-result cases
+   - Case sensitivity
+   - Rename/update behavior
+   - Error conditions
+
+4. Keep SDD artifacts inside the repository
+   CLAUDE.md / AGENTS.md = constitution and AI instructions
+   spec.md              = what should be built
+   plan.md              = how it will be built
+   tasks.md             = implementation breakdown
+
+5. Implement one task at a time
+   - Complete one task
+   - Review it
+   - Test it
+   - Commit it
+   - Then move to the next task
+
+6. Keep the spec alive
+   When requirements change:
+   - Update spec.md first
+   - Re-run Clarify
+   - Update plan.md
+   - Update tasks.md
+   - Then change the code
+
+   Do not directly ask the AI to change the code first.
+
+7. Spec and code must tell the same story
+   Requirement changes in spec.md should match the resulting code changes.
+
+8. Review design quality after changes
+   SDD does not replace good engineering design.
+
+   Check for:
+   - Duplicated business rules
+   - Modules doing multiple jobs
+   - Poor naming
+   - Growing complexity
+   - Architecture degradation
+
+9. Spec-Anchored is stronger than Spec-First
+   Spec-First:
+   Write the spec, then build.
+
+   Spec-Anchored:
+   Keep the spec updated throughout the life of the system.
+
+10. Existing code requires Research first
+    Before adding a feature to an existing system, understand:
+    - Architecture
+    - Existing patterns
+    - Coding conventions
+    - Module boundaries
+    - Dependencies
+    - Where the feature should fit
+
+11. New features should fit the existing system
+    The feature should look like it naturally belongs to the codebase,
+    rather than being bolted onto it.
+
+12. SDD is not only for coding
+    The same approach can be used for:
+    - Business processes
+    - Reporting workflows
+    - Content pipelines
+    - Operational procedures
+    - Prompt workflows
+    - Review/checking processes
+
+13. The Stranger Test is the strongest validation
+    Give the spec to:
+    - A fresh AI session, or
+    - Another developer/person
+
+    Allow zero clarification questions.
+
+    If they build the wrong thing:
+    Fix the spec, not just the implementation.
+
+14. Final goal of SDD
+    Capture intent precisely enough that the requirement survives
+    after it leaves your head.
+
+
+
+
+SDD Practice - Short Summary
+==============================================================
+
+1. Use the full loop:
+   Research → Specify → Clarify → Plan → Implement → Validate
+
+2. Core files:
+   CLAUDE.md / AGENTS.md
+   spec.md
+   plan.md
+   tasks.md
+
+3. Clarify before coding:
+   Find missing requirements, assumptions, and edge cases.
+
+4. Keep the spec alive:
+   Requirement change → update spec first → clarify → plan → code.
+
+5. Implement one task at a time:
+   Build, test, review, commit, then move next.
+
+6. For existing code:
+   Research architecture, patterns, and conventions before specifying.
+
+7. SDD is not only for code:
+   It can also define repeatable business/process workflows.
+
+8. Final test:
+   A fresh developer or AI should be able to build the right thing
+   from the spec without asking questions.
+
+
+
+i was here on 2:27 mins on lecture 15 on 6 oct 2026
+@2nPJ2gN$NuDsPpZXV0&e3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+								Questions and Answers (Q &A)
+
+======================================================================================================================================================
+======================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+Q. Do we document all specs (requirements) in one go then start development? as we do in SRS, PRD, NFR, Backlog etc.
+======================================================================================================================================================
+A. No, you generally should not write every requirement for the entire product in one giant spec and only then start development. That would push you toward waterfall.
+   In modern spec-driven development, you normally create enough product-level direction up front, then write detailed specs incrementally per epic, feature, or story.
+
+   A better model is:
+
+   	Product Vision / PRD
+
+        	↓
+
+	High-Level Architecture
+
+        	↓
+
+	Epics / Roadmap
+
+        	↓
+
+	Feature Spec
+
+        	↓
+
+	Development
+
+        	↓
+
+	Feedback
+
+        	↓
+
+	Update Spec
+
+        	↓
+
+	Next Feature
+
+
+
+Example: For example, for your healthcare platform:
+
+PRD
+ ├── Patient Management
+ ├── Claims
+ ├── Payments
+ ├── Eligibility
+ ├── RPM
+ └── Reporting
+
+# You do not need to fully specify every screen, validation, API, edge case, and test case for all six modules before development starts.
+
+Instead:
+
+Sprint 1
+Patient Registration Spec
+        ↓
+Build
+        ↓
+Test
+        ↓
+Update spec if needed
+
+Sprint 2
+Eligibility Spec
+        ↓
+Build
+        ↓
+Test
+
+
+# That is still spec-driven development.
+
+
+
+
+
+
+
+Q. What three questions does a good spec answer, in order?
+A. 
+1. Why
+2. What
+3. What not to build
+
+
+Q. What does a spec deliberately leave out?
+A. The how. A spec describes behaviour, not implementation.
 
 Q. Should SRS, PRD, NFR, backlog, Figma, etc. all go into CLAUDE.md?
 ======================================================================================================================================================
@@ -2454,11 +2845,10 @@ Production
 ======================================================================================================================================================
 
 
-i was here on 1:44 mins on lecture 15 on 5 oct 2026
-@2nPJ2gN$NuDsPpZXV0&e3
 
 
 
+2
 
 
 
