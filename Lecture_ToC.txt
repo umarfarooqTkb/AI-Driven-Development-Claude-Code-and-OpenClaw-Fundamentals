@@ -1997,6 +1997,31 @@ The result is not just working code; it is working code plus a spec that explain
 
 
 
+Practice:
+======================================================================================================================================================
+For every project, produce the same four artifacts (constitution, spec.md, plan.md, tasks.md) plus the working result.
+
+1. Clarify before implementation.
+2. Write edge cases into the spec.
+3. Keep spec.md updated when requirements change.
+4. Make code and spec remain synchronized.
+5. Test the spec by giving it to someone with no prior context.
+
+
+
+[https://github.com/AmmarAamir786/p011-spec-driven-example/blob/main/example.md
+https://github.com/AmmarAamir786/p011-spec-driven-example/blob/main/example.md
+https://github.com/AmmarAamir786/p011-spec-driven-example/blob/main/example.md
+
+
+
+
+
+
+
+i was here on 1:27 mins on lecture 15 on 9 oct 2026 for practice
+@2nPJ2gN$NuDsPpZXV0&e3
+
 
 
 
@@ -2086,15 +2111,9 @@ It is: agree on the what, generate the how, then go look at what came out.
 
 
 
-Practice:
-======================================================================================================================================================
-For every project, produce the same four artifacts (constitution, spec.md, plan.md, tasks.md) plus the working result.
 
-1. Clarify before implementation.
-2. Write edge cases into the spec.
-3. Keep spec.md updated when requirements change.
-4. Make code and spec remain synchronized.
-5. Test the spec by giving it to someone with no prior context.
+
+
 
 
 
@@ -2219,8 +2238,7 @@ Main Practice Lessons
     Fix the spec, not just the implementation.
 
 14. Final goal of SDD
-    Capture intent precisely enough that the requirement survives
-    after it leaves your head.
+    Capture intent precisely enough that the requirement survives after it leaves your head.
 
 
 
@@ -2253,13 +2271,11 @@ SDD Practice - Short Summary
    It can also define repeatable business/process workflows.
 
 8. Final test:
-   A fresh developer or AI should be able to build the right thing
-   from the spec without asking questions.
+   A fresh developer or AI should be able to build the right thing from the spec without asking questions.
 
 
 
-i was here on 2:27 mins on lecture 15 on 6 oct 2026
-@2nPJ2gN$NuDsPpZXV0&e3
+
 
 
 
@@ -2310,6 +2326,10 @@ i was here on 2:27 mins on lecture 15 on 6 oct 2026
 
 
 
+SDD is suitable for what type of projects, WHat are the limitations of SDD
+======================================================================================================================================================
+- DO not use SDD for a very small change in an existing developed application, like changing color of a page, or a one line of code change.
+- Implement for atleast a complete Feature.
 
 
 
@@ -2929,17 +2949,22 @@ Lecture 17:  17-July-2026 [ Agentic Coding Part 5 ]
 - Daily Email Responder
 - Daily Calendar Notification at start of the day.
 
-
-
-
-
-
-
-
-
-
-
 							
 
 ====================================================== End of - Cowork Projects, Tasks, To Dos =======================================================
 ======================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+To Do, Questions
+======================================================================================================================================================
+
+is AIDLC and Spec-driven development same thing?
