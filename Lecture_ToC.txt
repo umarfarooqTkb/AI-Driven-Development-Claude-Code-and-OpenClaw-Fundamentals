@@ -2014,12 +2014,151 @@ https://github.com/AmmarAamir786/p011-spec-driven-example/blob/main/example.md
 https://github.com/AmmarAamir786/p011-spec-driven-example/blob/main/example.md
 
 
+Content of above GitHub repo
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+"FDE for a Day" — SDD Build
+What an FDE actually is
+A Forward-Deployed Engineer (FDE) works directly with one real client and builds software fitted to exactly how that client operates
+their rules, their workflow 
+— instead of handing them the same generic product everyone else gets.
+It's one of the fastest-growing tech roles in 2026.
+
+This exercise focuses on the first and most important part of that job:
+sitting with a client who has never written their rules down, asking the right questions to pull those rules out of their head, and writing them down precisely enough to build from correctly the first time. That's the Clarify phase of Spec-Driven Development — and it's what today's exercise practices.
+
+The scenario:
+Rosie runs a small, one-person dog-walking business in her neighborhood — no app, no website, no dev team, just her phone and a handful of regular clients found by word of mouth. 
+She has real pricing rules in her head, but nothing written down. 
+When a customer texts her "how much would this cost me?", she does the math by hand, and sometimes gets it wrong. 
+This is the situation you're stepping into as the FDE.
+
+The client card:
+This is all Rosie has told us so far — nothing more:
+
+Rosie's Dog Walking. 
+People keep texting me asking how much it would cost and I have to work it out by hand every time.
+Rate depends on number of dogs (2nd dog is 50% off, not free). 
+Same-day booking adds a surcharge. 
+Holiday walks are double.
+No stacking discounts. 
+I want one simple page with a calculator on it — customers can use it themselves, and I can pull up the same page when someone texts me.
+
+
+Format:
+The deliverable is one public page with the calculator as its centerpiece — not a bare tool, not a full marketing site. 
+One page fixes Rosie's actual problem for everyone: a customer can visit it and get their own quote before booking, and Rosie can pull up that same page when a customer contacts her directly and read the price straight off it. 
+Same interface, no login, no separate modes for Rosie versus the public — worth stating that explicitly in the spec so nobody accidentally builds two versions of it. 
+Everything besides the calculator (a one-line intro, a footer) stays deliberately small so the pricing logic stays our main focus.
+
+
+
+Timing (~45 min, full method)
+
+
+| Time      | Phase                 | What Happens                                                                                            |
+| --------- | --------------------- | ------------------------------------------------------------------------------------------------------- |
+| 2 min     | Frame                 | Present the FDE definition, scenario, and client card.                                                  |
+| 3–4 min   | Phase 0: Constitution | Have Claude draft `CLAUDE.md` live; don't hand-type it.                                                 |
+| 3–5 min   | Phase 1: Research     | Conduct a light research pass.                                                                          |
+| 5 min     | Phase 2: Specify      | Draft `spec.md` from the client card.                                                                   |
+| 10–12 min | Phase 3: Clarify      | Conduct the requirements interview. This is the main lesson; do not rush.                               |
+| 3–4 min   | Phase 4a: Plan        | Generate `plan.md` and review it before approval.                                                       |
+| 2–3 min   | Phase 4b: Tasks       | Claude creates and tracks its task list; review the breakdown.                                          |
+| 8–10 min  | Phase 4c: Implement   | Build task by task, checking each against the specification.                                            |
+| 2–3 min   | Phase 4d: Verify      | Validate 3–4 acceptance criteria against the finished page, separately from implementation spot-checks. |
+
+
+
+
+Phase 0 — Constitution
+Prompt:
+
+Draft a CLAUDE.md constitution for a small project: a single public page for a local dog-walking business, built around an instant quote calculator that both the business owner and her customers will use. 
+Structure it with three sections — Principles, Constraints, and Definition of done — 6-8 lines total, no more. Constraints must include: single-file web app (one HTML file with embedded CSS and JS), no backend, no database, no login, no external API calls, no frameworks. Match the constitution to the size of this project — this is a small weekend-style build, not an enterprise system, so don't add testing coverage percentages, performance budgets, or process for its own sake. Don't write any application code yet, just the constitution file.
+
+
+
+Phase 1 — Research
+In real life, a single-file pricing calculator is small enough that most FDEs would skip straight to Specify — this is the kind of change the course itself says to just build. We're running Research anyway so you see the full method once, end to end.
+
+Prompt:
+
+Research what's involved in building a rule-based pricing calculator for a service business (discounts, surcharges, and rules that can conflict with each other). Cover, each on its own: (1) how this kind of tiered/conditional pricing logic is usually structured, (2) common approaches to evaluating multiple discount and surcharge rules without them silently conflicting, (3) typical edge cases (rounding, order of operations, which rule wins when two apply), (4) failure modes to watch for. Give me a one-page findings doc. Don't propose a final design or write code yet.
+
+
+
+Phase 2 — Specify
+Prompt:
+
+Here is a client brief, word for word, nothing added: "Rosie's Dog Walking. People keep texting me asking how much it would cost and I have to work it out by hand every time. Rate depends on number of dogs (2nd dog is 50% off, not free). Same-day booking adds a surcharge. Holiday walks are double. No stacking discounts. I want one simple page with a calculator on it — customers can use it themselves, and I can pull up the same page when someone texts me." Using this, the research findings, and our constitution, draft spec.md for this page. Include: goal, user scenarios (cover both a customer using it directly and Rosie using the same page), functional requirements, edge cases & rules, out-of-scope, and acceptance criteria. Describe behaviour only, no code yet. Make each requirement specific enough that a build which ignored it would visibly fail.
+
+
+
+
+Phase 3 — Clarify (do not rush this)
+Prompt:
+
+Before we build anything, interview me about this spec, one question at a time, focusing on ambiguities, missing edge cases, and unstated assumptions from the client brief. Spend most of your questions on the pricing rules, since that's where the real risk is — the page layout itself only needs a quick pass. Keep going until you could hand this spec to a stranger and trust they'd build exactly what Rosie meant. Don't write any code yet.
+
+Questions to expect (let them land if the class is quiet): does the same-day surcharge apply before or after the multi-dog discount is calculated? If a holiday booking is also same-day, do both surcharges apply, or does "no stacking" mean only the larger one wins? Does the 50%-off rate apply to every dog after the first, or only the second? What happens with a 0-minute or negative-length walk typed by mistake? Does the page show just the final price, or the full breakdown (base rate, discount, surcharge) so Rosie can double-check it before quoting a customer? Each answer gets folded back into spec.md before moving on.
+
+
+
+
+Phase 4a — Plan
+Prompt:
+
+Based on the agreed spec, propose a simple technical plan: a single HTML file with embedded CSS and JS, no dependencies, no frameworks. Name the key decisions (e.g., the order rules get evaluated in) and why. Don't write code yet — review before implementing.
+
+Phase 4b — Tasks
+Prompt:
+
+Break the approved plan into an ordered, checkable task list, each task tagged with the functional requirement it satisfies. Track it as you go — the breakdown gets reviewed, not authored, by the human.
+
+Phase 4c — Implement
+Prompt:
+
+Implement the task list in small steps, one task at a time. After each, check it against spec.md and stop for confirmation before the next.
+
+Note: these are per-task spot-checks — did this step satisfy this requirement. That's different from Phase 4d below, which checks the finished product against every acceptance criterion at once.
+
+Phase 4d — Verify
+Prompt:
+
+Let's go through the acceptance criteria in spec.md, three or four of them. For each, tell me exactly what input to try on the finished page so it can be confirmed live on screen.
+
+Extra client cards (homework)
+Same raw-brief idea — hand these out for students to run the full loop on their own afterwar
+
+Card — Sana's Tutoring Studio
+Per-hour rate drops after the 4th hour per week for the same student. Siblings booked together get a bundle rate. A cancellation with less than 12 hours' notice still bills half price.
+
+Card — Bright Bites Bakery
+Custom cake orders need 48 hours' lead time, or a rush fee applies. Orders under a set size don't qualify for delivery. Customers get a loyalty discount after their 5th order.
+
+Card — Ali's Car Detailing
+Price depends on vehicle size (small / medium / large / SUV). A second car booked same day gets a discount. Add-ons (interior shampoo, engine bay clean) each add a flat fee, but two or more add-ons together get a small bundle discount.
+
+Card — Fahad's Photography Studio
+Hourly rate for the shoot, plus a flat per-location travel fee if outside the city. Rush edits (delivered within 48 hours) cost extra. Returning clients (2nd booking onward) get a 10% loyalty discount that does not stack with the rush fee.
+
+
+
+
+Resume line
+"Practiced Spec-Driven Development to gather requirements and deliver a solution fitted to a client's specific business rules — the same requirements-discipline used by Forward-Deployed Engineers (FDE)."
 
 
 
 
 
-i was here on 1:27 mins on lecture 15 on 9 oct 2026 for practice
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+i was here on 1:35 mins on lecture 15 on 14 oct 2026 for practice
 @2nPJ2gN$NuDsPpZXV0&e3
 
 
