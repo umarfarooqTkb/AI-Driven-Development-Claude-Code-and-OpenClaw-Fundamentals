@@ -2009,7 +2009,6 @@ For every project, produce the same four artifacts (constitution, spec.md, plan.
 
 
 
-[https://github.com/AmmarAamir786/p011-spec-driven-example/blob/main/example.md
 https://github.com/AmmarAamir786/p011-spec-driven-example/blob/main/example.md
 https://github.com/AmmarAamir786/p011-spec-driven-example/blob/main/example.md
 
@@ -2019,8 +2018,7 @@ Content of above GitHub repo
 
 "FDE for a Day" — SDD Build
 What an FDE actually is
-A Forward-Deployed Engineer (FDE) works directly with one real client and builds software fitted to exactly how that client operates
-their rules, their workflow 
+A Forward-Deployed Engineer (FDE) works directly with one real client and builds software fitted to exactly how that client operates their rules, their workflow 
 — instead of handing them the same generic product everyone else gets.
 It's one of the fastest-growing tech roles in 2026.
 
@@ -2072,10 +2070,15 @@ Timing (~45 min, full method)
 
 
 Phase 0 — Constitution
+ - it will go in claude.md
+
 Prompt:
 
 Draft a CLAUDE.md constitution for a small project: a single public page for a local dog-walking business, built around an instant quote calculator that both the business owner and her customers will use. 
-Structure it with three sections — Principles, Constraints, and Definition of done — 6-8 lines total, no more. Constraints must include: single-file web app (one HTML file with embedded CSS and JS), no backend, no database, no login, no external API calls, no frameworks. Match the constitution to the size of this project — this is a small weekend-style build, not an enterprise system, so don't add testing coverage percentages, performance budgets, or process for its own sake. Don't write any application code yet, just the constitution file.
+Structure it with three sections — Principles, Constraints, and Definition of done — 6-8 lines total, no more. 
+Constraints must include: single-file web app (one HTML file with embedded CSS and JS), no backend, no database, no login, no external API calls, no frameworks. 
+Match the constitution to the size of this project — this is a small weekend-style build, not an enterprise system, so don't add testing coverage percentages, performance budgets, or process for its own sake. 
+Don't write any application code yet, just the constitution file.
 
 
 
@@ -2084,14 +2087,27 @@ In real life, a single-file pricing calculator is small enough that most FDEs wo
 
 Prompt:
 
-Research what's involved in building a rule-based pricing calculator for a service business (discounts, surcharges, and rules that can conflict with each other). Cover, each on its own: (1) how this kind of tiered/conditional pricing logic is usually structured, (2) common approaches to evaluating multiple discount and surcharge rules without them silently conflicting, (3) typical edge cases (rounding, order of operations, which rule wins when two apply), (4) failure modes to watch for. Give me a one-page findings doc. Don't propose a final design or write code yet.
+Research what's involved in building a rule-based pricing calculator for a service business (discounts, surcharges, and rules that can conflict with each other). 
+Cover, each on its own: 
+(1) how this kind of tiered/conditional pricing logic is usually structured, 
+(2) common approaches to evaluating multiple discount and surcharge rules without them silently conflicting, 
+(3) typical edge cases (rounding, order of operations, which rule wins when two apply), 
+(4) failure modes to watch for. Give me a one-page findings doc. Don't propose a final design or write code yet.
 
 
 
 Phase 2 — Specify
 Prompt:
 
-Here is a client brief, word for word, nothing added: "Rosie's Dog Walking. People keep texting me asking how much it would cost and I have to work it out by hand every time. Rate depends on number of dogs (2nd dog is 50% off, not free). Same-day booking adds a surcharge. Holiday walks are double. No stacking discounts. I want one simple page with a calculator on it — customers can use it themselves, and I can pull up the same page when someone texts me." Using this, the research findings, and our constitution, draft spec.md for this page. Include: goal, user scenarios (cover both a customer using it directly and Rosie using the same page), functional requirements, edge cases & rules, out-of-scope, and acceptance criteria. Describe behaviour only, no code yet. Make each requirement specific enough that a build which ignored it would visibly fail.
+Here is a client brief, word for word, nothing added: "Rosie's Dog Walking. People keep texting me asking how much it would cost and I have to work it out by hand every time. 
+Rate depends on number of dogs (2nd dog is 50% off, not free). 
+Same-day booking adds a surcharge. 
+Holiday walks are double. 
+No stacking discounts. 
+I want one simple page with a calculator on it — customers can use it themselves, and I can pull up the same page when someone texts me.
+" Using this, the research findings, and our constitution, draft spec.md for this page. 
+Include: goal, user scenarios (cover both a customer using it directly and Rosie using the same page), functional requirements, edge cases & rules, out-of-scope, and acceptance criteria. Describe behaviour only, no code yet. 
+Make each requirement specific enough that a build which ignored it would visibly fail.
 
 
 
@@ -2099,9 +2115,16 @@ Here is a client brief, word for word, nothing added: "Rosie's Dog Walking. Peop
 Phase 3 — Clarify (do not rush this)
 Prompt:
 
-Before we build anything, interview me about this spec, one question at a time, focusing on ambiguities, missing edge cases, and unstated assumptions from the client brief. Spend most of your questions on the pricing rules, since that's where the real risk is — the page layout itself only needs a quick pass. Keep going until you could hand this spec to a stranger and trust they'd build exactly what Rosie meant. Don't write any code yet.
+Before we build anything, interview me about this spec, one question at a time, focusing on ambiguities, missing edge cases, and unstated assumptions from the client brief. 
+Spend most of your questions on the pricing rules, since that's where the real risk is — the page layout itself only needs a quick pass. 
+Keep going until you could hand this spec to a stranger and trust they'd build exactly what Rosie meant. 
+Don't write any code yet.
 
-Questions to expect (let them land if the class is quiet): does the same-day surcharge apply before or after the multi-dog discount is calculated? If a holiday booking is also same-day, do both surcharges apply, or does "no stacking" mean only the larger one wins? Does the 50%-off rate apply to every dog after the first, or only the second? What happens with a 0-minute or negative-length walk typed by mistake? Does the page show just the final price, or the full breakdown (base rate, discount, surcharge) so Rosie can double-check it before quoting a customer? Each answer gets folded back into spec.md before moving on.
+Questions to expect (let them land if the class is quiet): does the same-day surcharge apply before or after the multi-dog discount is calculated? 
+If a holiday booking is also same-day, do both surcharges apply, or does "no stacking" mean only the larger one wins? Does the 50%-off rate apply to every dog after the first, 
+or only the second? What happens with a 0-minute or negative-length walk typed by mistake?
+Does the page show just the final price, or the full breakdown (base rate, discount, surcharge) so Rosie can double-check it before quoting a customer? 
+Each answer gets folded back into spec.md before moving on.
 
 
 
@@ -2109,19 +2132,23 @@ Questions to expect (let them land if the class is quiet): does the same-day sur
 Phase 4a — Plan
 Prompt:
 
-Based on the agreed spec, propose a simple technical plan: a single HTML file with embedded CSS and JS, no dependencies, no frameworks. Name the key decisions (e.g., the order rules get evaluated in) and why. Don't write code yet — review before implementing.
+Based on the agreed spec, propose a simple technical plan: a single HTML file with embedded CSS and JS, no dependencies, no frameworks. 
+Name the key decisions (e.g., the order rules get evaluated in) and why. Don't write code yet — review before implementing.
 
 Phase 4b — Tasks
 Prompt:
 
-Break the approved plan into an ordered, checkable task list, each task tagged with the functional requirement it satisfies. Track it as you go — the breakdown gets reviewed, not authored, by the human.
+Break the approved plan into an ordered, checkable task list, each task tagged with the functional requirement it satisfies. 
+Track it as you go — the breakdown gets reviewed, not authored, by the human.
 
 Phase 4c — Implement
 Prompt:
 
-Implement the task list in small steps, one task at a time. After each, check it against spec.md and stop for confirmation before the next.
+Implement the task list in small steps, one task at a time. 
+After each, check it against spec.md and stop for confirmation before the next.
 
-Note: these are per-task spot-checks — did this step satisfy this requirement. That's different from Phase 4d below, which checks the finished product against every acceptance criterion at once.
+Note: these are per-task spot-checks — did this step satisfy this requirement.
+That's different from Phase 4d below, which checks the finished product against every acceptance criterion at once.
 
 Phase 4d — Verify
 Prompt:
@@ -2154,6 +2181,9 @@ Resume line
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 1: Set up constitution
+ - it will go in claude.md
 
 
 
