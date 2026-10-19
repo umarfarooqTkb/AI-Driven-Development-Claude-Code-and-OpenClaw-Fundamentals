@@ -556,7 +556,7 @@ how to identify context rot situation
 # in such situations, stop sending messages to AI, you will waste your tokens or usage limit
 you can use /compact, /clear//rewind or start a new session
 
-i was on 11. agentic coding part 3 video 29:16 min on 31 July 2026
+
 
 
 
@@ -2087,12 +2087,14 @@ In real life, a single-file pricing calculator is small enough that most FDEs wo
 
 Prompt:
 
-Research what's involved in building a rule-based pricing calculator for a service business (discounts, surcharges, and rules that can conflict with each other). 
+Research 2026 trends on what's involved in building a rule-based pricing calculator for a service business (discounts, surcharges, and rules that can conflict with each other). 
 Cover, each on its own: 
 (1) how this kind of tiered/conditional pricing logic is usually structured, 
 (2) common approaches to evaluating multiple discount and surcharge rules without them silently conflicting, 
 (3) typical edge cases (rounding, order of operations, which rule wins when two apply), 
 (4) failure modes to watch for. Give me a one-page findings doc. Don't propose a final design or write code yet.
+
+Use sub-agents for this task (web-search)
 
 
 
@@ -2133,13 +2135,13 @@ Phase 4a — Plan
 Prompt:
 
 Based on the agreed spec, propose a simple technical plan: a single HTML file with embedded CSS and JS, no dependencies, no frameworks. 
-Name the key decisions (e.g., the order rules get evaluated in) and why. Don't write code yet — review before implementing.
+Name the key decisions (e.g., the order rules get evaluated in) and why. Don't write code yet — review before implementing. generate a plam.md file.
 
 Phase 4b — Tasks
 Prompt:
 
 Break the approved plan into an ordered, checkable task list, each task tagged with the functional requirement it satisfies. 
-Track it as you go — the breakdown gets reviewed, not authored, by the human.
+Track it as you go — the breakdown gets reviewed, not authored, by the human. create a task.md file
 
 Phase 4c — Implement
 Prompt:
@@ -2181,10 +2183,17 @@ Resume line
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step 0: Pre-requisites
+- open terminal and navigate to the project folder
+- type opencode/claude code
+- code .
+
+
 
 Step 1: Set up constitution
- - it will go in claude.md
-
+- copy and paste prompt in opencode/claude code from above section "Phase 0 — Constitution"
+- it will go in claude.md
+- open code will produce two files
 
 
 

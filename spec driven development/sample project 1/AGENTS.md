@@ -1,13 +1,10 @@
-# AGENTS.md
+# CLAUDE.md Constitution
 
-## Project
-Single-file dog-walking quote calculator (HTML + embedded CSS/JS). No build, no deps, no server.
+## Principles
+Instant quotes for dog-walking tiers; owner and customers use same calculator. Owner updates prices by editing one config object — no code changes needed. Calculator works offline after first load; no build step required.
 
-## Commands
-- Open `index.html` in browser to run
-- Edit prices in the `PRICES` config object at top of `<script>` block
+## Constraints
+Single HTML file with embedded CSS and JS — no separate assets. No backend, database, login, or external API calls. No frameworks (vanilla JS only). Prices live in one config object the owner can edit directly.
 
-## Constraints (from CLAUDE.md)
-- One HTML file only — no extra files, no build step
-- No backend, database, login, external APIs, frameworks
-- Must work offline after first load
+## Definition of done
+Calculator produces accurate quotes for all tiers. Owner updates prices by editing one config object. Single-page load works offline; refresh to pick up price changes.

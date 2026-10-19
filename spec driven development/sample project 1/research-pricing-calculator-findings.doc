@@ -1,0 +1,49 @@
+# Rule-Based Pricing Calculator: 2026 Findings (One-Page)
+
+## 1. Tiered/Conditional Pricing Logic Structure
+
+Pricing logic uses **if/else cascades** or **lookup tables** over inputs (quantity, service tier, commitment length). Key patterns:
+
+- **Quantity tiers**: `if Qty >= 100 then rate A else if Qty >= 50 then rate B else rate C` — always specify explicit bounds (`>= 50 AND < 100`) to prevent overlap
+- **Service/feature gates**: `if tier = "Premium" then rate else if tier = "Standard" then rate else base_rate`
+- **Time-based**: `if Hours <= 5 then standard else if Hours <= 20 then $45/hr else $40/hr`
+- **Conditional combos**: `if Package = "Premium" and Qty >= 5 then discounted else base` — both conditions evaluate simultaneously
+
+**Quick tip**: Start simple, then layer conditional logic. Specify both min and max for each tier.
+
+## 2. Evaluating Multiple Discount/Surcharge Rules
+
+Conflicts are common. Three resolution strategies:
+
+| Strategy | Behavior | Use Case |
+|---|---|---|
+| **Skip All** | Keep existing pricing unchanged | Existing sale takes priority |
+| **Override All** | Force new rule to take precedence | Deeper discount or narrower group |
+| **Manual Override** | Line-by-line selection which variant gets new price | Granular control |
+
+**Critical**: Discounts never stack — single highest-priority discount wins. Always calculate against the **original base price**, not against other discounts. Some systems (JoomBook, Bevy) offer "Only deduct when no other discount applies" to prevent double discounting.
+
+## 3. Typical Edge Cases
+
+| Issue | Symptom | Prevention |
+|---|---|---|
+| **Overlapping tiers** | Wrong rule at boundary | Specify explicit bounds: `Qty >= 50 AND Qty < 100` |
+| **Rounding drift** | $13 difference from intermediate rounding | Round only at display/storage boundary; retain raw precision internally |
+| **Order of operations** | Discount applied to already-discounted price | Apply all adjustments to base price, then clamp; document explicit order |
+| **Which rule wins** | Inconsistent results across refreshes | Enforce unique priorities; resolve conflicts before publish |
+| **Half-cent boundaries** | `Math.round` vs `toFixed` disagree | Define tie rule (round half up/down/even) and apply consistently |
+| **Discount from base vs. cascaded** | 20% off $90 → $72 vs. $80 | Always discount from base price; never cascade off other discounts |
+
+## 4. Failure Modes to Watch
+
+- **Silent mispricing**: Rules partially matching at boundaries — test every boundary value
+- **Double discount**: 20% off $90 → $72 instead of 20% off $100 → $80 — always discount from base
+- **Rounding inconsistencies**: Intermediate vs. final rounding produces different totals — pick one and stick to it
+- **Infeasible bands**: Floor > Ceiling — validation at load catches this; raise error, don't silently pick one
+- **Non-deterministic order**: Equal-priority rules in undefined order — enforce unique priorities; flag duplicates at load
+- **Context drift**: Rules reading clocks/mutable globals — keep predicates functions of input context only
+- **No priority mechanism**: Rules applied in insertion order — always define explicit priority ordering
+
+**Design principle**: Version constants; document calculation order (inputs → adjustments → fees → tax → round once at display); keep taxes/overages outside model unless explicitly included.
+
+**Sources**: 2026 web research on pricing calculator trends, rule conflict resolution, edge cases, and failure modes across multiple platforms (Shopify, Dynamics 365, Carbon, Craft Commerce, Everest Forms, Custom Price Calculator, Cognito Forms, and industry articles on tiered pricing, discount conflicts, and rounding policies).
