@@ -1498,6 +1498,36 @@ END OF - COWORk
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Lecture 15:  24-July-2026 [ Spec driven Development ]
 ======================================================================================================================================================
 ======================================================================================================================================================
@@ -1711,6 +1741,30 @@ Validate    | Test implementation against the specification
 
 
 
+
+
+
+### Important SDD Distinction — Phases, Artifacts & Purpose
+
+| Phase                 | Artifact                  | Main Question                                              |
+| --------------------- | ------------------------- | ---------------------------------------------------------- |
+| Phase 0: Constitution | `CLAUDE.md`               | What principles and standards must we follow?              |
+| Phase 1: Research     | Research findings         | What existing information or technical context do we need? |
+| Phase 2: Specify      | `spec.md`                 | What must the system do?                                   |
+| Phase 3: Clarify      | Updated `spec.md`         | What is ambiguous, missing, or contradictory?              |
+| Phase 4a: Plan        | `plan.md`                 | How will we implement it?                                  |
+| Phase 4b: Tasks       | Task list                 | What work needs to be completed?                           |
+| Phase 4c: Implement   | Source code               | Build according to the specification.                      |
+| Phase 4d: Verify      | Test results / validation | Does the implementation satisfy the specification?         |
+
+
+
+
+
+
+
+
+
 Phase 0: The Constitution - the rules above every spec
 ======================================================================================================================================================
 
@@ -1773,11 +1827,17 @@ A. A short findings doc: what exists, the options, what is unknown.
 
 
 
-Phase 2: Write the spec (the what and why, what not (out of scope) & never the how)
+Phase 2: — Specify Phase (spec.md) - Write the spec (the what and why, what not (out of scope) & never the how)
 ======================================================================================================================================================
 - Now write the spec, grounded in the research. 
 - Do not start from a blank page: draft it with the AI, then make it precise. 
 - The three questions from Concept 2 (why, what, and what not to build) expand into six following concrete sections. 
+- Key Principle: spec.md defines WHAT to build, not HOW to build it. 
+- It is initially created during the Specify phase and refined during the Clarify phase.
+- The specification is subsequently refined during the Clarify phase.
+- Also, spec.md is a common convention, not a mandatory universal filename or structure across all SDD frameworks.
+- The spec.md created during Specify is an initial specification. 
+- During Clarify, ambiguous requirements are resolved and the specification is updated before implementation.
 
 A workable spec has, at minimum:
 
@@ -1787,6 +1847,59 @@ Functional requirements:  the testable musts, each specific enough to fail a bui
 Edge cases & rules: 	  input that is empty, huge, duplicate, malformed, unauthorized.
 Out of scope:		  what this explicitly does not do. Do not skip this.
 Acceptance criteria: 	  the checklist that says "done" (the constitution's project-wide definition of done still applies on top).
+
+
+### Typical spec.md Structure
+
+| S.No | Section                           | Description                                                             |
+| ---- | --------------------------------- | ----------------------------------------------------------------------- |
+| 1    | Overview / Objective              | What are we building and why?                                           |
+| 2    | Functional Requirements (FR)      | Features and functionality the system must provide.                     |
+| 3    | Non-Functional Requirements (NFR) | Performance, security, scalability, reliability, accessibility, etc.    |
+| 4    | User Stories / Use Cases          | Who will use the system and what do they need?                          |
+| 5    | Acceptance Criteria (AC)          | Testable conditions that determine whether requirements are satisfied.  |
+| 6    | Edge Cases                        | Unusual scenarios, boundary conditions, errors, and exceptions.         |
+| 7    | Out of Scope                      | Features and functionality explicitly excluded.                         |
+| 8    | Assumptions / Constraints         | Assumptions, business rules, and technical or regulatory limitations.   |
+| 9    | Dependencies                      | External systems, APIs, services, and prerequisites.                    |
+| 10   | Open Questions                    | Ambiguous, missing, or unresolved requirements requiring clarification. |
+
+
+
+### Example: User Authentication
+
+
+
+spec.md
+│
+├── Overview
+├── Functional Requirements
+│   ├── FR-01: User login
+│   ├── FR-02: Password reset
+│   └── FR-03: MFA
+│
+├── Non-Functional Requirements
+│   ├── NFR-01: Security
+│   └── NFR-02: Performance
+│
+├── Acceptance Criteria
+│   ├── AC-01: Valid credentials allow login
+│   └── AC-02: Invalid credentials display an error
+│
+├── Edge Cases
+│   ├── Expired MFA code
+│   └── Account locked during login
+│
+├── Out of Scope
+│   └── Social login
+│
+├── Assumptions / Constraints
+├── Dependencies
+└── Open Questions
+
+
+
+
 
 
 
@@ -1829,6 +1942,10 @@ Phase 3: Clarify by interview (make the AI ask you)
 - This is the highest-value, most-skipped step. 
 - Before building, turn the questioning around: instead of instructing the AI, have it interview you to reveal everything the spec left ambiguous. 
 - we will do question answering with AI, to remove ambiguities or clarification of specs.
+- In this phase AI will ask questions, bring up some scenarios/questions, which are still not in spec.md
+- As a BA/Product Owner, you can say, it is Requirement Analysis sort of activity.
+- All new things will become part of spec.md, which is now our only source of truth (SRS, BRD, PRD)
+
 
 - One prompt does most of the work:
 Before we build anything, interview me about this spec. 
@@ -2192,12 +2309,42 @@ Step 0: Pre-requisites
 
 
 
-Step 1: Set up constitution
+Step 1: Set up constitution (CLAUDE.MD)
 - copy and paste prompt in opencode/claude code from above section "Phase 0 — Constitution"
 - it will go in claude.md
 - open code will produce two files
+- constitution of your project will be created in Claude.md or agents.md
 
 
+Step 2: Perform Research Phase
+- Once constitution is reviewed and finalised, we will move to the next step of research phase.
+- copy and paste prompt in opencode/claude code from above section "Phase 1 — Research"
+- add in prompt to name the file something research-project-name
+- at the end another file will also be created, review and finalise it.
+
+
+Step 3: Create Specifications (spec.MD)
+- copy and paste prompt in opencode/claude code from above section "Phase 2 — Specify"
+- In this step we are writing our requirements ( FR, Userstories/Usecases, Edge Cases, Acceptance Criteria, Assumptions / Constraints, Out of Scope, Dependencies etc)
+- spec.md file will be created in the folder.
+
+
+Step 4: Clarification Phase
+- copy and paste prompt in opencode/claude code from above section "Phase 3 — Clarify"
+- In this phase AI will ask questions, bring up some scenarios/questions, which are still not in spec.md
+- As a BA/Product Owner, you can say, it is Requirement Analysis sort of activity.
+- All new things will become part of spec.md, which is now our only source of truth (SRS, BRD, PRD)
+
+
+
+Step 5: Plan Phase
+- first create plan.md. use above prompt
+- then create task.md. use above prompt
+- then plan (not apply yet)
+- then implement task by task, verify each task and move forward step by step
+
+
+Step 4: Plan and Implementation Phase
 
 i was here on 1:35 mins on lecture 15 on 14 oct 2026 for practice
 @2nPJ2gN$NuDsPpZXV0&e3
