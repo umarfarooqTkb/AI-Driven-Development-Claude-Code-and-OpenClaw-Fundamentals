@@ -2346,17 +2346,6 @@ Step 5: Plan Phase
 
 Step 4: Plan and Implementation Phase
 
-i was here on 1:35 mins on lecture 15 on 14 oct 2026 for practice
-@2nPJ2gN$NuDsPpZXV0&e3
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3214,7 +3203,6 @@ Production
 
 
 
-2
 
 
 
@@ -3227,13 +3215,58 @@ Production
 
 
 
-
-Lecture 16:  26-July-2026 [ Agentic Coding Part 5 ]
+Lecture 16:  26-July-2026 [ Loop Engineering Part 1 ]
 ======================================================================================================================================================
 ======================================================================================================================================================
 
 
-Lecture 17:  17-July-2026 [ Agentic Coding Part 5 ]
+What Is Loop Engineering?
+Loop Engineering is an approach to software development where work is performed through a repeated cycle of planning, 
+implementation, testing, feedback, and improvement until the desired result is achieved.
+
+In modern AI-assisted software development, it often refers to using AI coding agents in an iterative feedback loop rather than asking AI to generate code only once.
+
+
+
+
+
+Practical Example: AI Software Development
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Suppose you want to develop a Python FastAPI authentication module using Claude Code or another AI coding agent.
+
+
+   Step			Activity
+----------------------------------------------------------------------
+1. Requirements		Define login, MFA, session management
+2. Implementation	AI generates FastAPI code
+3. Testing		Run pytest and security checks
+4. Evaluation		Identify failed tests and vulnerabilities
+5. Improvement		AI fixes identified issues
+6. Repeat		Continue until acceptance criteria pass
+7. Completion		Human review and approval
+
+
+Traditional vs. AI Loop Engineering
+
+Traditional Development		AI Loop Engineering
+----------------------------------------------------------------------
+Developer writes code		AI agent can generate code
+Developer runs tests		Agent can execute tests
+Developer analyzes errors	Agent can analyze errors
+Developer fixes bugs		Agent can propose and apply fixes
+Manual iteration		Partially automated iteration
+Human-controlled		Human-supervised
+
+
+
+
+
+
+
+
+
+Lecture 17:  17-July-2026 [ Loop Engineering Part 2]
 ======================================================================================================================================================
 ======================================================================================================================================================
 
