@@ -3219,13 +3219,65 @@ Lecture 16:  26-July-2026 [ Loop Engineering Part 1 ]
 ======================================================================================================================================================
 ======================================================================================================================================================
 
+Ref:
+======================================================================================================================================================
+https://openai.com/index/harness-engineering/?utm_source=chatgpt.com
+
+
 
 What Is Loop Engineering?
+======================================================================================================================================================
 Loop Engineering is an approach to software development where work is performed through a repeated cycle of planning, 
 implementation, testing, feedback, and improvement until the desired result is achieved.
 
-In modern AI-assisted software development, it often refers to using AI coding agents in an iterative feedback loop rather than asking AI to generate code only once.
+- In modern AI-assisted software development, it often refers to using AI coding agents in an iterative feedback loop rather than asking AI to generate code only once.
 
+- A real loop is unattended. 
+- It prompts itself while you are away.
+
+
+From prompting to looping:
+- For about two years, getting work from a coding agent was simple. 
+- You wrote a good prompt. You gave it enough background. 
+- You read the answer. 
+- You typed the next thing. 
+- The agent was a tool, and you used it one step at a time.
+
+- A loop is different. 
+- It replaces you, the operator, with a system. 
+- The system finds the work. 
+- It gives the work out. 
+- It checks the result. 
+- It writes down what it did. 
+- Then it decides what to do next. 
+- It prompts the agent for you.
+
+So where does your value go? It does not go away. 
+- It moves to the two things a loop cannot do for you. 
+- The first is intent: saying clearly what you want, clear enough that the result can be checked. 
+- The second is accountability: standing behind the result. You own what ships. 
+- The loop handles the steps in the middle. 
+- The two ends stay yours. 
+- You are paid for your intent and your judgment. You are not paid for ignoring how the work was made.
+
+
+
+======================================================================================================================================================
+Prompting vs Looping
+======================================================================================================================================================
++-------------------------------------------+------------------------------------------------------------------+
+| Prompting (What You Know)                 | Looping (What This Course Adds)                                  |
++-------------------------------------------+------------------------------------------------------------------+
+| You start each turn.                      | A schedule or an event starts each turn.                         |
++-------------------------------------------+------------------------------------------------------------------+
+| You read the output and decide what       | A checker checks the output, and the loop decides what happens   |
+| happens next.                             | next.                                                            |
++-------------------------------------------+------------------------------------------------------------------+
+| Stops the moment you stop typing.         | Keeps running while you sleep.                                   |
++-------------------------------------------+------------------------------------------------------------------+
+| One task, one session, your full          | Many small runs, mostly unattended; your attention is needed     |
+| attention.                                | only at the gate.                                                |
++-------------------------------------------+------------------------------------------------------------------+
 
 
 
@@ -3260,9 +3312,148 @@ Human-controlled		Human-supervised
 
 
 
+What is Harness Engineering
+======================================================================================================================================================
+Harness Engineering is an emerging AI software engineering discipline focused on designing the environment, 
+tools, instructions, security controls, 
+and feedback mechanisms that allow AI coding agents to develop software reliably
+
+Instead of simply asking an AI agent to write code, engineers build a controlled environment in which the agent can understand requirements,
+write code, run tests, identify problems, and correct them.
+
+
+In February 2026, OpenAI published an article titled Harness engineering: 
+leveraging Codex in an agent-first world, describing how its engineers built software by designing the systems and feedback loops around Codex agents.
 
 
 
+What a loop is made of
+======================================================================================================================================================
+- A loop that really runs on its own has five working parts and one saved-memory layer. 
+- This course calls that memory layer the spine.
+- You already met four of the five working parts in the agentic coding course. Here they do a new job.
+
+1. Heartbeat: 
+- a schedule (or an event) that starts the loop.
+- Without it, you have one run, not a loop. 
+- Learn one word now, because this course uses it everywhere: each single firing of the loop, meaning one full pass through its steps, is called a beat. 
+- The heartbeat makes beats happen.
+- Everything else below is what happens inside one beat.
+
+2. Worktree: 
+- isolation, so two agents working at the same time do not overwrite each other's files.
+
+3. Skill: 
+- your project knowledge written down once, so each run does not start from nothing.
+
+4. Subagents: 
+- the maker-checker split. The agent that writes the code is not the agent that grades it.
+
+5. Connector (MCP): 
+- so the loop can act in your real tools (open a PR, update a ticket), not only suggest.
+
+6. State / memory, the spine. 
+- A file on disk (or a board like Linear) that records what is done and what comes next.
+- The model forgets everything between runs. 
+- The spine is how today's run knows what yesterday's run did. 
+- No spine, no loop. 
+- Without it, the loop just repeats its first step forever.
+
+
+
+
+
+
+======================================================================================================================================================
+Big Loop — Explanation
+======================================================================================================================================================
+
+Big loop ka purpose:
+- Agent ko automatically start karna.
+- Uska kaam complete hone ke baad result check karna.
+- Progress ko save rakhna.
+- Next run mein wahi se kaam continue karwana.
+
+Big Loop Components:
+
+1. Heartbeat
+   - Ek schedule ya event agent ko start karta hai.
+   - Example:
+     - Har Sunday 7 PM HIPAA learning exercise generate karna.
+     - New email receive hone par email review start karna.
+     - Daily 9 AM security dashboard check karna.
+
+2. One Beat
+   - Ek complete execution/run ko “one beat” kehte hain.
+   - Is beat ke andar agent apna kaam karta hai.
+   - Example:
+     - Is week ka HIPAA access-control scenario banana.
+     - Questions aur explained answers generate karna.
+
+3. Checker
+   - Result ko independently validate karta hai.
+   - Check karta hai:
+     - Kya required format follow hua?
+     - Kya task complete hua?
+     - Kya errors hain?
+     - Kya human approval ki zarurat hai?
+   - Example:
+     - Exercise mein separate Notes aur Q/A blocks hain ya nahi.
+     - Q/A numbering correct hai ya nahi.
+     - Topic Privacy Rule ya Security Rule se related hai ya nahi.
+
+4. Spine
+   - Persistent memory / progress record between runs.
+   - Har completed beat ka result, status, next step aur history save karta hai.
+   - Kal ya next week ka run spine read karke continue karta hai.
+   - Example:
+     - Last topic: HIPAA Security Rule — Access Controls.
+     - Next topic: HIPAA Privacy Rule — Minimum Necessary Standard.
+     - Q/A numbering: last question was Q15, so next begins from Q16.
+
+Flow:
+
+Heartbeat
+   → One Beat Runs
+   → Checker Validates Result
+   → Spine Saves Progress
+   → Next Heartbeat Reads Spine
+   → Next Beat Starts From Correct Point
+
+Important Difference:
+
+Small loop:
+- Ek single agent run ke andar hota hai.
+- Context build karta hai, tools use karta hai, results read karta hai.
+- Run end hone par normally stop hota hai.
+
+Big loop:
+- Small loop ko start karta hai.
+- Output check karta hai.
+- Progress save karta hai.
+- Future scheduled runs ko continue karwata hai.
+
+Simple Example — Weekly HIPAA Exercise:
+
+Sunday 7 PM
+   → Heartbeat starts automation
+   → Agent creates HIPAA exercise
+   → Checker verifies notes, Q/A, depth, and priorities
+   → Spine records covered topic and question numbering
+   → Next Sunday automation starts again
+   → Reads spine and rotates to the next HIPAA topic
+
+Main Point:
+- The small loop does the work.
+- The big loop starts it, checks it, and remembers it.
+
+
+
+
+i was on 1:57 min of video # 16 Loop Engineering
+
+
+======================================================================================================================================================
 
 
 
