@@ -3378,6 +3378,7 @@ Big Loop Components:
 
 1. Heartbeat
    - Ek schedule ya event agent ko start karta hai.
+   - A kind of schedular
    - Example:
      - Har Sunday 7 PM HIPAA learning exercise generate karna.
      - New email receive hone par email review start karna.
@@ -3385,13 +3386,14 @@ Big Loop Components:
 
 2. One Beat
    - Ek complete execution/run ko “one beat” kehte hain.
+   - Task to be done
    - Is beat ke andar agent apna kaam karta hai.
    - Example:
      - Is week ka HIPAA access-control scenario banana.
      - Questions aur explained answers generate karna.
 
 3. Checker
-   - Result ko independently validate karta hai.
+   - A separate agent, Result ko independently validate karta hai.
    - Check karta hai:
      - Kya required format follow hua?
      - Kya task complete hua?
@@ -3403,6 +3405,7 @@ Big Loop Components:
      - Topic Privacy Rule ya Security Rule se related hai ya nahi.
 
 4. Spine
+   - progress.md
    - Persistent memory / progress record between runs.
    - Har completed beat ka result, status, next step aur history save karta hai.
    - Kal ya next week ka run spine read karke continue karta hai.
@@ -3450,7 +3453,7 @@ Main Point:
 
 
 
-i was on 1:57 min of video # 16 Loop Engineering
+i was on 59:00 min of video # 16 Loop Engineering
 
 
 ======================================================================================================================================================
